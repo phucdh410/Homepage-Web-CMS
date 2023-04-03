@@ -1,21 +1,22 @@
 import { forwardRef, useCallback, useState } from 'react';
 import { Search } from '@mui/icons-material';
 import { debounce, InputAdornment, TextField } from '@mui/material';
-import { string } from 'prop-types';
 
-export const CSearchInput = forwardRef(
-  ({ id, name, placeholder, onInputChange, ...props }, ref) => {
+import { ICSearchInputProps, ICSearchInputRef } from './types';
+
+export const CSearchInput = forwardRef<ICSearchInputRef, ICSearchInputProps>(
+  ({ id, name, placeholder, onChange, ...props }, ref) => {
     //#region Data
     const [input, setInput] = useState('');
     //#endregion
 
     //#region Event
     const debounceSearch = useCallback(
-      debounce((value) => onInputChange(value), 400),
+      debounce((value) => onChange?.(value), 400),
       [],
     );
 
-    const onChange = (e) => {
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInput(e.target.value);
       debounceSearch(e.target.value);
     };
@@ -28,7 +29,7 @@ export const CSearchInput = forwardRef(
         id={id}
         name={name}
         value={input}
-        onChange={onChange}
+        onChange={onInputChange}
         placeholder={placeholder}
         type="text"
         InputProps={{
@@ -45,9 +46,7 @@ export const CSearchInput = forwardRef(
     //#endregion
   },
 );
-CSearchInput.propTypes = {
-  placeholder: string,
-};
+
 CSearchInput.defaultProps = {
   placeholder: 'Tìm kiếm',
 };

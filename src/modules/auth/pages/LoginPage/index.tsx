@@ -36,7 +36,9 @@ const LoginPage = () => {
     const res = await login(values);
 
     if (isSuccess(res)) {
-      const { access_token, refresh_token } = res.data;
+      // const { access_token, refresh_token } = res.data;
+      const { accessToken: access_token, refreshToken: refresh_token } =
+        res.data;
 
       dispatch(setToken({ access_token, refresh_token }));
 

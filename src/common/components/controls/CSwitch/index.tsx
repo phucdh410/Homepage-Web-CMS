@@ -1,7 +1,9 @@
 import { forwardRef } from 'react';
-import { FormControlLabel, styled, Switch } from '@mui/material';
+import { FormControlLabel, styled, Switch, SwitchProps } from '@mui/material';
 
-const IOSSwitch = styled((props) => (
+import { ICSwitchProps, ICSwitchRef } from './types';
+
+const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
   width: 42,
@@ -49,15 +51,15 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-export const CSwitch = forwardRef(
-  ({ name, label, checked, value, onChange, ...props }, ref) => {
+export const CSwitch = forwardRef<ICSwitchRef, ICSwitchProps>(
+  ({ name, label, value, onChange, ...props }, ref) => {
     return (
       <FormControlLabel
         name={name}
         onChange={onChange}
-        control={<IOSSwitch checked={checked || !!value} inputRef={ref} />}
+        control={<IOSSwitch checked={!!value} inputRef={ref} />}
         label={label}
-        sx={{ margin: !label && 0 }}
+        sx={{ margin: !label ? 0 : undefined }}
         {...props}
       />
     );

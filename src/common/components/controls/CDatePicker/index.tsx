@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-import { TextField } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 
 import { ICDatePickerProps } from './types';
