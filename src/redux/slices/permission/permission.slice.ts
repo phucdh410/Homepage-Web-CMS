@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const initialState = {
+import { IPermissionState } from './types';
+
+const initialState: IPermissionState = {
   permissions: [],
 };
 
@@ -22,7 +24,7 @@ const persistConfig = {
   key: 'permission',
   version: 1,
   storage,
-  whiteList: ['permission'],
+  whiteList: ['permissions'],
 };
 
 export default persistReducer(persistConfig, permissionSlice.reducer);

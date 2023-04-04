@@ -14,7 +14,6 @@ import {
 import { login } from '@/apis/auth.api';
 import { getProfile } from '@/axios/index';
 import { CInput, CInputPassword } from '@/controls/';
-import { isSuccess } from '@/funcs/';
 import { defaultValues, loginResolver } from '@/modules/auth/form';
 import { setToken } from '@/slices/auth';
 import { ILoginParams } from '@/types/auth';
@@ -33,23 +32,22 @@ const LoginPage = () => {
 
   //#region Event
   const onSubmit = async (values: ILoginParams) => {
-    const res = await login(values);
+    try {
+      const res = await login(values);
 
-    if (isSuccess(res)) {
-      // const { access_token, refresh_token } = res.data;
-      const { accessToken: access_token, refreshToken: refresh_token } =
-        res.data;
+      const { access_token, refresh_token } = res.data.data;
 
       dispatch(setToken({ access_token, refresh_token }));
 
       await getProfile(access_token);
 
       toast.success('Đăng nhập thành công!');
-    } else {
-      // toast.error(res?.message || 'Đăng nhập không thành công!');
+      reset(defaultValues);
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message || 'Đăng nhập không thành công!',
+      );
     }
-
-    reset(defaultValues);
   };
   //#endregion
 

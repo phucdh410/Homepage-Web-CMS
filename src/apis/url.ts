@@ -19,6 +19,7 @@ export const USERS = {
   GET_USER_BY_ID: '/users', // :id
   UPDATE_USER: '/users', // :id
   DELETE_USER: '/users', // :id
+  UPDATE_USER_STATUS: '/users/active', // :id
 };
 
 export const BANNERS = {

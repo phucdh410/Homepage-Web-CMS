@@ -1,7 +1,8 @@
-import { CSwitch } from '@controls';
 import { Delete, Edit } from '@mui/icons-material';
 import { IconButton, Stack, TableCell, TableRow } from '@mui/material';
 import dayjs from 'dayjs';
+
+import { CSwitch } from '@/controls/';
 
 export const MUserRow = ({
   data,

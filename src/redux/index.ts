@@ -10,7 +10,7 @@ import {
 } from 'redux-persist';
 
 import authReducer from './slices/auth/auth.slice';
-import permissionReducer from './slices/permission.slice';
+import permissionReducer from './slices/permission/permission.slice';
 
 export const store = configureStore({
   reducer: {

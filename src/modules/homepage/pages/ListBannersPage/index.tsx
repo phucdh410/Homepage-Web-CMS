@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { deleteBanner, getBanners, updateBanner } from '@apis/banners.api';
+import { deleteBanner, getBanners, updateBanner } from '@/apis/banners.api';
 import { confirm } from '@confirm';
 import { CSearchInput } from '@controls';
 import { cleanObjValue } from '@func';

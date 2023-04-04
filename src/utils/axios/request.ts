@@ -16,7 +16,7 @@ export async function post(url: string, body: any, options = {}) {
   }
 }
 
-export async function put(url: string, body: any, options = {}) {
+export async function put(url: string, body?: any, options = {}) {
   try {
     return await apiInstance.put(url, body, { ...options });
   } catch (err) {

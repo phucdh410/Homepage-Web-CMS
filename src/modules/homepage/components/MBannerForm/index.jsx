@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { createBanner } from '@apis/banners.api';
-import { updateBanner } from '@apis/banners.api';
+import { createBanner } from '@/apis/banners.api';
+import { updateBanner } from '@/apis/banners.api';
 import { CImageUpload, CInput, CSwitch } from '@controls';
 import { formatPayload } from '@func';
 import { useResolver } from '@hooks';
@@ -35,7 +35,7 @@ export const MBannerForm = ({ data, language_id }) => {
   const onBack = () => {
     reset(defaultValuesBanner);
 
-    navigate(-1, { replace: true });
+    navigate(-1);
   };
 
   const onSubmit = async (values) => {

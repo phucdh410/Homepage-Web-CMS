@@ -1,3 +1,4 @@
+export * from './CActionsForm';
 export * from './CAutocomplete';
 export * from './CDatePicker';
 export * from './CImageUpload';

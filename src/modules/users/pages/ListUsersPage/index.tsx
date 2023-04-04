@@ -1,24 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { deleteUser, getUsers, updateUser } from '@apis/users.api';
-import { confirm } from '@confirm';
-import { CSearchInput } from '@controls';
-import { cleanObjValue } from '@func';
-import { MUserRow } from '@modules/users/components';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
-import { CPagination, CTable } from '@others';
 import { useQuery } from '@tanstack/react-query';
 
-const headers = [
-  { name: 'STT', align: 'center' },
-  { name: 'TÊN ĐĂNG NHẬP', align: 'left' },
-  { name: 'NGÀY TẠO', align: 'center' },
-  { name: 'NGÀY CẬP NHẬT', align: 'center' },
-  { name: 'TRẠNG THÁI', align: 'center' },
-  { name: 'THAO TÁC', align: 'center' },
-];
+import { deleteUser, getUsers, updateUserStatus } from '@/apis/users.api';
+import { confirm } from '@/confirm/';
+import { CSearchInput } from '@/controls/';
+import { formatParams } from '@/funcs/';
+import { MUsersTable } from '@/modules/users/components';
+import { CPagination } from '@/others/';
 
 const ListUsersPage = () => {
   //#region Data
@@ -30,7 +22,7 @@ const ListUsersPage = () => {
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
-  const _filter = cleanObjValue(filter);
+  const _filter = formatParams(filter);
 
   const { data, refetch } = useQuery({
     queryKey: ['users', _filter],
@@ -43,24 +35,24 @@ const ListUsersPage = () => {
   //#endregion
 
   //#region Event
-  const onPageChange = (event, newPage) =>
+  const onPageChange = (event: any, newPage: number) =>
     setFilter((prev) => ({ ...prev, page: newPage }));
 
-  const onStatusChange = (id, data) => async (e) => {
+  const onStatusChange = (id: string) => async () => {
     try {
-      await updateUser(id, { ...data, active: e.target.checked });
+      await updateUserStatus(id);
 
       refetch();
 
       toast.success('Điều chỉnh trạng thái thành công!');
     } catch (error) {
-      toast.error(error?.message || 'Điều chỉnh trạng thái không thành công!');
+      // toast.error(error?.message || 'Điều chỉnh trạng thái không thành công!');
     }
   };
 
-  const onEdit = (id) => () => navigate(`detail/${id}`);
+  const onEdit = (id: string) => () => navigate(`detail/${id}`);
 
-  const onDelete = (id) => async () => {
+  const onDelete = (id: string) => async () => {
     if (
       await confirm({
         confirmation: 'Thao tác xóa sẽ không thể hoàn tác!',
@@ -74,12 +66,13 @@ const ListUsersPage = () => {
 
         toast.success('Xóa người dùng thành công!');
       } catch (error) {
-        toast.error(error?.message || 'Xóa người dùng không thành công!');
+        // toast.error(error?.message || 'Xóa người dùng không thành công!');
       }
     }
   };
 
-  const onSearch = (value) => setFilter((prev) => ({ ...prev, input: value }));
+  const onSearch = (value: string) =>
+    setFilter((prev) => ({ ...prev, input: value }));
   //#endregion
 
   useEffect(() => {
@@ -103,7 +96,7 @@ const ListUsersPage = () => {
         <Typography variant="page-title">Quản lý người dùng</Typography>
 
         <Stack direction="row" spacing={1} alignItems="center">
-          <CSearchInput onInputChange={onSearch} />
+          <CSearchInput onChange={onSearch} />
           <Button
             variant="contained"
             className="add-button"
@@ -116,13 +109,11 @@ const ListUsersPage = () => {
       </Stack>
 
       <Paper className="wrapper">
-        <CTable
-          headers={headers}
-          body={listData}
-          RowComponent={MUserRow}
-          onStatusChange={onStatusChange}
+        <MUsersTable
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
+          onStatusChange={onStatusChange}
         />
       </Paper>
 

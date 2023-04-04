@@ -1,5 +1,5 @@
 import { useParams, useSearchParams } from 'react-router-dom';
-import { getBannerById } from '@apis/banners.api';
+import { getBannerById } from '@/apis/banners.api';
 import { MBannerForm } from '@modules/homepage/components';
 import { useQuery } from '@tanstack/react-query';
 

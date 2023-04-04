@@ -51,7 +51,7 @@ const handleRefetch = async (response: any) => {
   } else {
     // save to use later when refetching done
     return new Promise((resolve, reject) => _queue.push({ resolve, reject }))
-      .then(() => null)
+      .then(() => Promise.reject('false'))
       .catch((error) => Promise.reject(error));
   }
 };
@@ -65,10 +65,7 @@ apiInstance.interceptors.response.use(
   (response) => {
     if (response.status === 205) return handleRefetch(response);
 
-    if (response.data instanceof Blob)
-      return { data: response.data, status: response.status };
-
-    return { ...response.data, status: response.status };
+    return response;
   },
   (error) => {
     if (error?.constructor?.name === 'Cancel') {
@@ -76,29 +73,15 @@ apiInstance.interceptors.response.use(
     }
     // if (error?.message === 'canceled') return;
 
-    if (error?.response?.status === 401) {
-      store.dispatch(setProfile(null));
-      store.dispatch(setToken(null));
-
-      window.localStorage.removeItem('access_token');
-      window.localStorage.removeItem('refresh_token');
-
-      return <Navigate to="/login" replace={true} />;
-    }
+    if (error?.response?.status === 401) return handleRefetch(error);
 
     if (error?.response?.status === 403) {
       console.log('Thiếu quyền truy cập');
 
-      return Promise.reject({
-        ...error.response.data,
-        status: error.response.status,
-      });
+      return Promise.reject(error);
     }
 
-    return Promise.reject({
-      ...error.response?.data,
-      status: error.response?.status,
-    });
+    return Promise.reject(error);
   },
 );
 

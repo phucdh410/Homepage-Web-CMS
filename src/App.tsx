@@ -12,6 +12,7 @@ import { RootState } from './redux';
 import routes from './routes';
 
 import './styles/index.scss';
+import 'react-toastify/dist/ReactToastify.css';
 //#endregion
 
 const router = createBrowserRouter(routes);

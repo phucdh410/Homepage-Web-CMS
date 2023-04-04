@@ -4,7 +4,7 @@ import {
   deleteNotification,
   getNotifications,
   updateNotification,
-} from '@apis/notifications.api';
+} from '@/apis/notifications.api';
 import { confirm } from '@confirm';
 import { CSearchInput } from '@controls';
 import { cleanObjValue } from '@func';

@@ -6,7 +6,7 @@ import { Box, Stack } from '@mui/material';
 import { getPermissions } from '@/apis/permissions';
 import { RootState } from '@/redux/';
 import { ROUTES } from '@/routes/routes';
-import { setPermission } from '@/slices/permission.slice';
+import { setPermission } from '@/slices/permission/permission.slice';
 
 import { CPageLoader } from '../../others/CPageLoader';
 

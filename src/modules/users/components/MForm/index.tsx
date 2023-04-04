@@ -3,9 +3,6 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { shallowEqual, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { createUser, updateUser } from '@apis/users.api';
-import { CInput, CInputPassword, CSwitch } from '@controls';
-import { useResolver } from '@hooks';
 import {
   Box,
   Button,
@@ -17,15 +14,18 @@ import {
   Typography,
   Unstable_Grid2 as Grid,
 } from '@mui/material';
-import { CActionsForm } from '@others';
 
-import { defaultValues, validationSchema } from '../../form';
+import { createUser, updateUser } from '@/apis/users.api';
+import { CActionsForm, CInput, CInputPassword, CSwitch } from '@/controls/';
+import { RootState } from '@/redux/';
+import { IPermissionState } from '@/slices/permission';
+import { IUserFormParams } from '@/types/user';
 
-export const MForm = ({ data }) => {
+import { defaultValues, userResolver } from '../../form';
+
+export const MForm: React.FC<any> = ({ data }) => {
   //#region Data
-  const resolver = useResolver(validationSchema);
-
-  const { permissions } = useSelector(
+  const { permissions } = useSelector<RootState, IPermissionState>(
     (state) => state.permission,
     shallowEqual,
   );
@@ -33,7 +33,7 @@ export const MForm = ({ data }) => {
   const { control, handleSubmit, reset } = useForm({
     mode: 'all',
     shouldFocusError: true,
-    resolver,
+    resolver: userResolver,
     defaultValues,
   });
 
@@ -49,10 +49,10 @@ export const MForm = ({ data }) => {
   const onBack = () => {
     reset(defaultValues);
 
-    navigate(-1, { replace: true });
+    navigate(-1);
   };
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: IUserFormParams) => {
     try {
       const apiValue = {
         ...values,
@@ -71,7 +71,7 @@ export const MForm = ({ data }) => {
 
       onBack();
     } catch (error) {
-      toast.error(error?.message || 'Cập nhật người dùng không thành công!');
+      // toast.error(error?.message || 'Cập nhật người dùng không thành công!');
     }
   };
 
@@ -80,7 +80,7 @@ export const MForm = ({ data }) => {
 
   const onClearAll = () => replace([]);
 
-  const onCheck = (permission) => () => {
+  const onCheck = (permission: any) => () => {
     let index = -1;
 
     const found = fields.some((e, i) => {
@@ -99,7 +99,7 @@ export const MForm = ({ data }) => {
     if (data)
       reset({
         ...data,
-        permissions: data?.permissions?.map((e) => ({ ...e, _id: e.id })),
+        permissions: data?.permissions?.map((e: any) => ({ ...e, _id: e.id })),
       });
   }, [data]);
 
@@ -194,11 +194,11 @@ export const MForm = ({ data }) => {
             <Controller
               control={control}
               name="permissions"
-              render={({ fieldState: { error } }) =>
-                !!error && (
-                  <Typography color="error">{error?.message}</Typography>
-                )
-              }
+              render={({ fieldState: { error } }) => (
+                <Typography display={!!error ? 'block' : 'none'} color="error">
+                  {error?.message}
+                </Typography>
+              )}
             />
 
             <Grid container spacing={1.5}>

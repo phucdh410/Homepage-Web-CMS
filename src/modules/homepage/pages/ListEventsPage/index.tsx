@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { deleteEvent, getEvents, updateEvent } from '@apis/events.api';
+import { deleteEvent, getEvents, updateEvent } from '@/apis/events.api';
 import { confirm } from '@confirm';
 import { CSearchInput } from '@controls';
 import { cleanObjValue } from '@func';

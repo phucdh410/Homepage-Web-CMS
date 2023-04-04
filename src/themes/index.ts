@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import type {} from '@mui/x-data-grid/themeAugmentation';
 
 //#region Palatte & Typography
 let theme = createTheme({
@@ -17,6 +18,10 @@ let theme = createTheme({
     },
     skyblue: {
       main: '#1890FF',
+      contrastText: '#ffffff',
+    },
+    textTable: {
+      main: '#191919',
       contrastText: '#ffffff',
     },
   },
@@ -222,26 +227,80 @@ theme = createTheme(theme, {
         },
       },
     },
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          border: 'none',
+          '.MuiDataGrid-columnHeaders': {
+            borderBottom: 'none',
+            '.MuiDataGrid-columnHeader': {
+              padding: '11px 20px',
+              textTransform: 'uppercase',
+              fontSize: 16,
+              lineHeight: '19.5px',
+              fontWeight: 600,
+              color: '#ffffff',
+              backgroundColor: theme.palette.primary.main,
+              '&:first-of-type': {
+                borderTopLeftRadius: '10px',
+                borderBottomLeftRadius: '10px',
+              },
+              '&:last-of-type': {
+                borderTopRightRadius: '10px',
+                borderBottomRightRadius: '10px',
+                '.MuiDataGrid-columnSeparator': {
+                  display: 'none',
+                },
+              },
+            },
+          },
+          '&.MuiDataGrid-root .MuiDataGrid-cell': {
+            borderBottom: 'none',
+            '&:focus,&:focus-within': {
+              outline: 'none !important',
+            },
+          },
+          '&.MuiDataGrid-root .MuiDataGrid-columnHeader': {
+            '&:focus,&:focus-within': {
+              outline: 'none !important',
+            },
+          },
+          '.MuiDataGrid-cellContent': {
+            color: theme.palette.textTable.main,
+          },
+        },
+      },
+    },
   },
 });
 //#endregion
 
 export default theme;
 
+//#region Declare
 declare module '@mui/material/styles' {
   interface Palette {
     skyblue: Palette['primary'];
+    textTable: Palette['primary'];
   }
 
   // allow configuration using `createTheme`
   interface PaletteOptions {
     skyblue?: PaletteOptions['primary'];
+    textTable?: PaletteOptions['primary'];
   }
 }
 
-// Update the Button's color prop options
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     skyblue: true;
+    textTable: true;
   }
 }
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    'page-title': true;
+  }
+}
+//#endregion

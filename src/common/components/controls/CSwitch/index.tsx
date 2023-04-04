@@ -53,6 +53,7 @@ const IOSSwitch = styled((props: SwitchProps) => (
 
 export const CSwitch = forwardRef<ICSwitchRef, ICSwitchProps>(
   ({ name, label, value, onChange, ...props }, ref) => {
+    console.log(value);
     return (
       <FormControlLabel
         name={name}

@@ -27,7 +27,11 @@ export default defineConfig(({ mode }) => {
           new URL('./src/utils/funcs/index.ts', import.meta.url),
         ),
         '@/apis': fileURLToPath(new URL('./src/apis', import.meta.url)),
+        '@/hooks': fileURLToPath(new URL('./src/hooks', import.meta.url)),
         '@/axios': fileURLToPath(new URL('./src/utils/axios', import.meta.url)),
+        '@/confirm': fileURLToPath(
+          new URL('./src/utils/confirm/index.ts', import.meta.url),
+        ),
         '@/slices': fileURLToPath(
           new URL('./src/redux/slices', import.meta.url),
         ),
