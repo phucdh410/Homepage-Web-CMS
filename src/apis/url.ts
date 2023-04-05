@@ -3,7 +3,7 @@ export const FILES = {
 };
 
 export const PERMISSIONS = {
-  UPLOAD: '/permissions',
+  GET_PERMISSIONS: '/permissions',
 };
 
 export const AUTH = {

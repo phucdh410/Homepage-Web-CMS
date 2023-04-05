@@ -23,7 +23,9 @@ import { IUserFormParams } from '@/types/user';
 
 import { defaultValues, userResolver } from '../../form';
 
-export const MForm: React.FC<any> = ({ data }) => {
+import { IMFormProps } from './types';
+
+export const MForm: React.FC<IMFormProps> = ({ data }) => {
   //#region Data
   const { permissions } = useSelector<RootState, IPermissionState>(
     (state) => state.permission,

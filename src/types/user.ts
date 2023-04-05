@@ -1,3 +1,5 @@
+import { IPermission } from './permission';
+
 export interface IUserFormParams {
   username: string;
   password?: string;
@@ -12,4 +14,11 @@ export interface IUsersDataTable {
   created_at: string;
   updated_at: string | null;
   active: boolean;
+}
+
+export interface IUserDetail {
+  id: string;
+  username: string;
+  active: boolean;
+  permissions: IPermission[];
 }

@@ -1,5 +1,6 @@
-import { MForm } from '@modules/users/components';
 import { Box } from '@mui/material';
+
+import { MForm } from '@/modules/users/components';
 
 const DetailUserPage = () => {
   //#region Data

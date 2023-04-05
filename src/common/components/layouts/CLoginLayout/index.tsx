@@ -11,7 +11,8 @@ export const CLoginLayout = () => {
     shallowEqual,
   );
 
-  if (!isLogined) return <LoginPage />;
+  // Bỏ comment bên dưới
+  // if (!isLogined) return <LoginPage />;
 
   return <Navigate to={ROUTES.HOME} replace={true} />;
 };
