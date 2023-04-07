@@ -1,32 +1,33 @@
 import { useEffect } from 'react';
-import { Controller, useForm, useWatch } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Box, FormLabel, Paper, Stack, Typography } from '@mui/material';
+
 import { createBanner } from '@/apis/banners.api';
 import { updateBanner } from '@/apis/banners.api';
-import { CImageUpload, CInput, CSwitch } from '@controls';
-import { formatPayload } from '@func';
-import { useResolver } from '@hooks';
-import { Box, FormLabel, Paper, Stack, Typography } from '@mui/material';
-import { CActionsForm } from '@others';
+import { CImageUpload, CInput } from '@/controls/';
+import { CActionsForm } from '@/controls/';
+import { IBannerForm } from '@/types/banner';
+import { IFileUpload } from '@/types/file';
 
-import { defaultValuesBanner, validationSchemaBanner } from '../../form';
+import { bannerResolver, defaultValuesBanner } from '../../form';
 
 import { MEndDate } from './MEndDate';
 import { MStartDate } from './MStartDate';
+import { IMBannerFormProps } from './types';
 
-export const MBannerForm = ({ data, language_id }) => {
+export const MBannerForm: React.FC<IMBannerFormProps> = ({
+  data,
+  language_id,
+}) => {
   //#region Data
-  const resolver = useResolver(validationSchemaBanner);
-
-  const { control, handleSubmit, reset } = useForm({
+  const { control, handleSubmit, reset } = useForm<IBannerForm>({
     mode: 'all',
     shouldFocusError: true,
-    resolver,
+    resolver: bannerResolver,
     defaultValues: defaultValuesBanner,
   });
-
-  const fileValue = useWatch({ control, name: 'file' });
 
   const navigate = useNavigate();
   //#endregion
@@ -38,23 +39,28 @@ export const MBannerForm = ({ data, language_id }) => {
     navigate(-1);
   };
 
-  const onSubmit = async (values) => {
-    try {
-      data
-        ? await updateBanner(data?.id, formatPayload(values))
-        : await createBanner(formatPayload(values));
+  const onSubmit = () => {
+    handleSubmit(async (values) => {
+      try {
+        const payload = { ...values, file_id: (values.file as IFileUpload).id };
+        data
+          ? await updateBanner(data?.id, payload)
+          : await createBanner(payload);
 
-      toast.success('Cập nhật banner thành công!');
+        toast.success('Cập nhật banner thành công!');
 
-      onBack();
-    } catch (error) {
-      toast.error(error?.message || 'Cập nhật banner không thành công!');
-    }
+        onBack();
+      } catch (error: any) {
+        toast.error(
+          error?.response?.data?.message || 'Cập nhật banner không thành công!',
+        );
+      }
+    })();
   };
   //#endregion
 
   useEffect(() => {
-    if (data) reset({ ...data, file_id: data?.file?.id, language_id });
+    if (data) reset({ ...data, language_id });
   }, [data]);
 
   //#region Render
@@ -67,7 +73,7 @@ export const MBannerForm = ({ data, language_id }) => {
       </Box>
 
       <Paper className="wrapper">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={onSubmit}>
           <Stack direction="column" spacing={2.5} mb={2.5}>
             <Stack direction="column" spacing={1} flex={1}>
               <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
@@ -93,26 +99,14 @@ export const MBannerForm = ({ data, language_id }) => {
               </FormLabel>
               <Controller
                 control={control}
-                name="file_id"
-                render={({ field: { onChange }, fieldState: { error } }) => (
+                name="file"
+                render={({ field, fieldState: { error } }) => (
                   <CImageUpload
+                    {...field}
                     error={!!error}
                     helperText={error?.message}
-                    onChange={onChange}
-                    url={fileValue?.url}
                   />
                 )}
-              />
-            </Stack>
-
-            <Stack direction="row" spacing={1} minWidth={200}>
-              <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-                Hiển thị
-              </FormLabel>
-              <Controller
-                control={control}
-                name="published"
-                render={({ field }) => <CSwitch {...field} />}
               />
             </Stack>
           </Stack>

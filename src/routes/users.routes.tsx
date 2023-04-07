@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { RouteObject } from 'react-router-dom';
 
 import { ROUTES } from './routes';
 
@@ -10,7 +11,7 @@ const UpdateUserPage = lazy(
   () => import('@/modules/users/pages/UpdateUserPage'),
 );
 
-export const UsersRoutes = [
+export const UsersRoutes: RouteObject[] = [
   {
     path: ROUTES.USERS.LIST,
     element: <ListUsersPage />,

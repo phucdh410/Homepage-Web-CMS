@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { getUserById } from '@/apis/users.api';
-import { MForm } from '@modules/users/components';
+import { MForm } from '@/modules/users/components';
 import { Box } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 

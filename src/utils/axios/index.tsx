@@ -43,7 +43,7 @@ const handleRefetch = async (response: any) => {
           Authorization: `Bearer ${access_token}`,
         },
       });
-    } catch (error) {
+    } catch (error: any) {
       _queue.forEach(({ reject }) => reject(error));
 
       return Promise.reject(error);
@@ -101,7 +101,7 @@ export const getProfile = async (token: string) => {
     store.dispatch(setProfile({ ...res.data }));
 
     return res;
-  } catch (error) {
+  } catch (error: any) {
     tryLogout();
   }
 };
@@ -115,7 +115,7 @@ const refresh = () => {
 export const tryLogout = async () => {
   try {
     await logout();
-  } catch (error) {
+  } catch (error: any) {
     throw error;
   } finally {
     store.dispatch(setProfile(null));

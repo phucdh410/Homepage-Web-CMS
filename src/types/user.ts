@@ -1,3 +1,4 @@
+import { IBasePaginateParams } from './params';
 import { IPermission } from './permission';
 
 export interface IUserFormParams {
@@ -22,3 +23,11 @@ export interface IUserDetail {
   active: boolean;
   permissions: IPermission[];
 }
+
+export interface IUpdateUserParams {
+  username: string;
+  active: boolean;
+  permissions: IPermission[];
+}
+
+export interface IGetUsersParams extends IBasePaginateParams {}

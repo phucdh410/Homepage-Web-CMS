@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { RouteObject } from 'react-router-dom';
 
 import { ROUTES } from './routes';
 
@@ -26,7 +27,9 @@ const ListEventsPage = lazy(
 //   () => import('@/modules/homepage/pages/UpdateEventPage'),
 // );
 
-export const HomepageRoutes = [
+const LinksPage = lazy(() => import('@/modules/homepage/pages/LinksPage'));
+
+export const HomepageRoutes: RouteObject[] = [
   {
     path: ROUTES.HOMEPAGE.BANNERS.LIST,
     element: <ListBannersPage />,
@@ -57,4 +60,9 @@ export const HomepageRoutes = [
   //   path: ROUTES.HOMEPAGE.EVENTS.UPDATE,
   //   element: <UpdateEventPage />,
   // },
+
+  {
+    path: ROUTES.HOMEPAGE.LINKS.ROOT,
+    element: <LinksPage />,
+  },
 ];

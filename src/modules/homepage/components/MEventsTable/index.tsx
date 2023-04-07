@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Delete, Edit } from '@mui/icons-material';
+import { Delete, Edit, Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
@@ -9,24 +9,22 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CSwitch } from '@/controls/';
 import { CDataGrid } from '@/others/';
-import { IUsersDataTable } from '@/types/user';
+import { IGetEventsResponse } from '@/types/event';
 
-import { IMUsersTableProps } from './types';
+import { IMEventsTableProps } from './types';
 
-export const MUsersTable: React.FC<IMUsersTableProps> = ({
+export const MEventsTable: React.FC<IMEventsTableProps> = ({
   data,
   onEdit,
   onDelete,
-  onStatusChange,
 }) => {
   //#region Data
-
-  const createdDate = (params: GridValueGetterParams<IUsersDataTable>) => {
-    return dayjs(params.row.created_at);
+  const displayTime = (params: GridValueGetterParams<IGetEventsResponse>) => {
+    return `${dayjs(params.row?.start_date)} - ${dayjs(params.row?.end_date)}`;
   };
-  const updatedDate = (params: GridValueGetterParams<IUsersDataTable>) => {
+
+  const updatedDate = (params: GridValueGetterParams<IGetEventsResponse>) => {
     return dayjs(
       params.row?.updated_at ? params.row.updated_at : params.row.created_at,
     );
@@ -34,7 +32,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
 
   const columns: GridColDef[] = [
     {
-      field: 'col1',
+      field: 'index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -42,8 +40,8 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       sortable: false,
     },
     {
-      field: 'col2',
-      headerName: 'TÊN ĐĂNG NHẬP',
+      field: 'title',
+      headerName: 'TIÊU ĐỀ',
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
@@ -51,16 +49,16 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       flex: 1,
     },
     {
-      field: 'col3',
-      headerName: 'NGÀY TẠO',
+      field: 'time',
+      headerName: 'THỜI GIAN HIỂN THỊ',
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: createdDate,
+      valueGetter: displayTime,
     },
     {
-      field: 'col4',
+      field: 'updated_at',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -69,21 +67,17 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       valueGetter: updatedDate,
     },
     {
-      field: 'col5',
+      field: 'published',
       headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      renderCell: (params: GridRenderCellParams<IUsersDataTable>) => (
-        <CSwitch
-          value={params.value?.active}
-          onChange={onStatusChange(params.value?.id)}
-        />
-      ),
+      renderCell: (params: GridRenderCellParams<Boolean>) =>
+        params.value ? <Visibility /> : <VisibilityOff />,
     },
     {
-      field: 'col6',
+      field: 'action',
       headerName: 'THAO TÁC',
       minWidth: 200,
       headerAlign: 'center',
@@ -91,7 +85,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       sortable: false,
       renderCell: (params: GridRenderCellParams<String>) => (
         <Stack direction="row" spacing={1} justifyContent="center">
-          <IconButton color="warning" onClick={onEdit(params.value)}>
+          <IconButton color="warning" onClick={onEdit(params.value, 1)}>
             <Edit />
           </IconButton>
           <IconButton color="secondary" onClick={onDelete(params.value)}>
@@ -105,13 +99,10 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   const rows = useMemo<GridRowsProp>(
     () =>
       data?.map((e, i) => ({
+        ...e,
+        index: i + 1,
         id: e.id,
-        col1: i + 1,
-        col2: e.username,
-        col3: e.created_at,
-        col4: e.updated_at,
-        col5: e,
-        col6: e.id,
+        action: e.id,
       })),
     [data],
   );

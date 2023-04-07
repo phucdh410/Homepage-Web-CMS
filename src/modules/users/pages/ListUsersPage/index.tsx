@@ -8,9 +8,9 @@ import { useQuery } from '@tanstack/react-query';
 import { deleteUser, getUsers, updateUserStatus } from '@/apis/users.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
-import { formatParams } from '@/funcs/';
 import { MUsersTable } from '@/modules/users/components';
 import { CPagination } from '@/others/';
+import { IUsersDataTable } from '@/types/user';
 
 const ListUsersPage = () => {
   //#region Data
@@ -22,14 +22,15 @@ const ListUsersPage = () => {
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
-  const _filter = formatParams(filter);
-
   const { data, refetch } = useQuery({
-    queryKey: ['users', _filter],
-    queryFn: () => getUsers(_filter),
+    queryKey: ['users', filter],
+    queryFn: () => getUsers(filter),
   });
 
-  const listData = useMemo(() => data?.data?.data || [], [data]);
+  const listData = useMemo<IUsersDataTable[]>(
+    () => data?.data?.data?.data || [],
+    [data],
+  );
 
   const navigate = useNavigate();
   //#endregion
@@ -45,8 +46,11 @@ const ListUsersPage = () => {
       refetch();
 
       toast.success('Điều chỉnh trạng thái thành công!');
-    } catch (error) {
-      // toast.error(error?.message || 'Điều chỉnh trạng thái không thành công!');
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message ||
+          'Điều chỉnh trạng thái không thành công!',
+      );
     }
   };
 
@@ -65,8 +69,10 @@ const ListUsersPage = () => {
         refetch();
 
         toast.success('Xóa người dùng thành công!');
-      } catch (error) {
-        // toast.error(error?.message || 'Xóa người dùng không thành công!');
+      } catch (error: any) {
+        toast.error(
+          error?.response?.data?.message || 'Xóa người dùng không thành công!',
+        );
       }
     }
   };
@@ -77,8 +83,8 @@ const ListUsersPage = () => {
 
   useEffect(() => {
     setPaginate({
-      page: data?.data?.page || 1,
-      pages: data?.data?.pages || 0,
+      page: data?.data?.data?.page || 1,
+      pages: data?.data?.data?.pages || 0,
     });
   }, [data]);
 

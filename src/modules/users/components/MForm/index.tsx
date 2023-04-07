@@ -72,8 +72,11 @@ export const MForm: React.FC<IMFormProps> = ({ data }) => {
       toast.success('Cập nhật người dùng thành công!');
 
       onBack();
-    } catch (error) {
-      // toast.error(error?.message || 'Cập nhật người dùng không thành công!');
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message ||
+          'Cập nhật người dùng không thành công!',
+      );
     }
   };
 

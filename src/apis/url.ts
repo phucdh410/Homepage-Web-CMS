@@ -36,6 +36,7 @@ export const NOTIFICATIONS = {
   GET_NOTIFICATION_BY_ID: '/notifications', // :id
   UPDATE_NOTIFICATION: '/notifications', // :id
   DELETE_NOTIFICATION: '/notifications', // :id
+  UPDATE_STATUS: '/notifications/status',
 };
 
 export const EVENTS = {

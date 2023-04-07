@@ -39,7 +39,7 @@ const App = () => {
         } else {
           await tryLogout();
         }
-      } catch (error) {
+      } catch (error: any) {
         console.log(error);
       } finally {
         setLoading(false);

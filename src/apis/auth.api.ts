@@ -1,5 +1,5 @@
 import { get, post } from '@/axios/request';
-import { ILoginParams, ILoginResponse } from '@/types/auth';
+import { ILoginParams, ILoginResponse, IProfileResponse } from '@/types/auth';
 import { IApiResponse } from '@/types/response';
 
 import { AUTH } from './url';
@@ -10,7 +10,7 @@ export const login = (
   return post(AUTH.LOGIN, body);
 };
 
-export const profile = () => {
+export const profile = (): Promise<IApiResponse<IProfileResponse, any>> => {
   return get(AUTH.GET_PROFILE);
 };
 

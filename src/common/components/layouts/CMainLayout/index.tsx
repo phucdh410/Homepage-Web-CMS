@@ -37,7 +37,7 @@ const CMainLayout = () => {
         const { data } = res.data;
 
         dispatch(setPermission(data));
-      } catch (error) {
+      } catch (error: any) {
         throw error;
       }
     };

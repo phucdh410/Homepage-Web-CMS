@@ -1,6 +1,7 @@
 import { Controller, useWatch } from 'react-hook-form';
-import { CDatePicker } from '@controls';
 import dayjs from 'dayjs';
+
+import { CDatePicker } from '@/controls/';
 
 export const MEndDate = ({ control }) => {
   const before = useWatch({ control, name: 'start_date' });

@@ -48,6 +48,12 @@ export const NAVIGATIONS = [
         isChildren: false,
         path: '/homepage/events',
       },
+      {
+        title: 'Liên kết',
+        icon: '',
+        isChildren: false,
+        path: '/homepage/links',
+      },
     ],
   },
   {

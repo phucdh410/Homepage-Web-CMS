@@ -23,5 +23,8 @@ export const ROUTES = {
       CREATE: '/homepage/events/detail',
       UPDATE: '/homepage/events/detail/:id', // ?language_id=
     },
+    LINKS: {
+      ROOT: '/homepage/links',
+    },
   },
 };

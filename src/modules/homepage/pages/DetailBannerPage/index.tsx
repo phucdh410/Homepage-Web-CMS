@@ -1,4 +1,4 @@
-import { MBannerForm } from '@modules/homepage/components';
+import { MBannerForm } from '@/modules/homepage/components';
 
 const DetailBannerPage = () => {
   return (

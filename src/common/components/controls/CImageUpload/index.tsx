@@ -5,12 +5,11 @@ import { Box, Button, FormHelperText, Typography } from '@mui/material';
 
 import { uploadFile } from '@/apis/files.api';
 import defaultImage from '@/assets/images/default-image.png';
-import { IFile } from '@/types/file';
 
 import { ICImageUploadProps } from './types';
 
 const MAX_FILE_SIZE = 5242880;
-const checkImageFile = (file: IFile) => {
+const checkImageFile = (file: File) => {
   if (file) {
     if (file.size > MAX_FILE_SIZE) {
       toast.error('Dung lượng file ảnh tối đa 5Mb!');
@@ -24,17 +23,17 @@ const checkImageFile = (file: IFile) => {
 };
 
 export const CImageUpload = ({
+  value,
   onChange,
   error,
   helperText,
-  url,
   ...props
 }: ICImageUploadProps) => {
   //#region Data
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [imageUrl, setImageUrl] = useState<string>('');
+  const [isImgError, setIsImgError] = useState<boolean>(false);
   //#endregion
 
   //#region Event
@@ -63,13 +62,11 @@ export const CImageUpload = ({
         try {
           const res = await uploadFile(file);
 
-          const url = URL.createObjectURL(file);
-
-          setImageUrl(url);
-
           onChange && onChange(res?.data?.id);
-        } catch (error) {
-          // toast.error(error?.message || 'Upload file không thành công!');
+        } catch (error: any) {
+          toast.error(
+            error?.response?.data?.message || 'Upload file không thành công!',
+          );
         }
       }
     }
@@ -89,22 +86,20 @@ export const CImageUpload = ({
       try {
         const res = await uploadFile(file);
 
-        const url = URL.createObjectURL(file);
-
-        setImageUrl(url);
-
         onChange && onChange(res?.data?.id);
-      } catch (error) {
-        // toast.error(error?.message || 'Upload file không thành công!');
+      } catch (error: any) {
+        toast.error(
+          error?.response?.data?.message || 'Upload file không thành công!',
+        );
       }
     }
   };
 
-  const onImageError = () => setImageUrl(defaultImage);
+  const onImageError = () => setIsImgError(true);
   //#endregion
 
   //#region Render
-  return imageUrl || url ? (
+  return value ? (
     <Box position="relative" display="flex" flexDirection="column">
       <Box>
         <Button
@@ -126,7 +121,7 @@ export const CImageUpload = ({
 
       <Box maxWidth={{ xs: 330, sm: 400, md: 600, lg: 640, xl: 720 }}>
         <img
-          src={imageUrl || url}
+          src={isImgError ? defaultImage : value.url}
           alt=""
           style={{ maxWidth: '100%', height: 'auto' }}
           onError={onImageError}
