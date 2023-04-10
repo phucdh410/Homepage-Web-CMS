@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import img from '@/assets/images/error.jpg';
+
 import './index.scss';
 
 export const CExceptionError = () => {
@@ -12,19 +14,15 @@ export const CExceptionError = () => {
           letterSpacing: '10px',
         }}
       >
-        Error
+        Đã xảy ra lỗi !
       </h1>
-      <section className="error-container">
-        <span className="four">
-          <span className="screen-reader-text">4</span>
-        </span>
-        <span className="zero">
-          <span className="screen-reader-text">0</span>
-        </span>
-        <span className="four">
-          <span className="screen-reader-text">4</span>
-        </span>
-      </section>
+
+      <img
+        src={img}
+        alt=""
+        style={{ maxHeight: '60%', width: 'auto', objectFit: 'cover' }}
+      />
+
       <div className="link-container">
         <Link to={'/'} className="more-link">
           Về trang chủ

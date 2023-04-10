@@ -4,7 +4,7 @@ import './index.scss';
 
 export const CNotFoundError = () => {
   return (
-    <div className="error-page">
+    <div className="notfound-error-page">
       <h1
         style={{
           textAlign: 'center',

@@ -18,8 +18,11 @@ export const CProfile = () => {
   //#endregion
 
   //#region Event
-  const toggle = (e: React.MouseEvent<HTMLButtonElement>) =>
-    setAnchorEl(e.currentTarget);
+  const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (anchorEl !== e.currentTarget) {
+      setAnchorEl(e.currentTarget);
+    }
+  };
 
   const close = () => setAnchorEl(null);
 
@@ -33,7 +36,7 @@ export const CProfile = () => {
   //#region Render
   return (
     <>
-      <ButtonBase onClick={toggle}>
+      <ButtonBase onClick={toggle} onMouseOver={toggle}>
         <Stack direction="row" spacing={1} alignItems="center">
           <AccountCircle sx={{ height: '1.5em', width: '1.5em' }} />
           <Box>
@@ -49,10 +52,13 @@ export const CProfile = () => {
         anchorEl={anchorEl}
         open={open}
         onClick={close}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+        MenuListProps={{ onMouseLeave: close }}
       >
-        <MenuItem onClick={onLogout}>Logout</MenuItem>
+        <MenuItem onClick={onLogout} sx={{ minWidth: '200px' }}>
+          Logout
+        </MenuItem>
       </Menu>
     </>
   );

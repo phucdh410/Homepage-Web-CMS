@@ -47,6 +47,7 @@ export const CSidebar: React.FC<ICSidebarProps> = ({ open, toggleSidebar }) => {
             boxSizing: 'border-box',
             width: SIDEBAR_WIDTH,
             marginTop: `${HEADER_HEIGHT}px`,
+            height: `calc(100% - ${HEADER_HEIGHT}px)`,
           },
         }}
         open

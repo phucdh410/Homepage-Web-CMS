@@ -1,3 +1,4 @@
+import { lazy } from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
 
 import { CExceptionError, CNotFoundError } from '@/errors/';
@@ -6,6 +7,10 @@ import { CLoginLayout } from '@/layouts/CLoginLayout';
 
 import { HomepageRoutes } from './homepage.routes';
 import { UsersRoutes } from './users.routes';
+
+const CDevelopment = lazy(
+  () => import('../common/components/others/CDevelopment'),
+);
 
 const routes: RouteObject[] = [
   {
@@ -27,66 +32,66 @@ const routes: RouteObject[] = [
 
           {
             path: '/informations/subjects',
-            element: <div>Quản lý thông tin / khoa bộ môn</div>,
+            element: <CDevelopment />,
           },
           {
             path: '/informations/departments',
-            element: <div>Quản lý thông tin / phòng ban</div>,
+            element: <CDevelopment />,
           },
           {
             path: '/informations/centers',
-            element: <div>Quản lý thông tin / trung tâm</div>,
+            element: <CDevelopment />,
           },
           {
             path: '/informations/unions',
-            element: <div>Quản lý thông tin / đảng</div>,
+            element: <CDevelopment />,
           },
 
           {
             path: '/menu/mainmenu',
-            element: <div>Quản lý menu</div>,
+            element: <CDevelopment />,
           },
           {
             path: '/menu/pages',
-            element: <div>Quản lý trang</div>,
+            element: <CDevelopment />,
           },
           {
             path: '/menu/categories',
-            element: <div>Quản lý danh mục</div>,
+            element: <CDevelopment />,
           },
 
           {
             path: '/contents',
-            element: <div>Qlý nội dung</div>,
+            element: <CDevelopment />,
           },
 
           {
             path: '/schedule',
-            element: <div>Lịch công tac</div>,
+            element: <CDevelopment />,
           },
 
           {
             path: '/approve/websites',
-            element: <div>Quản lý website</div>,
+            element: <CDevelopment />,
           },
           {
             path: '/approve/posts',
-            element: <div>Quản lý bài viết</div>,
+            element: <CDevelopment />,
           },
 
           {
             path: '/staff',
-            element: <div>nhân sự</div>,
+            element: <CDevelopment />,
           },
 
           {
             path: '/footer',
-            element: <div>footer</div>,
+            element: <CDevelopment />,
           },
 
           {
             path: '/languages',
-            element: <div>ngôn ngữ</div>,
+            element: <CDevelopment />,
           },
         ],
       },
