@@ -1,6 +1,6 @@
-import { IGetBannersResponse } from '@/types/banner';
+import { IGetBannerDetailResponse } from '@/types/banner';
 
 export interface IMBannerFormProps {
-  data?: IGetBannersResponse;
+  data?: IGetBannerDetailResponse;
   language_id?: number;
 }

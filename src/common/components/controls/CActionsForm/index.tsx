@@ -1,8 +1,9 @@
-import { Button, Stack, styled } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { Stack, styled } from '@mui/material';
 
 import { ICActionsFormProps } from './types';
 
-const StyledFormButton = styled(Button)(() => ({
+const StyledFormButton = styled(LoadingButton)(() => ({
   borderRadius: '10px',
   padding: '12.5px 32px',
   fontWeight: 500,
@@ -13,10 +14,12 @@ const StyledFormButton = styled(Button)(() => ({
 export const CActionsForm: React.FC<ICActionsFormProps> = ({
   onCancel,
   onSubmit,
+  isSubmitting,
 }) => {
   return (
     <Stack direction="row" spacing={3} justifyContent="end">
       <StyledFormButton
+        id="cancel_btn"
         variant="outlined"
         color="primary"
         type="button"
@@ -25,9 +28,11 @@ export const CActionsForm: React.FC<ICActionsFormProps> = ({
         Hủy
       </StyledFormButton>
       <StyledFormButton
+        id="submit"
         variant="contained"
         color="primary"
-        type="submit"
+        type="button"
+        loading={isSubmitting}
         onClick={onSubmit}
       >
         Lưu

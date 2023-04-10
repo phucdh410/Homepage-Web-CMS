@@ -4,25 +4,25 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, FormLabel, Paper, Stack, Typography } from '@mui/material';
 
-import { createBanner, updateBanner } from '@/apis/banners.api';
+import { createEvent, updateEvent } from '@/apis/events.api';
 import { CActionsForm, CImageUpload, CInput, CRangePicker } from '@/controls/';
-import { IBannerForm } from '@/types/banner';
+import { IEventForm } from '@/types/event';
 import { IFileUpload } from '@/types/file';
 
-import { bannerResolver, defaultValuesBanner } from '../../form';
+import { defaultValuesEvent, eventResolver } from '../../form';
 
-import { IMBannerFormProps } from './types';
+import { IMEventFormProps } from './types';
 
-export const MBannerForm: React.FC<IMBannerFormProps> = ({
+export const MEventForm: React.FC<IMEventFormProps> = ({
   data,
   language_id,
 }) => {
   //#region Data
-  const { control, handleSubmit, reset, trigger } = useForm<IBannerForm>({
+  const { control, handleSubmit, reset, trigger } = useForm<IEventForm>({
     mode: 'all',
     shouldFocusError: true,
-    resolver: bannerResolver,
-    defaultValues: defaultValuesBanner,
+    resolver: eventResolver,
+    defaultValues: defaultValuesEvent,
   });
 
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
 
   //#region Event
   const onBack = () => {
-    reset(defaultValuesBanner);
+    reset(defaultValuesEvent);
 
     navigate(-1);
   };
@@ -40,15 +40,15 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
       try {
         const payload = { ...values, file_id: (values.file as IFileUpload).id };
         data
-          ? await updateBanner(data?.id, payload)
-          : await createBanner(payload);
+          ? await updateEvent(data?.id, payload)
+          : await createEvent(payload);
 
-        toast.success('Cập nhật banner thành công!');
+        toast.success('Cập nhật event thành công!');
 
         onBack();
       } catch (error: any) {
         toast.error(
-          error?.response?.data?.message || 'Cập nhật banner không thành công!',
+          error?.response?.data?.message || 'Cập nhật event không thành công!',
         );
       }
     })();

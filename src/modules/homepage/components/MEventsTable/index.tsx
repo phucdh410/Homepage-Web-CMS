@@ -51,7 +51,7 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
     {
       field: 'time',
       headerName: 'THỜI GIAN HIỂN THỊ',
-      minWidth: 200,
+      minWidth: 250,
       headerAlign: 'center',
       align: 'center',
       sortable: false,

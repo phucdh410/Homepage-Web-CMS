@@ -6,7 +6,7 @@ import { IBasePaginateParams } from './params';
 export interface ICreateBanner {
   title: string;
   file_id: string;
-  start_date: string | Date | Dayjs | Dayjs;
+  start_date: string | Date | Dayjs;
   end_date: string | Date | Dayjs;
   language_id: number;
 }

@@ -1,11 +1,12 @@
 import { Box, Drawer } from '@mui/material';
 
 import { CNavigations } from './CNavigations';
+import { ICSidebarProps } from './types';
 
 const HEADER_HEIGHT = 56;
 const SIDEBAR_WIDTH = 300;
 
-export const CSidebar = ({ open, toggleSidebar }) => {
+export const CSidebar: React.FC<ICSidebarProps> = ({ open, toggleSidebar }) => {
   //#region Data
 
   const container =

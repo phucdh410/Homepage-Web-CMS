@@ -1,6 +1,7 @@
 import { get, post, put, remove } from '@/axios/request';
 import {
   ICreateEventParams,
+  IGetEventDetailResponse,
   IGetEventsParams,
   IGetEventsResponse,
   IUpdateEventParams,
@@ -19,7 +20,10 @@ export const getEvents = async (
   return await post(EVENTS.GET_EVENTS, body);
 };
 
-export const getEventById = async (id: string, language_id: number) => {
+export const getEventById = async (
+  id: string,
+  language_id: number,
+): Promise<IApiResponse<IGetEventDetailResponse, any>> => {
   return await get(`${EVENTS.GET_EVENT_BY_ID}/${id}`, {
     params: { language_id },
   });

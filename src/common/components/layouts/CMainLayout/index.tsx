@@ -53,7 +53,13 @@ const CMainLayout = () => {
       <Stack direction="row" flex={1}>
         <CSidebar open={open} toggleSidebar={toggleSidebar} />
 
-        <Box paddingX="20px" paddingY="30px" flex={1} position="relative">
+        <Box
+          paddingX="20px"
+          paddingY="30px"
+          flex={1}
+          position="relative"
+          overflow="hidden"
+        >
           <Suspense fallback={<CPageLoader />}>
             <Outlet />
           </Suspense>
@@ -70,7 +76,7 @@ const CMainLayout = () => {
   //     <Stack direction="row" flex={1}>
   //       <CSidebar open={open} toggleSidebar={toggleSidebar} />
 
-  //       <Box paddingX="20px" paddingY="30px" flex={1} position="relative">
+  //       <Box paddingX="20px" paddingY="30px" flex={1} position="relative" overflow="hidden" >
   //         <Suspense fallback={<CPageLoader />}>
   //           <Outlet />
   //         </Suspense>

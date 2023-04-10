@@ -11,7 +11,13 @@ import {
   useTheme,
 } from '@mui/material';
 
-export const CCollapse = ({ data, index, dropdownList }) => {
+import { ICCollapseProps } from './types';
+
+export const CCollapse: React.FC<ICCollapseProps> = ({
+  data,
+  index,
+  dropdownList,
+}) => {
   //#region Data
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -36,7 +42,7 @@ export const CCollapse = ({ data, index, dropdownList }) => {
   //#region Render
   return (
     <>
-      <Fade in timeout={500} style={{ transitionDelay: index * 100 }}>
+      <Fade in timeout={500} style={{ transitionDelay: `${index * 100}ms` }}>
         <ListItemButton
           key={data.title}
           sx={{
@@ -67,12 +73,12 @@ export const CCollapse = ({ data, index, dropdownList }) => {
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List disablePadding>
-          {dropdownList.map((e, i) => (
+          {dropdownList.map((e, i: number) => (
             <Fade
               key={e.title}
               in
               timeout={500}
-              style={{ transitionDelay: i * 100 }}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
               <ListItemButton
                 key={data.title}

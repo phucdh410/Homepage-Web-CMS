@@ -4,15 +4,16 @@ import dayjs from 'dayjs';
 import { boolean, date, number, object, string } from 'yup';
 
 import { IBannerForm } from '@/types/banner';
-import { ICreateEventParams } from '@/types/event';
+import { IEventForm } from '@/types/event';
+import { ILinks } from '@/types/homepage-link';
 import { ICreateNotificationParams } from '@/types/notification';
 
 //#region Banner
 export const defaultValuesBanner: IBannerForm = {
   title: '',
   file: null,
-  start_date: new Date(),
-  end_date: dayjs().add(1, 'day'),
+  start_date: dayjs(),
+  end_date: dayjs().endOf('year'),
   language_id: 1,
 };
 
@@ -35,7 +36,7 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
         (value, context) => {
           const { parent } = context;
 
-          if (dayjs(value).isAfter(parent?.end_date)) return false;
+          if (dayjs(value).isAfter(parent?.end_date, 'date')) return false;
 
           return true;
         },
@@ -49,7 +50,7 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
         (value, context) => {
           const { parent } = context;
 
-          if (dayjs(value).isBefore(parent?.start_date)) return false;
+          if (dayjs(value).isBefore(parent?.start_date, 'date')) return false;
 
           return true;
         },
@@ -83,13 +84,13 @@ export const notificationResolver: Resolver<ICreateNotificationParams> =
 //#region Event
 export const defaultValuesEvent = {
   title: '',
-  file_id: '',
-  start_date: new Date(),
-  end_date: dayjs().add(1, 'day'),
+  file_id: null,
+  start_date: dayjs(),
+  end_date: dayjs().endOf('year'),
   language_id: 1,
 };
 
-export const eventResolver: Resolver<ICreateEventParams> = yupResolver(
+export const eventResolver: Resolver<IEventForm> = yupResolver(
   object({
     title: string()
       .required('Vui lòng nhập tiêu đề!')
@@ -106,7 +107,7 @@ export const eventResolver: Resolver<ICreateEventParams> = yupResolver(
         (value, context) => {
           const { parent } = context;
 
-          if (dayjs(value).isAfter(parent?.end_date)) return false;
+          if (dayjs(value).isAfter(parent?.end_date, 'date')) return false;
 
           return true;
         },
@@ -120,12 +121,42 @@ export const eventResolver: Resolver<ICreateEventParams> = yupResolver(
         (value, context) => {
           const { parent } = context;
 
-          if (dayjs(value).isBefore(parent?.start_date)) return false;
+          if (dayjs(value).isBefore(parent?.start_date, 'date')) return false;
 
           return true;
         },
       ),
     language_id: number().required(),
+  }),
+);
+//#endregion
+
+//#region Link
+export const defaultValuesLink: ILinks = {
+  youth: '',
+  online: '',
+  certificate: '',
+  help: '',
+  facebook: '',
+};
+
+export const linkResolver: Resolver<ILinks> = yupResolver(
+  object({
+    youth: string()
+      .url('Đường dẫn/Liên kết không hợp lệ!')
+      .required('Vui lòng nhập đường dẫn/liên kết!'),
+    online: string()
+      .url('Đường dẫn/Liên kết không hợp lệ!')
+      .required('Vui lòng nhập đường dẫn/liên kết!'),
+    certificate: string()
+      .url('Đường dẫn/Liên kết không hợp lệ!')
+      .required('Vui lòng nhập đường dẫn/liên kết!'),
+    help: string()
+      .url('Đường dẫn/Liên kết không hợp lệ!')
+      .required('Vui lòng nhập đường dẫn/liên kết!'),
+    facebook: string()
+      .url('Đường dẫn/Liên kết không hợp lệ!')
+      .required('Vui lòng nhập đường dẫn/liên kết!'),
   }),
 );
 //#endregion

@@ -1,5 +1,6 @@
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { Box, Dialog, FormLabel, Stack } from '@mui/material';
 
 import { CActionsForm, CInput, CSwitch } from '@/controls/';
@@ -15,6 +16,7 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
   ({ ...props }, ref) => {
     //#region Data
     const [open, setOpen] = useState(false);
+    const [id, setId] = useState<string>('');
 
     const { control, handleSubmit, reset } = useForm<ICreateNotificationParams>(
       {
@@ -30,18 +32,31 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
     const close = () => {
       reset();
 
+      setId('');
       setOpen(false);
     };
 
-    const onSubmit = async (values: ICreateNotificationParams) => {
-      console.log(values);
+    const onSubmit = () => {
+      handleSubmit((values) => {
+        try {
+          console.log(values);
+          toast.success(
+            id
+              ? 'Cập nhật thông báo thành công!'
+              : 'Tạo mới thông báo thành công!',
+          );
+        } catch (error: any) {
+          toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
+        }
+      })();
     };
     //#endregion
 
     useImperativeHandle(ref, () => ({
-      open: (data: ICreateNotificationParams, language_id: number) => {
+      open: (data?: ICreateNotificationParams, language_id?: number) => {
         if (data && language_id) {
           reset({ ...data, language_id });
+          setId(data?.id);
         }
 
         setOpen(true);
@@ -50,7 +65,11 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
 
     //#region Render
     return (
-      <Dialog open={open} onClose={close}>
+      <Dialog
+        open={open}
+        onClose={close}
+        PaperProps={{ sx: { minWidth: '400px' } }}
+      >
         <Box p={2.5}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack direction="column" spacing={2.5} mb={2.5}>
@@ -67,6 +86,9 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
                   render={({ field, fieldState: { error } }) => (
                     <CInput
                       placeholder="Nhập tiêu đề..."
+                      multiline
+                      rows={4}
+                      maxRows={6}
                       {...field}
                       error={!!error}
                       helperText={error?.message}
@@ -87,7 +109,7 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
               </Stack>
             </Stack>
 
-            <CActionsForm onCancel={close} />
+            <CActionsForm onCancel={close} onSubmit={onSubmit} />
           </form>
         </Box>
       </Dialog>

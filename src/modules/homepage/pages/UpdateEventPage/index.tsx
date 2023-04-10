@@ -1,10 +1,10 @@
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { getBannerById } from '@/apis/banners.api';
-import { MBannerForm } from '@/modules/homepage/components';
+import { getEventById } from '@/apis/events.api';
+import { MEventForm } from '@/modules/homepage/components';
 
-const UpdateBannerPage = () => {
+const UpdateEventPage = () => {
   //#region Data
   const { id } = useParams();
   const [params] = useSearchParams();
@@ -13,8 +13,8 @@ const UpdateBannerPage = () => {
   const _language_id = Number(language_id) || 1;
 
   const { data } = useQuery({
-    queryKey: ['banner-detail', id, _language_id],
-    queryFn: () => getBannerById(id as string, _language_id),
+    queryKey: ['event-detail', id, _language_id],
+    queryFn: () => getEventById(id as string, _language_id),
   });
   //#endregion
 
@@ -25,10 +25,10 @@ const UpdateBannerPage = () => {
   //#region Render
   return (
     <div>
-      <MBannerForm data={data?.data?.data} language_id={_language_id} />
+      <MEventForm data={data?.data?.data} language_id={_language_id} />
     </div>
   );
   //#endregion
 };
 
-export default UpdateBannerPage;
+export default UpdateEventPage;

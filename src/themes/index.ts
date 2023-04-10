@@ -1,4 +1,9 @@
-import { createTheme } from '@mui/material';
+import {
+  BreakpointsOptions,
+  Components,
+  createTheme,
+  Theme,
+} from '@mui/material';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 
 //#region Palatte & Typography
@@ -33,7 +38,6 @@ let theme = createTheme({
       color: '#124874',
     },
   },
-  components: {},
 });
 //#endregion
 
@@ -49,7 +53,7 @@ theme = createTheme(theme, {
       xxl: 1680,
       xxxl: 1920,
     },
-  },
+  } as BreakpointsOptions,
   components: {
     MuiFormLabel: {
       styleOverrides: {
@@ -141,7 +145,9 @@ theme = createTheme(theme, {
       styleOverrides: {
         root: {
           borderRadius: '10px',
-          filter: 'drop-shadow(5px 3px 30px rgba(19, 70, 131, 0.1))',
+          '&.search-input': {
+            filter: 'drop-shadow(5px 3px 30px rgba(19, 70, 131, 0.1))',
+          },
         },
       },
     },
@@ -158,10 +164,14 @@ theme = createTheme(theme, {
               paddingLeft: '0!important',
             },
           },
+          '&.Mui-focused': {
+            '& .MuiOutlinedInput-notchedOutline': {
+              border: '1px solid #cdb4ff',
+            },
+          },
           '&.Mui-error': {
             '& .MuiOutlinedInput-notchedOutline': {
-              borderWidth: '1px',
-              borderStyle: 'solid',
+              border: '1px solid #d32f2f!important',
             },
           },
         },
@@ -174,6 +184,10 @@ theme = createTheme(theme, {
         },
         notchedOutline: {
           border: 'none',
+        },
+        multiline: {
+          padding: 0,
+          backgroundColor: '#f5f5f5',
         },
       },
     },
@@ -271,7 +285,7 @@ theme = createTheme(theme, {
         },
       },
     },
-  },
+  } as Components<Omit<Theme, 'components'>>,
 });
 //#endregion
 

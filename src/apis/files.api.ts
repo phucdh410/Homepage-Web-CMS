@@ -1,10 +1,9 @@
 import { post } from '@/axios/request';
 import { formatFileName } from '@/funcs/';
-import { IFile } from '@/types/file';
 
 import { FILES } from './url';
 
-export const uploadFile = (file: IFile) => {
+export const uploadFile = (file: File) => {
   const { name, type } = file;
 
   const newFile = new File([file], formatFileName(name), { type });

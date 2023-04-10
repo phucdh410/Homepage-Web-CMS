@@ -9,7 +9,7 @@ export const CNavigations = () => {
   return (
     <List sx={{ padding: '10px 15px' }}>
       {NAVIGATIONS.map((nav, i) =>
-        nav?.isChildren ? (
+        nav?.isChildren && nav?.children ? (
           <CCollapse
             key={nav.title}
             data={nav}

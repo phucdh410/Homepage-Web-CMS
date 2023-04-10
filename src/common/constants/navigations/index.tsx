@@ -11,7 +11,9 @@ import {
   Portrait,
 } from '@mui/icons-material';
 
-export const NAVIGATIONS = [
+import { INavigationItem } from '@/types/navigation';
+
+export const NAVIGATIONS: INavigationItem[] = [
   // {
   //   title: 'Dashboard',
   //   icon: <Window />,

@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs';
+
 import { IBasePaginateParams } from './params';
 
 export interface ICreateNotificationParams {

@@ -7,7 +7,9 @@ import {
   useTheme,
 } from '@mui/material';
 
-export const CNavItem = ({ data, index }) => {
+import { ICNavItemProps } from './types';
+
+export const CNavItem: React.FC<ICNavItemProps> = ({ data, index }) => {
   //#region Data
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ export const CNavItem = ({ data, index }) => {
 
   //#region Render
   return (
-    <Fade in timeout={500} style={{ transitionDelay: index * 100 }}>
+    <Fade in timeout={500} style={{ transitionDelay: `${index * 100}ms` }}>
       <ListItemButton
         key={data.title}
         sx={{

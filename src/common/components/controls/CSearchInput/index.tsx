@@ -25,6 +25,7 @@ export const CSearchInput = forwardRef<ICSearchInputRef, ICSearchInputProps>(
     //#region Render
     return (
       <TextField
+        className="search-input"
         inputRef={ref}
         id={id}
         name={name}

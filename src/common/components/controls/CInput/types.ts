@@ -6,4 +6,7 @@ export interface ICInputProps extends IFormInputComponentProps {
   type?: string;
   startAdornment?: any;
   endAdornment?: any;
+  multiline?: boolean;
+  rows?: number;
+  maxRows?: number;
 }

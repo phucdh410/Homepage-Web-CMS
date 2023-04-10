@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs';
+
 import { IFileUpload } from './file';
 import { IBasePaginateParams } from './params';
 
@@ -38,4 +40,12 @@ export interface IUpdateEventParams {
   language_id: number;
   title: string;
   file_id: string;
+}
+
+export interface IEventForm {
+  title: string;
+  file: IFileUpload | null;
+  start_date: string | Date | Dayjs;
+  end_date: string | Date | Dayjs;
+  language_id: number;
 }

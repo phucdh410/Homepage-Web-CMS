@@ -20,12 +20,12 @@ const ListNotificationsPage = lazy(
 const ListEventsPage = lazy(
   () => import('@/modules/homepage/pages/ListEventsPage'),
 );
-// const DetailEventPage = lazy(
-//   () => import('@/modules/homepage/pages/DetailEventPage'),
-// );
-// const UpdateEventPage = lazy(
-//   () => import('@/modules/homepage/pages/UpdateEventPage'),
-// );
+const DetailEventPage = lazy(
+  () => import('@/modules/homepage/pages/DetailEventPage'),
+);
+const UpdateEventPage = lazy(
+  () => import('@/modules/homepage/pages/UpdateEventPage'),
+);
 
 const LinksPage = lazy(() => import('@/modules/homepage/pages/LinksPage'));
 
@@ -52,14 +52,14 @@ export const HomepageRoutes: RouteObject[] = [
     path: ROUTES.HOMEPAGE.EVENTS.LIST,
     element: <ListEventsPage />,
   },
-  // {
-  //   path: ROUTES.HOMEPAGE.EVENTS.CREATE,
-  //   element: <DetailEventPage />,
-  // },
-  // {
-  //   path: ROUTES.HOMEPAGE.EVENTS.UPDATE,
-  //   element: <UpdateEventPage />,
-  // },
+  {
+    path: ROUTES.HOMEPAGE.EVENTS.CREATE,
+    element: <DetailEventPage />,
+  },
+  {
+    path: ROUTES.HOMEPAGE.EVENTS.UPDATE,
+    element: <UpdateEventPage />,
+  },
 
   {
     path: ROUTES.HOMEPAGE.LINKS.ROOT,

@@ -9,22 +9,20 @@ export const CDataGrid = ({
   ...props
 }: ICDataGridProps) => {
   return (
-    <div>
-      <DataGrid
-        autoHeight
-        rowSelection={false}
-        disableColumnMenu
-        rows={rows}
-        columns={columns}
-        hideFooter
-        disableVirtualization
-        localeText={{
-          noRowsLabel: 'Không có dữ liệu hiển thị !',
-          noResultsOverlayLabel: 'Không có dữ liệu hiển thị !',
-        }}
-        // getRowHeight={() => 'auto'}
-        {...props}
-      />
-    </div>
+    <DataGrid
+      autoHeight
+      rowSelection={false}
+      disableColumnMenu
+      rows={rows}
+      columns={columns}
+      hideFooter
+      disableVirtualization
+      localeText={{
+        noRowsLabel: 'Không có dữ liệu hiển thị !',
+        noResultsOverlayLabel: 'Không có dữ liệu hiển thị !',
+      }}
+      // getRowHeight={() => 'auto'}
+      {...props}
+    />
   );
 };
