@@ -20,7 +20,7 @@ export const CSidebar: React.FC<ICSidebarProps> = ({ open, toggleSidebar }) => {
   return (
     <Box
       component="nav"
-      sx={{ width: { md: SIDEBAR_WIDTH }, flexShrink: { md: 0 } }}
+      sx={{ width: { lg: SIDEBAR_WIDTH }, flexShrink: { lg: 0 } }}
     >
       <Drawer
         container={container}
@@ -29,7 +29,7 @@ export const CSidebar: React.FC<ICSidebarProps> = ({ open, toggleSidebar }) => {
         onClose={toggleSidebar}
         ModalProps={{ keepMounted: true }}
         sx={{
-          display: { xs: 'block', md: 'none' },
+          display: { xs: 'block', lg: 'none' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: SIDEBAR_WIDTH,
@@ -41,7 +41,7 @@ export const CSidebar: React.FC<ICSidebarProps> = ({ open, toggleSidebar }) => {
       <Drawer
         variant="permanent"
         sx={{
-          display: { xs: 'none', md: 'block' },
+          display: { xs: 'none', lg: 'block' },
           '& .MuiDrawer-paper': {
             borderRight: 'none',
             boxSizing: 'border-box',

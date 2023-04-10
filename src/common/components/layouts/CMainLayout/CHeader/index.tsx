@@ -16,8 +16,8 @@ import { ICHeaderProps } from './types';
 const HEADER_HEIGHT = 56;
 
 export const CHeader = ({ toggleSidebar }: ICHeaderProps) => {
-  const isBelowMd = useMediaQuery(
-    (theme: ThemeOptions) => theme.breakpoints?.down?.('md') ?? '',
+  const isBelowLg = useMediaQuery(
+    (theme: ThemeOptions) => theme.breakpoints?.down?.('lg') ?? '',
   );
 
   return (
@@ -34,7 +34,7 @@ export const CHeader = ({ toggleSidebar }: ICHeaderProps) => {
         alignItems="center"
         spacing={1.75}
       >
-        <IconButton onClick={toggleSidebar} sx={{ display: { md: 'none' } }}>
+        <IconButton onClick={toggleSidebar} sx={{ display: { lg: 'none' } }}>
           <Menu />
         </IconButton>
 
@@ -43,7 +43,7 @@ export const CHeader = ({ toggleSidebar }: ICHeaderProps) => {
         </Box>
 
         <Box flex={1}>
-          {!isBelowMd && (
+          {!isBelowLg && (
             <Typography fontSize="16px" fontWeight={700}>
               TRƯỜNG ĐẠI HỌC SƯ PHẠM THÀNH PHỐ HỒ CHÍ MINH
             </Typography>

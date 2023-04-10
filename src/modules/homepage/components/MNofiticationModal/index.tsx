@@ -8,7 +8,10 @@ import {
   defaultValuesNotification,
   notificationResolver,
 } from '@/modules/homepage/form';
-import { ICreateNotificationParams } from '@/types/notification';
+import {
+  ICreateNotificationParams,
+  IGetNotificationsResponse,
+} from '@/types/notification';
 
 import { IMNotificationModalRef } from './types';
 
@@ -53,7 +56,7 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
     //#endregion
 
     useImperativeHandle(ref, () => ({
-      open: (data?: ICreateNotificationParams, language_id?: number) => {
+      open: (data?: IGetNotificationsResponse, language_id?: number) => {
         if (data && language_id) {
           reset({ ...data, language_id });
           setId(data?.id);

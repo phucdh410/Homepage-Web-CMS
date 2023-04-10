@@ -1,5 +1,5 @@
-import { ICreateNotificationParams } from '@/types/notification';
+import { IGetNotificationsResponse } from '@/types/notification';
 
 export interface IMNotificationModalRef {
-  open: (data?: ICreateNotificationParams, language_id?: number) => void;
+  open: (data?: IGetNotificationsResponse, language_id?: number) => void;
 }
