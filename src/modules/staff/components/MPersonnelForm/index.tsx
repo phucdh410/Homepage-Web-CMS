@@ -62,7 +62,7 @@ export const MPersonnelForm: React.FC<IMPersonnelFormProps> = ({ control }) => {
             control={control}
             name="published"
             render={({ field, fieldState: { error } }) => (
-              <CSwitch {...field} error={!!error} helperText={error?.message} />
+              <CSwitch {...field} />
             )}
           />
         </Stack>

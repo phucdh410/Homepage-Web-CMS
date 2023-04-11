@@ -139,19 +139,15 @@ export const CImageUpload = forwardRef(
           className="c-upload"
           margin="auto"
           position="relative"
-          width="100%"
+          width={isSquare ? 270 : '100%'}
           minWidth={250}
-          height={150}
+          height={isSquare ? 270 : 150}
           borderRadius={3}
           display="flex"
           alignItems="center"
           justifyContent="center"
           component="label"
-          sx={{
-            backgroundColor: '#eeeeee',
-            width: isSquare ? '270px' : '',
-            height: isSquare ? '270px' : '',
-          }}
+          sx={{ backgroundColor: '#eeeeee' }}
         >
           <Box
             component="label"

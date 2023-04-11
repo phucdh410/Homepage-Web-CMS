@@ -16,6 +16,7 @@ export const CAutocomplete = forwardRef<ICAutocompleteRef, ICAutocompleteProps>(
       renderOption,
       error,
       helperText,
+      disableClearable,
       // getOptionLabel,
       ...props
     },
@@ -75,6 +76,7 @@ export const CAutocomplete = forwardRef<ICAutocompleteRef, ICAutocompleteProps>(
     return (
       <Autocomplete
         id={id}
+        disableClearable={disableClearable}
         multiple={multiple}
         className={'c-autocomplete'}
         value={currentValue}
@@ -104,4 +106,5 @@ export const CAutocomplete = forwardRef<ICAutocompleteRef, ICAutocompleteProps>(
 
 CAutocomplete.defaultProps = {
   options: [],
+  disableClearable: true,
 };

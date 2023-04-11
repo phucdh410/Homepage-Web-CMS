@@ -229,6 +229,31 @@ theme = createTheme(theme, {
         },
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        inputRoot: {
+          backgroundColor: '#f5f5f5',
+          paddingTop: '2.5px',
+          paddingBottom: '2.5px',
+        },
+        paper: {
+          boxShadow: '0px 0px 10px rgba(19, 70, 131, 0.5)',
+          borderRadius: '20px',
+        },
+        listbox: {
+          padding: '8px',
+          color: '#191919',
+          fontWeight: 500,
+        },
+        option: {
+          borderRadius: '15px',
+          height: '42px',
+          '&.Mui-focused': {
+            backgroundColor: 'rgba(7, 113, 211, 0.15)!important',
+          },
+        },
+      },
+    },
     MuiPaper: {
       styleOverrides: {
         root: {
