@@ -33,6 +33,7 @@ import {
   TableProperties,
   TableToolbar,
 } from '@ckeditor/ckeditor5-table';
+import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
 import { WordCount } from '@ckeditor/ckeditor5-word-count';
 
 import { REDUCED_MATERIAL_COLORS } from './color';
@@ -48,7 +49,6 @@ ClassicEditor.builtinPlugins = [
   Bold,
   Essentials,
   FindAndReplace,
-  // FileUploader,
   FontBackgroundColor,
   FontColor,
   Image,
@@ -67,6 +67,7 @@ ClassicEditor.builtinPlugins = [
   Paragraph,
   PictureEditing,
   RemoveFormat,
+  SimpleUploadAdapter,
   Strikethrough,
   Table,
   TableCellProperties,
@@ -95,6 +96,7 @@ ClassicEditor.defaultConfig = {
       'indent',
       '|',
       'insertTable',
+      'simpleUpload',
       'insertImage',
       'link',
       'mediaEmbed',
@@ -143,6 +145,14 @@ ClassicEditor.defaultConfig = {
       'tableProperties',
       'tableCellProperties',
     ],
+  },
+  simpleUpload: {
+    uploadUrl: 'http://example.com',
+    withCredentials: true,
+    headers: {
+      'X-CSRF-TOKEN': 'CSRF-Token',
+      Authorization: 'Bearer <JSON Web Token>',
+    },
   },
   // This value must be kept in sync with the language defined in webpack.config.js.
   language: 'vi',
