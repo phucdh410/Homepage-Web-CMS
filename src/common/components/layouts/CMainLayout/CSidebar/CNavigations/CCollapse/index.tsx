@@ -63,8 +63,10 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
           selected={selected}
           onClick={toggleCollapse}
         >
-          {data?.icon && (
+          {data?.icon ? (
             <ListItemIcon sx={{ minWidth: 40 }}>{data.icon}</ListItemIcon>
+          ) : (
+            <div style={{ marginLeft: '40px' }}></div>
           )}
           <ListItemText primary={data.title} />
           {data?.isChildren && (open ? <ArrowDropUp /> : <ArrowDropDown />)}
@@ -73,38 +75,42 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List disablePadding>
-          {dropdownList.map((e, i: number) => (
-            <Fade
-              key={e.title}
-              in
-              timeout={500}
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <ListItemButton
-                key={data.title}
-                sx={{
-                  fontSize: '16px',
-                  padding: '10px 18px',
-                  borderTopLeftRadius: '10px',
-                  borderBottomLeftRadius: '10px',
-                  '&:hover': { backgroundColor: '#FFF2F2' },
-                  '&.Mui-selected': {
-                    backgroundColor: '#FFF2F2',
-                    borderRight: '2px solid #CF373D',
-                    '& .MuiTypography-root': {
-                      color: theme.palette.secondary.main,
-                      fontWeight: 600,
-                    },
-                  },
-                }}
-                selected={e.path.includes(pathname.split('/')[2])}
-                onClick={() => navigate(e.path)}
+          {dropdownList.map((e, i: number) =>
+            e?.isChildren && e?.children ? (
+              <CCollapse index={i} data={e} dropdownList={e.children} />
+            ) : (
+              <Fade
+                key={e.title}
+                in
+                timeout={500}
+                style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <ListItemIcon sx={{ minWidth: 40 }} />
-                <ListItemText primary={e.title} />
-              </ListItemButton>
-            </Fade>
-          ))}
+                <ListItemButton
+                  key={data.title}
+                  sx={{
+                    fontSize: '16px',
+                    padding: '10px 18px',
+                    borderTopLeftRadius: '10px',
+                    borderBottomLeftRadius: '10px',
+                    '&:hover': { backgroundColor: '#FFF2F2' },
+                    '&.Mui-selected': {
+                      backgroundColor: '#FFF2F2',
+                      borderRight: '2px solid #CF373D',
+                      '& .MuiTypography-root': {
+                        color: theme.palette.secondary.main,
+                        fontWeight: 600,
+                      },
+                    },
+                  }}
+                  selected={e.path.includes(pathname.split('/')[2])}
+                  onClick={() => navigate(e.path)}
+                >
+                  <ListItemIcon sx={{ minWidth: 40 * e.level }} />
+                  <ListItemText primary={e.title} />
+                </ListItemButton>
+              </Fade>
+            ),
+          )}
         </List>
       </Collapse>
     </>

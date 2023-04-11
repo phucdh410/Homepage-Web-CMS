@@ -6,5 +6,6 @@ export interface INavigationItem {
   children?: IChildNavigationItem[];
 }
 
-export interface IChildNavigationItem
-  extends Omit<INavigationItem, 'children'> {}
+export interface IChildNavigationItem extends INavigationItem {
+  level: number;
+}

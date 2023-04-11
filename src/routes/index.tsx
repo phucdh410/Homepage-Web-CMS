@@ -31,7 +31,11 @@ const routes: RouteObject[] = [
           ...HomepageRoutes,
 
           {
-            path: '/informations/subjects',
+            path: '/informations/subjects-group',
+            element: <CDevelopment />,
+          },
+          {
+            path: '/informations/subjects-list',
             element: <CDevelopment />,
           },
           {

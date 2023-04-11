@@ -1,6 +1,6 @@
-import { IChildNavigationItem } from '@/types/navigation';
+import { INavigationItem } from '@/types/navigation';
 
 export interface ICNavItemProps {
-  data: IChildNavigationItem;
+  data: INavigationItem;
   index: number;
 }
