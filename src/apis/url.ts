@@ -53,3 +53,18 @@ export const LANGUAGES = {
   UPDATE_LANGUAGE: '/notifications', // :id
   DELETE_LANGUAGE: '/notifications', // :id
 };
+
+export const PERSONNELS = {
+  GET_PERSONNELS: '/personnels/all',
+  CREATE_PERSONNEL: '/personnels',
+  GET_PERSONNEL_BY_ID: '/personnels', // :id
+  UPDATE_PERSONNEL: '/personnels', // :id
+  DELETE_PERSONNEL: '/personnels', // :id
+};
+
+export const POSITIONS = {
+  CREATE_POSITION: '/positions',
+  GET_POSITIONS: '/positions/all',
+  UPDATE_POSITION: '/positions', // :id
+  DELETE_POSITION: '/positions', // :id
+};

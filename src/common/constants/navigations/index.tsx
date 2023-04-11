@@ -158,30 +158,30 @@ export const NAVIGATIONS: INavigationItem[] = [
   {
     title: 'Duyệt tin',
     icon: <Newspaper />,
-    isChildren: true,
+    isChildren: false,
     path: '/approve',
+  },
+  {
+    title: 'Quản lý nhân sự',
+    icon: <Portrait />,
+    isChildren: true,
+    path: '/staff',
     children: [
       {
-        title: 'Danh sách website',
+        title: 'Nhân sự',
         icon: '',
         isChildren: false,
-        path: '/approve/websites',
+        path: '/staff/personnels',
         level: 1,
       },
       {
-        title: 'Danh sách duyệt',
+        title: 'Chức vụ',
         icon: '',
         isChildren: false,
-        path: '/approve/posts',
+        path: '/staff/positions',
         level: 1,
       },
     ],
-  },
-  {
-    title: 'Nhân sự',
-    icon: <Portrait />,
-    isChildren: false,
-    path: '/staff',
   },
   {
     title: 'Footer',

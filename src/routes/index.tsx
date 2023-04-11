@@ -8,6 +8,7 @@ import { CLoginLayout } from '@/layouts/CLoginLayout';
 import { FooterRoutes } from './footer.routes';
 import { HomepageRoutes } from './homepage.routes';
 import { LanguagesRoutes } from './languages.routes';
+import { StaffRoutes } from './staff.routes';
 import { UsersRoutes } from './users.routes';
 
 const CDevelopment = lazy(
@@ -31,6 +32,7 @@ const routes: RouteObject[] = [
 
           ...UsersRoutes,
           ...HomepageRoutes,
+          ...StaffRoutes,
           ...FooterRoutes,
           ...LanguagesRoutes,
 
@@ -84,11 +86,6 @@ const routes: RouteObject[] = [
           },
           {
             path: '/approve/posts',
-            element: <CDevelopment />,
-          },
-
-          {
-            path: '/staff',
             element: <CDevelopment />,
           },
         ],

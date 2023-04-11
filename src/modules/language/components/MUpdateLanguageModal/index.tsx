@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Dialog } from '@mui/material';
 
-import { updateLanguage } from '@/apis/language.api';
+import { updateLanguage } from '@/apis/languages.api';
 import { CActionsForm } from '@/controls/';
 import { IGetLanguagesResponse, IUpdateLanguageParams } from '@/types/language';
 

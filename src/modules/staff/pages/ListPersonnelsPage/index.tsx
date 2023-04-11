@@ -1,87 +1,65 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deleteLanguage, getLanguages } from '@/apis/languages.api';
+import { deletePersonnel, getPersonnels } from '@/apis/personnels.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { CPagination } from '@/others/';
-import { IGetLanguagesResponse } from '@/types/language';
+import { IGetPersonnelsResponse } from '@/types/personnel';
 
-import {
-  MCreateLanguageModal,
-  MLanguagesTable,
-  MUpdateLanguageModal,
-} from '../../components';
-import { IMCreateLanguageModalRef } from '../../components/MCreateLanguageModal/types';
-import { IMUpdateLanguageModalRef } from '../../components/MUpdateLanguageModal/types';
+import { MPersonnelsTable } from '../../components';
 
 const MOCK_DATA = [
   {
     id: '1',
-    title: 'Tiếng Việt',
-    created_at: new Date(),
+    name: 'Nguyễn Văn AAAAAA AAA AAA',
+    degree: 'Tiến sĩ',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '2',
-    title: 'Tiếng Anh',
-    created_at: new Date(),
+    name: 'Nguyễn Văn AAAAAA AAA AAA',
+    degree: 'Tiến sĩ',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '3',
-    title: 'Tiếng Thái',
-    created_at: new Date(),
+    name: 'Nguyễn Văn AAAAAA AAA AAA',
+    degree: 'Tiến sĩ',
     updated_at: new Date(),
     published: false,
   },
   {
     id: '4',
-    title: 'Tiếng Nhật',
-    created_at: new Date(),
+    name: 'Nguyễn Văn AAAAAA AAA AAA',
+    degree: 'Tiến sĩ',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '5',
-    title: 'Tiếng Hàn',
-    created_at: new Date(),
+    name: 'Nguyễn Văn AAAAAA AAA AAA',
+    degree: 'Tiến sĩ',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '6',
-    title: 'Tiếng Trung',
-    created_at: new Date(),
-    updated_at: new Date(),
-    published: false,
-  },
-  {
-    id: '7',
-    title: 'Tiếng Pháp',
-    created_at: new Date(),
-    updated_at: new Date(),
-    published: true,
-  },
-  {
-    id: '8',
-    title: 'Tiếng lòng....mẹ bao la như biển thái bình',
-    created_at: new Date(),
+    name: 'Nguyễn Văn AAAAAA AAA AAA',
+    degree: 'Tiến sĩ',
     updated_at: new Date(),
     published: false,
   },
 ];
 
-const ListLanguagesPage = () => {
+const ListPersonnelsPage = () => {
   //#region Data
-  const createModalRef = useRef<IMCreateLanguageModalRef | null>(null);
-  const updateModalRef = useRef<IMUpdateLanguageModalRef | null>(null);
-
   const [filter, setFilter] = useState({
     page: 1,
     pages: 0,
@@ -91,22 +69,24 @@ const ListLanguagesPage = () => {
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
   const { data, refetch } = useQuery({
-    queryKey: ['languages', filter],
-    queryFn: () => getLanguages(filter),
+    queryKey: ['personnels', filter],
+    queryFn: () => getPersonnels(filter),
   });
 
-  const listData = useMemo<IGetLanguagesResponse[]>(
+  const listData = useMemo<IGetPersonnelsResponse[]>(
     () => data?.data?.data?.data || [],
     [data],
   );
+
+  const navigate = useNavigate();
   //#endregion
 
   //#region Event
   const onPageChange = (event: any, newPage: number) =>
     setFilter((prev) => ({ ...prev, page: newPage }));
 
-  const onEdit = (id: string, data: IGetLanguagesResponse) => () =>
-    updateModalRef.current?.open(id, data);
+  const onEdit = (id: string, language_id: number) => () =>
+    navigate(`detail/${id}/?language_id=${language_id}`);
 
   const onDelete = (id: string) => async () => {
     if (
@@ -116,14 +96,14 @@ const ListLanguagesPage = () => {
       })
     ) {
       try {
-        await deleteLanguage(id);
+        await deletePersonnel(id);
 
         refetch();
 
-        toast.success('Xóa ngôn ngữ thành công!');
+        toast.success('Xóa nhân sự thành công!');
       } catch (error: any) {
         toast.error(
-          error?.response?.data?.message || 'Xóa ngôn ngữ không thành công!',
+          error?.response?.data?.message || 'Xóa nhân sự không thành công!',
         );
       }
     }
@@ -151,7 +131,7 @@ const ListLanguagesPage = () => {
         flex={1}
         mb={3}
       >
-        <Typography variant="page-title">Ngôn ngữ</Typography>
+        <Typography variant="page-title">Nhân sự</Typography>
 
         <Stack direction="row" spacing={1} alignItems="center">
           <CSearchInput onChange={onSearch} />
@@ -159,7 +139,7 @@ const ListLanguagesPage = () => {
             variant="contained"
             className="add-button"
             startIcon={<AddCircleOutline />}
-            onClick={() => createModalRef.current?.open()}
+            onClick={() => navigate('detail')}
           >
             Thêm mới
           </Button>
@@ -167,7 +147,7 @@ const ListLanguagesPage = () => {
       </Stack>
 
       <Paper className="wrapper">
-        <MLanguagesTable
+        <MPersonnelsTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
@@ -179,12 +159,9 @@ const ListLanguagesPage = () => {
         pages={paginate.pages}
         onChange={onPageChange}
       />
-
-      <MCreateLanguageModal ref={createModalRef} />
-      <MUpdateLanguageModal ref={updateModalRef} />
     </Box>
   );
   //#endregion
 };
 
-export default ListLanguagesPage;
+export default ListPersonnelsPage;

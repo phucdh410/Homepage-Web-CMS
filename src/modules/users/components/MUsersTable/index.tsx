@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Delete, Edit } from '@mui/icons-material';
+import { BorderColor, DeleteForever } from '@mui/icons-material';
 import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
@@ -92,10 +92,10 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       renderCell: (params: GridRenderCellParams<String>) => (
         <Stack direction="row" spacing={1} justifyContent="center">
           <IconButton color="warning" onClick={onEdit(params.value)}>
-            <Edit />
+            <BorderColor />
           </IconButton>
           <IconButton color="secondary" onClick={onDelete(params.value)}>
-            <Delete />
+            <DeleteForever />
           </IconButton>
         </Stack>
       ),

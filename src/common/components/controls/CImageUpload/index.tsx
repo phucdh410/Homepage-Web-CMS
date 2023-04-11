@@ -23,7 +23,15 @@ const checkImageFile = (file: File) => {
 };
 
 export const CImageUpload = forwardRef(
-  ({ value, onChange, error, helperText, ...props }: ICImageUploadProps) => {
+  ({
+    value,
+    onChange,
+    error,
+    helperText,
+    aspectRatio,
+    isSquare,
+    ...props
+  }: ICImageUploadProps) => {
     //#region Data
     const wrapperRef = useRef<HTMLDivElement | null>(null);
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -139,7 +147,11 @@ export const CImageUpload = forwardRef(
           alignItems="center"
           justifyContent="center"
           component="label"
-          sx={{ backgroundColor: '#eeeeee' }}
+          sx={{
+            backgroundColor: '#eeeeee',
+            width: isSquare ? '270px' : '',
+            height: isSquare ? '270px' : '',
+          }}
         >
           <Box
             component="label"
@@ -174,6 +186,11 @@ export const CImageUpload = forwardRef(
           </Box>
           <Box textAlign="center" fontWeight={600} p={1.1} sx={{ opacity: 1 }}>
             <Upload sx={{ fontSize: '3rem' }} color="primary" />
+            {aspectRatio && (
+              <Typography>{`Tỉ lệ ${aspectRatio.split('/')[0]}:${
+                aspectRatio.split('/')[1]
+              }`}</Typography>
+            )}
             <Typography>
               Chọn file hoặc kéo thả vào đây
               <br /> (Tối đa 5MB)

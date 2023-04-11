@@ -1,3 +1,4 @@
+export * from './CActiveTag';
 export * from './CConfirm';
 export * from './CDataGrid';
 export * from './CDevelopment';

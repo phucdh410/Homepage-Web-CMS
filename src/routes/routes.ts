@@ -28,6 +28,17 @@ export const ROUTES = {
     },
   },
 
+  STAFF: {
+    PERSONNELS: {
+      LIST: '/staff/personnels',
+      CREATE: '/staff/personnels/detail',
+      UPDATE: '/staff/personnels/detail/:id', // ?language_id=
+    },
+    POSITIONS: {
+      LIST: '/staff/positions',
+    },
+  },
+
   FOOTER: {
     ROOT: '/footer',
   },
