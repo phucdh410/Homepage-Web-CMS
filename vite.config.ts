@@ -1,13 +1,20 @@
+import ckeditor5 from '@ckeditor/vite-plugin-ckeditor5';
 import react from '@vitejs/plugin-react-swc';
+import { createRequire } from 'node:module';
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig, loadEnv } from 'vite';
+
+const require = createRequire(import.meta.url);
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const _env = loadEnv(mode, process.cwd());
 
   return {
-    plugins: [react()],
+    plugins: [
+      react(),
+      ckeditor5({ theme: require.resolve('@ckeditor/ckeditor5-theme-lark') }),
+    ],
     resolve: {
       alias: {
         '@/others': fileURLToPath(

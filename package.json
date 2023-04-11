@@ -12,6 +12,23 @@
     "lint:fix": "eslint --fix --ext .tsx --ext .ts src/"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-alignment": "^37.0.1",
+    "@ckeditor/ckeditor5-autoformat": "^37.0.1",
+    "@ckeditor/ckeditor5-basic-styles": "^37.0.1",
+    "@ckeditor/ckeditor5-editor-classic": "^37.0.1",
+    "@ckeditor/ckeditor5-essentials": "^37.0.1",
+    "@ckeditor/ckeditor5-find-and-replace": "^37.0.1",
+    "@ckeditor/ckeditor5-font": "^37.0.1",
+    "@ckeditor/ckeditor5-image": "^37.0.1",
+    "@ckeditor/ckeditor5-indent": "^37.0.1",
+    "@ckeditor/ckeditor5-link": "^37.0.1",
+    "@ckeditor/ckeditor5-list": "^37.0.1",
+    "@ckeditor/ckeditor5-media-embed": "^37.0.1",
+    "@ckeditor/ckeditor5-paragraph": "^37.0.1",
+    "@ckeditor/ckeditor5-react": "^6.0.0",
+    "@ckeditor/ckeditor5-remove-format": "^37.0.1",
+    "@ckeditor/ckeditor5-table": "^37.0.1",
+    "@ckeditor/ckeditor5-word-count": "^37.0.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@hookform/resolvers": "^3.0.0",
@@ -38,6 +55,8 @@
     "yup": "^1.0.0"
   },
   "devDependencies": {
+    "@ckeditor/ckeditor5-theme-lark": "^37.0.1",
+    "@ckeditor/vite-plugin-ckeditor5": "^0.1.1",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",

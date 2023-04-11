@@ -77,7 +77,12 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
         <List disablePadding>
           {dropdownList.map((e, i: number) =>
             e?.isChildren && e?.children ? (
-              <CCollapse index={i} data={e} dropdownList={e.children} />
+              <CCollapse
+                key={e.title}
+                index={i}
+                data={e}
+                dropdownList={e.children}
+              />
             ) : (
               <Fade
                 key={e.title}

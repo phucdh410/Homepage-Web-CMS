@@ -28,6 +28,9 @@ export const ROUTES = {
     },
   },
 
+  FOOTER: {
+    ROOT: '/footer',
+  },
   LANGUAGES: {
     LIST: '/languages',
   },
