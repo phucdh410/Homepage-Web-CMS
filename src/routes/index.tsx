@@ -6,6 +6,7 @@ import { asyncLayout } from '@/funcs/';
 import { CLoginLayout } from '@/layouts/CLoginLayout';
 
 import { HomepageRoutes } from './homepage.routes';
+import { LanguagesRoutes } from './languages.routes';
 import { UsersRoutes } from './users.routes';
 
 const CDevelopment = lazy(
@@ -29,6 +30,7 @@ const routes: RouteObject[] = [
 
           ...UsersRoutes,
           ...HomepageRoutes,
+          ...LanguagesRoutes,
 
           {
             path: '/informations/subjects-group',
@@ -90,11 +92,6 @@ const routes: RouteObject[] = [
 
           {
             path: '/footer',
-            element: <CDevelopment />,
-          },
-
-          {
-            path: '/languages',
             element: <CDevelopment />,
           },
         ],

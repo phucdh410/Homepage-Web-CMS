@@ -46,3 +46,10 @@ export const EVENTS = {
   UPDATE_EVENT: '/events', // :id
   DELETE_EVENT: '/events', // :id
 };
+
+export const LANGUAGES = {
+  CREATE_LANGUAGE: '/notifications',
+  GET_LANGUAGES: '/notifications/all',
+  UPDATE_LANGUAGE: '/notifications', // :id
+  DELETE_LANGUAGE: '/notifications', // :id
+};

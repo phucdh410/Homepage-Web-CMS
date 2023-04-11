@@ -27,4 +27,8 @@ export const ROUTES = {
       ROOT: '/homepage/links',
     },
   },
+
+  LANGUAGES: {
+    LIST: '/languages',
+  },
 };

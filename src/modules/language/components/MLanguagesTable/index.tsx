@@ -10,27 +10,27 @@ import {
 import dayjs from 'dayjs';
 
 import { CDataGrid } from '@/others/';
-import { IGetNotificationsResponse } from '@/types/notification';
+import { IGetLanguagesResponse } from '@/types/language';
 
-import { IMNotificationsTableProps } from './types';
+import { IMLanguagesTableProps } from './types';
 
-export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
+export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
   data,
   onEdit,
   onDelete,
 }) => {
   //#region Data
   const createdDate = (
-    params: GridValueGetterParams<IGetNotificationsResponse>,
+    params: GridValueGetterParams<IGetLanguagesResponse>,
   ) => {
-    return dayjs(params.row.created_at);
+    return dayjs(params.row.created_at).format('DD/MM/YYYY');
   };
   const updatedDate = (
-    params: GridValueGetterParams<IGetNotificationsResponse>,
+    params: GridValueGetterParams<IGetLanguagesResponse>,
   ) => {
     return dayjs(
       params.row?.updated_at ? params.row.updated_at : params.row.created_at,
-    );
+    ).format('DD/MM/YYYY');
   };
 
   const columns: GridColDef[] = [
@@ -44,7 +44,7 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
     },
     {
       field: 'title',
-      headerName: 'TIÊU ĐỀ',
+      headerName: 'TÊN NGÔN NGỮ',
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
@@ -77,7 +77,11 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       align: 'center',
       sortable: false,
       renderCell: (params: GridRenderCellParams<Boolean>) =>
-        params.value ? <Visibility /> : <VisibilityOff />,
+        params.value ? (
+          <Visibility sx={{ color: '#346FA5' }} />
+        ) : (
+          <VisibilityOff sx={{ color: '#CF373D' }} />
+        ),
     },
     {
       field: 'action',
@@ -86,9 +90,12 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      renderCell: (params: GridRenderCellParams<IGetNotificationsResponse>) => (
+      renderCell: (params: GridRenderCellParams<IGetLanguagesResponse>) => (
         <Stack direction="row" spacing={1} justifyContent="center">
-          <IconButton color="warning" onClick={onEdit(params.value, 1)}>
+          <IconButton
+            color="warning"
+            onClick={onEdit(params.value?.id, params.value)}
+          >
             <Edit />
           </IconButton>
           <IconButton color="secondary" onClick={onDelete(params.value?.id)}>
