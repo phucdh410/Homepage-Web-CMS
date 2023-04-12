@@ -7,11 +7,16 @@ import { AUTH } from '@/apis/url';
 import { store } from '@/redux/';
 import { setProfile, setToken } from '@/slices/auth/auth.slice';
 
+import { objectToQueryString } from '../funcs';
+
 import { post } from './request';
 
 const apiInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   timeout: import.meta.env.VITE_API_TIMEOUT,
+  paramsSerializer: {
+    serialize: (params) => objectToQueryString(params),
+  },
 });
 
 let isRefetching = false;

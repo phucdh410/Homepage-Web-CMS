@@ -10,7 +10,7 @@
       "@/modules/*": ["./src/modules/*"],
       "@/funcs/": ["./src/utils/funcs/index.ts"],
       "@/apis/*": ["./src/apis/*"],
-      "@/hooks/*": ["./src/hooks/*"],
+      "@/hooks/": ["./src/hooks/index.ts"],
       "@/axios/*": ["./src/utils/axios/*"],
       "@/confirm/": ["./src/utils/confirm/index.ts"],
       "@/slices/*": ["./src/redux/slices/*"],

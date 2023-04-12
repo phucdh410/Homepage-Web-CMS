@@ -5,9 +5,9 @@ import { debounce, InputAdornment, TextField } from '@mui/material';
 import { ICSearchInputProps, ICSearchInputRef } from './types';
 
 export const CSearchInput = forwardRef<ICSearchInputRef, ICSearchInputProps>(
-  ({ id, name, placeholder, onChange, ...props }, ref) => {
+  ({ id, name, placeholder, onChange, defaultValue, ...props }, ref) => {
     //#region Data
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState(defaultValue || '');
     //#endregion
 
     //#region Event

@@ -1,3 +1,5 @@
+import { parse, stringify } from 'qs';
+
 interface IParamsInput {
   [key: string]: any | IParamsInput;
 }
@@ -30,4 +32,25 @@ export function formatParams(obj: IParamsInput) {
     newObj[key] = value;
   }
   return newObj;
+}
+
+export function queryStringToObject(
+  input: string,
+  defaultValue?: object,
+): Record<string, any> {
+  const result = parse(input, { ignoreQueryPrefix: true });
+
+  if (defaultValue) {
+    return { ...defaultValue, ...result };
+  }
+
+  return result;
+}
+
+export function objectToQueryString(object: object, skipNulls = false): string {
+  return stringify(object, {
+    encode: true,
+    arrayFormat: 'brackets',
+    skipNulls: skipNulls,
+  });
 }

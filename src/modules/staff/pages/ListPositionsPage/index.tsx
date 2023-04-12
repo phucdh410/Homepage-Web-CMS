@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { deletePosition, getPositions } from '@/apis/positions.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
+import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
 import { IGetPositionsResponse } from '@/types/position';
 
@@ -54,11 +55,19 @@ const MOCK_DATA = [
 
 const ListPositionsPage = () => {
   //#region Data
-  const [filter, setFilter] = useState({
-    page: 1,
-    pages: 0,
-    input: '',
-  });
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { navigateWithNewQuery } = useNavigateQuery();
+  const params = useRevertQuery(location.search);
+
+  const [filter, setFilter] = useState(
+    params || {
+      page: 1,
+      pages: 0,
+      input: '',
+    },
+  );
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
@@ -71,8 +80,6 @@ const ListPositionsPage = () => {
     () => data?.data?.data?.data || [],
     [data],
   );
-
-  const navigate = useNavigate();
   //#endregion
 
   //#region Event
@@ -113,6 +120,10 @@ const ListPositionsPage = () => {
     });
   }, [data]);
 
+  useEffect(() => {
+    navigateWithNewQuery(filter);
+  }, [filter]);
+
   //#region Render
   return (
     <Box>
@@ -127,7 +138,7 @@ const ListPositionsPage = () => {
         <Typography variant="page-title">Chức vụ</Typography>
 
         <Stack direction="row" spacing={1} alignItems="center">
-          <CSearchInput onChange={onSearch} />
+          <CSearchInput defaultValue={filter.input} onChange={onSearch} />
           <Button
             variant="contained"
             className="add-button"
