@@ -5,61 +5,61 @@ import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deletePersonnel, getPersonnels } from '@/apis/personnels.api';
+import { deleteEmployee, getEmployees } from '@/apis/employees';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetPersonnelsResponse } from '@/types/personnel';
+import { IGetEmployeesResponse } from '@/types/employee';
 
-import { MPersonnelsTable } from '../../components';
+import { MEmployeesTable } from '../../components';
 
 const MOCK_DATA = [
   {
     id: '1',
     name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
-    updated_at: new Date(),
-    published: true,
+    academic_degree: 'Tiến sĩ',
+    updated_date: new Date(),
+    active: true,
   },
   {
     id: '2',
     name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
-    updated_at: new Date(),
-    published: true,
+    academic_degree: 'Tiến sĩ',
+    updated_date: new Date(),
+    active: true,
   },
   {
     id: '3',
     name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
-    updated_at: new Date(),
-    published: false,
+    academic_degree: 'Tiến sĩ',
+    updated_date: new Date(),
+    active: false,
   },
   {
     id: '4',
     name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
-    updated_at: new Date(),
-    published: true,
+    academic_degree: 'Tiến sĩ',
+    updated_date: new Date(),
+    active: true,
   },
   {
     id: '5',
     name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
-    updated_at: new Date(),
-    published: true,
+    academic_degree: 'Tiến sĩ',
+    updated_date: new Date(),
+    active: true,
   },
   {
     id: '6',
     name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
-    updated_at: new Date(),
-    published: false,
+    academic_degree: 'Tiến sĩ',
+    updated_date: new Date(),
+    active: false,
   },
 ];
 
-const ListPersonnelsPage = () => {
+const ListEmployeesPage = () => {
   //#region Data
   const location = useLocation();
   const navigate = useNavigate();
@@ -78,11 +78,11 @@ const ListPersonnelsPage = () => {
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
   const { data, refetch } = useQuery({
-    queryKey: ['personnels', filter],
-    queryFn: () => getPersonnels(filter),
+    queryKey: ['employees', filter],
+    queryFn: () => getEmployees(filter),
   });
 
-  const listData = useMemo<IGetPersonnelsResponse[]>(
+  const listData = useMemo<IGetEmployeesResponse[]>(
     () => data?.data?.data?.data || [],
     [data],
   );
@@ -102,7 +102,7 @@ const ListPersonnelsPage = () => {
       })
     ) {
       try {
-        await deletePersonnel(id);
+        await deleteEmployee(id);
 
         refetch();
 
@@ -157,7 +157,7 @@ const ListPersonnelsPage = () => {
       </Stack>
 
       <Paper className="wrapper">
-        <MPersonnelsTable
+        <MEmployeesTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
@@ -174,4 +174,4 @@ const ListPersonnelsPage = () => {
   //#endregion
 };
 
-export default ListPersonnelsPage;
+export default ListEmployeesPage;

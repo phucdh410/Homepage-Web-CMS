@@ -6,7 +6,7 @@ import { ICreateLanguageParams, IUpdateLanguageParams } from '@/types/language';
 
 export const defaultValuesLanguage = {
   title: '',
-  published: true,
+  active: true,
 };
 
 export const languageResolver: Resolver<
@@ -14,6 +14,6 @@ export const languageResolver: Resolver<
 > = yupResolver(
   object({
     title: string().trim().required('Vui lòng nhập tên ngôn ngữ!'),
-    published: boolean(),
+    active: boolean(),
   }),
 );

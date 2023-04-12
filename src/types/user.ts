@@ -1,19 +1,20 @@
-import { IBasePaginateParams } from './params';
-import { IPermission } from './permission';
+import { Dayjs } from 'dayjs';
 
-export interface IUserFormParams {
-  username: string;
-  password?: string;
-  permissions: any[];
-  active: boolean;
-  isCreate: boolean;
-}
+import { IBasePaginateParams } from './params';
+import { IPermissionsPayload } from './permission';
 
 export interface IUsersDataTable {
   id: string;
   username: string;
-  created_at: string;
-  updated_at: string | null;
+  created_date: Date | Dayjs | string | null;
+  updated_date: Date | Dayjs | string | null;
+  active: boolean;
+}
+
+export interface IUserFormParams {
+  username: string;
+  password: string;
+  permissions: IPermissionsPayload[];
   active: boolean;
 }
 
@@ -21,13 +22,13 @@ export interface IUserDetail {
   id: string;
   username: string;
   active: boolean;
-  permissions: IPermission[];
+  created_date: Date | Dayjs | string | null;
+  updated_date: Date | Dayjs | string | null;
+  permissions: IPermissionsPayload[];
 }
 
-export interface IUpdateUserParams {
-  username: string;
-  active: boolean;
-  permissions: IPermission[];
+export interface IUpdateUserParams extends Omit<IUserFormParams, 'password'> {
+  password?: string;
 }
 
 export interface IGetUsersParams extends IBasePaginateParams {}

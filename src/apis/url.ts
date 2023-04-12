@@ -46,20 +46,12 @@ export const EVENTS = {
   UPDATE_EVENT: '/events', // :id
   DELETE_EVENT: '/events', // :id
 };
-
-export const LANGUAGES = {
-  CREATE_LANGUAGE: '/notifications',
-  GET_LANGUAGES: '/notifications/all',
-  UPDATE_LANGUAGE: '/notifications', // :id
-  DELETE_LANGUAGE: '/notifications', // :id
-};
-
-export const PERSONNELS = {
-  GET_PERSONNELS: '/personnels/all',
-  CREATE_PERSONNEL: '/personnels',
-  GET_PERSONNEL_BY_ID: '/personnels', // :id
-  UPDATE_PERSONNEL: '/personnels', // :id
-  DELETE_PERSONNEL: '/personnels', // :id
+export const EMPLOYEES = {
+  GET_EMPLOYEES: '/employees/all',
+  CREATE_EMPLOYEE: '/employees',
+  GET_EMPLOYEE_BY_ID: '/employees', // :id
+  UPDATE_EMPLOYEE: '/employees', // :id
+  DELETE_EMPLOYEE: '/employees', // :id
 };
 
 export const POSITIONS = {
@@ -67,4 +59,17 @@ export const POSITIONS = {
   GET_POSITIONS: '/positions/all',
   UPDATE_POSITION: '/positions', // :id
   DELETE_POSITION: '/positions', // :id
+};
+
+export const FOOTER = {
+  CREATE_FOOTER: '/footer',
+  GET_FOOTER: '/footer',
+  UPDATE_FOOTER: '/footer',
+};
+
+export const LANGUAGES = {
+  CREATE_LANGUAGE: '/notifications',
+  GET_LANGUAGES: '/notifications/all',
+  UPDATE_LANGUAGE: '/notifications', // :id
+  DELETE_LANGUAGE: '/notifications', // :id
 };

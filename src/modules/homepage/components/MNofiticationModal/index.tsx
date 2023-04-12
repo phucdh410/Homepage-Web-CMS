@@ -106,7 +106,7 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
                 </FormLabel>
                 <Controller
                   control={control}
-                  name="published"
+                  name="active"
                   render={({ field }) => <CSwitch {...field} />}
                 />
               </Stack>

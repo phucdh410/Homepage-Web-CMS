@@ -1,5 +1,7 @@
 export interface IBasePaginateParams {
   page: number;
   pages: number;
-  input?: string;
+  input?: {
+    search?: string;
+  } | null;
 }

@@ -9,20 +9,20 @@ import dayjs from 'dayjs';
 
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetPersonnelsResponse } from '@/types/personnel';
+import { IGetEmployeesResponse } from '@/types/employee';
 
-import { IMPersonnelsTableProps } from './types';
+import { IMEmployeesTableProps } from './types';
 
-export const MPersonnelsTable: React.FC<IMPersonnelsTableProps> = ({
+export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
   data,
   onEdit,
   onDelete,
 }) => {
   //#region Data
   const updatedDate = (
-    params: GridValueGetterParams<IGetPersonnelsResponse>,
+    params: GridValueGetterParams<IGetEmployeesResponse>,
   ) => {
-    return dayjs(params.row?.updated_at).format('DD/MM/YYYY');
+    return dayjs(params.row?.updated_date).format('DD/MM/YYYY');
   };
 
   const columns: GridColDef[] = [
@@ -44,7 +44,7 @@ export const MPersonnelsTable: React.FC<IMPersonnelsTableProps> = ({
       flex: 1,
     },
     {
-      field: 'degree',
+      field: 'academic_degree',
       headerName: 'HỌC VỊ',
       minWidth: 200,
       headerAlign: 'center',
@@ -52,7 +52,7 @@ export const MPersonnelsTable: React.FC<IMPersonnelsTableProps> = ({
       sortable: false,
     },
     {
-      field: 'updated_at',
+      field: 'updated_date',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -61,7 +61,7 @@ export const MPersonnelsTable: React.FC<IMPersonnelsTableProps> = ({
       valueGetter: updatedDate,
     },
     {
-      field: 'published',
+      field: 'active',
       headerName: 'HIỂN THỊ',
       minWidth: 150,
       headerAlign: 'center',

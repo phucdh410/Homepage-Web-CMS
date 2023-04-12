@@ -6,15 +6,15 @@ export interface IGetLanguagesParams extends IBasePaginateParams {}
 
 export interface IGetLanguagesResponse {
   id: string;
-  title: string;
-  created_at: Date | Dayjs | string | null;
-  updated_at: Date | Dayjs | string | null;
-  published: boolean;
+  name: string;
+  created_date: Date | Dayjs | string | null;
+  updated_date: Date | Dayjs | string | null;
+  active: boolean;
 }
 
 export interface ICreateLanguageParams {
-  title: string;
-  published: boolean;
+  name: string;
+  active: boolean;
 }
 
 export interface IUpdateLanguageParams extends ICreateLanguageParams {}

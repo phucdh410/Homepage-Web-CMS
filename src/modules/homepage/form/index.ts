@@ -63,7 +63,7 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
 //#region Notification
 export const defaultValuesNotification = {
   title: '',
-  published: true,
+  active: true,
   language_id: 1,
 };
 
@@ -75,7 +75,7 @@ export const notificationResolver: Resolver<ICreateNotificationParams> =
         .trim('Tiêu đề chứa khoảng trắng không hợp lệ!')
         .strict()
         .max(500, 'Tiêu đề tối đa 500 kí tự!'),
-      published: boolean(),
+      active: boolean(),
       language_id: number(),
     }),
   );

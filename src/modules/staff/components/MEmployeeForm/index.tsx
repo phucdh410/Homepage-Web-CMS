@@ -3,9 +3,9 @@ import { FormLabel, Stack, Unstable_Grid2 as Grid } from '@mui/material';
 
 import { CImageUpload, CInput, CSwitch } from '@/controls/';
 
-import { IMPersonnelFormProps } from './types';
+import { IMEmployeeFormProps } from './types';
 
-export const MPersonnelForm: React.FC<IMPersonnelFormProps> = ({ control }) => {
+export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
   //#region Data
   //#endregion
 
@@ -41,11 +41,11 @@ export const MPersonnelForm: React.FC<IMPersonnelFormProps> = ({ control }) => {
           </FormLabel>
           <Controller
             control={control}
-            name="degree"
+            name="academic_degree"
             render={({ field, fieldState: { error } }) => (
               <CInput
                 {...field}
-                id="degree"
+                id="academic_degree"
                 placeholder="Nhập học vị..."
                 error={!!error}
                 helperText={error?.message}
@@ -60,7 +60,7 @@ export const MPersonnelForm: React.FC<IMPersonnelFormProps> = ({ control }) => {
           </FormLabel>
           <Controller
             control={control}
-            name="published"
+            name="active"
             render={({ field, fieldState: { error } }) => (
               <CSwitch {...field} />
             )}

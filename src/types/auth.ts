@@ -1,4 +1,4 @@
-import { IPermission } from './permission';
+import { IPermissionsPayload } from './permission';
 
 export interface ILoginParams {
   username: string;
@@ -6,12 +6,12 @@ export interface ILoginParams {
 }
 
 export interface ILoginResponse {
+  username: string;
   access_token: string;
   refresh_token: string;
 }
 
 export interface IProfileResponse {
-  user_id: string;
   username: string;
-  permissions: IPermission[];
+  permissions: IPermissionsPayload[];
 }

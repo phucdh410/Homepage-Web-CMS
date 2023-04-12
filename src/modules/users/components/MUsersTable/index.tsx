@@ -24,11 +24,13 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   //#region Data
 
   const createdDate = (params: GridValueGetterParams<IUsersDataTable>) => {
-    return dayjs(params.row.created_at);
+    return dayjs(params.row.created_date);
   };
   const updatedDate = (params: GridValueGetterParams<IUsersDataTable>) => {
     return dayjs(
-      params.row?.updated_at ? params.row.updated_at : params.row.created_at,
+      params.row?.updated_date
+        ? params.row.updated_date
+        : params.row.created_date,
     );
   };
 
@@ -108,8 +110,8 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
         id: e.id,
         col1: i + 1,
         col2: e.username,
-        col3: e.created_at,
-        col4: e.updated_at,
+        col3: e.created_date,
+        col4: e.updated_date,
         col5: e,
         col6: e.id,
       })),

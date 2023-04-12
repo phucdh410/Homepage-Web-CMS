@@ -23,13 +23,15 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
   const createdDate = (
     params: GridValueGetterParams<IGetNotificationsResponse>,
   ) => {
-    return dayjs(params.row.created_at);
+    return dayjs(params.row.created_date);
   };
   const updatedDate = (
     params: GridValueGetterParams<IGetNotificationsResponse>,
   ) => {
     return dayjs(
-      params.row?.updated_at ? params.row.updated_at : params.row.created_at,
+      params.row?.updated_date
+        ? params.row.updated_date
+        : params.row.created_date,
     );
   };
 
@@ -52,7 +54,7 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       flex: 1,
     },
     {
-      field: 'created_at',
+      field: 'created_date',
       headerName: 'NGÀY TẠO',
       minWidth: 200,
       headerAlign: 'center',
@@ -61,7 +63,7 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       valueGetter: createdDate,
     },
     {
-      field: 'updated_at',
+      field: 'updated_date',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -70,7 +72,7 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       valueGetter: updatedDate,
     },
     {
-      field: 'published',
+      field: 'active',
       headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',

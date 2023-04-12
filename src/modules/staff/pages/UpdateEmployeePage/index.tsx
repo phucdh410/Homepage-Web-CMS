@@ -4,21 +4,21 @@ import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { createPersonnel, getDetailPersonnel } from '@/apis/personnels.api';
+import { createEmployee, getDetailEmployee } from '@/apis/employees';
 import { CActionsForm } from '@/controls/';
+import { IEmployeeForm } from '@/types/employee';
 import { IFileUpload } from '@/types/file';
-import { IPersonnelForm } from '@/types/personnel';
 
-import { MPersonnelForm } from '../../components';
-import { defaultValuesPersonnel, personnelResolver } from '../../form';
+import { MEmployeeForm } from '../../components';
+import { defaultValuesEmployee, employeeResolver } from '../../form';
 
-const UpdatePersonnelPage = () => {
+const UpdateEmployeePage = () => {
   //#region Data
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, isError, error } = useQuery(['personnel', id], () =>
-    getDetailPersonnel(id as string),
+  const { data, isError, error } = useQuery(['employee', id], () =>
+    getDetailEmployee(id as string),
   );
 
   if (isError && error) {
@@ -31,10 +31,10 @@ const UpdatePersonnelPage = () => {
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<IPersonnelForm>({
+  } = useForm<IEmployeeForm>({
     mode: 'all',
-    resolver: personnelResolver,
-    defaultValues: data?.data.data || defaultValuesPersonnel,
+    resolver: employeeResolver,
+    defaultValues: data?.data.data || defaultValuesEmployee,
   });
   //#endregion
 
@@ -49,7 +49,7 @@ const UpdatePersonnelPage = () => {
     handleSubmit(async (values) => {
       try {
         const payload = { ...values, file_id: (values.file as IFileUpload).id };
-        await createPersonnel(payload);
+        await createEmployee(payload);
 
         toast.success('Thêm mới nhân sự thành công!');
 
@@ -73,7 +73,7 @@ const UpdatePersonnelPage = () => {
 
       <Paper className="wrapper">
         <form>
-          <MPersonnelForm control={control} />
+          <MEmployeeForm control={control} />
 
           <CActionsForm
             onCancel={onCancel}
@@ -87,4 +87,4 @@ const UpdatePersonnelPage = () => {
   //#endregion
 };
 
-export default UpdatePersonnelPage;
+export default UpdateEmployeePage;

@@ -21,13 +21,15 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
   const createdDate = (
     params: GridValueGetterParams<IGetLanguagesResponse>,
   ) => {
-    return dayjs(params.row.created_at).format('DD/MM/YYYY');
+    return dayjs(params.row.created_date).format('DD/MM/YYYY');
   };
   const updatedDate = (
     params: GridValueGetterParams<IGetLanguagesResponse>,
   ) => {
     return dayjs(
-      params.row?.updated_at ? params.row.updated_at : params.row.created_at,
+      params.row?.updated_date
+        ? params.row.updated_date
+        : params.row.created_date,
     ).format('DD/MM/YYYY');
   };
 
@@ -50,7 +52,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       flex: 1,
     },
     {
-      field: 'created_at',
+      field: 'created_date',
       headerName: 'NGÀY TẠO',
       minWidth: 200,
       headerAlign: 'center',
@@ -59,7 +61,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       valueGetter: createdDate,
     },
     {
-      field: 'updated_at',
+      field: 'updated_date',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -68,7 +70,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       valueGetter: updatedDate,
     },
     {
-      field: 'published',
+      field: 'active',
       headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',

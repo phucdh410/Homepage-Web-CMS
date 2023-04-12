@@ -26,7 +26,9 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
 
   const updatedDate = (params: GridValueGetterParams<IGetBannersResponse>) => {
     return dayjs(
-      params.row?.updated_at ? params.row.updated_at : params.row.created_at,
+      params.row?.updated_date
+        ? params.row.updated_date
+        : params.row.created_date,
     );
   };
 
@@ -58,7 +60,7 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
       valueGetter: displayTime,
     },
     {
-      field: 'updated_at',
+      field: 'updated_date',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -67,7 +69,7 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
       valueGetter: updatedDate,
     },
     {
-      field: 'published',
+      field: 'active',
       headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',

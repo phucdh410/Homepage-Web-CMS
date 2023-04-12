@@ -3,25 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 
-import { createPersonnel } from '@/apis/personnels.api';
+import { createEmployee } from '@/apis/employees';
 import { CActionsForm } from '@/controls/';
+import { IEmployeeForm } from '@/types/employee';
 import { IFileUpload } from '@/types/file';
-import { IPersonnelForm } from '@/types/personnel';
 
-import { MPersonnelForm } from '../../components';
-import { defaultValuesPersonnel, personnelResolver } from '../../form';
+import { MEmployeeForm } from '../../components';
+import { defaultValuesEmployee, employeeResolver } from '../../form';
 
-const CreatePersonnelPage = () => {
+const CreateEmployeePage = () => {
   //#region Data
   const {
     control,
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<IPersonnelForm>({
+  } = useForm<IEmployeeForm>({
     mode: 'all',
-    resolver: personnelResolver,
-    defaultValues: defaultValuesPersonnel,
+    resolver: employeeResolver,
+    defaultValues: defaultValuesEmployee,
   });
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const CreatePersonnelPage = () => {
     handleSubmit(async (values) => {
       try {
         const payload = { ...values, file_id: (values.file as IFileUpload).id };
-        await createPersonnel(payload);
+        await createEmployee(payload);
 
         toast.success('Thêm mới nhân sự thành công!');
 
@@ -62,7 +62,7 @@ const CreatePersonnelPage = () => {
 
       <Paper className="wrapper">
         <form>
-          <MPersonnelForm control={control} />
+          <MEmployeeForm control={control} />
 
           <CActionsForm
             onCancel={onCancel}
@@ -76,4 +76,4 @@ const CreatePersonnelPage = () => {
   //#endregion
 };
 
-export default CreatePersonnelPage;
+export default CreateEmployeePage;

@@ -3,14 +3,14 @@ import { RouteObject } from 'react-router-dom';
 
 import { ROUTES } from './routes';
 
-const ListPersonnelsPage = lazy(
-  () => import('@/modules/staff/pages/ListPersonnelsPage'),
+const ListEmployeesPage = lazy(
+  () => import('@/modules/staff/pages/ListEmployeesPage'),
 );
-const CreatePersonnelPage = lazy(
-  () => import('@/modules/staff/pages/CreatePersonnelPage'),
+const CreateEmployeePage = lazy(
+  () => import('@/modules/staff/pages/CreateEmployeePage'),
 );
-const UpdatePersonnelPage = lazy(
-  () => import('@/modules/staff/pages/UpdatePersonnelPage'),
+const UpdateEmployeePage = lazy(
+  () => import('@/modules/staff/pages/UpdateEmployeePage'),
 );
 
 const ListPositionsPage = lazy(
@@ -19,16 +19,16 @@ const ListPositionsPage = lazy(
 
 export const StaffRoutes: RouteObject[] = [
   {
-    path: ROUTES.STAFF.PERSONNELS.LIST,
-    element: <ListPersonnelsPage />,
+    path: ROUTES.STAFF.EMPLOYEES.LIST,
+    element: <ListEmployeesPage />,
   },
   {
-    path: ROUTES.STAFF.PERSONNELS.CREATE,
-    element: <CreatePersonnelPage />,
+    path: ROUTES.STAFF.EMPLOYEES.CREATE,
+    element: <CreateEmployeePage />,
   },
   {
-    path: ROUTES.STAFF.PERSONNELS.UPDATE,
-    element: <UpdatePersonnelPage />,
+    path: ROUTES.STAFF.EMPLOYEES.UPDATE,
+    element: <UpdateEmployeePage />,
   },
 
   {

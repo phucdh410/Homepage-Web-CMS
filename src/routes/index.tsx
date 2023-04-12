@@ -81,11 +81,7 @@ const routes: RouteObject[] = [
           },
 
           {
-            path: '/approve/websites',
-            element: <CDevelopment />,
-          },
-          {
-            path: '/approve/posts',
+            path: '/approve',
             element: <CDevelopment />,
           },
         ],

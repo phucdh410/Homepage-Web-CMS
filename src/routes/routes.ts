@@ -29,10 +29,10 @@ export const ROUTES = {
   },
 
   STAFF: {
-    PERSONNELS: {
-      LIST: '/staff/personnels',
-      CREATE: '/staff/personnels/detail',
-      UPDATE: '/staff/personnels/detail/:id', // ?language_id=
+    EMPLOYEES: {
+      LIST: '/staff/employees',
+      CREATE: '/staff/employees/detail',
+      UPDATE: '/staff/employees/detail/:id', // ?language_id=
     },
     POSITIONS: {
       LIST: '/staff/positions',

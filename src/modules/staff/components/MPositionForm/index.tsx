@@ -32,7 +32,7 @@ export const MPositionForm: React.FC<IMPositionFormProps> = ({ control }) => {
         </FormLabel>
         <Controller
           control={control}
-          name="published"
+          name="active"
           render={({ field }) => <CSwitch {...field} />}
         />
       </Stack>

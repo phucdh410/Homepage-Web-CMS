@@ -32,7 +32,7 @@ export const MLanguageForm: React.FC<IMLanguageFormProps> = ({ control }) => {
         </FormLabel>
         <Controller
           control={control}
-          name="published"
+          name="active"
           render={({ field }) => <CSwitch {...field} />}
         />
       </Stack>

@@ -5,15 +5,16 @@ import { IBasePaginateParams } from './params';
 export interface IGetPositionsResponse {
   id: string;
   name: string;
-  updated_at: Date | Dayjs | string | null;
-  published: boolean;
+  created_date: Date | Dayjs | string | null;
+  updated_date: Date | Dayjs | string | null;
+  active: boolean;
 }
 
 export interface IGetPositionsParams extends IBasePaginateParams {}
 
 export interface ICreatePositionParams {
   name: string;
-  published: boolean;
+  active: boolean;
 }
 
 export interface IUpdatePositionParams extends ICreatePositionParams {}

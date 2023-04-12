@@ -2,28 +2,28 @@ import { Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { boolean, object, string } from 'yup';
 
-import { IPersonnelForm } from '@/types/personnel';
+import { IEmployeeForm } from '@/types/employee';
 import { ICreatePositionParams, IUpdatePositionParams } from '@/types/position';
 
-export const defaultValuesPersonnel = {
+export const defaultValuesEmployee = {
   name: '',
-  degree: '',
+  academic_degree: '',
   file: null,
-  published: true,
+  active: true,
 };
 
-export const personnelResolver: Resolver<IPersonnelForm> = yupResolver(
+export const employeeResolver: Resolver<IEmployeeForm> = yupResolver(
   object({
     name: string().trim().required('Vui lòng nhập họ và tên nhân sự!'),
-    degree: string().trim().required('Vui lòng nhập học vị!'),
-    published: boolean(),
+    academic_degree: string().trim().required('Vui lòng nhập học vị!'),
+    active: boolean(),
     file: object().required('Vui lòng chọn hình ảnh!'),
   }),
 );
 
 export const defaultValuesPosition = {
   name: '',
-  published: true,
+  active: true,
 };
 
 export const positionResolver: Resolver<
@@ -31,6 +31,6 @@ export const positionResolver: Resolver<
 > = yupResolver(
   object({
     name: string().trim().required('Vui lòng nhập tên chức vụ!'),
-    published: boolean(),
+    active: boolean(),
   }),
 );

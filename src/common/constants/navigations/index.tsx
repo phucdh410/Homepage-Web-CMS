@@ -171,7 +171,7 @@ export const NAVIGATIONS: INavigationItem[] = [
         title: 'Nhân sự',
         icon: '',
         isChildren: false,
-        path: '/staff/personnels',
+        path: '/staff/employees',
         level: 1,
       },
       {

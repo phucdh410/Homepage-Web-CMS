@@ -22,7 +22,7 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
   const updatedDate = (
     params: GridValueGetterParams<IGetPositionsResponse>,
   ) => {
-    return dayjs(params.row?.updated_at).format('DD/MM/YYYY');
+    return dayjs(params.row?.updated_date).format('DD/MM/YYYY');
   };
 
   const columns: GridColDef[] = [
@@ -44,7 +44,7 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
       flex: 1,
     },
     {
-      field: 'updated_at',
+      field: 'updated_date',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -53,7 +53,7 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
       valueGetter: updatedDate,
     },
     {
-      field: 'published',
+      field: 'active',
       headerName: 'HIỂN THỊ',
       minWidth: 150,
       headerAlign: 'center',
