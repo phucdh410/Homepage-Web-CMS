@@ -3,10 +3,6 @@ import { RouteObject } from 'react-router-dom';
 
 import { ROUTES } from './routes';
 
-const CDevelopment = lazy(
-  () => import('../common/components/others/CDevelopment'),
-);
-
 const ListPersonnelsPage = lazy(
   () => import('@/modules/staff/pages/ListPersonnelsPage'),
 );
@@ -17,9 +13,9 @@ const UpdatePersonnelPage = lazy(
   () => import('@/modules/staff/pages/UpdatePersonnelPage'),
 );
 
-// const ListNotificationsPage = lazy(
-//   () => import('@/modules/staff/pages/ListNotificationsPage'),
-// );
+const ListPositionsPage = lazy(
+  () => import('@/modules/staff/pages/ListPositionsPage'),
+);
 
 export const StaffRoutes: RouteObject[] = [
   {
@@ -37,6 +33,6 @@ export const StaffRoutes: RouteObject[] = [
 
   {
     path: ROUTES.STAFF.POSITIONS.LIST,
-    element: <CDevelopment />,
+    element: <ListPositionsPage />,
   },
 ];

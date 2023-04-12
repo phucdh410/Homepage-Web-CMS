@@ -5,60 +5,54 @@ import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deletePersonnel, getPersonnels } from '@/apis/personnels.api';
+import { deletePosition, getPositions } from '@/apis/positions.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { CPagination } from '@/others/';
-import { IGetPersonnelsResponse } from '@/types/personnel';
+import { IGetPositionsResponse } from '@/types/position';
 
-import { MPersonnelsTable } from '../../components';
+import { MPositionsTable } from '../../components';
 
 const MOCK_DATA = [
   {
     id: '1',
-    name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
+    name: 'Hiệu trưởng',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '2',
-    name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
+    name: 'Phó hiệu trưởng',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '3',
-    name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
+    name: 'Trưởng bộ môn',
     updated_at: new Date(),
     published: false,
   },
   {
     id: '4',
-    name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
+    name: 'Trưởng khoa',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '5',
-    name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
+    name: 'Phó trưởng khoa',
     updated_at: new Date(),
     published: true,
   },
   {
     id: '6',
-    name: 'Nguyễn Văn AAAAAA AAA AAA',
-    degree: 'Tiến sĩ',
+    name: 'Trưởng phòng',
     updated_at: new Date(),
     published: false,
   },
 ];
 
-const ListPersonnelsPage = () => {
+const ListPositionsPage = () => {
   //#region Data
   const [filter, setFilter] = useState({
     page: 1,
@@ -69,11 +63,11 @@ const ListPersonnelsPage = () => {
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
   const { data, refetch } = useQuery({
-    queryKey: ['personnels', filter],
-    queryFn: () => getPersonnels(filter),
+    queryKey: ['positions', filter],
+    queryFn: () => getPositions(filter),
   });
 
-  const listData = useMemo<IGetPersonnelsResponse[]>(
+  const listData = useMemo<IGetPositionsResponse[]>(
     () => data?.data?.data?.data || [],
     [data],
   );
@@ -95,14 +89,14 @@ const ListPersonnelsPage = () => {
       })
     ) {
       try {
-        await deletePersonnel(id);
+        await deletePosition(id);
 
         refetch();
 
-        toast.success('Xóa nhân sự thành công!');
+        toast.success('Xóa chức vụ thành công!');
       } catch (error: any) {
         toast.error(
-          error?.response?.data?.message || 'Xóa nhân sự không thành công!',
+          error?.response?.data?.message || 'Xóa chức vụ không thành công!',
         );
       }
     }
@@ -130,7 +124,7 @@ const ListPersonnelsPage = () => {
         flex={1}
         mb={3}
       >
-        <Typography variant="page-title">Nhân sự</Typography>
+        <Typography variant="page-title">Chức vụ</Typography>
 
         <Stack direction="row" spacing={1} alignItems="center">
           <CSearchInput onChange={onSearch} />
@@ -146,7 +140,7 @@ const ListPersonnelsPage = () => {
       </Stack>
 
       <Paper className="wrapper">
-        <MPersonnelsTable
+        <MPositionsTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
@@ -163,4 +157,4 @@ const ListPersonnelsPage = () => {
   //#endregion
 };
 
-export default ListPersonnelsPage;
+export default ListPositionsPage;

@@ -7,28 +7,22 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetLanguagesResponse } from '@/types/language';
+import { CActionsTable, CDataGrid } from '@/others/';
+import { CActiveTag } from '@/others/';
+import { IGetPositionsResponse } from '@/types/position';
 
-import { IMLanguagesTableProps } from './types';
+import { IMPositionsTableProps } from './types';
 
-export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
+export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
   data,
   onEdit,
   onDelete,
 }) => {
   //#region Data
-  const createdDate = (
-    params: GridValueGetterParams<IGetLanguagesResponse>,
-  ) => {
-    return dayjs(params.row.created_at).format('DD/MM/YYYY');
-  };
   const updatedDate = (
-    params: GridValueGetterParams<IGetLanguagesResponse>,
+    params: GridValueGetterParams<IGetPositionsResponse>,
   ) => {
-    return dayjs(
-      params.row?.updated_at ? params.row.updated_at : params.row.created_at,
-    ).format('DD/MM/YYYY');
+    return dayjs(params.row?.updated_at).format('DD/MM/YYYY');
   };
 
   const columns: GridColDef[] = [
@@ -41,22 +35,13 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       sortable: false,
     },
     {
-      field: 'title',
-      headerName: 'TÊN NGÔN NGỮ',
+      field: 'name',
+      headerName: 'TÊN CHỨC VỤ',
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
       sortable: false,
       flex: 1,
-    },
-    {
-      field: 'created_at',
-      headerName: 'NGÀY TẠO',
-      minWidth: 200,
-      headerAlign: 'center',
-      align: 'center',
-      sortable: false,
-      valueGetter: createdDate,
     },
     {
       field: 'updated_at',
@@ -69,7 +54,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
     },
     {
       field: 'published',
-      headerName: 'TRẠNG THÁI',
+      headerName: 'HIỂN THỊ',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
@@ -85,10 +70,10 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      renderCell: (params: GridRenderCellParams<IGetLanguagesResponse>) => (
+      renderCell: (params: GridRenderCellParams<String>) => (
         <CActionsTable
-          onEdit={onEdit(params.value?.id, params.value)}
-          onDelete={onDelete(params.value?.id)}
+          onEdit={onEdit(params.value, 1)}
+          onDelete={onDelete(params.value)}
         />
       ),
     },
@@ -100,7 +85,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
         ...e,
         index: i + 1,
         id: e.id,
-        action: e,
+        action: e.id,
       })),
     [data],
   );

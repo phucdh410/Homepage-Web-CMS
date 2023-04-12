@@ -310,6 +310,11 @@ theme = createTheme(theme, {
         },
       },
     },
+    MuiTooltip: {
+      defaultProps: {
+        arrow: true,
+      },
+    },
   } as Components<Omit<Theme, 'components'>>,
 });
 //#endregion

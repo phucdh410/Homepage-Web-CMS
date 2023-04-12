@@ -1,6 +1,4 @@
 import { useMemo } from 'react';
-import { BorderColor, DeleteForever } from '@mui/icons-material';
-import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
   GridRenderCellParams,
@@ -9,7 +7,7 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CDataGrid } from '@/others/';
+import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
 import { IGetPersonnelsResponse } from '@/types/personnel';
 
@@ -81,14 +79,10 @@ export const MPersonnelsTable: React.FC<IMPersonnelsTableProps> = ({
       align: 'center',
       sortable: false,
       renderCell: (params: GridRenderCellParams<String>) => (
-        <Stack direction="row" spacing={1} justifyContent="center">
-          <IconButton color="warning" onClick={onEdit(params.value, 1)}>
-            <BorderColor />
-          </IconButton>
-          <IconButton color="secondary" onClick={onDelete(params.value)}>
-            <DeleteForever />
-          </IconButton>
-        </Stack>
+        <CActionsTable
+          onEdit={onEdit(params.value)}
+          onDelete={onDelete(params.value)}
+        />
       ),
     },
   ];
