@@ -72,8 +72,8 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
       sortable: false,
       renderCell: (params: GridRenderCellParams<String>) => (
         <CActionsTable
-          onEdit={onEdit(params.value, 1)}
-          onDelete={onDelete(params.value)}
+          onEdit={onEdit(params.value?.id, params.value)}
+          onDelete={onDelete(params.value?.id)}
         />
       ),
     },
@@ -85,7 +85,7 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
         ...e,
         index: i + 1,
         id: e.id,
-        action: e.id,
+        action: e,
       })),
     [data],
   );

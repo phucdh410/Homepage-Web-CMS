@@ -39,7 +39,7 @@ export const MUpdateLanguageModal = forwardRef<IMUpdateLanguageModalRef, any>(
         try {
           console.log(values);
           const res = await updateLanguage(id, values);
-          toast.success('Cập nhật thông báo thành công!');
+          toast.success('Cập nhật ngôn ngữ thành công!');
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
         }

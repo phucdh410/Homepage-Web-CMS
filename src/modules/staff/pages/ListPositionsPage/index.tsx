@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
@@ -12,7 +12,13 @@ import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
 import { IGetPositionsResponse } from '@/types/position';
 
-import { MPositionsTable } from '../../components';
+import {
+  MCreatePositionModal,
+  MPositionsTable,
+  MUpdatePositionModal,
+} from '../../components';
+import { IMCreatePositionModalRef } from '../../components/MCreatePositionModal/types';
+import { IMUpdatePositionModalRef } from '../../components/MUpdateLanguageModal/types';
 
 const MOCK_DATA = [
   {
@@ -56,10 +62,12 @@ const MOCK_DATA = [
 const ListPositionsPage = () => {
   //#region Data
   const location = useLocation();
-  const navigate = useNavigate();
 
   const { navigateWithNewQuery } = useNavigateQuery();
   const params = useRevertQuery(location.search);
+
+  const createModalRef = useRef<IMCreatePositionModalRef | null>(null);
+  const updateModalRef = useRef<IMUpdatePositionModalRef | null>(null);
 
   const [filter, setFilter] = useState(
     params || {
@@ -86,7 +94,8 @@ const ListPositionsPage = () => {
   const onPageChange = (event: any, newPage: number) =>
     setFilter((prev) => ({ ...prev, page: newPage }));
 
-  const onEdit = (id: string) => () => navigate(`detail/${id}`);
+  const onEdit = (id: string, data: IGetPositionsResponse) => () =>
+    updateModalRef.current?.open(id, data);
 
   const onDelete = (id: string) => async () => {
     if (
@@ -143,7 +152,7 @@ const ListPositionsPage = () => {
             variant="contained"
             className="add-button"
             startIcon={<AddCircleOutline />}
-            onClick={() => navigate('detail')}
+            onClick={() => createModalRef.current?.open()}
           >
             Thêm mới
           </Button>
@@ -163,6 +172,9 @@ const ListPositionsPage = () => {
         pages={paginate.pages}
         onChange={onPageChange}
       />
+
+      <MCreatePositionModal ref={createModalRef} />
+      <MUpdatePositionModal ref={updateModalRef} />
     </Box>
   );
   //#endregion

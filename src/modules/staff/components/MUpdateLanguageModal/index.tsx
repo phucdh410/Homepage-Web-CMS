@@ -3,34 +3,34 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Dialog } from '@mui/material';
 
-import { createLanguage } from '@/apis/languages.api';
+import { updatePosition } from '@/apis/positions.api';
 import { CActionsForm } from '@/controls/';
-import { ICreateNotificationParams } from '@/types/notification';
+import { IGetPositionsResponse, IUpdatePositionParams } from '@/types/position';
 
-import { defaultValuesLanguage, languageResolver } from '../../form';
-import { MLanguageForm } from '../MLanguageForm';
+import { defaultValuesPosition, positionResolver } from '../../form';
+import { MPositionForm } from '../MPositionForm';
 
-import { IMCreateLanguageModalRef } from './types';
+import { IMUpdatePositionModalRef } from './types';
 
-export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
+export const MUpdatePositionModal = forwardRef<IMUpdatePositionModalRef, any>(
   ({ ...props }, ref) => {
     //#region Data
     const [open, setOpen] = useState(false);
+    const [id, setId] = useState<string>('');
 
-    const { control, handleSubmit, reset } = useForm<ICreateNotificationParams>(
-      {
-        resolver: languageResolver,
-        defaultValues: defaultValuesLanguage,
-        mode: 'all',
-        shouldFocusError: true,
-      },
-    );
+    const { control, handleSubmit, reset } = useForm<IUpdatePositionParams>({
+      resolver: positionResolver,
+      defaultValues: defaultValuesPosition,
+      mode: 'all',
+      shouldFocusError: true,
+    });
     //#endregion
 
     //#region Event
     const onCancel = () => {
       reset();
 
+      setId('');
       setOpen(false);
     };
 
@@ -38,8 +38,8 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
       handleSubmit(async (values) => {
         try {
           console.log(values);
-          const res = await createLanguage(values);
-          toast.success('Tạo mới ngôn ngữ thành công!');
+          const res = await updatePosition(id, values);
+          toast.success('Cập nhật thông báo thành công!');
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
         }
@@ -48,7 +48,14 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
     //#endregion
 
     useImperativeHandle(ref, () => ({
-      open: () => setOpen(true),
+      open: (id: string, data: IGetPositionsResponse) => {
+        if (data && id) {
+          reset({ ...data });
+          setId(id);
+        }
+
+        setOpen(true);
+      },
     }));
 
     //#region Render
@@ -60,7 +67,7 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
       >
         <Box p={2.5}>
           <form>
-            <MLanguageForm control={control} />
+            <MPositionForm control={control} />
 
             <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
           </form>

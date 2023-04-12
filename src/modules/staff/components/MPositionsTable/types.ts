@@ -2,6 +2,6 @@ import { IGetPositionsResponse } from '@/types/position';
 
 export interface IMPositionsTableProps {
   data: IGetPositionsResponse[];
-  onEdit: (id: string, language_id: number) => () => void;
+  onEdit: (id: string, data: IGetPositionsResponse) => () => void;
   onDelete: (id: string) => () => void;
 }

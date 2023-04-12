@@ -3,28 +3,26 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Dialog } from '@mui/material';
 
-import { createLanguage } from '@/apis/languages.api';
+import { createPosition } from '@/apis/positions.api';
 import { CActionsForm } from '@/controls/';
-import { ICreateNotificationParams } from '@/types/notification';
+import { ICreatePositionParams } from '@/types/position';
 
-import { defaultValuesLanguage, languageResolver } from '../../form';
-import { MLanguageForm } from '../MLanguageForm';
+import { defaultValuesPosition, positionResolver } from '../../form';
+import { MPositionForm } from '../MPositionForm';
 
-import { IMCreateLanguageModalRef } from './types';
+import { IMCreatePositionModalRef } from './types';
 
-export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
+export const MCreatePositionModal = forwardRef<IMCreatePositionModalRef, any>(
   ({ ...props }, ref) => {
     //#region Data
     const [open, setOpen] = useState(false);
 
-    const { control, handleSubmit, reset } = useForm<ICreateNotificationParams>(
-      {
-        resolver: languageResolver,
-        defaultValues: defaultValuesLanguage,
-        mode: 'all',
-        shouldFocusError: true,
-      },
-    );
+    const { control, handleSubmit, reset } = useForm<ICreatePositionParams>({
+      resolver: positionResolver,
+      defaultValues: defaultValuesPosition,
+      mode: 'all',
+      shouldFocusError: true,
+    });
     //#endregion
 
     //#region Event
@@ -38,8 +36,8 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
       handleSubmit(async (values) => {
         try {
           console.log(values);
-          const res = await createLanguage(values);
-          toast.success('Tạo mới ngôn ngữ thành công!');
+          const res = await createPosition(values);
+          toast.success('Tạo mới chức vụ thành công!');
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
         }
@@ -60,7 +58,7 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
       >
         <Box p={2.5}>
           <form>
-            <MLanguageForm control={control} />
+            <MPositionForm control={control} />
 
             <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
           </form>
