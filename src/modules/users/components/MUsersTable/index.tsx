@@ -107,7 +107,6 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   const rows = useMemo<GridRowsProp>(
     () =>
       data?.map((e, i) => ({
-        id: e.id,
         col1: i + 1,
         col2: e.username,
         col3: e.created_date,

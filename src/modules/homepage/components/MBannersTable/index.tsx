@@ -103,7 +103,6 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
       data?.map((e, i) => ({
         ...e,
         index: i + 1,
-        id: e.id,
         action: e.id,
       })),
     [data],

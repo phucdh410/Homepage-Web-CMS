@@ -22,11 +22,11 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
           </FormLabel>
           <Controller
             control={control}
-            name="name"
+            name="fullname"
             render={({ field, fieldState: { error } }) => (
               <CInput
                 {...field}
-                id="name"
+                id="fullname"
                 placeholder="Nhập tên..."
                 error={!!error}
                 helperText={error?.message}
@@ -74,7 +74,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
           </FormLabel>
           <Controller
             control={control}
-            name="file"
+            name="file_id"
             render={({ field, fieldState: { error } }) => (
               <CImageUpload
                 {...field}

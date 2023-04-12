@@ -3,22 +3,23 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
+import dayjs from 'dayjs';
 
-import { createEmployee, getDetailEmployee } from '@/apis/employees';
+import { getDetailSchedule, updateSchedule } from '@/apis/schedule.api';
 import { CActionsForm } from '@/controls/';
-import { IEmployeeForm } from '@/types/employee';
+import { IUpdateScheduleParams } from '@/types/schedule';
 
-import { MEmployeeForm } from '../../components';
-import { defaultValuesEmployee, employeeResolver } from '../../form';
+import { MScheduleForm } from '../../components';
+import { defaultValuesSchedule, scheduleResolver } from '../../form';
 
-const UpdateEmployeePage = () => {
+const UpdateSchedulePage = () => {
   //#region Data
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, isError, error } = useQuery(
-    ['employee', id],
-    () => getDetailEmployee(id as string),
+  const { data, error, isError } = useQuery(
+    ['schedule', id],
+    () => getDetailSchedule(id as string),
     { enabled: !!id },
   );
 
@@ -32,11 +33,12 @@ const UpdateEmployeePage = () => {
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<IEmployeeForm>({
+  } = useForm<IUpdateScheduleParams>({
     mode: 'all',
-    resolver: employeeResolver,
-    defaultValues: data?.data?.data || defaultValuesEmployee,
+    resolver: scheduleResolver,
+    defaultValues: data?.data?.data || defaultValuesSchedule,
   });
+
   //#endregion
 
   //#region Event
@@ -49,15 +51,19 @@ const UpdateEmployeePage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        await createEmployee(values);
+        const payload = {
+          ...values,
+          date: dayjs(values.date).format('YYYY/MM/DD HH:mm:ss'),
+        };
+        await updateSchedule(id as string, payload);
 
-        toast.success('Thêm mới nhân sự thành công!');
+        toast.success('Cập nhật lịch công tác thành công!');
 
         onCancel();
       } catch (error: any) {
         toast.error(
           error?.response?.data?.message ||
-            'Thêm mới nhân sự không thành công!',
+            'Cập nhật lịch công tác không thành công!',
         );
       }
     })();
@@ -68,12 +74,12 @@ const UpdateEmployeePage = () => {
   return (
     <>
       <Box mb={3}>
-        <Typography variant="page-title">Thêm mới</Typography>
+        <Typography variant="page-title">Chỉnh sửa</Typography>
       </Box>
 
       <Paper className="wrapper">
         <form>
-          <MEmployeeForm control={control} />
+          <MScheduleForm control={control} />
 
           <CActionsForm
             onCancel={onCancel}
@@ -87,4 +93,4 @@ const UpdateEmployeePage = () => {
   //#endregion
 };
 
-export default UpdateEmployeePage;
+export default UpdateSchedulePage;

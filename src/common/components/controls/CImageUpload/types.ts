@@ -1,10 +1,11 @@
-import { IFileUpload } from '@/types/file';
 import { IFormInputComponentProps } from '@/types/form';
 
 export interface ICImageUploadProps extends IFormInputComponentProps {
   url?: string;
-  value: IFileUpload | null;
-  onChange: (value: IFileUpload) => void;
+  value: string;
+  onChange: (file_id: string) => void;
+  // value: IFileUpload | null;
+  // onChange: (value: IFileUpload) => void;
   aspectRatio?: string;
   isSquare?: boolean;
 }

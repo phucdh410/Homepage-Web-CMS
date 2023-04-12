@@ -106,7 +106,7 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       data?.map((e, i) => ({
         ...e,
         index: i + 1,
-        id: e.id,
+
         action: e,
       })),
     [data],

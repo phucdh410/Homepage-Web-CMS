@@ -24,36 +24,42 @@ const MOCK_DATA = [
   {
     id: '1',
     name: 'Hiệu trưởng',
+    created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '2',
     name: 'Phó hiệu trưởng',
+    created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
     name: 'Trưởng bộ môn',
+    created_date: new Date(),
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
     name: 'Trưởng khoa',
+    created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '5',
     name: 'Phó trưởng khoa',
+    created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '6',
     name: 'Trưởng phòng',
+    created_date: new Date(),
     updated_date: new Date(),
     active: false,
   },
@@ -73,7 +79,9 @@ const ListPositionsPage = () => {
     params || {
       page: 1,
       pages: 0,
-      input: '',
+      input: {
+        search: '',
+      },
     },
   );
 
@@ -119,7 +127,7 @@ const ListPositionsPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, input: value }));
+    setFilter((prev) => ({ ...prev, page: 1, input: value }));
   //#endregion
 
   useEffect(() => {

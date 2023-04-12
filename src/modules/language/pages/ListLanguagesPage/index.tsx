@@ -93,7 +93,9 @@ const ListLanguagesPage = () => {
     params || {
       page: 1,
       pages: 0,
-      input: '',
+      input: {
+        search: '',
+      },
     },
   );
 
@@ -139,7 +141,7 @@ const ListLanguagesPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, input: value }));
+    setFilter((prev) => ({ ...prev, page: 1, input: value }));
   //#endregion
 
   useEffect(() => {

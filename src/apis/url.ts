@@ -46,6 +46,18 @@ export const EVENTS = {
   UPDATE_EVENT: '/events', // :id
   DELETE_EVENT: '/events', // :id
 };
+
+export const SCHEDULE = {
+  GET_SCHEDULES: '/schedules/all',
+  CREATE_SCHEDULE: '/schedules',
+  GET_SCHEDULE_BY_ID: '/schedules', // :id
+  UPDATE_SCHEDULE: '/schedules', // :id
+  DELETE_SCHEDULE: '/employees', // :id
+};
+
+// export const APPROVE = {
+// };
+
 export const EMPLOYEES = {
   GET_EMPLOYEES: '/employees/all',
   CREATE_EMPLOYEE: '/employees',

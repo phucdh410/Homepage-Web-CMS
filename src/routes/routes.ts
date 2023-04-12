@@ -28,6 +28,12 @@ export const ROUTES = {
     },
   },
 
+  SCHEDULES: {
+    LIST: '/schedules',
+    CREATE: '/schedules/detail',
+    UPDATE: '/schedules/detail/:id',
+  },
+
   STAFF: {
     EMPLOYEES: {
       LIST: '/staff/employees',

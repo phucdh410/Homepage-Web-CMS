@@ -153,7 +153,7 @@ export const NAVIGATIONS: INavigationItem[] = [
     title: 'Lịch công tác',
     icon: <DateRange />,
     isChildren: false,
-    path: '/schedule',
+    path: '/schedules',
   },
   {
     title: 'Duyệt tin',

@@ -126,7 +126,7 @@ export const CImageUpload = forwardRef(
 
         <Box maxWidth={{ xs: 330, sm: 400, md: 600, lg: 640, xl: 720 }}>
           <img
-            src={isImgError ? defaultImage : value.url}
+            src={isImgError ? defaultImage : value}
             alt=""
             style={{ maxWidth: '100%', height: 'auto' }}
             onError={onImageError}

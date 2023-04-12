@@ -91,7 +91,6 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
                       placeholder="Nhập tiêu đề..."
                       multiline
                       rows={4}
-                      maxRows={6}
                       {...field}
                       error={!!error}
                       helperText={error?.message}

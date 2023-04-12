@@ -29,6 +29,10 @@ let theme = createTheme({
       main: '#191919',
       contrastText: '#ffffff',
     },
+    inputBg: {
+      main: '#f5f5f5',
+      contrastText: '#ffffff',
+    },
   },
   typography: {
     fontFamily: "'Montserrat', sans-serif",
@@ -148,6 +152,11 @@ theme = createTheme(theme, {
           '&.search-input': {
             filter: 'drop-shadow(5px 3px 30px rgba(19, 70, 131, 0.1))',
           },
+          '&.c-datepicker': {
+            '.MuiOutlinedInput-root': {
+              backgroundColor: theme.palette.inputBg.main,
+            },
+          },
         },
       },
     },
@@ -187,7 +196,7 @@ theme = createTheme(theme, {
         },
         multiline: {
           padding: 0,
-          backgroundColor: '#f5f5f5',
+          backgroundColor: theme.palette.inputBg.main,
         },
       },
     },
@@ -232,7 +241,7 @@ theme = createTheme(theme, {
     MuiAutocomplete: {
       styleOverrides: {
         inputRoot: {
-          backgroundColor: '#f5f5f5',
+          backgroundColor: theme.palette.inputBg.main,
           paddingTop: '2.5px',
           paddingBottom: '2.5px',
         },
@@ -326,12 +335,14 @@ declare module '@mui/material/styles' {
   interface Palette {
     skyblue: Palette['primary'];
     textTable: Palette['primary'];
+    inputBg: Palette['primary'];
   }
 
   // allow configuration using `createTheme`
   interface PaletteOptions {
     skyblue?: PaletteOptions['primary'];
     textTable?: PaletteOptions['primary'];
+    inputBg?: PaletteOptions['primary'];
   }
 }
 
@@ -339,6 +350,7 @@ declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     skyblue: true;
     textTable: true;
+    inputBg: true;
   }
 }
 

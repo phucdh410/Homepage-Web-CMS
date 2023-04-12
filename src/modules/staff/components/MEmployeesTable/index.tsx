@@ -35,7 +35,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       sortable: false,
     },
     {
-      field: 'name',
+      field: 'fullname',
       headerName: 'HỌ VÀ TÊN',
       minWidth: 300,
       headerAlign: 'left',
@@ -92,7 +92,6 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       data?.map((e, i) => ({
         ...e,
         index: i + 1,
-        id: e.id,
         action: e.id,
       })),
     [data],

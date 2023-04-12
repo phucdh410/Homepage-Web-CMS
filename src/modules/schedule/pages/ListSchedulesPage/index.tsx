@@ -5,61 +5,61 @@ import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deleteEmployee, getEmployees } from '@/apis/employees';
+import { deleteSchedule, getSchedules } from '@/apis/schedule.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetEmployeesResponse } from '@/types/employee';
+import { IGetSchedulesResponse } from '@/types/schedule';
 
-import { MEmployeesTable } from '../../components';
+import { MSchedulesTable } from '../../components';
 
 const MOCK_DATA = [
   {
     id: '1',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
+    title:
+      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
+    date: new Date(),
     active: true,
   },
   {
     id: '2',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
+    title:
+      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
+    date: new Date(),
     active: true,
   },
   {
     id: '3',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
+    title:
+      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
+    date: new Date(),
     active: false,
   },
   {
     id: '4',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
+    title:
+      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
+    date: new Date(),
     active: true,
   },
   {
     id: '5',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
+    title:
+      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
+    date: new Date(),
     active: true,
   },
   {
     id: '6',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
+    title:
+      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
+    date: new Date(),
     active: false,
   },
 ];
 
-const ListEmployeesPage = () => {
+const ListSchedulesPage = () => {
   //#region Data
   const location = useLocation();
   const navigate = useNavigate();
@@ -80,11 +80,11 @@ const ListEmployeesPage = () => {
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
   const { data, refetch } = useQuery({
-    queryKey: ['employees', filter],
-    queryFn: () => getEmployees(filter),
+    queryKey: ['schedules', filter],
+    queryFn: () => getSchedules(filter),
   });
 
-  const listData = useMemo<IGetEmployeesResponse[]>(
+  const listData = useMemo<IGetSchedulesResponse[]>(
     () => data?.data?.data?.data || [],
     [data],
   );
@@ -104,14 +104,15 @@ const ListEmployeesPage = () => {
       })
     ) {
       try {
-        await deleteEmployee(id);
+        await deleteSchedule(id);
 
         refetch();
 
-        toast.success('Xóa nhân sự thành công!');
+        toast.success('Xóa lịch công tác thành công!');
       } catch (error: any) {
         toast.error(
-          error?.response?.data?.message || 'Xóa nhân sự không thành công!',
+          error?.response?.data?.message ||
+            'Xóa lịch công tác không thành công!',
         );
       }
     }
@@ -143,7 +144,7 @@ const ListEmployeesPage = () => {
         flex={1}
         mb={3}
       >
-        <Typography variant="page-title">Nhân sự</Typography>
+        <Typography variant="page-title">Lịch công tác</Typography>
 
         <Stack direction="row" spacing={1} alignItems="center">
           <CSearchInput defaultValue={filter.input} onChange={onSearch} />
@@ -159,7 +160,7 @@ const ListEmployeesPage = () => {
       </Stack>
 
       <Paper className="wrapper">
-        <MEmployeesTable
+        <MSchedulesTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
@@ -176,4 +177,4 @@ const ListEmployeesPage = () => {
   //#endregion
 };
 
-export default ListEmployeesPage;
+export default ListSchedulesPage;

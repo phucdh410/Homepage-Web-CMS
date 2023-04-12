@@ -2,25 +2,26 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
+import dayjs from 'dayjs';
 
-import { createEmployee } from '@/apis/employees';
+import { createSchedule } from '@/apis/schedule.api';
 import { CActionsForm } from '@/controls/';
-import { IEmployeeForm } from '@/types/employee';
+import { ICreateScheduleParams } from '@/types/schedule';
 
-import { MEmployeeForm } from '../../components';
-import { defaultValuesEmployee, employeeResolver } from '../../form';
+import { MScheduleForm } from '../../components';
+import { defaultValuesSchedule, scheduleResolver } from '../../form';
 
-const CreateEmployeePage = () => {
+const CreateSchedulePage = () => {
   //#region Data
   const {
     control,
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<IEmployeeForm>({
+  } = useForm<ICreateScheduleParams>({
     mode: 'all',
-    resolver: employeeResolver,
-    defaultValues: defaultValuesEmployee,
+    resolver: scheduleResolver,
+    defaultValues: defaultValuesSchedule,
   });
 
   const navigate = useNavigate();
@@ -36,15 +37,19 @@ const CreateEmployeePage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        await createEmployee(values);
+        const payload = {
+          ...values,
+          date: dayjs(values.date).format('YYYY/MM/DD HH:mm:ss'),
+        };
+        await createSchedule(payload);
 
-        toast.success('Thêm mới nhân sự thành công!');
+        toast.success('Thêm mới lịch công tác thành công!');
 
         onCancel();
       } catch (error: any) {
         toast.error(
           error?.response?.data?.message ||
-            'Thêm mới nhân sự không thành công!',
+            'Thêm mới lịch công tác không thành công!',
         );
       }
     })();
@@ -60,7 +65,7 @@ const CreateEmployeePage = () => {
 
       <Paper className="wrapper">
         <form>
-          <MEmployeeForm control={control} />
+          <MScheduleForm control={control} />
 
           <CActionsForm
             onCancel={onCancel}
@@ -74,4 +79,4 @@ const CreateEmployeePage = () => {
   //#endregion
 };
 
-export default CreateEmployeePage;
+export default CreateSchedulePage;

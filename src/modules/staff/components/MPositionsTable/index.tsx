@@ -84,7 +84,7 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
       data?.map((e, i) => ({
         ...e,
         index: i + 1,
-        id: e.id,
+
         action: e,
       })),
     [data],

@@ -30,7 +30,8 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
   };
 
   const onValueChange =
-    (onFieldChange: (value: Dayjs | null) => void) => (value: Dayjs | null) => {
+    (onFieldChange: (value: string | Date | Dayjs | null) => void) =>
+    (value: string | Date | Dayjs | null) => {
       onFieldChange(value);
       trigger([startName, endName]);
     };

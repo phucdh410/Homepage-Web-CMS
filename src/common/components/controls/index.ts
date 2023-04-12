@@ -2,6 +2,7 @@ export * from './CActionsForm';
 export * from './CAutocomplete';
 export * from './CCKEditor';
 export * from './CDatePicker';
+export * from './CDateTimePicker';
 export * from './CFormLabel';
 export * from './CImageUpload';
 export * from './CInput';

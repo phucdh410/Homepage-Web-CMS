@@ -64,7 +64,7 @@ const ListEventsPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, input: value }));
+    setFilter((prev) => ({ ...prev, page: 1, input: value }));
   //#endregion
 
   useEffect(() => {
