@@ -23,56 +23,56 @@ import { IMUpdateLanguageModalRef } from '../../components/MUpdateLanguageModal/
 const MOCK_DATA = [
   {
     id: '1',
-    title: 'Tiếng Việt',
+    name: 'Tiếng Việt',
     created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '2',
-    title: 'Tiếng Anh',
+    name: 'Tiếng Anh',
     created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
-    title: 'Tiếng Thái',
+    name: 'Tiếng Thái',
     created_date: new Date(),
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
-    title: 'Tiếng Nhật',
+    name: 'Tiếng Nhật',
     created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '5',
-    title: 'Tiếng Hàn',
+    name: 'Tiếng Hàn',
     created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '6',
-    title: 'Tiếng Trung',
+    name: 'Tiếng Trung',
     created_date: new Date(),
     updated_date: new Date(),
     active: false,
   },
   {
     id: '7',
-    title: 'Tiếng Pháp',
+    name: 'Tiếng Pháp',
     created_date: new Date(),
     updated_date: new Date(),
     active: true,
   },
   {
     id: '8',
-    title: 'Tiếng lòng....mẹ bao la như biển thái bình',
+    name: 'Tiếng lòng....mẹ bao la như biển thái bình',
     created_date: new Date(),
     updated_date: new Date(),
     active: false,
@@ -141,7 +141,7 @@ const ListLanguagesPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, page: 1, input: value }));
+    setFilter((prev) => ({ ...prev, page: 1, input: { search: value } }));
   //#endregion
 
   useEffect(() => {

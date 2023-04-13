@@ -14,11 +14,12 @@ export const MLanguageForm: React.FC<IMLanguageFormProps> = ({ control }) => {
         </FormLabel>
         <Controller
           control={control}
-          name="title"
+          name="name"
           render={({ field, fieldState: { error } }) => (
             <CInput
-              placeholder="Nhập tên ngôn ngữ (ex: Tiếng Việt)"
               {...field}
+              id="name"
+              placeholder="Nhập tên ngôn ngữ (ex: Tiếng Việt)"
               error={!!error}
               helperText={error?.message}
             />

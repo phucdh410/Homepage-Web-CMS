@@ -25,11 +25,7 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
   };
 
   const updatedDate = (params: GridValueGetterParams<IGetBannersResponse>) => {
-    return dayjs(
-      params.row?.updated_date
-        ? params.row.updated_date
-        : params.row.created_date,
-    );
+    return dayjs(params.row.updated_date);
   };
 
   const columns: GridColDef[] = [

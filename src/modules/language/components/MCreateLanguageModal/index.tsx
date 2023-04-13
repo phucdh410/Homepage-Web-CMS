@@ -5,7 +5,7 @@ import { Box, Dialog } from '@mui/material';
 
 import { createLanguage } from '@/apis/languages.api';
 import { CActionsForm } from '@/controls/';
-import { ICreateNotificationParams } from '@/types/notification';
+import { ICreateLanguageParams } from '@/types/language';
 
 import { defaultValuesLanguage, languageResolver } from '../../form';
 import { MLanguageForm } from '../MLanguageForm';
@@ -17,14 +17,12 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
     //#region Data
     const [open, setOpen] = useState(false);
 
-    const { control, handleSubmit, reset } = useForm<ICreateNotificationParams>(
-      {
-        resolver: languageResolver,
-        defaultValues: defaultValuesLanguage,
-        mode: 'all',
-        shouldFocusError: true,
-      },
-    );
+    const { control, handleSubmit, reset } = useForm<ICreateLanguageParams>({
+      resolver: languageResolver,
+      defaultValues: defaultValuesLanguage,
+      mode: 'all',
+      shouldFocusError: true,
+    });
     //#endregion
 
     //#region Event

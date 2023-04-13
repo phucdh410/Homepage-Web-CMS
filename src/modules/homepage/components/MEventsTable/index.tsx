@@ -25,11 +25,7 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
   };
 
   const updatedDate = (params: GridValueGetterParams<IGetEventsResponse>) => {
-    return dayjs(
-      params.row?.updated_date
-        ? params.row.updated_date
-        : params.row.created_date,
-    );
+    return dayjs(params.row.updated_date);
   };
 
   const columns: GridColDef[] = [

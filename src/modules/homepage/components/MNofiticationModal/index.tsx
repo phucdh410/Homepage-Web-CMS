@@ -56,9 +56,9 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
     //#endregion
 
     useImperativeHandle(ref, () => ({
-      open: (data?: IGetNotificationsResponse, language_id?: number) => {
-        if (data && language_id) {
-          reset({ ...data, language_id });
+      open: (data?: IGetNotificationsResponse) => {
+        if (data) {
+          reset({ ...data });
           setId(data?.id);
         }
 

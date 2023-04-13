@@ -21,17 +21,17 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
   //#endregion
 
   //#region Event
-  const disableStartDate = (date: Dayjs) => {
+  const disableStartDate = (date: Dayjs | Date | string) => {
     return dayjs(date).isAfter(endValue, 'date');
   };
 
-  const disableEndDate = (date: Dayjs) => {
+  const disableEndDate = (date: Dayjs | Date | string) => {
     return dayjs(date).isBefore(startValue, 'date');
   };
 
   const onValueChange =
-    (onFieldChange: (value: string | Date | Dayjs | null) => void) =>
-    (value: string | Date | Dayjs | null) => {
+    (onFieldChange: (value: Date | Dayjs | string | null) => void) =>
+    (value: Date | Dayjs | string | null) => {
       onFieldChange(value);
       trigger([startName, endName]);
     };

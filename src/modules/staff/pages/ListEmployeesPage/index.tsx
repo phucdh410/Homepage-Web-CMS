@@ -118,7 +118,7 @@ const ListEmployeesPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, page: 1, input: value }));
+    setFilter((prev) => ({ ...prev, page: 1, input: { search: value } }));
   //#endregion
 
   useEffect(() => {

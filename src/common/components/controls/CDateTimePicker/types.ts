@@ -3,7 +3,7 @@ import { Dayjs } from 'dayjs';
 import { IFormInputComponentProps } from '@/types/form';
 
 export interface ICDateTimePickerProps
-  extends IFormInputComponentProps<string | Date | Dayjs | null> {
+  extends IFormInputComponentProps<Date | Dayjs | string | null> {
   placeholder?: string;
   format?: string;
   fullWidth?: boolean;

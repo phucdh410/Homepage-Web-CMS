@@ -14,7 +14,7 @@ export interface IGetNotificationsParams extends IBasePaginateParams {}
 export interface IGetNotificationsResponse {
   id: string;
   title: string;
-  created_date: string | Date | Dayjs | null;
-  updated_date: string | Date | Dayjs | null;
+  created_date: Date | Dayjs | string | null;
+  updated_date: Date | Dayjs | string | null;
   active: boolean;
 }

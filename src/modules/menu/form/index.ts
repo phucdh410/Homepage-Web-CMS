@@ -56,7 +56,5 @@ export const defaultValuesMenu: ICreateMenuParams = {
   display: 1,
   active: true,
   menus: [],
-  level: 1,
-  type: 1,
 };
 //#endregion

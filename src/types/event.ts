@@ -1,6 +1,5 @@
 import { Dayjs } from 'dayjs';
 
-import { IFileUpload } from './file';
 import { IBasePaginateParams } from './params';
 
 export interface IGetEventsResponse {
@@ -9,7 +8,7 @@ export interface IGetEventsResponse {
   active: boolean;
   start_date: string | Date | Dayjs;
   end_date: string | Date | Dayjs;
-  updated_date: string | Date | Dayjs | null;
+  updated_date: Date | Dayjs | string | null;
   file_id: string;
 }
 
@@ -34,7 +33,7 @@ export interface IUpdateEventParams extends ICreateEventParams {}
 
 export interface IEventForm {
   title: string;
-  file: IFileUpload | null;
+  file_id: string;
   start_date: string | Date | Dayjs;
   end_date: string | Date | Dayjs;
 }

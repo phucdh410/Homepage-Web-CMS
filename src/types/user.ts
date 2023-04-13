@@ -13,6 +13,14 @@ export interface IUsersDataTable {
 
 export interface IUserFormParams {
   username: string;
+  password?: string;
+  permissions: IPermissionsPayload[];
+  active: boolean;
+  isEdit: boolean;
+}
+
+export interface ICreateUserParams {
+  username: string;
   password: string;
   permissions: IPermissionsPayload[];
   active: boolean;
@@ -27,7 +35,7 @@ export interface IUserDetail {
   permissions: IPermissionsPayload[];
 }
 
-export interface IUpdateUserParams extends Omit<IUserFormParams, 'password'> {
+export interface IUpdateUserParams extends Omit<ICreateUserParams, 'password'> {
   password?: string;
 }
 

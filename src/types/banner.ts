@@ -1,6 +1,5 @@
 import { Dayjs } from 'dayjs';
 
-import { IFileUpload } from './file';
 import { IBasePaginateParams } from './params';
 
 export interface IGetBannersResponse {
@@ -9,7 +8,7 @@ export interface IGetBannersResponse {
   active: boolean;
   start_date: string | Date | Dayjs;
   end_date: string | Date | Dayjs;
-  updated_date: string | Date | Dayjs | null;
+  updated_date: Date | Dayjs | string | null;
   file_id: string;
 }
 
@@ -33,7 +32,7 @@ export interface IUpdateBannerParams extends ICreateBanner {}
 
 export interface IBannerForm {
   title: string;
-  file: IFileUpload | null;
+  file_id: string;
   start_date: string | Date | Dayjs;
   end_date: string | Date | Dayjs;
 }

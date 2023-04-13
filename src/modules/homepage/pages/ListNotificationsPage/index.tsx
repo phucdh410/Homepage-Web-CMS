@@ -23,7 +23,9 @@ const ListNotificationsPage = () => {
   const [filter, setFilter] = useState({
     page: 1,
     pages: 0,
-    input: '',
+    input: {
+      search: '',
+    },
   });
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
@@ -65,7 +67,7 @@ const ListNotificationsPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, page: 1, input: value }));
+    setFilter((prev) => ({ ...prev, page: 1, input: { search: value } }));
   //#endregion
 
   useEffect(() => {

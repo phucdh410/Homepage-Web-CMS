@@ -7,16 +7,12 @@ import { Box, FormLabel, Paper, Stack, Typography } from '@mui/material';
 import { createEvent, updateEvent } from '@/apis/events.api';
 import { CActionsForm, CImageUpload, CInput, CRangePicker } from '@/controls/';
 import { IEventForm } from '@/types/event';
-import { IFileUpload } from '@/types/file';
 
 import { defaultValuesEvent, eventResolver } from '../../form';
 
 import { IMEventFormProps } from './types';
 
-export const MEventForm: React.FC<IMEventFormProps> = ({
-  data,
-  language_id,
-}) => {
+export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#region Data
   const { control, handleSubmit, reset, trigger } = useForm<IEventForm>({
     mode: 'all',
@@ -38,10 +34,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        const payload = { ...values, file_id: (values.file as IFileUpload).id };
-        data
-          ? await updateEvent(data?.id, payload)
-          : await createEvent(payload);
+        data ? await updateEvent(data?.id, values) : await createEvent(values);
 
         toast.success('Cập nhật event thành công!');
 
@@ -56,7 +49,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({
   //#endregion
 
   useEffect(() => {
-    if (data) reset({ ...data, language_id });
+    if (data) reset({ ...data });
   }, [data]);
 
   //#region Render
@@ -95,7 +88,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({
               </FormLabel>
               <Controller
                 control={control}
-                name="file"
+                name="file_id"
                 render={({ field, fieldState: { error } }) => (
                   <CImageUpload
                     {...field}

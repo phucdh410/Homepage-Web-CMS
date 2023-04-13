@@ -4,12 +4,12 @@ import { array, boolean, object, string } from 'yup';
 
 import { IUserFormParams } from '@/types/user';
 
-export const defaultValues = {
+export const defaultValues: IUserFormParams = {
   username: '',
   password: '',
   active: true,
   permissions: [],
-  isCreate: true,
+  isEdit: false,
 };
 
 export const userResolver: Resolver<IUserFormParams> = yupResolver(
@@ -33,6 +33,5 @@ export const userResolver: Resolver<IUserFormParams> = yupResolver(
       'Chọn phân quyền ít nhất 1 chức năng cho người dùng!',
     ),
     active: boolean(),
-    isCreate: boolean(),
   }),
 );

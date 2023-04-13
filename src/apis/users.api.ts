@@ -20,7 +20,7 @@ export const getUsers = async (
   return await post(USERS.GET_USERS, body);
 };
 
-export const getUserById = async (
+export const getDetailUser = async (
   id: string,
 ): Promise<IApiResponse<IUserDetail, any>> => {
   return await get(`${USERS.GET_USER_BY_ID}/${id}`);

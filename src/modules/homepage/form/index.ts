@@ -11,10 +11,9 @@ import { ICreateNotificationParams } from '@/types/notification';
 //#region Banner
 export const defaultValuesBanner: IBannerForm = {
   title: '',
-  file: null,
+  file_id: '',
   start_date: dayjs(),
   end_date: dayjs().endOf('year'),
-  language_id: 1,
 };
 
 export const bannerResolver: Resolver<IBannerForm> = yupResolver(
@@ -24,9 +23,7 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
       .trim('Tiêu đề chứa khoảng trắng không hợp lệ!')
       .strict()
       .max(500, 'Tiêu đề tối đa 500 kí tự!'),
-    file: object()
-      .typeError('Vui lòng chọn hình ảnh!')
-      .required('Vui lòng chọn hình ảnh!'),
+    file_id: string().required('Vui lòng chọn hình ảnh!'),
     start_date: date()
       .typeError('Định dạng ngày không hợp lệ!')
       .required('Vui lòng chọn ngày!')
@@ -84,10 +81,9 @@ export const notificationResolver: Resolver<ICreateNotificationParams> =
 //#region Event
 export const defaultValuesEvent = {
   title: '',
-  file_id: null,
+  file_id: '',
   start_date: dayjs(),
   end_date: dayjs().endOf('year'),
-  language_id: 1,
 };
 
 export const eventResolver: Resolver<IEventForm> = yupResolver(

@@ -7,7 +7,6 @@ import { Box, FormLabel, Paper, Stack, Typography } from '@mui/material';
 import { createBanner, updateBanner } from '@/apis/banners.api';
 import { CActionsForm, CImageUpload, CInput, CRangePicker } from '@/controls/';
 import { IBannerForm } from '@/types/banner';
-import { IFileUpload } from '@/types/file';
 
 import { bannerResolver, defaultValuesBanner } from '../../form';
 
@@ -38,10 +37,9 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        const payload = { ...values, file_id: (values.file as IFileUpload).id };
         data
-          ? await updateBanner(data?.id, payload)
-          : await createBanner(payload);
+          ? await updateBanner(data?.id, values)
+          : await createBanner(values);
 
         toast.success('Cập nhật banner thành công!');
 
@@ -56,7 +54,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
   //#endregion
 
   useEffect(() => {
-    if (data) reset({ ...data, language_id });
+    if (data) reset({ ...data });
   }, [data]);
 
   //#region Render
@@ -95,7 +93,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
               </FormLabel>
               <Controller
                 control={control}
-                name="file"
+                name="file_id"
                 render={({ field, fieldState: { error } }) => (
                   <CImageUpload
                     {...field}

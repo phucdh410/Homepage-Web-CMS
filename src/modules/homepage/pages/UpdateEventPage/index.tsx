@@ -25,7 +25,7 @@ const UpdateEventPage = () => {
   //#region Render
   return (
     <div>
-      <MEventForm data={data?.data?.data} language_id={_language_id} />
+      <MEventForm data={data?.data?.data} />
     </div>
   );
   //#endregion

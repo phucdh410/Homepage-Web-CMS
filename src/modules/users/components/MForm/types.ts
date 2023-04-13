@@ -1,5 +1,8 @@
-import { IUserDetail } from '@/types/user';
+import { Control } from 'react-hook-form';
+
+import { IUserFormParams } from '@/types/user';
 
 export interface IMFormProps {
-  data?: IUserDetail;
+  control: Control<IUserFormParams, any>;
+  isEdit?: boolean;
 }
