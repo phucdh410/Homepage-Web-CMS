@@ -43,7 +43,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       sortable: false,
     },
     {
-      field: 'title',
+      field: 'name',
       headerName: 'TÊN NGÔN NGỮ',
       minWidth: 300,
       headerAlign: 'left',
