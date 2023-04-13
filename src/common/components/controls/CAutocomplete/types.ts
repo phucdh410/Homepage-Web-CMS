@@ -1,13 +1,7 @@
 import { ReactNode } from 'react';
 
 import { IFormInputComponentProps, IFormInputComponentRef } from '@/types/form';
-
-export interface IOption {
-  id: any;
-  label: string;
-  value: any;
-  record?: any;
-}
+import { IOption } from '@/types/options';
 
 export interface ICAutocompleteRef extends IFormInputComponentRef {}
 export interface ICAutocompleteProps extends IFormInputComponentProps {

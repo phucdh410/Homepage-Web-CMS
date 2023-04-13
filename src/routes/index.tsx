@@ -8,6 +8,7 @@ import { CLoginLayout } from '@/layouts/CLoginLayout';
 import { FooterRoutes } from './footer.routes';
 import { HomepageRoutes } from './homepage.routes';
 import { LanguagesRoutes } from './languages.routes';
+import { MenuRoutes } from './menu.routes';
 import { ScheduleRoutes } from './schedule.routes';
 import { StaffRoutes } from './staff.routes';
 import { UsersRoutes } from './users.routes';
@@ -33,6 +34,7 @@ const routes: RouteObject[] = [
 
           ...UsersRoutes,
           ...HomepageRoutes,
+          ...MenuRoutes,
           ...ScheduleRoutes,
           ...StaffRoutes,
           ...FooterRoutes,
@@ -56,19 +58,6 @@ const routes: RouteObject[] = [
           },
           {
             path: '/informations/unions',
-            element: <CDevelopment />,
-          },
-
-          {
-            path: '/menu/mainmenu',
-            element: <CDevelopment />,
-          },
-          {
-            path: '/menu/pages',
-            element: <CDevelopment />,
-          },
-          {
-            path: '/menu/categories',
             element: <CDevelopment />,
           },
 

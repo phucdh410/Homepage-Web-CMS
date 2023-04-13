@@ -28,6 +28,24 @@ export const ROUTES = {
     },
   },
 
+  MENUS: {
+    PAGES: {
+      LIST: '/menu/pages',
+      CREATE: '/menu/pages/detail',
+      UPDATE: '/menu/pages/detail/:id', // ?language_id=
+    },
+    FOLDERS: {
+      LIST: '/menu/folders',
+      CREATE: '/menu/folders/detail',
+      UPDATE: '/menu/folders/detail/:id', // ?language_id=
+    },
+    MENUS: {
+      LIST: '/menu/menus',
+      CREATE: '/menu/menus/detail',
+      UPDATE: '/menu/menus/detail/:id', // ?language_id=
+    },
+  },
+
   SCHEDULES: {
     LIST: '/schedules',
     CREATE: '/schedules/detail',

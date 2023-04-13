@@ -1,7 +1,9 @@
 import { forwardRef, useMemo, useState } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 
-import { ICAutocompleteProps, ICAutocompleteRef, IOption } from './types';
+import { IOption } from '@/types/options';
+
+import { ICAutocompleteProps, ICAutocompleteRef } from './types';
 
 export const CAutocomplete = forwardRef<ICAutocompleteRef, ICAutocompleteProps>(
   (

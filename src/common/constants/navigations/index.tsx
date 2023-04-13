@@ -121,13 +121,6 @@ export const NAVIGATIONS: INavigationItem[] = [
     path: '/menu',
     children: [
       {
-        title: 'Menu',
-        icon: '',
-        isChildren: false,
-        path: '/menu/mainmenu',
-        level: 1,
-      },
-      {
         title: 'Trang',
         icon: '',
         isChildren: false,
@@ -138,7 +131,14 @@ export const NAVIGATIONS: INavigationItem[] = [
         title: 'Danh mục',
         icon: '',
         isChildren: false,
-        path: '/menu/categories',
+        path: '/menu/folders',
+        level: 1,
+      },
+      {
+        title: 'Menu',
+        icon: '',
+        isChildren: false,
+        path: '/menu/menus',
         level: 1,
       },
     ],

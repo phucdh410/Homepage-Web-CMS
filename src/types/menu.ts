@@ -1,17 +1,28 @@
+import { Dayjs } from 'dayjs';
+
+import { POSITION_DISPLAY_TYPES } from '@/constants/enums';
+
 import { IBasePaginateParams } from './params';
+
+export interface IMenu {
+  source_id: string;
+  parent_id: string;
+  level: number;
+  type: number;
+}
 
 export interface ICreateMenuParams {
   title: string;
-  level: number;
-  type: number;
   active: boolean;
   display: number;
+  menus: IMenu[];
 }
 
 export interface IGetMenusResponse {
   id: string;
   title: string;
-  display: number;
+  display: POSITION_DISPLAY_TYPES;
+  updated_date: Date | Dayjs | string | null;
   active: boolean;
 }
 
@@ -20,8 +31,9 @@ export interface IGetMenusParams extends IBasePaginateParams {}
 export interface IGetDetailMenuResponse {
   id: string;
   title: string;
-  display: number;
+  display: POSITION_DISPLAY_TYPES;
   active: boolean;
+  menus: IMenu[];
 }
 
 export interface IUpdateMenuParams extends ICreateMenuParams {}
