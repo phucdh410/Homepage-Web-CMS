@@ -5,7 +5,7 @@ import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deleteSchedule, getSchedules } from '@/apis/schedule.api';
+import { deleteSchedule, getSchedules } from '@/apis/schedules.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';

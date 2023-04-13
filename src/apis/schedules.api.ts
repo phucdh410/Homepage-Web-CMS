@@ -8,28 +8,28 @@ import {
   IUpdateScheduleParams,
 } from '@/types/schedule';
 
-import { SCHEDULE } from './url';
+import { SCHEDULES } from './url';
 
 export const getSchedules = (
   body: IGetSchedulesParams,
 ): Promise<IApiResponse<IPaginateData<IGetSchedulesResponse[]>, any>> => {
-  return post(SCHEDULE.GET_SCHEDULES, body);
+  return post(SCHEDULES.GET_SCHEDULES, body);
 };
 
 export const createSchedule = (body: ICreateScheduleParams) => {
-  return post(SCHEDULE.CREATE_SCHEDULE, body);
+  return post(SCHEDULES.CREATE_SCHEDULE, body);
 };
 
 export const getDetailSchedule = (
   id: string,
 ): Promise<IApiResponse<IGetDetailSchedulesResponse, any>> => {
-  return get(`${SCHEDULE.UPDATE_SCHEDULE}/${id}`);
+  return get(`${SCHEDULES.UPDATE_SCHEDULE}/${id}`);
 };
 
 export const updateSchedule = (id: string, body: IUpdateScheduleParams) => {
-  return put(`${SCHEDULE.UPDATE_SCHEDULE}/${id}`, body);
+  return put(`${SCHEDULES.UPDATE_SCHEDULE}/${id}`, body);
 };
 
 export const deleteSchedule = (id: string) => {
-  return remove(`${SCHEDULE.DELETE_SCHEDULE}/${id}`);
+  return remove(`${SCHEDULES.DELETE_SCHEDULE}/${id}`);
 };

@@ -5,7 +5,7 @@ import { Box, Paper, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 
-import { getDetailSchedule, updateSchedule } from '@/apis/schedule.api';
+import { getDetailSchedule, updateSchedule } from '@/apis/schedules.api';
 import { CActionsForm } from '@/controls/';
 import { IUpdateScheduleParams } from '@/types/schedule';
 

@@ -47,7 +47,31 @@ export const EVENTS = {
   DELETE_EVENT: '/events', // :id
 };
 
-export const SCHEDULE = {
+export const PAGES = {
+  CREATE_PAGE: '/pages',
+  GET_PAGES: '/pages/all',
+  GET_PAGE_BY_ID: '/pages', // :id
+  UPDATE_PAGE: '/pages', // :id
+  DELETE_PAGE: '/pages', // :id
+};
+
+export const FOLDERS = {
+  CREATE_FOLDER: '/folders',
+  GET_FOLDERS: '/folders/all',
+  GET_FOLDER_BY_ID: '/folders', // :id
+  UPDATE_FOLDER: '/folders', // :id
+  DELETE_FOLDER: '/folders', // :id
+};
+
+export const MENUS = {
+  CREATE_MENU: '/menus',
+  GET_MENUS: '/menus/all',
+  GET_MENU_BY_ID: '/menus', // :id
+  UPDATE_MENU: '/menus', // :id
+  DELETE_MENU: '/menus', // :id
+};
+
+export const SCHEDULES = {
   GET_SCHEDULES: '/schedules/all',
   CREATE_SCHEDULE: '/schedules',
   GET_SCHEDULE_BY_ID: '/schedules', // :id

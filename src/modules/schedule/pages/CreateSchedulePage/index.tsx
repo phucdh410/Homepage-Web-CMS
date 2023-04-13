@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 
-import { createSchedule } from '@/apis/schedule.api';
+import { createSchedule } from '@/apis/schedules.api';
 import { CActionsForm } from '@/controls/';
 import { ICreateScheduleParams } from '@/types/schedule';
 
