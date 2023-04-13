@@ -97,6 +97,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
                 render={({ field, fieldState: { error } }) => (
                   <CImageUpload
                     {...field}
+                    aspectRatio="16/9"
                     error={!!error}
                     helperText={error?.message}
                   />

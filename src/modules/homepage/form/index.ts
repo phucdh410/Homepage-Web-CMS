@@ -12,8 +12,10 @@ import { ICreateNotificationParams } from '@/types/notification';
 export const defaultValuesBanner: IBannerForm = {
   title: '',
   file_id: '',
-  start_date: dayjs(),
-  end_date: dayjs().endOf('year'),
+  start_date: null,
+  end_date: null,
+  // start_date: dayjs(),
+  // end_date: dayjs().endOf('year'),
 };
 
 export const bannerResolver: Resolver<IBannerForm> = yupResolver(
@@ -82,8 +84,10 @@ export const notificationResolver: Resolver<ICreateNotificationParams> =
 export const defaultValuesEvent = {
   title: '',
   file_id: '',
-  start_date: dayjs(),
-  end_date: dayjs().endOf('year'),
+  start_date: null,
+  end_date: null,
+  // start_date: dayjs(),
+  // end_date: dayjs().endOf('year'),
 };
 
 export const eventResolver: Resolver<IEventForm> = yupResolver(
