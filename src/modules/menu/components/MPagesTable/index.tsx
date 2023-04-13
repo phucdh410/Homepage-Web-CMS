@@ -18,6 +18,7 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   //#region Data
   const display = (params: GridValueGetterParams<IGetPagesResponse>) => {

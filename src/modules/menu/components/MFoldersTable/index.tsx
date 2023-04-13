@@ -18,6 +18,7 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   //#region Data
   const display = (params: GridValueGetterParams<IGetFoldersResponse>) => {

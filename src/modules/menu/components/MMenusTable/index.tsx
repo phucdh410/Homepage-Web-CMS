@@ -18,6 +18,7 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   //#region Data
   const display = (params: GridValueGetterParams<IGetMenusResponse>) => {
