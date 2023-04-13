@@ -29,7 +29,7 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
 
   const columns: GridColDef[] = [
     {
-      field: 'index',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -94,7 +94,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
-        index: i + 1,
         action: e.id,
       })),
     [data],
@@ -105,6 +104,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

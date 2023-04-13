@@ -17,6 +17,7 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   const _date = (params: GridValueGetterParams<IGetSchedulesResponse>) => {
     return dayjs(params.row?.date).format('DD/MM/YYYY');
@@ -28,7 +29,7 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
   //#region Data
   const columns: GridColDef[] = [
     {
-      field: 'index',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -93,7 +94,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
-        index: i + 1,
         action: e.id,
       })),
     [data],
@@ -104,6 +104,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

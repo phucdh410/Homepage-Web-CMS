@@ -16,6 +16,64 @@ import { IGetNotificationsResponse } from '@/types/notification';
 
 import { IMNotificationModalRef } from '../../components/MNofiticationModal/types';
 
+const MOCK_DATA = [
+  {
+    id: '1',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: true,
+  },
+  {
+    id: '2',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: false,
+  },
+  {
+    id: '3',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: true,
+  },
+  {
+    id: '4',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: true,
+  },
+  {
+    id: '5',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: false,
+  },
+  {
+    id: '6',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: true,
+  },
+  {
+    id: '7',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: false,
+  },
+  {
+    id: '8',
+    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
+    updated_date: new Date(),
+    created_date: new Date(),
+    active: true,
+  },
+];
 const ListNotificationsPage = () => {
   //#region Data
   const modalRef = useRef<IMNotificationModalRef | null>(null);
@@ -105,9 +163,10 @@ const ListNotificationsPage = () => {
 
       <Paper className="wrapper">
         <MNotificationsTable
-          data={listData || []}
+          data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
+          page={paginate.page}
         />
       </Paper>
 

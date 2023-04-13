@@ -9,8 +9,7 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CSwitch } from '@/controls/';
-import { CDataGrid } from '@/others/';
+import { CActiveTag, CDataGrid } from '@/others/';
 import { IUsersDataTable } from '@/types/user';
 
 import { IMUsersTableProps } from './types';
@@ -20,23 +19,24 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   onEdit,
   onDelete,
   onStatusChange,
+  page,
 }) => {
   //#region Data
 
   const createdDate = (params: GridValueGetterParams<IUsersDataTable>) => {
-    return dayjs(params.row.created_date);
+    return dayjs(params.row.created_date).format('DD/MM/YYYY');
   };
   const updatedDate = (params: GridValueGetterParams<IUsersDataTable>) => {
     return dayjs(
       params.row?.updated_date
         ? params.row.updated_date
         : params.row.created_date,
-    );
+    ).format('DD/MM/YYYY');
   };
 
   const columns: GridColDef[] = [
     {
-      field: 'col1',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -44,7 +44,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       sortable: false,
     },
     {
-      field: 'col2',
+      field: 'username',
       headerName: 'TÊN ĐĂNG NHẬP',
       minWidth: 300,
       headerAlign: 'left',
@@ -53,7 +53,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       flex: 1,
     },
     {
-      field: 'col3',
+      field: 'created_date',
       headerName: 'NGÀY TẠO',
       minWidth: 200,
       headerAlign: 'center',
@@ -62,7 +62,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       valueGetter: createdDate,
     },
     {
-      field: 'col4',
+      field: 'updated_date',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -71,21 +71,18 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       valueGetter: updatedDate,
     },
     {
-      field: 'col5',
+      field: 'active',
       headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      renderCell: (params: GridRenderCellParams<IUsersDataTable>) => (
-        <CSwitch
-          value={params.value?.active}
-          onChange={onStatusChange(params.value?.id)}
-        />
+      renderCell: (params: GridRenderCellParams<Boolean>) => (
+        <CActiveTag value={params.value} />
       ),
     },
     {
-      field: 'col6',
+      field: 'action',
       headerName: 'THAO TÁC',
       minWidth: 200,
       headerAlign: 'center',
@@ -107,12 +104,8 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   const rows = useMemo<GridRowsProp>(
     () =>
       data?.map((e, i) => ({
-        col1: i + 1,
-        col2: e.username,
-        col3: e.created_date,
-        col4: e.updated_date,
-        col5: e,
-        col6: e.id,
+        ...e,
+        action: e.id,
       })),
     [data],
   );
@@ -122,6 +115,6 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

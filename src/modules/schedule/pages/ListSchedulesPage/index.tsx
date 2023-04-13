@@ -164,6 +164,7 @@ const ListSchedulesPage = () => {
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
+          page={paginate.page}
         />
       </Paper>
 

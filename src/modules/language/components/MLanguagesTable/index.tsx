@@ -16,6 +16,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   //#region Data
   const createdDate = (
@@ -35,7 +36,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
 
   const columns: GridColDef[] = [
     {
-      field: 'index',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -100,8 +101,6 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
-        index: i + 1,
-
         action: e,
       })),
     [data],
@@ -112,6 +111,6 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

@@ -4,4 +4,5 @@ export interface IMEmployeesTableProps {
   data: IGetEmployeesResponse[];
   onEdit: (id: string) => () => void;
   onDelete: (id: string) => () => void;
+  page: number;
 }

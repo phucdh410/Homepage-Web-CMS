@@ -5,4 +5,5 @@ export interface IMUsersTableProps {
   onEdit: (id: string) => () => void;
   onDelete: (id: string) => () => void;
   onStatusChange: (id: string) => () => void;
+  page: number;
 }

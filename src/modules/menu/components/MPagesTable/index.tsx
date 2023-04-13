@@ -29,7 +29,7 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
 
   const columns: GridColDef[] = [
     {
-      field: 'index',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -94,7 +94,6 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
-        index: i + 1,
         action: e.id,
       })),
     [data],
@@ -105,6 +104,6 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

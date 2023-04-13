@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Delete, Edit, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
@@ -9,7 +9,7 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CDataGrid } from '@/others/';
+import { CActiveTag, CDataGrid } from '@/others/';
 import { IGetEventsResponse } from '@/types/event';
 
 import { IMEventsTableProps } from './types';
@@ -18,19 +18,22 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   //#region Data
   const displayTime = (params: GridValueGetterParams<IGetEventsResponse>) => {
-    return `${dayjs(params.row?.start_date)} - ${dayjs(params.row?.end_date)}`;
+    return `${dayjs(params.row?.start_date).format('DD/MM/YYYY')} - ${dayjs(
+      params.row?.end_date,
+    ).format('DD/MM/YYYY')}`;
   };
 
   const updatedDate = (params: GridValueGetterParams<IGetEventsResponse>) => {
-    return dayjs(params.row.updated_date);
+    return dayjs(params.row.updated_date).format('DD/MM/YYYY');
   };
 
   const columns: GridColDef[] = [
     {
-      field: 'index',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -71,8 +74,9 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      renderCell: (params: GridRenderCellParams<Boolean>) =>
-        params.value ? <Visibility /> : <VisibilityOff />,
+      renderCell: (params: GridRenderCellParams<Boolean>) => (
+        <CActiveTag value={params.value} />
+      ),
     },
     {
       field: 'action',
@@ -98,7 +102,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
-        index: i + 1,
         action: e.id,
       })),
     [data],
@@ -109,6 +112,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

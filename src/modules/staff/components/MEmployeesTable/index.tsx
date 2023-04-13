@@ -17,6 +17,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   //#region Data
   const updatedDate = (
@@ -27,7 +28,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
 
   const columns: GridColDef[] = [
     {
-      field: 'index',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -91,7 +92,6 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
-        index: i + 1,
         action: e.id,
       })),
     [data],
@@ -102,6 +102,6 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

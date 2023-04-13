@@ -13,6 +13,80 @@ import { IGetBannersResponse } from '@/types/banner';
 
 import { MBannersTable } from '../../components';
 
+const MOCK_DATA = [
+  {
+    id: '1',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: true,
+  },
+  {
+    id: '2',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: false,
+  },
+  {
+    id: '3',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: true,
+  },
+  {
+    id: '4',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: true,
+  },
+  {
+    id: '5',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: false,
+  },
+  {
+    id: '6',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: true,
+  },
+  {
+    id: '7',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: false,
+  },
+  {
+    id: '8',
+    title: 'Ngày hội sinh viên',
+    start_date: new Date(),
+    end_date: new Date(),
+    updated_date: new Date(),
+    file_id: 'asd',
+    active: true,
+  },
+];
 const ListBannersPage = () => {
   //#region Data
   const [filter, setFilter] = useState({
@@ -105,9 +179,10 @@ const ListBannersPage = () => {
 
       <Paper className="wrapper">
         <MBannersTable
-          data={listData || []}
+          data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
+          page={paginate.page}
         />
       </Paper>
 

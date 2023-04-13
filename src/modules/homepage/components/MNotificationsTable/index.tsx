@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Delete, Edit, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
@@ -9,7 +9,7 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CDataGrid } from '@/others/';
+import { CActiveTag, CDataGrid } from '@/others/';
 import { IGetNotificationsResponse } from '@/types/notification';
 
 import { IMNotificationsTableProps } from './types';
@@ -18,12 +18,13 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
   data,
   onEdit,
   onDelete,
+  page,
 }) => {
   //#region Data
   const createdDate = (
     params: GridValueGetterParams<IGetNotificationsResponse>,
   ) => {
-    return dayjs(params.row.created_date);
+    return dayjs(params.row.created_date).format('DD/MM/YYYY');
   };
   const updatedDate = (
     params: GridValueGetterParams<IGetNotificationsResponse>,
@@ -32,12 +33,12 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       params.row?.updated_date
         ? params.row.updated_date
         : params.row.created_date,
-    );
+    ).format('DD/MM/YYYY');
   };
 
   const columns: GridColDef[] = [
     {
-      field: 'index',
+      field: '__index',
       headerName: 'STT',
       minWidth: 50,
       headerAlign: 'center',
@@ -78,8 +79,9 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      renderCell: (params: GridRenderCellParams<Boolean>) =>
-        params.value ? <Visibility /> : <VisibilityOff />,
+      renderCell: (params: GridRenderCellParams<Boolean>) => (
+        <CActiveTag value={params.value} />
+      ),
     },
     {
       field: 'action',
@@ -105,8 +107,6 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
-        index: i + 1,
-
         action: e,
       })),
     [data],
@@ -117,6 +117,6 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} />;
+  return <CDataGrid columns={columns} rows={rows} page={page} />;
   //#endregion
 };

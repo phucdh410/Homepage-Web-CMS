@@ -12,6 +12,44 @@ import { MUsersTable } from '@/modules/users/components';
 import { CPagination } from '@/others/';
 import { IUsersDataTable } from '@/types/user';
 
+const MOCK_DATA = [
+  {
+    id: '1',
+    username: 'Abc123455',
+    created_date: new Date(),
+    updated_date: new Date(),
+    active: true,
+  },
+  {
+    id: '2',
+    username: 'Abc123455',
+    created_date: new Date(),
+    updated_date: new Date(),
+    active: true,
+  },
+  {
+    id: '3',
+    username: 'Abc123455',
+    created_date: new Date(),
+    updated_date: new Date(),
+    active: false,
+  },
+  {
+    id: '4',
+    username: 'Abc123455',
+    created_date: new Date(),
+    updated_date: new Date(),
+    active: false,
+  },
+  {
+    id: '5',
+    username: 'Abc123455',
+    created_date: new Date(),
+    updated_date: new Date(),
+    active: true,
+  },
+];
+
 const ListUsersPage = () => {
   //#region Data
   const [filter, setFilter] = useState({
@@ -118,10 +156,11 @@ const ListUsersPage = () => {
 
       <Paper className="wrapper">
         <MUsersTable
-          data={listData || []}
+          data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           onStatusChange={onStatusChange}
+          page={paginate.page}
         />
       </Paper>
 
