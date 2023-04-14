@@ -13,7 +13,7 @@ export const CActiveTag: React.FC<ICActiveTagProps> = ({ value }) => {
     <Chip
       label="Hiển thị"
       color="primary"
-      sx={{ ...styles, backgroundColor: '#72a2ff' }}
+      sx={{ ...styles, backgroundColor: '#588ff8' }}
     />
   ) : (
     <Chip

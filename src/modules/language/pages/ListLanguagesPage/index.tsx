@@ -181,7 +181,7 @@ const ListLanguagesPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MLanguagesTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

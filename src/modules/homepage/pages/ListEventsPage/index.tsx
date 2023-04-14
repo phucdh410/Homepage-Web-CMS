@@ -176,7 +176,7 @@ const ListEventsPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MEventsTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

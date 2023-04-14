@@ -58,7 +58,7 @@ const CreateEmployeePage = () => {
         <Typography variant="page-title">Thêm mới</Typography>
       </Box>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <form>
           <MEmployeeForm control={control} />
 

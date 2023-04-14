@@ -161,7 +161,7 @@ const ListNotificationsPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MNotificationsTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

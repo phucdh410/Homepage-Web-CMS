@@ -63,7 +63,7 @@ const CreateSchedulePage = () => {
         <Typography variant="page-title">Thêm mới</Typography>
       </Box>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <form>
           <MScheduleForm control={control} />
 

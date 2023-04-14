@@ -74,7 +74,7 @@ const DetailUserPage = () => {
         <Typography variant="page-title">Thêm mới</Typography>
       </Box>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <form onSubmit={handleSubmit(onSubmit)}>
           <MForm control={control} />
 

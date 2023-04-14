@@ -159,7 +159,7 @@ const ListSchedulesPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MSchedulesTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

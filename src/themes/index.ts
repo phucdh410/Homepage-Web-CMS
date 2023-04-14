@@ -264,16 +264,18 @@ theme = createTheme(theme, {
       },
     },
     MuiPaper: {
-      styleOverrides: {
-        root: {
-          '&.wrapper': {
+      variants: [
+        {
+          props: { variant: 'wrapper' },
+          style: {
             padding: '18px 30px',
             borderRadius: '20px',
             backgroundColor: '#ffffff',
             boxShadow: '20px 20px 60px rgba(19, 70, 131, 0.1)',
           },
         },
-      },
+      ],
+      styleOverrides: {},
     },
     MuiDataGrid: {
       styleOverrides: {
@@ -357,6 +359,12 @@ declare module '@mui/material/Button' {
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     'page-title': true;
+  }
+}
+
+declare module '@mui/material/Paper' {
+  interface PaperPropsVariantOverrides {
+    wrapper: true;
   }
 }
 //#endregion

@@ -162,7 +162,7 @@ const ListPagesPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MPagesTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

@@ -17,7 +17,7 @@ const ListEventsPage = () => {
         <Typography variant="page-title">Liên kết</Typography>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MLinksForm />
       </Paper>
     </Box>

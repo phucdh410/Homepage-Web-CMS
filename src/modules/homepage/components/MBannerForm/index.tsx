@@ -66,7 +66,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
         </Typography>
       </Box>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <form onSubmit={onSubmit}>
           <Stack direction="column" spacing={2.5} mb={2.5}>
             <Stack direction="column" spacing={1} flex={1}>

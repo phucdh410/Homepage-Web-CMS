@@ -22,11 +22,8 @@ export const getFolders = async (
 
 export const getDetailFolder = async (
   id: string,
-  language_id: number,
 ): Promise<IApiResponse<IGetDetailFolderResponse, any>> => {
-  return await get(`${FOLDERS.GET_FOLDER_BY_ID}/${id}`, {
-    params: { language_id },
-  });
+  return await get(`${FOLDERS.GET_FOLDER_BY_ID}/${id}`);
 };
 
 export const updateFolder = async (id: string, body: IUpdateFolderParams) => {

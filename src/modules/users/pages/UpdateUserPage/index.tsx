@@ -78,7 +78,7 @@ const UpdateUserPage = () => {
         <Typography variant="page-title">Chỉnh sửa</Typography>
       </Box>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <form onSubmit={handleSubmit(onSubmit)}>
           <MForm control={control} isEdit />
 

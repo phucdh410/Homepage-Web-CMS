@@ -177,7 +177,7 @@ const ListBannersPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MBannersTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

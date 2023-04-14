@@ -162,7 +162,7 @@ const ListFoldersPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MFoldersTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

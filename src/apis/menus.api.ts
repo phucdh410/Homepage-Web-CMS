@@ -22,11 +22,8 @@ export const getMenus = async (
 
 export const getDetailMenu = async (
   id: string,
-  language_id: number,
 ): Promise<IApiResponse<IGetDetailMenuResponse, any>> => {
-  return await get(`${MENUS.GET_MENU_BY_ID}/${id}`, {
-    params: { language_id },
-  });
+  return await get(`${MENUS.GET_MENU_BY_ID}/${id}`);
 };
 
 export const updateMenu = async (id: string, body: IUpdateMenuParams) => {

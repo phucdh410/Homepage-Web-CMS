@@ -27,7 +27,7 @@ const FooterPage = () => {
         <Typography variant="page-title">Footer</Typography>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <Stack spacing={1} mb={2.5}>
           <CFormLabel label="Ngôn ngữ" required />
           <CAutocomplete

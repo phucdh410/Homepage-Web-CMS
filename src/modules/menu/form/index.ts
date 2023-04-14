@@ -32,7 +32,7 @@ export const defaultValuesFolder: ICreateFolderParams = {
   page_id: '',
   parent_id: '',
   active: true,
-  show_homepage: true,
+  show_homepage: false,
   display: 1,
 };
 

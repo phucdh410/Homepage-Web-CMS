@@ -22,11 +22,8 @@ export const getPages = async (
 
 export const getDetailPage = async (
   id: string,
-  language_id: number,
 ): Promise<IApiResponse<IGetDetailPageResponse, any>> => {
-  return await get(`${PAGES.GET_PAGE_BY_ID}/${id}`, {
-    params: { language_id },
-  });
+  return await get(`${PAGES.GET_PAGE_BY_ID}/${id}`);
 };
 
 export const updatePage = async (id: string, body: IUpdatePageParams) => {

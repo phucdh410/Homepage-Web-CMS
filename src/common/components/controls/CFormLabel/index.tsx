@@ -6,11 +6,12 @@ export const CFormLabel: React.FC<ICFormLabelProps> = ({
   label,
   htmlFor,
   required,
+  sx,
   ...props
 }) => {
   return (
     <FormLabel
-      sx={{ fontWeight: 600, lineHeight: '24px' }}
+      sx={{ fontWeight: 600, lineHeight: '24px', ...sx }}
       required={required}
       htmlFor={htmlFor}
       {...props}

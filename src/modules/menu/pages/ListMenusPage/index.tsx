@@ -162,7 +162,7 @@ const ListMenusPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MMenusTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

@@ -154,7 +154,7 @@ const ListUsersPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MUsersTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}

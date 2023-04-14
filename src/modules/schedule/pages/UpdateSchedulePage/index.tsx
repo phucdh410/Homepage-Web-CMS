@@ -77,7 +77,7 @@ const UpdateSchedulePage = () => {
         <Typography variant="page-title">Chỉnh sửa</Typography>
       </Box>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <form>
           <MScheduleForm control={control} />
 

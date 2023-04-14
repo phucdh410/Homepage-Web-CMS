@@ -158,7 +158,7 @@ const ListEmployeesPage = () => {
         </Stack>
       </Stack>
 
-      <Paper className="wrapper">
+      <Paper variant="wrapper">
         <MEmployeesTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
