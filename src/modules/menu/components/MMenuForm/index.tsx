@@ -16,7 +16,7 @@ import { IMMenuFormProps } from './types';
 
 export const MMenuForm: React.FC<IMMenuFormProps> = ({ control }) => {
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={2.5} mb={2.5}>
       <Grid lg={12}>
         <Paper variant="wrapper">
           <Stack direction="row" spacing={3} mb={2.5}>
