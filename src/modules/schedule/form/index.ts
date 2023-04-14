@@ -7,7 +7,7 @@ import { ICreateScheduleParams, IUpdateScheduleParams } from '@/types/schedule';
 
 export const defaultValuesSchedule: ICreateScheduleParams = {
   title: '',
-  description: '',
+  content: '',
   date: dayjs(),
   location: '',
   attendee: '',
@@ -19,7 +19,7 @@ export const scheduleResolver: Resolver<
 > = yupResolver(
   object({
     title: string().required('Vui lòng nhập tiêu đề!'),
-    description: string(),
+    content: string(),
     date: date().required('Vui lòng chọn thời gian diễn ra!'),
     location: string(),
     attendee: string(),

@@ -4,7 +4,7 @@ import { boolean, number, object, string } from 'yup';
 
 import { DISPLAY_TYPES } from '@/constants/enums';
 import { ICreateFolderParams, IUpdateFolderParams } from '@/types/folder';
-import { ICreateMenuParams } from '@/types/menu';
+import { ICreateMenuParams, IUpdateMenuParams } from '@/types/menu';
 import { ICreatePageParams, IUpdatePageParams } from '@/types/page';
 
 //#region Page
@@ -57,4 +57,7 @@ export const defaultValuesMenu: ICreateMenuParams = {
   active: true,
   menus: [],
 };
+
+export const menuResolver: Resolver<ICreateMenuParams | IUpdateMenuParams> =
+  yupResolver(object({}));
 //#endregion

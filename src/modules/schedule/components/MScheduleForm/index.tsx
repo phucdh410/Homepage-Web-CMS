@@ -51,11 +51,11 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
         </FormLabel>
         <Controller
           control={control}
-          name="description"
+          name="content"
           render={({ field, fieldState: { error } }) => (
             <CInput
               {...field}
-              id="description"
+              id="content"
               multiline
               rows={4}
               placeholder="Nhập học vị..."

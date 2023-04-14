@@ -4,7 +4,7 @@ import { IBasePaginateParams } from './params';
 
 export interface ICreateScheduleParams {
   title: string;
-  description: string;
+  content: string;
   date: Date | Dayjs | string | null;
   location: string;
   attendee: string;
@@ -23,7 +23,7 @@ export interface IGetSchedulesParams extends IBasePaginateParams {}
 export interface IGetDetailSchedulesResponse {
   id: string;
   title: string;
-  description: string;
+  content: string;
   date: Date | Dayjs | string | null;
   location: string;
   attendee: string;
