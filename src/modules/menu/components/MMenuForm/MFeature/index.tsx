@@ -82,8 +82,8 @@ export const MFeature: React.FC<IMFeatureProps> = ({ control }) => {
             sx={{ display: 'block', mb: 2.5 }}
           />
           <TreeView
-            defaultCollapseIcon={<ArrowDropDown />}
-            defaultExpandIcon={<ArrowDropUp />}
+            defaultCollapseIcon={<ArrowDropUp />}
+            defaultExpandIcon={<ArrowDropDown />}
             defaultEndIcon={<div style={{ width: 24 }} />}
           >
             {ar.map((e, i) =>
