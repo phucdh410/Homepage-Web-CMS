@@ -112,7 +112,7 @@ export const MSectionForm: React.FC<IMSectionFormProps> = ({ control }) => {
       </Stack>
 
       <Stack mb={3}>
-        <MTabs />
+        <MTabs control={control} />
       </Stack>
 
       <Stack direction="column" spacing={1} mb={2.5}>

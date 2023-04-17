@@ -326,6 +326,20 @@ theme = createTheme(theme, {
         arrow: true,
       },
     },
+    MuiTabs: {
+      defaultProps: {
+        textColor: 'primary',
+        indicatorColor: 'primary',
+      },
+      styleOverrides: {},
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    },
   } as Components<Omit<Theme, 'components'>>,
 });
 //#endregion
@@ -334,6 +348,15 @@ export default theme;
 
 //#region Declare
 declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    xxl: true;
+    xxxl: true;
+  }
   interface Palette {
     skyblue: Palette['primary'];
     textTable: Palette['primary'];

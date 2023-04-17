@@ -6,7 +6,7 @@ export interface IFormInputComponentRef {
 export interface IFormInputComponentProps<T = any> {
   id?: string;
   name?: string;
-  value?: T;
+  value?: T | null;
   onChange?: (value: T) => void;
   onBlur?: () => void;
   disabled?: boolean;

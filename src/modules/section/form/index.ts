@@ -11,6 +11,9 @@ export const defaultValuesSection: ICreateSectionParams = {
   file_id: '',
   display: 1,
   active: true,
+  education_quality: '',
+  master_quality: '',
+  education_aim: '',
 };
 
 export const sectionResolver: Resolver<
