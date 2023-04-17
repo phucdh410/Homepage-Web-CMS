@@ -5,12 +5,11 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridRowsProp,
-  GridValueGetterParams,
+  GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
 import { CActiveTag, CDataGrid } from '@/others/';
-import { IUsersDataTable } from '@/types/user';
 
 import { IMUsersTableProps } from './types';
 
@@ -18,22 +17,9 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   data,
   onEdit,
   onDelete,
-  onStatusChange,
   page,
 }) => {
   //#region Data
-
-  const createdDate = (params: GridValueGetterParams<IUsersDataTable>) => {
-    return dayjs(params.row.created_date).format('DD/MM/YYYY');
-  };
-  const updatedDate = (params: GridValueGetterParams<IUsersDataTable>) => {
-    return dayjs(
-      params.row?.updated_date
-        ? params.row.updated_date
-        : params.row.created_date,
-    ).format('DD/MM/YYYY');
-  };
-
   const columns: GridColDef[] = [
     {
       field: '__index',

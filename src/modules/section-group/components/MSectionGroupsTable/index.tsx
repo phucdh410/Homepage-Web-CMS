@@ -3,7 +3,7 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridRowsProp,
-  GridValueGetterParams,
+  GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
@@ -20,12 +20,6 @@ export const MSectionGroupsTable: React.FC<IMSectionGroupsTableProps> = ({
   page,
 }) => {
   //#region Data
-  const updatedDate = (
-    params: GridValueGetterParams<IGetSectionGroupsResponse>,
-  ) => {
-    return dayjs(params.row?.updated_date).format('DD/MM/YYYY');
-  };
-
   const columns: GridColDef[] = [
     {
       field: '__index',

@@ -5,7 +5,7 @@ import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deleteUser, getUsers, updateUserStatus } from '@/apis/users.api';
+import { deleteUser, getUsers } from '@/apis/users.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { MUsersTable } from '@/modules/users/components';
@@ -79,21 +79,6 @@ const ListUsersPage = () => {
   const onPageChange = (event: any, newPage: number) =>
     setFilter((prev) => ({ ...prev, page: newPage }));
 
-  const onStatusChange = (id: string) => async () => {
-    try {
-      await updateUserStatus(id);
-
-      refetch();
-
-      toast.success('Điều chỉnh trạng thái thành công!');
-    } catch (error: any) {
-      toast.error(
-        error?.response?.data?.message ||
-          'Điều chỉnh trạng thái không thành công!',
-      );
-    }
-  };
-
   const onEdit = (id: string) => () => navigate(`detail/${id}`);
 
   const onDelete = (id: string) => async () => {
@@ -159,7 +144,6 @@ const ListUsersPage = () => {
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
-          onStatusChange={onStatusChange}
           page={paginate.page}
         />
       </Paper>
