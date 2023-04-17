@@ -3,14 +3,16 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridRowsProp,
-  GridValueGetterParams,
+  GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { POSITION_DISPLAY_LABELS } from '@/constants/enums';
+import {
+  POSITION_DISPLAY_LABELS,
+  POSITION_DISPLAY_TYPES,
+} from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetMenusResponse } from '@/types/menu';
 
 import { IMMenusTableProps } from './types';
 
@@ -21,13 +23,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
   page,
 }) => {
   //#region Data
-  const display = (params: GridValueGetterParams<IGetMenusResponse>) => {
-    return POSITION_DISPLAY_LABELS[params.row.display];
-  };
-  const updatedDate = (params: GridValueGetterParams<IGetMenusResponse>) => {
-    return dayjs(params.row?.updated_date).format('DD/MM/YYYY');
-  };
-
   const columns: GridColDef[] = [
     {
       field: '__index',
@@ -53,7 +48,11 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       headerAlign: 'left',
       align: 'left',
       sortable: false,
-      valueGetter: display,
+      valueFormatter: (
+        params: GridValueFormatterParams<POSITION_DISPLAY_TYPES>,
+      ) => {
+        return POSITION_DISPLAY_LABELS[params.value];
+      },
     },
     {
       field: 'updated_date',
@@ -62,7 +61,9 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: updatedDate,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'active',

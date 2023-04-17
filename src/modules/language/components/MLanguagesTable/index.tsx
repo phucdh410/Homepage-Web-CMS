@@ -3,7 +3,7 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridRowsProp,
-  GridValueGetterParams,
+  GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
@@ -19,21 +19,6 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
   page,
 }) => {
   //#region Data
-  const createdDate = (
-    params: GridValueGetterParams<IGetLanguagesResponse>,
-  ) => {
-    return dayjs(params.row.created_date).format('DD/MM/YYYY');
-  };
-  const updatedDate = (
-    params: GridValueGetterParams<IGetLanguagesResponse>,
-  ) => {
-    return dayjs(
-      params.row?.updated_date
-        ? params.row.updated_date
-        : params.row.created_date,
-    ).format('DD/MM/YYYY');
-  };
-
   const columns: GridColDef[] = [
     {
       field: '__index',
@@ -59,7 +44,9 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: createdDate,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'updated_date',
@@ -68,7 +55,9 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: updatedDate,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'active',

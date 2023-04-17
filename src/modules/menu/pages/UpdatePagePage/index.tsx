@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { getDetailPage, updatePage } from '@/apis/page.api';
+import { getDetailPage, updatePage } from '@/apis/pages.api';
 import { CActionsForm } from '@/controls/';
 import { ICreatePageParams } from '@/types/page';
 

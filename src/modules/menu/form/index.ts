@@ -2,7 +2,7 @@ import { Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { boolean, number, object, string } from 'yup';
 
-import { DISPLAY_TYPES } from '@/constants/enums';
+import { DISPLAY_ENUMS } from '@/constants/enums';
 import { ICreateFolderParams, IUpdateFolderParams } from '@/types/folder';
 import { ICreateMenuParams, IUpdateMenuParams } from '@/types/menu';
 import { ICreatePageParams, IUpdatePageParams } from '@/types/page';
@@ -12,7 +12,7 @@ export const defaultValuesPage: ICreatePageParams = {
   title: '',
   active: true,
   show_homepage: true,
-  display: DISPLAY_TYPES.POST,
+  display: DISPLAY_ENUMS.POST,
 };
 
 export const pageResolver: Resolver<ICreatePageParams | IUpdatePageParams> =

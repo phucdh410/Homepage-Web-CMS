@@ -59,7 +59,9 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: createdDate,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'updated_date',
@@ -68,7 +70,9 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: updatedDate,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'active',

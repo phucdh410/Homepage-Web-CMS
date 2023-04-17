@@ -3,14 +3,13 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridRowsProp,
-  GridValueGetterParams,
+  GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { DISPLAY_LABELS } from '@/constants/enums';
+import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetFoldersResponse } from '@/types/folder';
 
 import { IMFoldersTableProps } from './types';
 
@@ -21,13 +20,6 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
   page,
 }) => {
   //#region Data
-  const display = (params: GridValueGetterParams<IGetFoldersResponse>) => {
-    return DISPLAY_LABELS[params.row.display];
-  };
-  const updatedDate = (params: GridValueGetterParams<IGetFoldersResponse>) => {
-    return dayjs(params.row?.updated_date).format('DD/MM/YYYY');
-  };
-
   const columns: GridColDef[] = [
     {
       field: '__index',
@@ -53,7 +45,9 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
       headerAlign: 'left',
       align: 'left',
       sortable: false,
-      valueGetter: display,
+      valueFormatter: (params: GridValueFormatterParams<DISPLAY_TYPES>) => {
+        return DISPLAY_LABELS[params.value];
+      },
     },
     {
       field: 'updated_date',
@@ -62,7 +56,9 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: updatedDate,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'active',

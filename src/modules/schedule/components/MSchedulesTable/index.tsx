@@ -3,13 +3,12 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridRowsProp,
-  GridValueGetterParams,
+  GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetSchedulesResponse } from '@/types/schedule';
 
 import { IMSchedulesTableProps } from './types';
 
@@ -19,13 +18,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
   onDelete,
   page,
 }) => {
-  const _date = (params: GridValueGetterParams<IGetSchedulesResponse>) => {
-    return dayjs(params.row?.date).format('DD/MM/YYYY');
-  };
-  const _time = (params: GridValueGetterParams<IGetSchedulesResponse>) => {
-    return dayjs(params.row?.date).format('HH:mm');
-  };
-
   //#region Data
   const columns: GridColDef[] = [
     {
@@ -37,13 +29,15 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       sortable: false,
     },
     {
-      field: 'day',
+      field: 'date',
       headerName: 'NGÀY DIỄN RA',
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: _date,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'time',
@@ -52,7 +46,9 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: _time,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('HH:mm');
+      },
     },
     {
       field: 'title',
@@ -94,6 +90,7 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
     () =>
       data?.map((e, i) => ({
         ...e,
+        time: e.date,
         action: e.id,
       })),
     [data],

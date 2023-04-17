@@ -54,6 +54,14 @@ export const SECTION_GROUPS = {
   DELETE: '/section-groups', // :id
 };
 
+export const SECTIONS = {
+  CREATE: '/sections',
+  GET_LIST: '/sections/all',
+  GET_DETAIL: '/sections', // :id
+  UPDATE: '/sections', // :id
+  DELETE: '/sections', // :id
+};
+
 export const PAGES = {
   CREATE: '/pages',
   GET_LIST: '/pages/all',

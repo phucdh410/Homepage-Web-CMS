@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 
-import { createPage } from '@/apis/page.api';
+import { createPage } from '@/apis/pages.api';
 import { CActionsForm } from '@/controls/';
 import { ICreatePageParams } from '@/types/page';
 

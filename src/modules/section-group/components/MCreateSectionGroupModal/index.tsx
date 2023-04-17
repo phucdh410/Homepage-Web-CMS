@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Dialog } from '@mui/material';
 
-import { createSectionGroup } from '@/apis/section-group.api';
+import { createSectionGroup } from '@/apis/section-groups.api';
 import { CActionsForm } from '@/controls/';
 import { ICreateSectionGroupParams } from '@/types/section-group';
 

@@ -5,7 +5,10 @@ import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deleteSectionGroup, getSectionGroups } from '@/apis/section-group.api';
+import {
+  deleteSectionGroup,
+  getSectionGroups,
+} from '@/apis/section-groups.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';

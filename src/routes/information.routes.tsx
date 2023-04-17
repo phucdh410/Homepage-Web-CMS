@@ -7,8 +7,8 @@ const ListSectionGroupsPage = lazy(
   () => import('@/modules/section-group/pages/ListSectionGroupsPage'),
 );
 
-const CDevelopment = lazy(
-  () => import('../common/components/others/CDevelopment'),
+const ListSectionsPage = lazy(
+  () => import('@/modules/section/pages/ListSectionsPage'),
 );
 
 export const InformationRoutes: RouteObject[] = [
@@ -17,5 +17,5 @@ export const InformationRoutes: RouteObject[] = [
     element: <ListSectionGroupsPage />,
   },
 
-  { path: ROUTES.INFORMATION.SECTIONS.LIST, element: <CDevelopment /> },
+  { path: ROUTES.INFORMATION.SECTIONS.LIST, element: <ListSectionsPage /> },
 ];

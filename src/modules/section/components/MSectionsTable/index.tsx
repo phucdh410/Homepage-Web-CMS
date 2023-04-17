@@ -7,13 +7,13 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
+import { DISPLAY_LABELS } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
 
-import { IMPagesTableProps } from './types';
+import { IMSectionsTableProps } from './types';
 
-export const MPagesTable: React.FC<IMPagesTableProps> = ({
+export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
   data,
   onEdit,
   onDelete,
@@ -30,8 +30,8 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
       sortable: false,
     },
     {
-      field: 'title',
-      headerName: 'TRANG',
+      field: 'name',
+      headerName: 'TÊN KHOA',
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
@@ -39,14 +39,14 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
       flex: 1,
     },
     {
-      field: 'display',
-      headerName: 'DẠNG HIỂN THỊ',
-      minWidth: 300,
+      field: 'section_group',
+      headerName: 'NHÓM KHOA',
+      minWidth: 200,
       headerAlign: 'left',
       align: 'left',
       sortable: false,
-      valueFormatter: (params: GridValueFormatterParams<DISPLAY_TYPES>) => {
-        return DISPLAY_LABELS[params.value];
+      valueFormatter: (params: GridValueFormatterParams<any>) => {
+        return params.value?.name;
       },
     },
     {
@@ -58,6 +58,17 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
       sortable: false,
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
+      },
+    },
+    {
+      field: 'display',
+      headerName: 'DẠNG HIỂN THỊ',
+      minWidth: 250,
+      headerAlign: 'left',
+      align: 'left',
+      sortable: false,
+      valueFormatter: (params: GridValueFormatterParams<1 | 4>) => {
+        return DISPLAY_LABELS[params.value];
       },
     },
     {

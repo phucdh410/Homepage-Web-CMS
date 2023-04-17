@@ -2,68 +2,94 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
-import { Box } from '@mui/material';
-import { Stack } from '@mui/material';
-import { Typography } from '@mui/material';
-import { Button } from '@mui/material';
-import { Paper } from '@mui/material';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deletePage, getPages } from '@/apis/pages.api';
+import { deleteSection, getSections } from '@/apis/sections.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetPagesResponse } from '@/types/page';
+import { IGetSectionsResponse } from '@/types/section';
 
-import { MPagesTable } from '../../components';
+import { MSectionsTable } from '../../components';
 
 const MOCK_DATA = [
   {
     id: '1',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
+    name: 'Khoa Công nghệ thông tin',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
     display: 1,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '2',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
+    name: 'Khoa Ngữ văn',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
     display: 1,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 2,
+    name: 'Khoa Vật lý',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
+    display: 4,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 3,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
+    name: 'Khoa Công nghệ thông tin',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
     display: 4,
     updated_date: new Date(),
     active: true,
   },
   {
+    id: '5',
+    name: 'Khoa Công nghệ thông tin',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
+    display: 1,
+    updated_date: new Date(),
+    active: true,
+  },
+  {
     id: '6',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 5,
+    name: 'Khoa Công nghệ thông tin',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
+    display: 1,
+    updated_date: new Date(),
+    active: true,
+  },
+  {
+    id: '7',
+    name: 'Khoa Công nghệ thông tin',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
+    display: 1,
+    updated_date: new Date(),
+    active: true,
+  },
+  {
+    id: '8',
+    name: 'Khoa Công nghệ thông tin',
+    section_group: { id: '1', name: 'Giáo dục' },
+    display: 1,
     updated_date: new Date(),
     active: false,
   },
+  {
+    id: '9',
+    name: 'Khoa Công nghệ thông tin',
+    section_group: { id: '1', name: 'Khoa học xã hội' },
+    display: 4,
+    updated_date: new Date(),
+    active: true,
+  },
 ];
 
-const ListPagesPage = () => {
+const ListSectionsPage = () => {
   //#region Data
   const location = useLocation();
   const navigate = useNavigate();
@@ -84,11 +110,11 @@ const ListPagesPage = () => {
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
   const { data, refetch } = useQuery({
-    queryKey: ['pages', filter],
-    queryFn: () => getPages(filter),
+    queryKey: ['sections', filter],
+    queryFn: () => getSections(filter),
   });
 
-  const listData = useMemo<IGetPagesResponse[]>(
+  const listData = useMemo<IGetSectionsResponse[]>(
     () => data?.data?.data?.data || [],
     [data],
   );
@@ -108,14 +134,14 @@ const ListPagesPage = () => {
       })
     ) {
       try {
-        await deletePage(id);
+        await deleteSection(id);
 
         refetch();
 
-        toast.success('Xóa trang thành công!');
+        toast.success('Xóa khoa thành công!');
       } catch (error: any) {
         toast.error(
-          error?.response?.data?.message || 'Xóa trang không thành công!',
+          error?.response?.data?.message || 'Xóa khoa không thành công!',
         );
       }
     }
@@ -147,7 +173,7 @@ const ListPagesPage = () => {
         flex={1}
         mb={3}
       >
-        <Typography variant="page-title">Trang</Typography>
+        <Typography variant="page-title">Khoa</Typography>
 
         <Stack direction="row" spacing={1} alignItems="center">
           <CSearchInput defaultValue={filter.input} onChange={onSearch} />
@@ -163,7 +189,7 @@ const ListPagesPage = () => {
       </Stack>
 
       <Paper variant="wrapper">
-        <MPagesTable
+        <MSectionsTable
           data={MOCK_DATA || listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
@@ -181,4 +207,4 @@ const ListPagesPage = () => {
   //#endregion
 };
 
-export default ListPagesPage;
+export default ListSectionsPage;

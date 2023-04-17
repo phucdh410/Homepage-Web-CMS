@@ -5,6 +5,7 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridRowsProp,
+  GridValueFormatterParams,
   GridValueGetterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
@@ -21,16 +22,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
   page,
 }) => {
   //#region Data
-  const displayTime = (params: GridValueGetterParams<IGetEventsResponse>) => {
-    return `${dayjs(params.row?.start_date).format('DD/MM/YYYY')} - ${dayjs(
-      params.row?.end_date,
-    ).format('DD/MM/YYYY')}`;
-  };
-
-  const updatedDate = (params: GridValueGetterParams<IGetEventsResponse>) => {
-    return dayjs(params.row.updated_date).format('DD/MM/YYYY');
-  };
-
   const columns: GridColDef[] = [
     {
       field: '__index',
@@ -56,7 +47,11 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: displayTime,
+      valueGetter: (params: GridValueGetterParams<IGetEventsResponse>) => {
+        return `${dayjs(params.row?.start_date).format('DD/MM/YYYY')} - ${dayjs(
+          params.row?.end_date,
+        ).format('DD/MM/YYYY')}`;
+      },
     },
     {
       field: 'updated_date',
@@ -65,7 +60,9 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       sortable: false,
-      valueGetter: updatedDate,
+      valueFormatter: (params: GridValueFormatterParams<Date>) => {
+        return dayjs(params.value).format('DD/MM/YYYY');
+      },
     },
     {
       field: 'active',
