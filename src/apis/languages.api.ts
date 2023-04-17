@@ -12,17 +12,17 @@ import { LANGUAGES } from './url';
 export const getLanguages = (
   body: IGetLanguagesParams,
 ): Promise<IApiResponse<IPaginateData<IGetLanguagesResponse[]>, any>> => {
-  return post(LANGUAGES.GET_LANGUAGES, body);
+  return post(LANGUAGES.GET_LIST, body);
 };
 
 export const createLanguage = (body: ICreateLanguageParams) => {
-  return post(LANGUAGES.CREATE_LANGUAGE, body);
+  return post(LANGUAGES.CREATE, body);
 };
 
 export const updateLanguage = (id: string, body: IUpdateLanguageParams) => {
-  return put(`${LANGUAGES.UPDATE_LANGUAGE}/${id}`, body);
+  return put(`${LANGUAGES.UPDATE}/${id}`, body);
 };
 
 export const deleteLanguage = (id: string) => {
-  return remove(`${LANGUAGES.DELETE_LANGUAGE}/${id}`);
+  return remove(`${LANGUAGES.DELETE}/${id}`);
 };

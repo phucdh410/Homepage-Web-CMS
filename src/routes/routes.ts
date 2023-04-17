@@ -28,6 +28,15 @@ export const ROUTES = {
     },
   },
 
+  INFORMATION: {
+    SECTION_GROUPS: {
+      ROOT: '/information/section-groups',
+    },
+    SECTIONS: {
+      LIST: '/information/sections',
+    },
+  },
+
   MENUS: {
     PAGES: {
       LIST: '/menu/pages',

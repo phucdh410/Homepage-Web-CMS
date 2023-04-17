@@ -13,23 +13,23 @@ import { EMPLOYEES } from './url';
 export const getEmployees = (
   body: IGetEmployeesParams,
 ): Promise<IApiResponse<IPaginateData<IGetEmployeesResponse[]>, any>> => {
-  return post(EMPLOYEES.GET_EMPLOYEES, body);
+  return post(EMPLOYEES.GET_LIST, body);
 };
 
 export const createEmployee = (body: ICreateEmployeeParams) => {
-  return post(EMPLOYEES.CREATE_EMPLOYEE, body);
+  return post(EMPLOYEES.CREATE, body);
 };
 
 export const getDetailEmployee = (
   id: string,
 ): Promise<IApiResponse<IGetDetailEmployeeResponse, any>> => {
-  return get(`${EMPLOYEES.GET_EMPLOYEE_BY_ID}/${id}`);
+  return get(`${EMPLOYEES.GET_DETAIL}/${id}`);
 };
 
 export const updateEmployee = (id: string, body: IUpdateEmployeeParams) => {
-  return put(`${EMPLOYEES.UPDATE_EMPLOYEE}/${id}`, body);
+  return put(`${EMPLOYEES.UPDATE}/${id}`, body);
 };
 
 export const deleteEmployee = (id: string) => {
-  return remove(`${EMPLOYEES.DELETE_EMPLOYEE}/${id}`);
+  return remove(`${EMPLOYEES.DELETE}/${id}`);
 };

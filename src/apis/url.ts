@@ -3,7 +3,7 @@ export const FILES = {
 };
 
 export const PERMISSIONS = {
-  GET_PERMISSIONS: '/permissions',
+  GET_LIST: '/permissions',
 };
 
 export const AUTH = {
@@ -15,97 +15,104 @@ export const AUTH = {
 };
 
 export const USERS = {
-  GET_USERS: '/users/all',
-  GET_USER_BY_ID: '/users', // :id
-  UPDATE_USER: '/users', // :id
-  DELETE_USER: '/users', // :id
-  UPDATE_USER_STATUS: '/users/active', // :id
+  CREATE: '/users',
+  GET_LIST: '/users/all',
+  GET_DETAIL: '/users', // :id
+  UPDATE: '/users', // :id
+  DELETE: '/users', // :id
 };
 
 export const BANNERS = {
-  CREATE_BANNER: '/banners',
-  GET_BANNERS: '/banners/all',
-  GET_BANNER_BY_ID: '/banners', // :id
-  UPDATE_BANNER: '/banners', // :id
-  DELETE_BANNER: '/banners', // :id
+  CREATE: '/banners',
+  GET_LIST: '/banners/all',
+  GET_DETAIL: '/banners', // :id
+  UPDATE: '/banners', // :id
+  DELETE: '/banners', // :id
 };
 
 export const NOTIFICATIONS = {
-  CREATE_NOTIFICATION: '/notifications',
-  GET_NOTIFICATIONS: '/notifications/all',
-  GET_NOTIFICATION_BY_ID: '/notifications', // :id
-  UPDATE_NOTIFICATION: '/notifications', // :id
-  DELETE_NOTIFICATION: '/notifications', // :id
-  UPDATE_STATUS: '/notifications/status',
+  CREATE: '/notifications',
+  GET_LIST: '/notifications/all',
+  GET_DETAIL: '/notifications', // :id
+  UPDATE: '/notifications', // :id
+  DELETE: '/notifications', // :id
 };
 
 export const EVENTS = {
-  CREATE_EVENT: '/events',
-  GET_EVENTS: '/events/all',
-  GET_EVENT_BY_ID: '/events', // :id
-  UPDATE_EVENT: '/events', // :id
-  DELETE_EVENT: '/events', // :id
+  CREATE: '/events',
+  GET_LIST: '/events/all',
+  GET_DETAIL: '/events', // :id
+  UPDATE: '/events', // :id
+  DELETE: '/events', // :id
+};
+
+export const SECTION_GROUPS = {
+  CREATE: '/section-groups',
+  GET_LIST: '/section-groups/all',
+  GET_DETAIL: '/section-groups', // :id
+  UPDATE: '/section-groups', // :id
+  DELETE: '/section-groups', // :id
 };
 
 export const PAGES = {
-  CREATE_PAGE: '/pages',
-  GET_PAGES: '/pages/all',
-  GET_PAGE_BY_ID: '/pages', // :id
-  UPDATE_PAGE: '/pages', // :id
-  DELETE_PAGE: '/pages', // :id
+  CREATE: '/pages',
+  GET_LIST: '/pages/all',
+  GET_DETAIL: '/pages', // :id
+  UPDATE: '/pages', // :id
+  DELETE: '/pages', // :id
 };
 
 export const FOLDERS = {
-  CREATE_FOLDER: '/folders',
-  GET_FOLDERS: '/folders/all',
-  GET_FOLDER_BY_ID: '/folders', // :id
-  UPDATE_FOLDER: '/folders', // :id
-  DELETE_FOLDER: '/folders', // :id
+  CREATE: '/folders',
+  GET_LIST: '/folders/all',
+  GET_DETAIL: '/folders', // :id
+  UPDATE: '/folders', // :id
+  DELETE: '/folders', // :id
 };
 
 export const MENUS = {
-  CREATE_MENU: '/menus',
-  GET_MENUS: '/menus/all',
-  GET_MENU_BY_ID: '/menus', // :id
-  UPDATE_MENU: '/menus', // :id
-  DELETE_MENU: '/menus', // :id
+  CREATE: '/menus',
+  GET_LIST: '/menus/all',
+  GET_DETAIL: '/menus', // :id
+  UPDATE: '/menus', // :id
+  DELETE: '/menus', // :id
 };
 
 export const SCHEDULES = {
-  GET_SCHEDULES: '/schedules/all',
-  CREATE_SCHEDULE: '/schedules',
-  GET_SCHEDULE_BY_ID: '/schedules', // :id
-  UPDATE_SCHEDULE: '/schedules', // :id
-  DELETE_SCHEDULE: '/employees', // :id
+  GET_LIST: '/schedules/all',
+  CREATE: '/schedules',
+  GET_DETAIL: '/schedules', // :id
+  UPDATE: '/schedules', // :id
+  DELETE: '/employees', // :id
 };
 
 // export const APPROVE = {
 // };
 
 export const EMPLOYEES = {
-  GET_EMPLOYEES: '/employees/all',
-  CREATE_EMPLOYEE: '/employees',
-  GET_EMPLOYEE_BY_ID: '/employees', // :id
-  UPDATE_EMPLOYEE: '/employees', // :id
-  DELETE_EMPLOYEE: '/employees', // :id
+  GET_LIST: '/employees/all',
+  CREATE: '/employees',
+  GET_DETAIL: '/employees', // :id
+  UPDATE: '/employees', // :id
+  DELETE: '/employees', // :id
 };
 
 export const POSITIONS = {
-  CREATE_POSITION: '/positions',
+  CREATE: '/positions',
   GET_POSITIONS: '/positions/all',
-  UPDATE_POSITION: '/positions', // :id
-  DELETE_POSITION: '/positions', // :id
+  UPDATE: '/positions', // :id
+  DELETE: '/positions', // :id
 };
 
 export const FOOTER = {
-  CREATE_FOOTER: '/footer',
+  CREATE: '/footer',
   GET_FOOTER: '/footer',
-  UPDATE_FOOTER: '/footer',
+  UPDATE: '/footer',
 };
 
 export const LANGUAGES = {
-  CREATE_LANGUAGE: '/notifications',
-  GET_LANGUAGES: '/notifications/all',
-  UPDATE_LANGUAGE: '/notifications', // :id
-  DELETE_LANGUAGE: '/notifications', // :id
+  CREATE: '/notifications',
+  GET_LIST: '/notifications/all',
+  UPDATE: '/notifications', // :id
+  DELETE: '/notifications', // :id
 };

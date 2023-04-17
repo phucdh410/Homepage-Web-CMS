@@ -16,13 +16,13 @@ export const getPositions = (
 };
 
 export const createPosition = (body: ICreatePositionParams) => {
-  return post(POSITIONS.CREATE_POSITION, body);
+  return post(POSITIONS.CREATE, body);
 };
 
 export const updatePosition = (id: string, body: IUpdatePositionParams) => {
-  return put(`${POSITIONS.UPDATE_POSITION}/${id}`, body);
+  return put(`${POSITIONS.UPDATE}/${id}`, body);
 };
 
 export const deletePosition = (id: string) => {
-  return remove(`${POSITIONS.DELETE_POSITION}/${id}`);
+  return remove(`${POSITIONS.DELETE}/${id}`);
 };

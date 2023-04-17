@@ -23,7 +23,7 @@ const LoginPage = () => {
   const { control, handleSubmit, reset } = useForm({
     resolver: loginResolver,
     mode: 'all',
-    shouldFocusError: true,
+
     defaultValues,
   });
 

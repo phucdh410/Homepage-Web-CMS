@@ -19,7 +19,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
   //#region Data
   const { control, handleSubmit, reset, trigger } = useForm<IBannerForm>({
     mode: 'all',
-    shouldFocusError: true,
+
     resolver: bannerResolver,
     defaultValues: defaultValuesBanner,
   });

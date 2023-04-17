@@ -21,7 +21,6 @@ export const MCreatePositionModal = forwardRef<IMCreatePositionModalRef, any>(
       resolver: positionResolver,
       defaultValues: defaultValuesPosition,
       mode: 'all',
-      shouldFocusError: true,
     });
     //#endregion
 

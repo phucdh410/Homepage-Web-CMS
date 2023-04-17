@@ -26,7 +26,6 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
         resolver: notificationResolver,
         defaultValues: defaultValuesNotification,
         mode: 'all',
-        shouldFocusError: true,
       },
     );
     //#endregion

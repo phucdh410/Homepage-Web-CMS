@@ -13,23 +13,23 @@ import { SCHEDULES } from './url';
 export const getSchedules = (
   body: IGetSchedulesParams,
 ): Promise<IApiResponse<IPaginateData<IGetSchedulesResponse[]>, any>> => {
-  return post(SCHEDULES.GET_SCHEDULES, body);
+  return post(SCHEDULES.GET_LIST, body);
 };
 
 export const createSchedule = (body: ICreateScheduleParams) => {
-  return post(SCHEDULES.CREATE_SCHEDULE, body);
+  return post(SCHEDULES.CREATE, body);
 };
 
 export const getDetailSchedule = (
   id: string,
 ): Promise<IApiResponse<IGetDetailSchedulesResponse, any>> => {
-  return get(`${SCHEDULES.UPDATE_SCHEDULE}/${id}`);
+  return get(`${SCHEDULES.UPDATE}/${id}`);
 };
 
 export const updateSchedule = (id: string, body: IUpdateScheduleParams) => {
-  return put(`${SCHEDULES.UPDATE_SCHEDULE}/${id}`, body);
+  return put(`${SCHEDULES.UPDATE}/${id}`, body);
 };
 
 export const deleteSchedule = (id: string) => {
-  return remove(`${SCHEDULES.DELETE_SCHEDULE}/${id}`);
+  return remove(`${SCHEDULES.DELETE}/${id}`);
 };

@@ -36,7 +36,7 @@ const UpdateUserPage = () => {
     formState: { isSubmitting },
   } = useForm<IUserFormParams>({
     mode: 'all',
-    shouldFocusError: true,
+
     resolver: userResolver,
     defaultValues: {
       ...data,

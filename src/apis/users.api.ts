@@ -17,23 +17,19 @@ export const createUser = async (body: IUserFormParams) => {
 export const getUsers = async (
   body: IGetUsersParams,
 ): Promise<IApiResponse<IPaginateData<IUsersDataTable[]>, any>> => {
-  return await post(USERS.GET_USERS, body);
+  return await post(USERS.GET_LIST, body);
 };
 
 export const getDetailUser = async (
   id: string,
 ): Promise<IApiResponse<IUserDetail, any>> => {
-  return await get(`${USERS.GET_USER_BY_ID}/${id}`);
+  return await get(`${USERS.GET_DETAIL}/${id}`);
 };
 
 export const updateUser = async (id: string, body: IUpdateUserParams) => {
-  return await put(`${USERS.UPDATE_USER}/${id}`, body);
-};
-
-export const updateUserStatus = async (id: string) => {
-  return await put(`${USERS.UPDATE_USER_STATUS}/${id}`);
+  return await put(`${USERS.UPDATE}/${id}`, body);
 };
 
 export const deleteUser = async (id: string) => {
-  return await remove(`${USERS.DELETE_USER}/${id}`);
+  return await remove(`${USERS.DELETE}/${id}`);
 };

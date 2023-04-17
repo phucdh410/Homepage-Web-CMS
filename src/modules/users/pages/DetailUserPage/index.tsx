@@ -21,7 +21,7 @@ const DetailUserPage = () => {
     formState: { isSubmitting },
   } = useForm<IUserFormParams>({
     mode: 'all',
-    shouldFocusError: true,
+
     resolver: userResolver,
     defaultValues: {
       ...defaultValues,

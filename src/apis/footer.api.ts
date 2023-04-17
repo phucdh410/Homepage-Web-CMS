@@ -13,9 +13,9 @@ export const getFooter = (): Promise<IApiResponse<IGetFooterResponse, any>> => {
 };
 
 export const createFooter = (body: ICreateFooterParams) => {
-  return post(FOOTER.CREATE_FOOTER, body);
+  return post(FOOTER.CREATE, body);
 };
 
 export const updateFooter = (body: IUpdateFooterParams) => {
-  return put(FOOTER.UPDATE_FOOTER, body);
+  return put(FOOTER.UPDATE, body);
 };

@@ -7,6 +7,7 @@ import { CLoginLayout } from '@/layouts/CLoginLayout';
 
 import { FooterRoutes } from './footer.routes';
 import { HomepageRoutes } from './homepage.routes';
+import { InformationRoutes } from './information.routes';
 import { LanguagesRoutes } from './languages.routes';
 import { MenuRoutes } from './menu.routes';
 import { ScheduleRoutes } from './schedule.routes';
@@ -34,20 +35,13 @@ const routes: RouteObject[] = [
 
           ...UsersRoutes,
           ...HomepageRoutes,
+          ...InformationRoutes,
           ...MenuRoutes,
           ...ScheduleRoutes,
           ...StaffRoutes,
           ...FooterRoutes,
           ...LanguagesRoutes,
 
-          {
-            path: '/informations/subjects-group',
-            element: <CDevelopment />,
-          },
-          {
-            path: '/informations/subjects-list',
-            element: <CDevelopment />,
-          },
           {
             path: '/informations/departments',
             element: <CDevelopment />,

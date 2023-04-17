@@ -22,7 +22,6 @@ export const MUpdatePositionModal = forwardRef<IMUpdatePositionModalRef, any>(
       resolver: positionResolver,
       defaultValues: defaultValuesPosition,
       mode: 'all',
-      shouldFocusError: true,
     });
     //#endregion
 

@@ -16,7 +16,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#region Data
   const { control, handleSubmit, reset, trigger } = useForm<IEventForm>({
     mode: 'all',
-    shouldFocusError: true,
+
     resolver: eventResolver,
     defaultValues: defaultValuesEvent,
   });

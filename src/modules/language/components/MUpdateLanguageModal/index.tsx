@@ -22,7 +22,6 @@ export const MUpdateLanguageModal = forwardRef<IMUpdateLanguageModalRef, any>(
       resolver: languageResolver,
       defaultValues: defaultValuesLanguage,
       mode: 'all',
-      shouldFocusError: true,
     });
     //#endregion
 
@@ -38,7 +37,7 @@ export const MUpdateLanguageModal = forwardRef<IMUpdateLanguageModalRef, any>(
       handleSubmit(async (values) => {
         try {
           console.log(values);
-          const res = await updateLanguage(id, values);
+          await updateLanguage(id, values);
           toast.success('Cập nhật ngôn ngữ thành công!');
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');

@@ -7,5 +7,5 @@ import { PERMISSIONS } from './url';
 export const getPermissions = async (): Promise<
   IApiResponse<IPermissionsPayload[], any>
 > => {
-  return await get(PERMISSIONS.GET_PERMISSIONS);
+  return await get(PERMISSIONS.GET_LIST);
 };

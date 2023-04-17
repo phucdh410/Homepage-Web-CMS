@@ -21,7 +21,6 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
       resolver: languageResolver,
       defaultValues: defaultValuesLanguage,
       mode: 'all',
-      shouldFocusError: true,
     });
     //#endregion
 
@@ -36,7 +35,7 @@ export const MCreateLanguageModal = forwardRef<IMCreateLanguageModalRef, any>(
       handleSubmit(async (values) => {
         try {
           console.log(values);
-          const res = await createLanguage(values);
+          await createLanguage(values);
           toast.success('Tạo mới ngôn ngữ thành công!');
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
