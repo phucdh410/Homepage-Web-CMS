@@ -34,6 +34,8 @@ export const ROUTES = {
     },
     SECTIONS: {
       LIST: '/information/sections',
+      CREATE: '/information/sections/detail',
+      UPDATE: '/information/sections/detail/:id',
     },
   },
 

@@ -10,6 +10,9 @@ const ListSectionGroupsPage = lazy(
 const ListSectionsPage = lazy(
   () => import('@/modules/section/pages/ListSectionsPage'),
 );
+const CreateSectionPage = lazy(
+  () => import('@/modules/section/pages/CreateSectionPage'),
+);
 
 export const InformationRoutes: RouteObject[] = [
   {
@@ -18,4 +21,5 @@ export const InformationRoutes: RouteObject[] = [
   },
 
   { path: ROUTES.INFORMATION.SECTIONS.LIST, element: <ListSectionsPage /> },
+  { path: ROUTES.INFORMATION.SECTIONS.CREATE, element: <CreateSectionPage /> },
 ];

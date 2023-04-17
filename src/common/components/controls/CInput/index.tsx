@@ -17,12 +17,15 @@ export const CInput = forwardRef<ICInputRef, ICInputProps>(
       helperText,
       startAdornment,
       endAdornment,
+      fullWidth,
+      sx,
       ...props
     },
     ref,
   ) => {
     return (
       <TextField
+        fullWidth={fullWidth}
         inputRef={ref}
         id={id}
         name={name}
@@ -31,7 +34,10 @@ export const CInput = forwardRef<ICInputRef, ICInputProps>(
         onChange={onChange}
         placeholder={placeholder}
         type={type}
-        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: '#F5F5F5' } }}
+        sx={{
+          '& .MuiOutlinedInput-root': { backgroundColor: '#F5F5F5' },
+          ...sx,
+        }}
         error={error}
         helperText={helperText}
         InputProps={{

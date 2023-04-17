@@ -20,6 +20,8 @@ export const CInputPassword = forwardRef<
       error,
       helperText,
       startAdornment,
+      fullWidth,
+      sx,
       ...props
     },
     ref,
@@ -30,6 +32,7 @@ export const CInputPassword = forwardRef<
 
     return (
       <TextField
+        fullWidth={fullWidth}
         inputRef={ref}
         id={id}
         name={name}
@@ -48,7 +51,10 @@ export const CInputPassword = forwardRef<
             </InputAdornment>
           ),
         }}
-        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: '#F5F5F5' } }}
+        sx={{
+          '& .MuiOutlinedInput-root': { backgroundColor: '#F5F5F5' },
+          ...sx,
+        }}
         error={error}
         helperText={helperText}
         {...props}

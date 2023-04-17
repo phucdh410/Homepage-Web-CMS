@@ -5,7 +5,10 @@ import { debounce, InputAdornment, TextField } from '@mui/material';
 import { ICSearchInputProps, ICSearchInputRef } from './types';
 
 export const CSearchInput = forwardRef<ICSearchInputRef, ICSearchInputProps>(
-  ({ id, name, placeholder, onChange, defaultValue, ...props }, ref) => {
+  (
+    { id, name, placeholder, onChange, defaultValue, fullWidth, sx, ...props },
+    ref,
+  ) => {
     //#region Data
     const [input, setInput] = useState(defaultValue || '');
     //#endregion
@@ -25,6 +28,7 @@ export const CSearchInput = forwardRef<ICSearchInputRef, ICSearchInputProps>(
     //#region Render
     return (
       <TextField
+        fullWidth={fullWidth}
         className="search-input"
         inputRef={ref}
         id={id}
@@ -40,7 +44,10 @@ export const CSearchInput = forwardRef<ICSearchInputRef, ICSearchInputProps>(
             </InputAdornment>
           ),
         }}
-        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: '#ffffff' } }}
+        sx={{
+          '& .MuiOutlinedInput-root': { backgroundColor: '#ffffff' },
+          ...sx,
+        }}
         {...props}
       />
     );
