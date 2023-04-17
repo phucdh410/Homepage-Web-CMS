@@ -56,7 +56,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
 
         <Stack direction="row" spacing={1} flex={1} mb={2.5}>
           <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-            Hiển thị
+            Trạng thái
           </FormLabel>
           <Controller
             control={control}

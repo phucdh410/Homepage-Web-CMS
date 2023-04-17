@@ -8,4 +8,5 @@ export interface ICImageUploadProps extends IFormInputComponentProps {
   // onChange: (value: IFileUpload) => void;
   aspectRatio?: string;
   isSquare?: boolean;
+  maxMb?: number;
 }

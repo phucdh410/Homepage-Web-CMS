@@ -28,7 +28,7 @@ export const MPositionForm: React.FC<IMPositionFormProps> = ({ control }) => {
 
       <Stack direction="row" spacing={1} minWidth={200}>
         <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-          Hiển thị
+          Trạng thái
         </FormLabel>
         <Controller
           control={control}

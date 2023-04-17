@@ -62,7 +62,7 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
     },
     {
       field: 'active',
-      headerName: 'HIỂN THỊ',
+      headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',

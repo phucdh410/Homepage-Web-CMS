@@ -10,6 +10,7 @@ import {
 } from '@/controls/';
 
 import { MLinkInput } from '../MLinkInput';
+import { MTabs } from '../MTabs';
 
 import { IMSectionFormProps } from './types';
 
@@ -74,7 +75,7 @@ export const MSectionForm: React.FC<IMSectionFormProps> = ({ control }) => {
       </Stack>
 
       <Stack direction="row" spacing={3} mb={2.5}>
-        <CFormLabel label="Hiển thị" />
+        <CFormLabel label="Trạng thái" />
         <Controller
           control={control}
           name="active"
@@ -110,6 +111,10 @@ export const MSectionForm: React.FC<IMSectionFormProps> = ({ control }) => {
         />
       </Stack>
 
+      <Stack mb={3}>
+        <MTabs />
+      </Stack>
+
       <Stack direction="column" spacing={1} mb={2.5}>
         <CFormLabel label="Ảnh bìa" required />
         <Controller
@@ -119,6 +124,7 @@ export const MSectionForm: React.FC<IMSectionFormProps> = ({ control }) => {
             <CImageUpload
               {...field}
               aspectRatio="16/9"
+              maxMb={10}
               error={!!error}
               helperText={error?.message}
             />

@@ -62,7 +62,7 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
     },
     {
       field: 'active',
-      headerName: 'HIỂN THỊ',
+      headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',

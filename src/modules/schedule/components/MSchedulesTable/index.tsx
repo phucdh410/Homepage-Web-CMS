@@ -61,7 +61,7 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
     },
     {
       field: 'active',
-      headerName: 'HIỂN THỊ',
+      headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',

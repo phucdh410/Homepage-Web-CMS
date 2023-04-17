@@ -43,7 +43,7 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
     },
     {
       field: 'display',
-      headerName: 'DẠNG HIỂN THỊ',
+      headerName: 'VỊ TRÍ HIỂN THỊ',
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
@@ -67,7 +67,7 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
     },
     {
       field: 'active',
-      headerName: 'HIỂN THỊ',
+      headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',

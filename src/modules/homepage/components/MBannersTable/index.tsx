@@ -42,7 +42,7 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
     },
     {
       field: 'time',
-      headerName: 'THỜI GIAN HIỂN THỊ',
+      headerName: 'THỜI GIAN TRẠNG THÁI',
       minWidth: 250,
       headerAlign: 'center',
       align: 'center',

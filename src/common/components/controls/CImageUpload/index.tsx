@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState } from 'react';
+import { forwardRef, useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { PhotoCamera, Upload } from '@mui/icons-material';
 import { Box, Button, FormHelperText, Typography } from '@mui/material';
@@ -6,21 +6,8 @@ import { Box, Button, FormHelperText, Typography } from '@mui/material';
 import { uploadFile } from '@/apis/files.api';
 import defaultImage from '@/assets/images/default-image.png';
 
+import { mbToBytes } from './mbToBytes';
 import { ICImageUploadProps } from './types';
-
-const MAX_FILE_SIZE = 5242880;
-const checkImageFile = (file: File) => {
-  if (file) {
-    if (file.size > MAX_FILE_SIZE) {
-      toast.error('Dung lượng file ảnh tối đa 5Mb!');
-      return false;
-    } else if (file.type.split('/')[0] !== 'image') {
-      toast.error('Định dạng file không hợp lệ (image/*)!');
-      return false;
-    }
-    return true;
-  }
-};
 
 export const CImageUpload = forwardRef(
   ({
@@ -30,6 +17,7 @@ export const CImageUpload = forwardRef(
     helperText,
     aspectRatio,
     isSquare,
+    maxMb, // Tính theo megabytes (MB)
     ...props
   }: ICImageUploadProps) => {
     //#region Data
@@ -37,9 +25,24 @@ export const CImageUpload = forwardRef(
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const [isImgError, setIsImgError] = useState<boolean>(false);
+
+    const maxSize = useMemo(() => mbToBytes(maxMb || 0), [maxMb]);
     //#endregion
 
     //#region Event
+    const checkImageFile = (file: File) => {
+      if (file) {
+        if (file.size > maxSize) {
+          toast.error('Dung lượng file ảnh tối đa 5Mb!');
+          return false;
+        } else if (file.type.split('/')[0] !== 'image') {
+          toast.error('Định dạng file không hợp lệ (image/*)!');
+          return false;
+        }
+        return true;
+      }
+    };
+
     const onDragEnter = () => {
       wrapperRef.current?.classList?.add('dragover');
     };
@@ -189,7 +192,7 @@ export const CImageUpload = forwardRef(
             )}
             <Typography>
               Chọn file hoặc kéo thả vào đây
-              <br /> (Tối đa 5MB)
+              <br /> {`(Tối đa ${maxMb}MB)`}
             </Typography>
           </Box>
         </Box>
@@ -201,3 +204,7 @@ export const CImageUpload = forwardRef(
     //#endregion
   },
 );
+
+CImageUpload.defaultProps = {
+  maxMb: 5,
+};

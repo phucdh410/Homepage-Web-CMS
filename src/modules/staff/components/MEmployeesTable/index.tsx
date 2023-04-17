@@ -65,7 +65,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
     },
     {
       field: 'active',
-      headerName: 'HIỂN THỊ',
+      headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',

@@ -42,7 +42,7 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
     },
     {
       field: 'time',
-      headerName: 'THỜI GIAN HIỂN THỊ',
+      headerName: 'THỜI GIAN TRẠNG THÁI',
       minWidth: 250,
       headerAlign: 'center',
       align: 'center',

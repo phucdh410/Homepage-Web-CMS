@@ -62,7 +62,7 @@ export const MMenuForm: React.FC<IMMenuFormProps> = ({ control }) => {
           </Stack>
 
           <Stack direction="row" spacing={3} mb={2.5}>
-            <CFormLabel label="Hiển thị" />
+            <CFormLabel label="Trạng thái" />
             <Controller
               control={control}
               name="active"

@@ -36,7 +36,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
 
       <Stack direction="row" spacing={1} minWidth={200} mb={2.5}>
         <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-          Hiển thị
+          Trạng thái
         </FormLabel>
         <Controller
           control={control}
