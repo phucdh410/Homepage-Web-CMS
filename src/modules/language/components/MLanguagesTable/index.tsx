@@ -26,7 +26,6 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       minWidth: 50,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
     },
     {
       field: 'name',
@@ -34,7 +33,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-      sortable: false,
+
       flex: 1,
     },
     {
@@ -43,7 +42,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -54,7 +53,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -65,7 +64,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -76,7 +75,7 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<IGetLanguagesResponse>) => (
         <CActionsTable
           onEdit={onEdit(params.value?.id, params.value)}

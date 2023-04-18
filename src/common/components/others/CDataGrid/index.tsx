@@ -12,6 +12,10 @@ export const CDataGrid = ({
   ...props
 }: ICDataGridProps) => {
   //#region Data
+  const _columns = useMemo(() => {
+    return columns.map((e) => ({ ...e, sortable: false }));
+  }, [columns]);
+
   const _rows = useMemo(() => {
     return rows.map((e, i) => ({
       ...e,
@@ -28,12 +32,12 @@ export const CDataGrid = ({
   return (
     <DataGrid
       autoHeight
-      rowSelection={false}
       disableColumnMenu
-      rows={_rows}
-      columns={columns}
-      hideFooter
       disableVirtualization
+      hideFooter
+      rowSelection={false}
+      rows={_rows}
+      columns={_columns}
       localeText={{
         noRowsLabel: 'Không có dữ liệu hiển thị !',
         noResultsOverlayLabel: 'Không có dữ liệu hiển thị !',

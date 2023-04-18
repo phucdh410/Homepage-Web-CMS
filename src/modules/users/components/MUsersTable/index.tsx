@@ -27,7 +27,6 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       minWidth: 50,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
     },
     {
       field: 'username',
@@ -35,7 +34,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-      sortable: false,
+
       flex: 1,
     },
     {
@@ -44,7 +43,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -55,7 +54,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -66,7 +65,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -77,7 +76,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<String>) => (
         <Stack direction="row" spacing={1} justifyContent="center">
           <IconButton color="warning" onClick={onEdit(params.value)}>

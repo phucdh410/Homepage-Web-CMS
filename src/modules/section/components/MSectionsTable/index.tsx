@@ -27,7 +27,6 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       minWidth: 50,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
     },
     {
       field: 'name',
@@ -35,7 +34,7 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-      sortable: false,
+
       flex: 1,
     },
     {
@@ -44,7 +43,7 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       minWidth: 200,
       headerAlign: 'left',
       align: 'left',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<any>) => {
         return params.value?.name;
       },
@@ -55,7 +54,7 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -66,7 +65,7 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       minWidth: 250,
       headerAlign: 'left',
       align: 'left',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<1 | 4>) => {
         return DISPLAY_LABELS[params.value];
       },
@@ -77,7 +76,7 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -88,7 +87,7 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<String>) => (
         <CActionsTable
           onEdit={onEdit(params.value)}

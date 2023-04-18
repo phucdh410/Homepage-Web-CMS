@@ -62,6 +62,14 @@ export const SECTIONS = {
   DELETE: '/sections', // :id
 };
 
+export const TIMELINES = {
+  CREATE: '/timelines',
+  GET_LIST: '/timelines/all',
+  GET_DETAIL: '/timelines', // :id
+  UPDATE: '/timelines', // :id
+  DELETE: '/timelines', // :id
+};
+
 export const PAGES = {
   CREATE: '/pages',
   GET_LIST: '/pages/all',

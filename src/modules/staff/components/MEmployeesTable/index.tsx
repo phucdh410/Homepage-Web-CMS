@@ -26,7 +26,6 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       minWidth: 50,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
     },
     {
       field: 'fullname',
@@ -34,7 +33,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-      sortable: false,
+
       flex: 1,
     },
     {
@@ -43,7 +42,6 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
     },
     {
       field: 'updated_date',
@@ -51,7 +49,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -62,7 +60,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -73,7 +71,7 @@ export const MEmployeesTable: React.FC<IMEmployeesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      sortable: false,
+
       renderCell: (params: GridRenderCellParams<String>) => (
         <CActionsTable
           onEdit={onEdit(params.value)}

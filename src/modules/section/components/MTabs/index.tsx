@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useWatch } from 'react-hook-form';
 import { Tab, Tabs } from '@mui/material';
 
 import {
@@ -6,6 +7,7 @@ import {
   MEducationAim,
   MEducationQuality,
   MMasterQuality,
+  MTimeline,
 } from '../MTabSubComponents';
 
 import { IMTabsProps } from './types';
@@ -41,6 +43,8 @@ function TabPanel(props: TabPanelProps) {
 export const MTabs: React.FC<IMTabsProps> = ({ control }) => {
   //#region Data
   const [currentTab, setCurrentTab] = useState<number>(1);
+
+  const displayValue = useWatch({ control, name: 'display' });
   //#endregion
 
   //#region Event
@@ -53,7 +57,7 @@ export const MTabs: React.FC<IMTabsProps> = ({ control }) => {
   //#endregion
 
   //#region Render
-  return (
+  return displayValue?.toString() !== '1' ? null : (
     <>
       <Tabs
         value={currentTab}
@@ -84,7 +88,7 @@ export const MTabs: React.FC<IMTabsProps> = ({ control }) => {
       </Tabs>
 
       <TabPanel value={1} current={currentTab}>
-        Tab Timeline
+        <MTimeline control={control} />
       </TabPanel>
       <TabPanel value={2} current={currentTab}>
         <MEducationQuality control={control} />
