@@ -7,7 +7,7 @@ export const CNotFoundError = () => {
     <div className="notfound-error-page">
       <h1
         style={{
-          textalign: 'center',
+          textAlign: 'center',
           fontSize: '50px',
           letterSpacing: '10px',
         }}

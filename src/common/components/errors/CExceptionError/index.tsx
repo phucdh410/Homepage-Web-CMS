@@ -9,7 +9,7 @@ export const CExceptionError = () => {
     <div className="error-page">
       <h1
         style={{
-          textalign: 'center',
+          textAlign: 'center',
           fontSize: '50px',
           letterSpacing: '10px',
         }}
