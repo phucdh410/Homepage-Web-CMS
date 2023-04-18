@@ -57,6 +57,12 @@ export const ROUTES = {
     },
   },
 
+  POSTS: {
+    LIST: '/posts',
+    CREATE: '/posts/detail',
+    UPDATE: '/posts/detail/:id',
+  },
+
   SCHEDULES: {
     LIST: '/schedules',
     CREATE: '/schedules/detail',

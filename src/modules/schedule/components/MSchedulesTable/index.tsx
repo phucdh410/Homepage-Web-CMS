@@ -33,7 +33,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -44,7 +43,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('HH:mm');
       },
@@ -55,7 +53,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-
       flex: 1,
     },
     {
@@ -64,7 +61,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -75,7 +71,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<String>) => (
         <CActionsTable
           onEdit={onEdit(params.value)}

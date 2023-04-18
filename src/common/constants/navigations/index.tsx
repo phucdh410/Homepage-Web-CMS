@@ -147,7 +147,7 @@ export const NAVIGATIONS: INavigationItem[] = [
     title: 'Quản lý nội dung',
     icon: <ContentPaste />,
     isChildren: false,
-    path: '/contents',
+    path: '/posts',
   },
   {
     title: 'Lịch công tác',

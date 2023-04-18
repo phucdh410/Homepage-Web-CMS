@@ -40,7 +40,7 @@ export const MMenuForm: React.FC<IMMenuFormProps> = ({ control }) => {
               <CFormLabel
                 label="Vị trí hiển thị"
                 required
-                sx={{ marginTop: '0.5rem' }}
+                sx={{ marginTop: '9px' }}
               />
               <Controller
                 control={control}

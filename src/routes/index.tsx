@@ -10,6 +10,7 @@ import { HomepageRoutes } from './homepage.routes';
 import { InformationRoutes } from './information.routes';
 import { LanguagesRoutes } from './languages.routes';
 import { MenuRoutes } from './menu.routes';
+import { PostRoutes } from './posts.routes';
 import { ScheduleRoutes } from './schedule.routes';
 import { StaffRoutes } from './staff.routes';
 import { UsersRoutes } from './users.routes';
@@ -37,6 +38,7 @@ const routes: RouteObject[] = [
           ...HomepageRoutes,
           ...InformationRoutes,
           ...MenuRoutes,
+          ...PostRoutes,
           ...ScheduleRoutes,
           ...StaffRoutes,
           ...FooterRoutes,
@@ -54,12 +56,6 @@ const routes: RouteObject[] = [
             path: '/informations/unions',
             element: <CDevelopment />,
           },
-
-          {
-            path: '/contents',
-            element: <CDevelopment />,
-          },
-
           {
             path: '/approve',
             element: <CDevelopment />,

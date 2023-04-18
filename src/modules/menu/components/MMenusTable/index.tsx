@@ -37,7 +37,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-
       flex: 1,
     },
     {
@@ -46,7 +45,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-
       valueFormatter: (
         params: GridValueFormatterParams<POSITION_DISPLAY_TYPES>,
       ) => {
@@ -59,7 +57,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -70,7 +67,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -81,7 +77,6 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<String>) => (
         <CActionsTable
           onEdit={onEdit(params.value)}

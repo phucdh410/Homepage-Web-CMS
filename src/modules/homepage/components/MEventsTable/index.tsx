@@ -36,7 +36,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-
       flex: 1,
     },
     {
@@ -45,7 +44,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       minWidth: 250,
       headerAlign: 'center',
       align: 'center',
-
       valueGetter: (params: GridValueGetterParams<IGetEventsResponse>) => {
         return `${dayjs(params.row?.start_date).format('DD/MM/YYYY')} - ${dayjs(
           params.row?.end_date,
@@ -58,7 +56,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -69,7 +66,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -80,7 +76,6 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<String>) => (
         <Stack direction="row" spacing={1} justifyContent="center">
           <IconButton color="warning" onClick={onEdit(params.value, 1)}>

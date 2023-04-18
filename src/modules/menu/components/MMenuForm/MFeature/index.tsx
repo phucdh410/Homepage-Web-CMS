@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
+import { ArrowDropDown, ArrowDropUp, ArrowRightAlt } from '@mui/icons-material';
 import { TreeItem, TreeView } from '@mui/lab';
 import {
+  Avatar,
+  Box,
+  ButtonBase,
   Checkbox,
   FormControlLabel,
   Paper,
@@ -49,44 +52,53 @@ const arr: TreeItems<any> = [
   { id: '3', label: 'Tuyển sinh' },
 ];
 
-const Tree = ({ obj }: { obj: any }) => {
-  return (
-    <TreeItem
-      nodeId={obj?.id}
-      label={
-        <FormControlLabel
-          control={<Checkbox onClick={(e) => e.stopPropagation()} />}
-          label={obj.label}
-        />
-      }
-      sx={{
-        '.MuiTreeItem-content': { flexDirection: 'row-reverse' },
-      }}
-    >
-      {obj?.children &&
-        obj?.children?.map((e: any, i: number) => <Tree key={i} obj={e} />)}
-    </TreeItem>
-  );
-};
-
 export const MFeature: React.FC<IMFeatureProps> = ({ control }) => {
+  const [dataCheck, setDataCheck] = useState<any[]>(ar);
   const [data, setData] = useState<TreeItems<any>>(arr);
+
+  const onCheckboxChange = (
+    event: React.SyntheticEvent<Element, Event>,
+    checked: boolean,
+    id: string,
+  ) => {
+    console.log('id :', id, ' checked: ', checked);
+  };
+
+  const Tree = ({ obj }: { obj: any }) => {
+    return (
+      <TreeItem
+        nodeId={obj?.id}
+        label={
+          <FormControlLabel
+            control={<Checkbox onClick={(e) => e.stopPropagation()} />}
+            label={obj.label}
+            onChange={(event, checked) =>
+              onCheckboxChange(event, checked, obj.id)
+            }
+          />
+        }
+        sx={{
+          '.MuiTreeItem-content': { flexDirection: 'row-reverse' },
+        }}
+      >
+        {obj?.children &&
+          obj?.children?.map((e: any, i: number) => <Tree key={i} obj={e} />)}
+      </TreeItem>
+    );
+  };
 
   return (
     <>
       <Grid lg={6}>
         <Paper variant="wrapper">
-          <CFormLabel
-            label="Thêm vào Menu"
-            required
-            sx={{ display: 'block', mb: 2.5 }}
-          />
+          <CFormLabel label="Thêm vào Menu" required sx={{ mb: 1.5 }} />
           <TreeView
+            disableSelection
             defaultCollapseIcon={<ArrowDropUp />}
             defaultExpandIcon={<ArrowDropDown />}
             defaultEndIcon={<div style={{ width: 24 }} />}
           >
-            {ar.map((e, i) =>
+            {dataCheck.map((e, i) =>
               e?.children ? (
                 <Tree key={i} obj={e} />
               ) : (
@@ -101,6 +113,9 @@ export const MFeature: React.FC<IMFeatureProps> = ({ control }) => {
                       control={
                         <Checkbox onClick={(e) => e.stopPropagation()} />
                       }
+                      onChange={(event, checked) =>
+                        onCheckboxChange(event, checked, e.id)
+                      }
                       label={e.label}
                     />
                   }
@@ -108,6 +123,21 @@ export const MFeature: React.FC<IMFeatureProps> = ({ control }) => {
               ),
             )}
           </TreeView>
+          <Box textAlign="right" mt={2}>
+            <ButtonBase sx={{ borderRadius: '10px' }}>
+              <Avatar
+                variant="square"
+                sx={{
+                  backgroundColor: (theme) => theme.palette.primary.main,
+                  borderRadius: 'inherit',
+                }}
+              >
+                <ArrowRightAlt
+                  sx={{ color: (theme) => theme.palette.primary.contrastText }}
+                />
+              </Avatar>
+            </ButtonBase>
+          </Box>
         </Paper>
       </Grid>
       <Grid lg={6}>

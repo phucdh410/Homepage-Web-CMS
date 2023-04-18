@@ -319,6 +319,10 @@ theme = createTheme(theme, {
             color: theme.palette.textTable.main,
           },
         },
+        columnHeader: {
+          paddingLeft: '10px!important',
+          paddingRight: '10px!important',
+        },
       },
     },
     MuiTooltip: {

@@ -94,6 +94,22 @@ export const MENUS = {
   DELETE: '/menus', // :id
 };
 
+export const POSTS = {
+  CREATE_BLOG: '/posts/blog',
+  CREATE_ORG: '/posts/org',
+  CREATE_REF: '/posts/ref',
+  GET_LIST: '/posts/all',
+  GET_DETAIL_BLOG: '/posts/blog', // :id
+  GET_DETAIL_ORG: '/posts/org', // :id
+  GET_DETAIL_REF: '/posts/ref', // :id
+  UPDATE_BLOG: '/posts/blog', // :id
+  UPDATE_ORG: '/posts/org', // :id
+  UPDATE_REF: '/posts/ref', // :id
+  DELETE_BLOG: '/posts/blog', // :id
+  DELETE_ORG: '/posts/org', // :id
+  DELETE_REF: '/posts/ref', // :id
+};
+
 export const SCHEDULES = {
   GET_LIST: '/schedules/all',
   CREATE: '/schedules',

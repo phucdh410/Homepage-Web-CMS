@@ -35,7 +35,6 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
-
       flex: 1,
     },
     {
@@ -44,7 +43,6 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -55,7 +53,6 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
       },
@@ -66,7 +63,6 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<Boolean>) => (
         <CActiveTag value={params.value} />
       ),
@@ -77,7 +73,6 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-
       renderCell: (params: GridRenderCellParams<IGetNotificationsResponse>) => (
         <Stack direction="row" spacing={1} justifyContent="center">
           <IconButton color="warning" onClick={onEdit(params.value, 1)}>
