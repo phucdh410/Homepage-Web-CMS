@@ -1,15 +1,12 @@
-import { useMemo } from 'react';
-import { BorderColor, DeleteForever } from '@mui/icons-material';
-import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
   GridRenderCellParams,
-  GridRowsProp,
   GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CActiveTag, CDataGrid } from '@/others/';
+import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
+import { IUsersDataTable } from '@/types/user';
 
 import { IMUsersTableProps } from './types';
 
@@ -72,33 +69,20 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      renderCell: (params: GridRenderCellParams<String>) => (
-        <Stack direction="row" spacing={1} justifyContent="center">
-          <IconButton color="warning" onClick={onEdit(params.value)}>
-            <BorderColor />
-          </IconButton>
-          <IconButton color="secondary" onClick={onDelete(params.value)}>
-            <DeleteForever />
-          </IconButton>
-        </Stack>
+      renderCell: (params: GridRenderCellParams<IUsersDataTable>) => (
+        <CActionsTable
+          onEdit={() => onEdit(params.row.id)}
+          onDelete={() => onDelete(params.row.id)}
+        />
       ),
     },
   ];
-
-  const rows = useMemo<GridRowsProp>(
-    () =>
-      data?.map((e, i) => ({
-        ...e,
-        action: e.id,
-      })),
-    [data],
-  );
   //#endregion
 
   //#region Event
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} page={page} />;
+  return <CDataGrid columns={columns} rows={data} page={page} />;
   //#endregion
 };

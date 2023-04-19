@@ -1,15 +1,11 @@
-import { useMemo } from 'react';
-import { Delete, Edit } from '@mui/icons-material';
-import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
   GridRenderCellParams,
-  GridRowsProp,
   GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CActiveTag, CDataGrid } from '@/others/';
+import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
 import { IGetNotificationsResponse } from '@/types/notification';
 
 import { IMNotificationsTableProps } from './types';
@@ -74,32 +70,19 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       headerAlign: 'center',
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetNotificationsResponse>) => (
-        <Stack direction="row" spacing={1} justifyContent="center">
-          <IconButton color="warning" onClick={onEdit(params.value, 1)}>
-            <Edit />
-          </IconButton>
-          <IconButton color="secondary" onClick={onDelete(params.value?.id)}>
-            <Delete />
-          </IconButton>
-        </Stack>
+        <CActionsTable
+          onEdit={() => onEdit(params.row)}
+          onDelete={() => onDelete(params.row.id)}
+        />
       ),
     },
   ];
-
-  const rows = useMemo<GridRowsProp>(
-    () =>
-      data?.map((e, i) => ({
-        ...e,
-        action: e,
-      })),
-    [data],
-  );
   //#endregion
 
   //#region Event
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} page={page} />;
+  return <CDataGrid columns={columns} rows={data} page={page} />;
   //#endregion
 };

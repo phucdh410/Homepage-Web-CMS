@@ -1,16 +1,12 @@
-import { useMemo } from 'react';
-import { Delete, Edit } from '@mui/icons-material';
-import { IconButton, Stack } from '@mui/material';
 import {
   GridColDef,
   GridRenderCellParams,
-  GridRowsProp,
   GridValueFormatterParams,
   GridValueGetterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { CActiveTag, CDataGrid } from '@/others/';
+import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
 import { IGetBannersResponse } from '@/types/banner';
 
 import { IMBannersTableProps } from './types';
@@ -76,33 +72,20 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      renderCell: (params: GridRenderCellParams<String>) => (
-        <Stack direction="row" spacing={1} justifyContent="center">
-          <IconButton color="warning" onClick={onEdit(params.value, 1)}>
-            <Edit />
-          </IconButton>
-          <IconButton color="secondary" onClick={onDelete(params.value)}>
-            <Delete />
-          </IconButton>
-        </Stack>
+      renderCell: (params: GridRenderCellParams<IGetBannersResponse>) => (
+        <CActionsTable
+          onEdit={() => onEdit(params.row.id)}
+          onDelete={() => onDelete(params.row.id)}
+        />
       ),
     },
   ];
-
-  const rows = useMemo<GridRowsProp>(
-    () =>
-      data?.map((e, i) => ({
-        ...e,
-        action: e.id,
-      })),
-    [data],
-  );
   //#endregion
 
   //#region Event
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} page={page} />;
+  return <CDataGrid columns={columns} rows={data} page={page} />;
   //#endregion
 };

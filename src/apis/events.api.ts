@@ -22,11 +22,8 @@ export const getEvents = async (
 
 export const getEventById = async (
   id: string,
-  language_id: number,
 ): Promise<IApiResponse<IGetEventDetailResponse, any>> => {
-  return await get(`${EVENTS.GET_DETAIL}/${id}`, {
-    params: { language_id },
-  });
+  return await get(`${EVENTS.GET_DETAIL}/${id}`);
 };
 
 export const updateEvent = async (id: string, body: IUpdateEventParams) => {

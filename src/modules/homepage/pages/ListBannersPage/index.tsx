@@ -116,10 +116,9 @@ const ListBannersPage = () => {
   const onPageChange = (event: any, newPage: number) =>
     setFilter((prev) => ({ ...prev, page: newPage }));
 
-  const onEdit = (id: string, language_id: number) => () =>
-    navigate(`detail/${id}/?language_id=${language_id}`);
+  const onEdit = (id: string) => navigate(`detail/${id}`);
 
-  const onDelete = (id: string) => async () => {
+  const onDelete = async (id: string) => {
     if (
       await confirm({
         confirmation: 'Thao tác xóa sẽ không thể hoàn tác!',

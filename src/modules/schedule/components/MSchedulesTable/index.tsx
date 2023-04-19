@@ -9,6 +9,7 @@ import dayjs from 'dayjs';
 
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
+import { IGetSchedulesResponse } from '@/types/schedule';
 
 import { IMSchedulesTableProps } from './types';
 
@@ -71,10 +72,10 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      renderCell: (params: GridRenderCellParams<String>) => (
+      renderCell: (params: GridRenderCellParams<IGetSchedulesResponse>) => (
         <CActionsTable
-          onEdit={onEdit(params.value)}
-          onDelete={onDelete(params.value)}
+          onEdit={() => onEdit(params.row.id)}
+          onDelete={() => onDelete(params.row.id)}
         />
       ),
     },
@@ -85,7 +86,6 @@ export const MSchedulesTable: React.FC<IMSchedulesTableProps> = ({
       data?.map((e, i) => ({
         ...e,
         time: e.date,
-        action: e.id,
       })),
     [data],
   );

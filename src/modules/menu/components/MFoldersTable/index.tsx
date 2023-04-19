@@ -1,8 +1,6 @@
-import { useMemo } from 'react';
 import {
   GridColDef,
   GridRenderCellParams,
-  GridRowsProp,
   GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
@@ -10,6 +8,7 @@ import dayjs from 'dayjs';
 import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
+import { IGetFoldersResponse } from '@/types/folder';
 
 import { IMFoldersTableProps } from './types';
 
@@ -72,29 +71,20 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      renderCell: (params: GridRenderCellParams<String>) => (
+      renderCell: (params: GridRenderCellParams<IGetFoldersResponse>) => (
         <CActionsTable
-          onEdit={onEdit(params.value)}
-          onDelete={onDelete(params.value)}
+          onEdit={() => onEdit(params.row.id)}
+          onDelete={() => onDelete(params.row.id)}
         />
       ),
     },
   ];
-
-  const rows = useMemo<GridRowsProp>(
-    () =>
-      data?.map((e, i) => ({
-        ...e,
-        action: e.id,
-      })),
-    [data],
-  );
   //#endregion
 
   //#region Event
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} page={page} />;
+  return <CDataGrid columns={columns} rows={data} page={page} />;
   //#endregion
 };

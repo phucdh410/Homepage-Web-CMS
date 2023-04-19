@@ -1,8 +1,6 @@
-import { useMemo } from 'react';
 import {
   GridColDef,
   GridRenderCellParams,
-  GridRowsProp,
   GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
@@ -13,6 +11,7 @@ import {
 } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
+import { IGetMenusResponse } from '@/types/menu';
 
 import { IMMenusTableProps } from './types';
 
@@ -77,29 +76,20 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      renderCell: (params: GridRenderCellParams<String>) => (
+      renderCell: (params: GridRenderCellParams<IGetMenusResponse>) => (
         <CActionsTable
-          onEdit={onEdit(params.value)}
-          onDelete={onDelete(params.value)}
+          onEdit={() => onEdit(params.row.id)}
+          onDelete={() => onDelete(params.row.id)}
         />
       ),
     },
   ];
-
-  const rows = useMemo<GridRowsProp>(
-    () =>
-      data?.map((e, i) => ({
-        ...e,
-        action: e.id,
-      })),
-    [data],
-  );
   //#endregion
 
   //#region Event
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} page={page} />;
+  return <CDataGrid columns={columns} rows={data} page={page} />;
   //#endregion
 };

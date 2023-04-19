@@ -2,7 +2,7 @@ import { IGetBannersResponse } from '@/types/banner';
 
 export interface IMBannersTableProps {
   data: IGetBannersResponse[];
-  onEdit: (id: string, language_id: number) => () => void;
-  onDelete: (id: string) => () => void;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
   page: number;
 }

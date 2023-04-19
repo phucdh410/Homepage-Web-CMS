@@ -1,8 +1,6 @@
-import { useMemo } from 'react';
 import {
   GridColDef,
   GridRenderCellParams,
-  GridRowsProp,
   GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
@@ -73,27 +71,18 @@ export const MLanguagesTable: React.FC<IMLanguagesTableProps> = ({
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetLanguagesResponse>) => (
         <CActionsTable
-          onEdit={onEdit(params.value?.id, params.value)}
-          onDelete={onDelete(params.value?.id)}
+          onEdit={() => onEdit(params.row.id, params.row)}
+          onDelete={() => onDelete(params.row.id)}
         />
       ),
     },
   ];
-
-  const rows = useMemo<GridRowsProp>(
-    () =>
-      data?.map((e, i) => ({
-        ...e,
-        action: e,
-      })),
-    [data],
-  );
   //#endregion
 
   //#region Event
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} page={page} />;
+  return <CDataGrid columns={columns} rows={data} page={page} />;
   //#endregion
 };

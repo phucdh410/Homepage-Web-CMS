@@ -19,7 +19,7 @@ export const getNotifications = async (
   return await post(NOTIFICATIONS.GET_LIST, body);
 };
 
-export const getNotificationById = async (id: string, language_id: number) => {
+export const getNotificationById = async (id: string) => {
   return await get(`${NOTIFICATIONS.GET_DETAIL}/${id}`, {
     params: { language_id },
   });

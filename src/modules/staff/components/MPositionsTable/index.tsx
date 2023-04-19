@@ -1,14 +1,13 @@
-import { useMemo } from 'react';
 import {
   GridColDef,
   GridRenderCellParams,
-  GridRowsProp,
   GridValueFormatterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
+import { IGetPositionsResponse } from '@/types/position';
 
 import { IMPositionsTableProps } from './types';
 
@@ -61,29 +60,20 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
       minWidth: 200,
       headerAlign: 'center',
       align: 'center',
-      renderCell: (params: GridRenderCellParams<String>) => (
+      renderCell: (params: GridRenderCellParams<IGetPositionsResponse>) => (
         <CActionsTable
-          onEdit={onEdit(params.value?.id, params.value)}
-          onDelete={onDelete(params.value?.id)}
+          onEdit={() => onEdit(params.row.id, params.row)}
+          onDelete={() => onDelete(params.row.id)}
         />
       ),
     },
   ];
-
-  const rows = useMemo<GridRowsProp>(
-    () =>
-      data?.map((e, i) => ({
-        ...e,
-        action: e,
-      })),
-    [data],
-  );
   //#endregion
 
   //#region Event
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={rows} page={page} />;
+  return <CDataGrid columns={columns} rows={data} page={page} />;
   //#endregion
 };

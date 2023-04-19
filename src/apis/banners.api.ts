@@ -22,11 +22,8 @@ export const getBanners = async (
 
 export const getBannerById = async (
   id: string,
-  language_id: number,
 ): Promise<IApiResponse<IGetBannerDetailResponse, any>> => {
-  return await get(`${BANNERS.GET_DETAIL}/${id}`, {
-    params: { language_id },
-  });
+  return await get(`${BANNERS.GET_DETAIL}/${id}`);
 };
 
 export const updateBanner = async (id: string, body: IUpdateBannerParams) => {
