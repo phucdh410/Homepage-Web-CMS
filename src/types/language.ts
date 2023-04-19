@@ -10,6 +10,8 @@ export interface IGetLanguagesResponse {
   created_date: Date | Dayjs | string | null;
   updated_date: Date | Dayjs | string | null;
   active: boolean;
+  code: string;
+  abbr: string;
 }
 
 export interface ICreateLanguageParams {

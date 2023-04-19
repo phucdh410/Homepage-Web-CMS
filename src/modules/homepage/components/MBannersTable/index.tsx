@@ -74,6 +74,7 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetBannersResponse>) => (
         <CActionsTable
+          multiLanguages
           onEdit={() => onEdit(params.row.id)}
           onDelete={() => onDelete(params.row.id)}
         />
