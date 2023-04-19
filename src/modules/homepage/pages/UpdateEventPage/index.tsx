@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
 import { getEventById } from '@/apis/events.api';
@@ -7,14 +7,10 @@ import { MEventForm } from '@/modules/homepage/components';
 const UpdateEventPage = () => {
   //#region Data
   const { id } = useParams();
-  const [params] = useSearchParams();
-
-  const language_id = params.get('language_id');
-  const _language_id = Number(language_id) || 1;
 
   const { data } = useQuery({
-    queryKey: ['event-detail', id, _language_id],
-    queryFn: () => getEventById(id as string, _language_id),
+    queryKey: ['event-detail', id],
+    queryFn: () => getEventById(id as string),
   });
   //#endregion
 

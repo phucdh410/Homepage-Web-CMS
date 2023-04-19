@@ -2,20 +2,23 @@ import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Box, FormLabel, Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 
 import { createBanner, updateBanner } from '@/apis/banners.api';
-import { CActionsForm, CImageUpload, CInput, CRangePicker } from '@/controls/';
+import {
+  CActionsForm,
+  CFormLabel,
+  CImageUpload,
+  CInput,
+  CRangePicker,
+} from '@/controls/';
 import { IBannerForm } from '@/types/banner';
 
 import { bannerResolver, defaultValuesBanner } from '../../form';
 
 import { IMBannerFormProps } from './types';
 
-export const MBannerForm: React.FC<IMBannerFormProps> = ({
-  data,
-  language_id,
-}) => {
+export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
   //#region Data
   const { control, handleSubmit, reset, trigger } = useForm<IBannerForm>({
     mode: 'all',
@@ -70,9 +73,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
         <form onSubmit={onSubmit}>
           <Stack direction="column" spacing={2.5} mb={2.5}>
             <Stack direction="column" spacing={1} flex={1}>
-              <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-                Tiêu đề
-              </FormLabel>
+              <CFormLabel label="Tiêu đề" required />
               <Controller
                 control={control}
                 name="title"
@@ -88,9 +89,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
             </Stack>
 
             <Stack direction="column" spacing={1} flex={1}>
-              <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-                Hình ảnh
-              </FormLabel>
+              <CFormLabel label="Hình ảnh" required />
               <Controller
                 control={control}
                 name="file_id"
@@ -107,9 +106,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({
           </Stack>
 
           <Stack direction="column" spacing={1} flex={1}>
-            <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-              Ngày hiển thị
-            </FormLabel>
+            <CFormLabel label="Ngày hiển thị" required />
             <Stack direction="row" alignItems="center" spacing={1}>
               <CRangePicker
                 control={control}

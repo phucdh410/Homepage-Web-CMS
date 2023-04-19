@@ -26,6 +26,8 @@ const MOCK_DATA = [
     name: 'Tiếng Việt',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: true,
   },
   {
@@ -33,6 +35,8 @@ const MOCK_DATA = [
     name: 'Tiếng Anh',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: true,
   },
   {
@@ -40,6 +44,8 @@ const MOCK_DATA = [
     name: 'Tiếng Thái',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: false,
   },
   {
@@ -47,6 +53,8 @@ const MOCK_DATA = [
     name: 'Tiếng Nhật',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: true,
   },
   {
@@ -54,6 +62,8 @@ const MOCK_DATA = [
     name: 'Tiếng Hàn',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: true,
   },
   {
@@ -61,6 +71,8 @@ const MOCK_DATA = [
     name: 'Tiếng Trung',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: false,
   },
   {
@@ -68,6 +80,8 @@ const MOCK_DATA = [
     name: 'Tiếng Pháp',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: true,
   },
   {
@@ -75,6 +89,8 @@ const MOCK_DATA = [
     name: 'Tiếng lòng....mẹ bao la như biển thái bình',
     created_date: new Date(),
     updated_date: new Date(),
+    code: '1',
+    abbr: '',
     active: false,
   },
 ];

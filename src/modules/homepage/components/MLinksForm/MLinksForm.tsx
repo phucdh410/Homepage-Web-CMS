@@ -1,6 +1,6 @@
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { Box, FormLabel, Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 import { CActionsForm, CFormLabel, CInput } from '@/controls/';
 import { ILinks } from '@/types/homepage-link';
@@ -41,9 +41,7 @@ export const MLinksForm: React.FC<IMLinksFormProps> = ({ data }) => {
     <Box>
       <form onSubmit={onSubmit}>
         <Box mb={2}>
-          <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-            Liên kết
-          </FormLabel>
+          <CFormLabel label="Liên kết" required />
         </Box>
         <Box px={2}>
           <Stack direction="column" spacing={1} mb={2.5}>

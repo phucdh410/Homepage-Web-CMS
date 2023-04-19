@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
-import { FormLabel, Stack, Unstable_Grid2 as Grid } from '@mui/material';
+import { Stack, Unstable_Grid2 as Grid } from '@mui/material';
 
-import { CImageUpload, CInput, CSwitch } from '@/controls/';
+import { CFormLabel, CImageUpload, CInput, CSwitch } from '@/controls/';
 
 import { IMEmployeeFormProps } from './types';
 
@@ -17,9 +17,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
     <Grid container spacing={2.5} mb={4}>
       <Grid xs={12} lg={8} order={{ xs: 2, lg: 1 }}>
         <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-          <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-            Họ và tên nhân sự
-          </FormLabel>
+          <CFormLabel label="Họ và tên nhân sự" required />
           <Controller
             control={control}
             name="fullname"
@@ -36,9 +34,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
         </Stack>
 
         <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-          <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-            Học vị
-          </FormLabel>
+          <CFormLabel label="Học vị" />
           <Controller
             control={control}
             name="academic_degree"
@@ -55,9 +51,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
         </Stack>
 
         <Stack direction="row" spacing={1} flex={1} mb={2.5}>
-          <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-            Trạng thái
-          </FormLabel>
+          <CFormLabel label="Trạng thái" />
           <Controller
             control={control}
             name="active"
@@ -69,9 +63,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
       </Grid>
       <Grid xs={12} lg={4} order={{ xs: 1, lg: 2 }}>
         <Stack direction="column" spacing={1} flex={1}>
-          <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-            Hình ảnh
-          </FormLabel>
+          <CFormLabel label="Hình ảnh" />
           <Controller
             control={control}
             name="file_id"

@@ -6,13 +6,12 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  FormLabel,
   Stack,
   Typography,
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 
-import { CInput, CInputPassword, CSwitch } from '@/controls/';
+import { CFormLabel, CInput, CInputPassword, CSwitch } from '@/controls/';
 import { IPermissionsPayload } from '@/types/permission';
 
 // import { RootState } from '@/redux/';
@@ -64,9 +63,7 @@ export const MForm: React.FC<IMFormProps> = ({ control, isEdit }) => {
   return (
     <>
       <Stack direction="column" spacing={1} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-          Tên đăng nhập
-        </FormLabel>
+        <CFormLabel label="Tên đăng nhập" required />
         <Controller
           control={control}
           name="username"
@@ -84,9 +81,7 @@ export const MForm: React.FC<IMFormProps> = ({ control, isEdit }) => {
 
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={2.5} mb={2.5}>
         <Stack direction="column" spacing={1} flex={1}>
-          <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-            Mật khẩu
-          </FormLabel>
+          <CFormLabel label="Mật khẩu" required />
           <Controller
             control={control}
             name="password"
@@ -108,13 +103,11 @@ export const MForm: React.FC<IMFormProps> = ({ control, isEdit }) => {
         <Stack
           direction="row"
           alignItems="center"
-          spacing={1}
+          spacing={3}
           minWidth={200}
           mb={2.5}
         >
-          <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-            Trạng thái
-          </FormLabel>
+          <CFormLabel label="Trạng thái" />
           <Controller
             control={control}
             name="active"
@@ -124,10 +117,7 @@ export const MForm: React.FC<IMFormProps> = ({ control, isEdit }) => {
       </Stack>
 
       <Stack direction="column" spacing={1} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-          Danh sách tính năng truy cập
-        </FormLabel>
-
+        <CFormLabel label="Danh sách tính năng truy cập" required />
         <Box>
           <Button
             className="c-button"

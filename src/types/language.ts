@@ -16,6 +16,7 @@ export interface IGetLanguagesResponse {
 
 export interface ICreateLanguageParams {
   name: string;
+  abbr: string;
   active: boolean;
 }
 

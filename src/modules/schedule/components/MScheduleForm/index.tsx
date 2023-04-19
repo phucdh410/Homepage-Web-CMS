@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
-import { FormLabel, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 
-import { CDateTimePicker, CInput, CSwitch } from '@/controls/';
+import { CDateTimePicker, CFormLabel, CInput, CSwitch } from '@/controls/';
 
 import { IMScheduleFormProps } from './types';
 
@@ -16,9 +16,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
   return (
     <>
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-          Tiêu đề
-        </FormLabel>
+        <CFormLabel label="Tiêu đề" required />
         <Controller
           control={control}
           name="title"
@@ -34,10 +32,8 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
         />
       </Stack>
 
-      <Stack direction="row" spacing={1} minWidth={200} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-          Trạng thái
-        </FormLabel>
+      <Stack direction="row" spacing={3} minWidth={200} mb={2.5}>
+        <CFormLabel label="Trạng thái" />
         <Controller
           control={control}
           name="active"
@@ -46,9 +42,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
       </Stack>
 
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-          Nội dung
-        </FormLabel>
+        <CFormLabel label="Nội dung" />
         <Controller
           control={control}
           name="content"
@@ -67,9 +61,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
       </Stack>
 
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-          Thời gian diễn ra
-        </FormLabel>
+        <CFormLabel label="Thời gian diễn ra" required />
         <Controller
           control={control}
           name="date"
@@ -85,9 +77,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
       </Stack>
 
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-          Địa điểm
-        </FormLabel>
+        <CFormLabel label="Địa điểm" />
         <Controller
           control={control}
           name="location"
@@ -106,9 +96,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
       </Stack>
 
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-        <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-          Thành phần tham dự
-        </FormLabel>
+        <CFormLabel label="Thành phần tham dự" />
         <Controller
           control={control}
           name="attendee"

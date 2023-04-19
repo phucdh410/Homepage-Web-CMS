@@ -20,9 +20,7 @@ export const getNotifications = async (
 };
 
 export const getNotificationById = async (id: string) => {
-  return await get(`${NOTIFICATIONS.GET_DETAIL}/${id}`, {
-    params: { language_id },
-  });
+  return await get(`${NOTIFICATIONS.GET_DETAIL}/${id}`);
 };
 
 export const updateNotification = async (

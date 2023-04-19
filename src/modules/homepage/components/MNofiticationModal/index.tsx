@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Dialog, FormLabel, Stack } from '@mui/material';
 
-import { CActionsForm, CInput, CSwitch } from '@/controls/';
+import { CActionsForm, CFormLabel, CInput, CSwitch } from '@/controls/';
 import {
   defaultValuesNotification,
   notificationResolver,
@@ -99,9 +99,7 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
               </Stack>
 
               <Stack direction="row" spacing={1} minWidth={200}>
-                <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }}>
-                  Trạng thái
-                </FormLabel>
+                <CFormLabel label="Trạng thái" />
                 <Controller
                   control={control}
                   name="active"

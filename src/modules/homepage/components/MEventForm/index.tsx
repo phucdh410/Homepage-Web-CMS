@@ -2,10 +2,16 @@ import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Box, FormLabel, Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 
 import { createEvent, updateEvent } from '@/apis/events.api';
-import { CActionsForm, CImageUpload, CInput, CRangePicker } from '@/controls/';
+import {
+  CActionsForm,
+  CFormLabel,
+  CImageUpload,
+  CInput,
+  CRangePicker,
+} from '@/controls/';
 import { IEventForm } from '@/types/event';
 
 import { defaultValuesEvent, eventResolver } from '../../form';
@@ -65,9 +71,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
         <form onSubmit={onSubmit}>
           <Stack direction="column" spacing={2.5} mb={2.5}>
             <Stack direction="column" spacing={1} flex={1}>
-              <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-                Tiêu đề
-              </FormLabel>
+              <CFormLabel label="Tiêu đề " required />
               <Controller
                 control={control}
                 name="title"
@@ -83,9 +87,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
             </Stack>
 
             <Stack direction="column" spacing={1} flex={1}>
-              <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-                Hình ảnh
-              </FormLabel>
+              <CFormLabel label="Hình ảnh" required />
               <Controller
                 control={control}
                 name="file_id"
@@ -102,9 +104,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
           </Stack>
 
           <Stack direction="column" spacing={1} flex={1}>
-            <FormLabel sx={{ fontWeight: 600, lineHeight: '24px' }} required>
-              Ngày hiển thị
-            </FormLabel>
+            <CFormLabel label="Ngày hiển thị" required />
             <Stack direction="row" alignItems="center" spacing={1}>
               <CRangePicker
                 control={control}
