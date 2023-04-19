@@ -5,7 +5,10 @@ import { Box, Dialog } from '@mui/material';
 
 import { updateLanguage } from '@/apis/languages.api';
 import { CActionsForm } from '@/controls/';
-import { IGetLanguagesResponse, IUpdateLanguageParams } from '@/types/language';
+import {
+  IGetLanguagesResponse,
+  IUpdateLanguageParams,
+} from '@/types/languages';
 
 import { defaultValuesLanguage, languageResolver } from '../../form';
 import { MLanguageForm } from '../MLanguageForm';

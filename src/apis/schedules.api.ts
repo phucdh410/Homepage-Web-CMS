@@ -6,7 +6,7 @@ import {
   IGetSchedulesParams,
   IGetSchedulesResponse,
   IUpdateScheduleParams,
-} from '@/types/schedule';
+} from '@/types/schedules';
 
 import { SCHEDULES } from './url';
 

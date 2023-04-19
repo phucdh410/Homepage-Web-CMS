@@ -19,6 +19,7 @@ export const CAutocomplete = forwardRef<ICAutocompleteRef, ICAutocompleteProps>(
       error,
       helperText,
       disableClearable,
+      fullWidth,
       // getOptionLabel,
       ...props
     },
@@ -77,6 +78,7 @@ export const CAutocomplete = forwardRef<ICAutocompleteRef, ICAutocompleteProps>(
 
     return (
       <Autocomplete
+        fullWidth={fullWidth}
         id={id}
         disableClearable={disableClearable}
         multiple={multiple}

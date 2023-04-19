@@ -5,7 +5,7 @@ import { Box, Paper, Typography } from '@mui/material';
 
 import { createFolder } from '@/apis/folders.api';
 import { CActionsForm } from '@/controls/';
-import { ICreateFolderParams } from '@/types/folder';
+import { ICreateFolderParams } from '@/types/folders';
 
 import { MFolderForm } from '../../components';
 import { defaultValuesFolder, folderResolver } from '../../form';

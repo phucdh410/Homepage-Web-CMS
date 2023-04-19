@@ -45,15 +45,15 @@ const routes: RouteObject[] = [
           ...LanguagesRoutes,
 
           {
-            path: '/informations/departments',
+            path: '/information/departments',
             element: <CDevelopment />,
           },
           {
-            path: '/informations/centers',
+            path: '/information/centers',
             element: <CDevelopment />,
           },
           {
-            path: '/informations/unions',
+            path: '/information/unions',
             element: <CDevelopment />,
           },
           {

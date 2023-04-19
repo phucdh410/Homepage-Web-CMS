@@ -1,4 +1,4 @@
-import { INavigationItem } from '@/types/navigation';
+import { INavigationItem } from '@/types/navigations';
 
 export interface ICNavItemProps {
   data: INavigationItem;

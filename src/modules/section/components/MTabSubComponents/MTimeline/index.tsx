@@ -13,7 +13,7 @@ import dayjs from 'dayjs';
 import { deleteTimeline } from '@/apis/timelines.api';
 import { confirm } from '@/confirm/';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetTimelinesResponse } from '@/types/timeline';
+import { IGetTimelinesResponse } from '@/types/timelines';
 
 import { IMCreateModalRef, MCreateModal } from './MCreateModal';
 import { IMUpdateModalRef, MUpdateModal } from './MUpdateModal';

@@ -9,7 +9,7 @@ import {
   defaultValuesTimeline,
   timelineResolver,
 } from '@/modules/section/form/timeline';
-import { IGetTimelinesResponse } from '@/types/timeline';
+import { IGetTimelinesResponse } from '@/types/timelines';
 
 import { MForm } from './MForm';
 

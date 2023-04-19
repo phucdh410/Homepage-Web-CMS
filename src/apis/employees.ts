@@ -5,7 +5,7 @@ import {
   IGetEmployeesParams,
   IGetEmployeesResponse,
   IUpdateEmployeeParams,
-} from '@/types/employee';
+} from '@/types/employees';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { EMPLOYEES } from './url';

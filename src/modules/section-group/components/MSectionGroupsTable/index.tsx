@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetSectionGroupsResponse } from '@/types/section-group';
+import { IGetSectionGroupsResponse } from '@/types/section-groups';
 
 import { IMSectionGroupsTableProps } from './types';
 

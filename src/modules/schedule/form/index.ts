@@ -3,7 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import dayjs from 'dayjs';
 import { date, object, string } from 'yup';
 
-import { ICreateScheduleParams, IUpdateScheduleParams } from '@/types/schedule';
+import {
+  ICreateScheduleParams,
+  IUpdateScheduleParams,
+} from '@/types/schedules';
 
 export const defaultValuesSchedule: ICreateScheduleParams = {
   title: '',

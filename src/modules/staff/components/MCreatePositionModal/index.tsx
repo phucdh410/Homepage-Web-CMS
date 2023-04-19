@@ -5,7 +5,7 @@ import { Box, Dialog } from '@mui/material';
 
 import { createPosition } from '@/apis/positions.api';
 import { CActionsForm } from '@/controls/';
-import { ICreatePositionParams } from '@/types/position';
+import { ICreatePositionParams } from '@/types/positions';
 
 import { defaultValuesPosition, positionResolver } from '../../form';
 import { MPositionForm } from '../MPositionForm';

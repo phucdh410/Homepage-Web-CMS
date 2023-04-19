@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetPagesResponse } from '@/types/page';
+import { IGetPagesResponse } from '@/types/pages';
 
 import { IMPagesTableProps } from './types';
 

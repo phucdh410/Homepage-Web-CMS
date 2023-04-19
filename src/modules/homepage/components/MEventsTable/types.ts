@@ -1,4 +1,4 @@
-import { IGetEventsResponse } from '@/types/event';
+import { IGetEventsResponse } from '@/types/events';
 
 export interface IMEventsTableProps {
   data: IGetEventsResponse[];

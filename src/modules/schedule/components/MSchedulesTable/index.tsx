@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetSchedulesResponse } from '@/types/schedule';
+import { IGetSchedulesResponse } from '@/types/schedules';
 
 import { IMSchedulesTableProps } from './types';
 

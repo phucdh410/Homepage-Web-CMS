@@ -11,4 +11,5 @@ export interface ICAutocompleteProps extends IFormInputComponentProps {
   options: IOption[];
   renderOption: (props: any, option: IOption) => ReactNode;
   disableClearable?: boolean;
+  fullWidth?: boolean;
 }

@@ -3,10 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import dayjs from 'dayjs';
 import { boolean, date, number, object, string } from 'yup';
 
-import { IBannerForm } from '@/types/banner';
-import { IEventForm } from '@/types/event';
+import { IBannerForm } from '@/types/banners';
+import { IEventForm } from '@/types/events';
 import { ILinks } from '@/types/homepage-link';
-import { ICreateNotificationParams } from '@/types/notification';
+import { ICreateNotificationParams } from '@/types/notifications';
 
 //#region Banner
 export const defaultValuesBanner: IBannerForm = {

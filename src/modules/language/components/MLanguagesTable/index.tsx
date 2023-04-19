@@ -6,7 +6,7 @@ import {
 import dayjs from 'dayjs';
 
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetLanguagesResponse } from '@/types/language';
+import { IGetLanguagesResponse } from '@/types/languages';
 
 import { IMLanguagesTableProps } from './types';
 

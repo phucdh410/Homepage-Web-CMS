@@ -2,7 +2,7 @@ import { Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from 'yup';
 
-import { ICreateSectionParams, IUpdateSectionParams } from '@/types/section';
+import { ICreateSectionParams, IUpdateSectionParams } from '@/types/sections';
 
 export const defaultValuesSection: ICreateSectionParams = {
   name: '',

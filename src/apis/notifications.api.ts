@@ -4,7 +4,7 @@ import {
   IGetNotificationsParams,
   IGetNotificationsResponse,
   IUpdateNotificationParams,
-} from '@/types/notification';
+} from '@/types/notifications';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { NOTIFICATIONS } from './url';

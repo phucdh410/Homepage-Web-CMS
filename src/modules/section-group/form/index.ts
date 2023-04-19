@@ -5,7 +5,7 @@ import { boolean, object, string } from 'yup';
 import {
   ICreateSectionGroupParams,
   IUpdateSectionGroupParams,
-} from '@/types/section-group';
+} from '@/types/section-groups';
 
 export const defaultValues: ICreateSectionGroupParams = {
   name: '',

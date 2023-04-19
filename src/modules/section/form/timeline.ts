@@ -2,7 +2,10 @@ import { Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { boolean, number, object, string } from 'yup';
 
-import { ICreateTimelineParams, IUpdateTimelineParams } from '@/types/timeline';
+import {
+  ICreateTimelineParams,
+  IUpdateTimelineParams,
+} from '@/types/timelines';
 
 export const defaultValuesTimeline: ICreateTimelineParams = {
   from: new Date().getFullYear(),

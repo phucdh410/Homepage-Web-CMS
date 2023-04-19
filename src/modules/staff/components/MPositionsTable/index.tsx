@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetPositionsResponse } from '@/types/position';
+import { IGetPositionsResponse } from '@/types/positions';
 
 import { IMPositionsTableProps } from './types';
 

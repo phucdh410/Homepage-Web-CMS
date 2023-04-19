@@ -344,6 +344,13 @@ theme = createTheme(theme, {
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: '20px',
+        },
+      },
+    },
   } as Components<Omit<Theme, 'components'>>,
 });
 //#endregion

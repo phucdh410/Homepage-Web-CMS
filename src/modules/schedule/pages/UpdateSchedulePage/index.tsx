@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 
 import { getDetailSchedule, updateSchedule } from '@/apis/schedules.api';
 import { CActionsForm } from '@/controls/';
-import { IUpdateScheduleParams } from '@/types/schedule';
+import { IUpdateScheduleParams } from '@/types/schedules';
 
 import { MScheduleForm } from '../../components';
 import { defaultValuesSchedule, scheduleResolver } from '../../form';

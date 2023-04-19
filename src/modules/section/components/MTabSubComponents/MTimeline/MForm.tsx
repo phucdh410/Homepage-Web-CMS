@@ -3,7 +3,10 @@ import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
 
 import { CFormLabel, CInput, CSwitch } from '@/controls/';
-import { ICreateTimelineParams, IUpdateTimelineParams } from '@/types/timeline';
+import {
+  ICreateTimelineParams,
+  IUpdateTimelineParams,
+} from '@/types/timelines';
 
 export interface IMFormProps {
   control: Control<ICreateTimelineParams | IUpdateTimelineParams, any>;
@@ -76,7 +79,8 @@ export const MForm: React.FC<IMFormProps> = ({ control }) => {
           )}
         />
       </Stack>
-      <Stack direction="row" spacing={3} mb={2.5}>
+      <Stack direction="row" spacing={3} mb={2.5} alignItems="center">
+        {' '}
         <CFormLabel label="Trạng thái" />
         <Controller
           control={control}

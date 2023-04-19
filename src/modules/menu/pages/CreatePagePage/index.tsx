@@ -5,7 +5,7 @@ import { Box, Paper, Typography } from '@mui/material';
 
 import { createPage } from '@/apis/pages.api';
 import { CActionsForm } from '@/controls/';
-import { ICreatePageParams } from '@/types/page';
+import { ICreatePageParams } from '@/types/pages';
 
 import { MPageForm } from '../../components';
 import { defaultValuesPage, pageResolver } from '../../form';

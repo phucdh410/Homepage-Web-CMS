@@ -1,4 +1,4 @@
-import { IPermissionsPayload } from './permission';
+import { IPermissionsPayload } from './permissions';
 
 export interface ILoginParams {
   username: string;

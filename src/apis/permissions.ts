@@ -1,5 +1,5 @@
 import { get } from '@/axios/request';
-import { IPermissionsPayload } from '@/types/permission';
+import { IPermissionsPayload } from '@/types/permissions';
 import { IApiResponse } from '@/types/response';
 
 import { PERMISSIONS } from './url';

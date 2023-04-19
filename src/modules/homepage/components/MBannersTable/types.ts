@@ -1,4 +1,4 @@
-import { IGetBannersResponse } from '@/types/banner';
+import { IGetBannersResponse } from '@/types/banners';
 
 export interface IMBannersTableProps {
   data: IGetBannersResponse[];

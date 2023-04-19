@@ -5,7 +5,7 @@ import {
   IGetMenusParams,
   IGetMenusResponse,
   IUpdateMenuParams,
-} from '@/types/menu';
+} from '@/types/menus';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { MENUS } from './url';

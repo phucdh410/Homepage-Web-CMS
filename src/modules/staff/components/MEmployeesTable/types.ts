@@ -1,4 +1,4 @@
-import { IGetEmployeesResponse } from '@/types/employee';
+import { IGetEmployeesResponse } from '@/types/employees';
 
 export interface IMEmployeesTableProps {
   data: IGetEmployeesResponse[];

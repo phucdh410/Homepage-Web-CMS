@@ -1,4 +1,4 @@
-import { IGetMenusResponse } from '@/types/menu';
+import { IGetMenusResponse } from '@/types/menus';
 
 export interface IMMenusTableProps {
   data: IGetMenusResponse[];

@@ -12,7 +12,7 @@ import {
   CInput,
   CRangePicker,
 } from '@/controls/';
-import { IBannerForm } from '@/types/banner';
+import { IBannerForm } from '@/types/banners';
 
 import { bannerResolver, defaultValuesBanner } from '../../form';
 

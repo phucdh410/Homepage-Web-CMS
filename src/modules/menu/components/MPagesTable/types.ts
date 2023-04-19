@@ -1,4 +1,4 @@
-import { IGetPagesResponse } from '@/types/page';
+import { IGetPagesResponse } from '@/types/pages';
 
 export interface IMPagesTableProps {
   data: IGetPagesResponse[];

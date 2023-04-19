@@ -27,7 +27,8 @@ export const MSectionGroupForm: React.FC<IMSectionGroupFormProps> = ({
         />
       </Stack>
 
-      <Stack direction="row" spacing={3} mb={2.5}>
+      <Stack direction="row" spacing={3} mb={2.5} alignItems="center">
+        {' '}
         <CFormLabel label="Trạng thái" />
         <Controller
           control={control}

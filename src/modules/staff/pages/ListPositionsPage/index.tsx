@@ -10,7 +10,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetPositionsResponse } from '@/types/position';
+import { IGetPositionsResponse } from '@/types/positions';
 
 import {
   MCreatePositionModal,

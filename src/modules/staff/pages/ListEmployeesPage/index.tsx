@@ -10,7 +10,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetEmployeesResponse } from '@/types/employee';
+import { IGetEmployeesResponse } from '@/types/employees';
 
 import { MEmployeesTable } from '../../components';
 

@@ -14,7 +14,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetPagesResponse } from '@/types/page';
+import { IGetPagesResponse } from '@/types/pages';
 
 import { MPagesTable } from '../../components';
 

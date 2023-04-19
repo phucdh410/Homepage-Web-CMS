@@ -14,7 +14,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetFoldersResponse } from '@/types/folder';
+import { IGetFoldersResponse } from '@/types/folders';
 
 import { MFoldersTable } from '../../components';
 

@@ -12,7 +12,7 @@ import {
   MNotificationsTable,
 } from '@/modules/homepage/components';
 import { CPagination } from '@/others/';
-import { IGetNotificationsResponse } from '@/types/notification';
+import { IGetNotificationsResponse } from '@/types/notifications';
 
 import { IMNotificationModalRef } from '../../components/MNofiticationModal/types';
 

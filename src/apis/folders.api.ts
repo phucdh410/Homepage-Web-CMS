@@ -5,7 +5,7 @@ import {
   IGetFoldersParams,
   IGetFoldersResponse,
   IUpdateFolderParams,
-} from '@/types/folder';
+} from '@/types/folders';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { FOLDERS } from './url';

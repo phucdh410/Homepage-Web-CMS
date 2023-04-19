@@ -11,7 +11,7 @@ import {
   Portrait,
 } from '@mui/icons-material';
 
-import { INavigationItem } from '@/types/navigation';
+import { INavigationItem } from '@/types/navigations';
 
 export const NAVIGATIONS: INavigationItem[] = [
   // {

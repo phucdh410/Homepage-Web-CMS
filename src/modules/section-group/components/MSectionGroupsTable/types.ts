@@ -1,4 +1,4 @@
-import { IGetSectionGroupsResponse } from '@/types/section-group';
+import { IGetSectionGroupsResponse } from '@/types/section-groups';
 
 export interface IMSectionGroupsTableProps {
   data: IGetSectionGroupsResponse[];

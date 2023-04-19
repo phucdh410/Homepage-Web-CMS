@@ -5,7 +5,7 @@ import {
   IGetEventsParams,
   IGetEventsResponse,
   IUpdateEventParams,
-} from '@/types/event';
+} from '@/types/events';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { EVENTS } from './url';

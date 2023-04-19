@@ -10,7 +10,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetSchedulesResponse } from '@/types/schedule';
+import { IGetSchedulesResponse } from '@/types/schedules';
 
 import { MSchedulesTable } from '../../components';
 

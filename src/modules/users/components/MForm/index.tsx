@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 
 import { CFormLabel, CInput, CInputPassword, CSwitch } from '@/controls/';
-import { IPermissionsPayload } from '@/types/permission';
+import { IPermissionsPayload } from '@/types/permissions';
 
 // import { RootState } from '@/redux/';
 // import { IPermissionState } from '@/slices/permission';

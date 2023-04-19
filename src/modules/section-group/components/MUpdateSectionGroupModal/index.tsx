@@ -5,7 +5,7 @@ import { Box, Dialog } from '@mui/material';
 
 import { updateSectionGroup } from '@/apis/section-groups.api';
 import { CActionsForm } from '@/controls/';
-import { IUpdateSectionGroupParams } from '@/types/section-group';
+import { IUpdateSectionGroupParams } from '@/types/section-groups';
 
 import { defaultValues, sectionGroupResolver } from '../../form';
 import { MSectionGroupForm } from '..';

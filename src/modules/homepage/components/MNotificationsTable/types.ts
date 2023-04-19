@@ -1,4 +1,4 @@
-import { IGetNotificationsResponse } from '@/types/notification';
+import { IGetNotificationsResponse } from '@/types/notifications';
 
 export interface IMNotificationsTableProps {
   data: IGetNotificationsResponse[];

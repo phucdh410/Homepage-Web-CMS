@@ -5,7 +5,7 @@ import { Box, Dialog } from '@mui/material';
 
 import { createSectionGroup } from '@/apis/section-groups.api';
 import { CActionsForm } from '@/controls/';
-import { ICreateSectionGroupParams } from '@/types/section-group';
+import { ICreateSectionGroupParams } from '@/types/section-groups';
 
 import { defaultValues, sectionGroupResolver } from '../../form';
 import { MSectionGroupForm } from '..';

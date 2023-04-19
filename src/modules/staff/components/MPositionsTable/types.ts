@@ -1,4 +1,4 @@
-import { IGetPositionsResponse } from '@/types/position';
+import { IGetPositionsResponse } from '@/types/positions';
 
 export interface IMPositionsTableProps {
   data: IGetPositionsResponse[];

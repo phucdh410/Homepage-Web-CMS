@@ -70,6 +70,23 @@ export const TIMELINES = {
   DELETE: '/timelines', // :id
 };
 
+export const MAJORS = {
+  CREATE: '/majors',
+  GET_LIST: '/majors/all',
+  GET_DETAIL: '/majors', // :id
+  UPDATE: '/majors', // :id
+  DELETE: '/majors', // :id
+};
+
+export const ORGANIZATION_STRUCTURES = {
+  CREATE: '/org-structures',
+  GET_LIST: '/org-structures/all',
+  GET_DETAIL: '/org-structures', // :id
+  UPDATE: '/org-structures', // :id
+  DELETE: '/org-structures', // :id
+  UPDATE_EMPLOYEES: '/org-structures', // :id/employees
+};
+
 export const PAGES = {
   CREATE: '/pages',
   GET_LIST: '/pages/all',

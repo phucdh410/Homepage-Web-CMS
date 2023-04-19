@@ -10,7 +10,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { MEventsTable } from '@/modules/homepage/components';
 import { CPagination } from '@/others/';
-import { IGetEventsResponse } from '@/types/event';
+import { IGetEventsResponse } from '@/types/events';
 
 const MOCK_DATA = [
   {

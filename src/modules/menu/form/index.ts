@@ -3,9 +3,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { boolean, number, object, string } from 'yup';
 
 import { DISPLAY_ENUMS } from '@/constants/enums';
-import { ICreateFolderParams, IUpdateFolderParams } from '@/types/folder';
-import { ICreateMenuParams, IUpdateMenuParams } from '@/types/menu';
-import { ICreatePageParams, IUpdatePageParams } from '@/types/page';
+import { ICreateFolderParams, IUpdateFolderParams } from '@/types/folders';
+import { ICreateMenuParams, IUpdateMenuParams } from '@/types/menus';
+import { ICreatePageParams, IUpdatePageParams } from '@/types/pages';
 
 //#region Page
 export const defaultValuesPage: ICreatePageParams = {

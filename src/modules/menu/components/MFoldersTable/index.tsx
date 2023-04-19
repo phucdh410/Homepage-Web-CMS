@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetFoldersResponse } from '@/types/folder';
+import { IGetFoldersResponse } from '@/types/folders';
 
 import { IMFoldersTableProps } from './types';
 

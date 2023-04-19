@@ -14,7 +14,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetMenusResponse } from '@/types/menu';
+import { IGetMenusResponse } from '@/types/menus';
 
 import { MMenusTable } from '../../components';
 

@@ -2,7 +2,10 @@ import { Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { boolean, object, string } from 'yup';
 
-import { ICreateLanguageParams, IUpdateLanguageParams } from '@/types/language';
+import {
+  ICreateLanguageParams,
+  IUpdateLanguageParams,
+} from '@/types/languages';
 
 export const defaultValuesLanguage = {
   title: '',

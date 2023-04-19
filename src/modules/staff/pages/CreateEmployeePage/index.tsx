@@ -5,7 +5,7 @@ import { Box, Paper, Typography } from '@mui/material';
 
 import { createEmployee } from '@/apis/employees';
 import { CActionsForm } from '@/controls/';
-import { IEmployeeForm } from '@/types/employee';
+import { IEmployeeForm } from '@/types/employees';
 
 import { MEmployeeForm } from '../../components';
 import { defaultValuesEmployee, employeeResolver } from '../../form';

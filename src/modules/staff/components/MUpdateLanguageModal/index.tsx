@@ -5,7 +5,10 @@ import { Box, Dialog } from '@mui/material';
 
 import { updatePosition } from '@/apis/positions.api';
 import { CActionsForm } from '@/controls/';
-import { IGetPositionsResponse, IUpdatePositionParams } from '@/types/position';
+import {
+  IGetPositionsResponse,
+  IUpdatePositionParams,
+} from '@/types/positions';
 
 import { defaultValuesPosition, positionResolver } from '../../form';
 import { MPositionForm } from '../MPositionForm';

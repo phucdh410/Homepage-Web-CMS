@@ -1,4 +1,4 @@
-import { IGetLanguagesResponse } from '@/types/language';
+import { IGetLanguagesResponse } from '@/types/languages';
 
 export interface IMLanguagesTableProps {
   data: IGetLanguagesResponse[];

@@ -10,7 +10,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetSectionsResponse } from '@/types/section';
+import { IGetSectionsResponse } from '@/types/sections';
 
 import { MSectionsTable } from '../../components';
 

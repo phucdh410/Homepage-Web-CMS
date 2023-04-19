@@ -10,7 +10,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetLanguagesResponse } from '@/types/language';
+import { IGetLanguagesResponse } from '@/types/languages';
 
 import {
   MCreateLanguageModal,

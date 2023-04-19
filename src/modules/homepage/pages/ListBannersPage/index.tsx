@@ -9,7 +9,7 @@ import { deleteBanner, getBanners } from '@/apis/banners.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { CPagination } from '@/others/';
-import { IGetBannersResponse } from '@/types/banner';
+import { IGetBannersResponse } from '@/types/banners';
 
 import { MBannersTable } from '../../components';
 

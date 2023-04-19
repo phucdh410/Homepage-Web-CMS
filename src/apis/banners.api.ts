@@ -5,7 +5,7 @@ import {
   IGetBannersParams,
   IGetBannersResponse,
   IUpdateBannerParams,
-} from '@/types/banner';
+} from '@/types/banners';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { BANNERS } from './url';

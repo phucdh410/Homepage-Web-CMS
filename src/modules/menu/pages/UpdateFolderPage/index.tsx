@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { getDetailFolder, updateFolder } from '@/apis/folders.api';
 import { CActionsForm } from '@/controls/';
-import { IUpdateFolderParams } from '@/types/folder';
+import { IUpdateFolderParams } from '@/types/folders';
 
 import { MFolderForm } from '../../components';
 import { defaultValuesFolder, folderResolver } from '../../form';

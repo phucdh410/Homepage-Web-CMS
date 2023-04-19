@@ -1,7 +1,7 @@
 import { Dayjs } from 'dayjs';
 
 import { IBasePaginateParams } from './params';
-import { IPermissionsPayload } from './permission';
+import { IPermissionsPayload } from './permissions';
 
 export interface IUsersDataTable {
   id: string;

@@ -5,7 +5,7 @@ import { Box, Dialog } from '@mui/material';
 
 import { createLanguage } from '@/apis/languages.api';
 import { CActionsForm } from '@/controls/';
-import { ICreateLanguageParams } from '@/types/language';
+import { ICreateLanguageParams } from '@/types/languages';
 
 import { defaultValuesLanguage, languageResolver } from '../../form';
 import { MLanguageForm } from '../MLanguageForm';

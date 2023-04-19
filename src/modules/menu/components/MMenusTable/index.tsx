@@ -11,7 +11,7 @@ import {
 } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
-import { IGetMenusResponse } from '@/types/menu';
+import { IGetMenusResponse } from '@/types/menus';
 
 import { IMMenusTableProps } from './types';
 

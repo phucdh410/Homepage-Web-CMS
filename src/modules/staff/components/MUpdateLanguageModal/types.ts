@@ -1,4 +1,4 @@
-import { IGetPositionsResponse } from '@/types/position';
+import { IGetPositionsResponse } from '@/types/positions';
 
 export interface IMUpdatePositionModalRef {
   open: (id: string, data: IGetPositionsResponse) => void;

@@ -1,5 +1,8 @@
 import { post, put, remove } from '@/axios/request';
-import { ICreateTimelineParams, IUpdateTimelineParams } from '@/types/timeline';
+import {
+  ICreateTimelineParams,
+  IUpdateTimelineParams,
+} from '@/types/timelines';
 
 import { TIMELINES } from './url';
 

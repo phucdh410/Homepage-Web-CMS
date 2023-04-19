@@ -12,7 +12,7 @@ import {
   CInput,
   CRangePicker,
 } from '@/controls/';
-import { IEventForm } from '@/types/event';
+import { IEventForm } from '@/types/events';
 
 import { defaultValuesEvent, eventResolver } from '../../form';
 

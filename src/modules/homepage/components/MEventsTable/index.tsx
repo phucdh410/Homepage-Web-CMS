@@ -7,7 +7,7 @@ import {
 import dayjs from 'dayjs';
 
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetEventsResponse } from '@/types/event';
+import { IGetEventsResponse } from '@/types/events';
 
 import { IMEventsTableProps } from './types';
 

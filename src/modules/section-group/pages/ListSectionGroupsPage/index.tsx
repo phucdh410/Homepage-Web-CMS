@@ -13,7 +13,7 @@ import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
-import { IGetSectionGroupsResponse } from '@/types/section-group';
+import { IGetSectionGroupsResponse } from '@/types/section-groups';
 
 import {
   MCreateSectionGroupModal,

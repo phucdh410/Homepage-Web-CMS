@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { useWatch } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
 import { Tab, Tabs } from '@mui/material';
+
+import { queryStringToObject } from '@/funcs/';
+import { useNavigateQuery } from '@/hooks/';
 
 import {
   MContact,
   MEducationAim,
   MEducationQuality,
+  MMajor,
   MMasterQuality,
+  MOrgStructure,
   MTimeline,
 } from '../MTabSubComponents';
 
@@ -42,7 +48,13 @@ function TabPanel(props: TabPanelProps) {
 
 export const MTabs: React.FC<IMTabsProps> = ({ control }) => {
   //#region Data
-  const [currentTab, setCurrentTab] = useState<number>(1);
+  const location = useLocation();
+  const { navigateWithNewQuery } = useNavigateQuery();
+  const queryParams = queryStringToObject(location.search);
+
+  const [currentTab, setCurrentTab] = useState<number>(
+    Number(queryParams?.tab) || 1,
+  );
 
   const displayValue = useWatch({ control, name: 'display' });
   //#endregion
@@ -52,6 +64,7 @@ export const MTabs: React.FC<IMTabsProps> = ({ control }) => {
     event: React.SyntheticEvent<Element, Event>,
     value: number,
   ) => {
+    navigateWithNewQuery({ tab: value });
     setCurrentTab(value);
   };
   //#endregion
@@ -100,10 +113,10 @@ export const MTabs: React.FC<IMTabsProps> = ({ control }) => {
         <MEducationAim control={control} />
       </TabPanel>
       <TabPanel value={5} current={currentTab}>
-        Tab Các ngành đào tạo
+        <MMajor control={control} />
       </TabPanel>
       <TabPanel value={6} current={currentTab}>
-        Tab Cơ cấu tổ chức
+        <MOrgStructure control={control} />
       </TabPanel>
       <TabPanel value={7} current={currentTab}>
         Tab Bộ môn

@@ -1,4 +1,4 @@
-import { IGetSchedulesResponse } from '@/types/schedule';
+import { IGetSchedulesResponse } from '@/types/schedules';
 
 export interface IMSchedulesTableProps {
   data: IGetSchedulesResponse[];

@@ -4,7 +4,7 @@ import {
   IGetPositionsParams,
   IGetPositionsResponse,
   IUpdatePositionParams,
-} from '@/types/position';
+} from '@/types/positions';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { POSITIONS } from './url';

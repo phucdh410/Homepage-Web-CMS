@@ -5,7 +5,7 @@ import {
   IGetSectionGroupsParams,
   IGetSectionGroupsResponse,
   IUpdateSectionGroupParams,
-} from '@/types/section-group';
+} from '@/types/section-groups';
 
 import { SECTION_GROUPS } from './url';
 

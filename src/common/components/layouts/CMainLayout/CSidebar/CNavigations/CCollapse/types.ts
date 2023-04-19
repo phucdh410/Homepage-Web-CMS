@@ -1,4 +1,4 @@
-import { IChildNavigationItem, INavigationItem } from '@/types/navigation';
+import { IChildNavigationItem, INavigationItem } from '@/types/navigations';
 
 export interface ICCollapseProps {
   data: INavigationItem;

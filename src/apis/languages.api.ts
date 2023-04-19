@@ -4,7 +4,7 @@ import {
   IGetLanguagesParams,
   IGetLanguagesResponse,
   IUpdateLanguageParams,
-} from '@/types/language';
+} from '@/types/languages';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { LANGUAGES } from './url';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BorderColor, DeleteForever } from '@mui/icons-material';
+import { AddCircle, BorderColor, DeleteForever } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem, Stack, Tooltip } from '@mui/material';
 
 import apiInstance from '@/axios/index';
@@ -40,6 +40,7 @@ const MOCK_LANGUAGES = [
 export const CActionsTable: React.FC<ICActionsTableProps> = ({
   onEdit,
   onDelete,
+  onCreate,
   multiLanguages,
 }) => {
   //#region Data
@@ -106,6 +107,17 @@ export const CActionsTable: React.FC<ICActionsTableProps> = ({
 
   return (
     <Stack direction="row" spacing={1} justifyContent="center">
+      {onCreate && (
+        <Tooltip title="Thêm">
+          <IconButton
+            color="primary"
+            onClick={onCreate}
+            sx={{ '&:hover': { backgroundColor: 'rgb(73 127 249 / 19%)' } }}
+          >
+            <AddCircle />
+          </IconButton>
+        </Tooltip>
+      )}
       <Tooltip title="Chỉnh sửa">
         <IconButton
           color="warning"

@@ -6,7 +6,7 @@ import {
   IGetSectionsParams,
   IGetSectionsResponse,
   IUpdateSectionParams,
-} from '@/types/section';
+} from '@/types/sections';
 
 import { SECTIONS } from './url';
 

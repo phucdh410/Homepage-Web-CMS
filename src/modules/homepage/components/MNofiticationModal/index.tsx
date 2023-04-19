@@ -11,7 +11,7 @@ import {
 import {
   ICreateNotificationParams,
   IGetNotificationsResponse,
-} from '@/types/notification';
+} from '@/types/notifications';
 
 import { IMNotificationModalRef } from './types';
 

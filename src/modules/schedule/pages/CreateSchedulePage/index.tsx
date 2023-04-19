@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
 import { createSchedule } from '@/apis/schedules.api';
 import { CActionsForm } from '@/controls/';
-import { ICreateScheduleParams } from '@/types/schedule';
+import { ICreateScheduleParams } from '@/types/schedules';
 
 import { MScheduleForm } from '../../components';
 import { defaultValuesSchedule, scheduleResolver } from '../../form';

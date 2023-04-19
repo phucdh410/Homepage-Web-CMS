@@ -1,4 +1,4 @@
-import { IGetSectionsResponse } from '@/types/section';
+import { IGetSectionsResponse } from '@/types/sections';
 
 export interface IMSectionsTableProps {
   data: IGetSectionsResponse[];

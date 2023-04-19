@@ -6,7 +6,7 @@ import {
 import dayjs from 'dayjs';
 
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetNotificationsResponse } from '@/types/notification';
+import { IGetNotificationsResponse } from '@/types/notifications';
 
 import { IMNotificationsTableProps } from './types';
 

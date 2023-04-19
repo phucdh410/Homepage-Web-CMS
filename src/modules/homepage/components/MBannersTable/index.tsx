@@ -7,7 +7,7 @@ import {
 import dayjs from 'dayjs';
 
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetBannersResponse } from '@/types/banner';
+import { IGetBannersResponse } from '@/types/banners';
 
 import { IMBannersTableProps } from './types';
 

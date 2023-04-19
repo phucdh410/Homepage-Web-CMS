@@ -5,7 +5,7 @@ import {
   IGetPagesParams,
   IGetPagesResponse,
   IUpdatePageParams,
-} from '@/types/page';
+} from '@/types/pages';
 import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { PAGES } from './url';

@@ -1,4 +1,4 @@
-import { IGetFoldersResponse } from '@/types/folder';
+import { IGetFoldersResponse } from '@/types/folders';
 
 export interface IMFoldersTableProps {
   data: IGetFoldersResponse[];
