@@ -30,3 +30,11 @@ export interface IGetDetailEmployeeResponse {
 export interface IEmployeeForm extends Omit<IGetDetailEmployeeResponse, 'id'> {}
 
 export interface IUpdateEmployeeParams extends ICreateEmployeeParams {}
+
+export interface IEmployeeDataAttach {
+  id?: string | null;
+  position_id: string;
+  employee_id: string;
+  sort_order: number;
+  deleted?: boolean;
+}

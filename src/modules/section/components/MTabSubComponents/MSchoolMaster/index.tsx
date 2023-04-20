@@ -6,66 +6,66 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridValueFormatterParams,
+  GridValueGetterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { deleteOrgStructure } from '@/apis/org-structures.api';
+import { deleteSchoolMaster } from '@/apis/school-masters.api';
 import { confirm } from '@/confirm/';
-import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetOrgStructuresResponse } from '@/types/org-structures';
+import { IGetSchoolMastersResponse } from '@/types/school-masters';
 
 import { IMCreateModalRef, MCreateModal } from './MCreateModal';
 import { IMEmployeesModalRef, MEmployeesModal } from './MEmployeesModal';
 import { IMUpdateModalRef, MUpdateModal } from './MUpdateModal';
-import { IMOrgStructureProps } from './types';
+import { IMSchoolMasterProps } from './types';
 
 const MOCK_DATA = [
   {
     id: '1',
-    name: 'Ban chủ nhiệm khoa',
-    display: 2,
+    from: 2013,
+    to: 2018,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '2',
-    name: 'Giảng viên',
-    display: 2,
+    from: 2013,
+    to: 2023,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
-    name: 'Ban chủ nhiệm khoa',
-    display: 3,
+    from: 2013,
+    to: 2018,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
-    name: 'Ban chủ nhiệm khoa',
-    display: 2,
+    from: 2013,
+    to: 2023,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '5',
-    name: 'Giảng viên',
-    display: 3,
+    from: 2013,
+    to: 2018,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '6',
-    name: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    display: 2,
+    from: 2013,
+    to: 2018,
     updated_date: new Date(),
     active: true,
   },
 ];
 
-export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
+export const MSchoolMaster: React.FC<IMSchoolMasterProps> = ({ control }) => {
   //#region Ref
   const createRef = useRef<IMCreateModalRef | null>(null);
   const updateRef = useRef<IMUpdateModalRef | null>(null);
@@ -81,20 +81,18 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       align: 'center',
     },
     {
-      field: 'name',
-      headerName: 'TÊN TỔ CHỨC',
-      headerAlign: 'left',
-      align: 'left',
-      flex: 1,
-    },
-    {
-      field: 'display',
-      headerName: 'DẠNG HIỂN THỊ',
+      field: 'time',
+      headerName: 'MỐC THỜI GIAN',
+      headerAlign: 'center',
+      align: 'center',
       minWidth: 200,
-      headerAlign: 'left',
-      align: 'left',
-      valueFormatter: (params: GridValueFormatterParams<DISPLAY_TYPES>) => {
-        return DISPLAY_LABELS[params.value];
+      flex: 1,
+      valueGetter: (
+        params: GridValueGetterParams<IGetSchoolMastersResponse>,
+      ) => {
+        return `${params.row.from} - ${
+          params.row.to === new Date().getFullYear() ? 'NAY' : params.row.to
+        }`;
       },
     },
     {
@@ -102,6 +100,7 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       headerName: 'NGÀY CẬP NHẬT',
       headerAlign: 'center',
       align: 'center',
+      flex: 1,
       minWidth: 200,
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
@@ -123,7 +122,7 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       headerAlign: 'center',
       align: 'center',
       minWidth: 150,
-      renderCell: (params: GridRenderCellParams<IGetOrgStructuresResponse>) => {
+      renderCell: (params: GridRenderCellParams<IGetSchoolMastersResponse>) => {
         return (
           <CActionsTable
             onCreate={() => onGoEmployee(params.row.id)}
@@ -139,7 +138,7 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
   //#endregion
 
   //#region Event
-  const onEdit = (id: string, data: IGetOrgStructuresResponse) =>
+  const onEdit = (id: string, data: IGetSchoolMastersResponse) =>
     updateRef.current?.open(id, data);
 
   const onDelete = async (id: string) => {
@@ -150,14 +149,11 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       })
     ) {
       try {
-        await deleteOrgStructure(id);
+        await deleteSchoolMaster(id);
 
-        toast.success('Xóa cơ cấu tổ chức thành công!');
+        toast.success('Xóa thành công!');
       } catch (error: any) {
-        toast.error(
-          error?.response?.data?.message ||
-            'Xóa cơ cấu tổ chức không thành công!',
-        );
+        toast.error(error?.response?.data?.message || 'Xóa không thành công!');
       }
     }
   };

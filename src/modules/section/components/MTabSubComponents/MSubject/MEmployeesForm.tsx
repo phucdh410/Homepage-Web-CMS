@@ -4,7 +4,7 @@ import { Avatar, ButtonBase, Stack } from '@mui/material';
 
 import { CAutocomplete, CFormLabel, CInput } from '@/controls/';
 import { IEmployeeDataAttach } from '@/types/employees';
-import { IUpdateEmployeesParams } from '@/types/org-structures';
+import { IUpdateEmployeesParams } from '@/types/subjects';
 
 export interface IMEmployeesFormProps {
   control: Control<IUpdateEmployeesParams, any>;

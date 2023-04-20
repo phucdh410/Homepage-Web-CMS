@@ -4,7 +4,7 @@ import { Avatar, ButtonBase, Stack } from '@mui/material';
 
 import { CAutocomplete, CFormLabel, CInput } from '@/controls/';
 import { IEmployeeDataAttach } from '@/types/employees';
-import { IUpdateEmployeesParams } from '@/types/org-structures';
+import { IUpdateEmployeesParams } from '@/types/school-masters';
 
 export interface IMEmployeesFormProps {
   control: Control<IUpdateEmployeesParams, any>;
@@ -17,7 +17,7 @@ export const MEmployeesForm: React.FC<IMEmployeesFormProps> = ({ control }) => {
   //#region Data
   const { fields, append, remove, update } = useFieldArray({
     control,
-    name: 'payload',
+    name: 'rank_2nd',
     keyName: '_id',
   });
   //#endregion
@@ -41,6 +41,52 @@ export const MEmployeesForm: React.FC<IMEmployeesFormProps> = ({ control }) => {
   //#region Render
   return (
     <>
+      <CFormLabel label="Cấp bậc" required sx={{ mb: 3 }} />
+      <Stack direction="column" spacing={1} mb={2.5}>
+        <CFormLabel label="Bậc 1" required />
+        <Stack direction="row" alignItems="center" spacing={3}>
+          <Controller
+            control={control}
+            name="rank_1st.position_id"
+            render={({ field, fieldState: { error } }) => (
+              <CAutocomplete
+                {...field}
+                placeholder="Chọn chức vụ"
+                fullWidth
+                options={[]}
+                renderOption={(props, option) => (
+                  <div key={option.id} {...props}>
+                    {option.label}
+                  </div>
+                )}
+                error={!!error}
+                helperText={error?.message}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="rank_1st.employee_id"
+            render={({ field, fieldState: { error } }) => (
+              <CAutocomplete
+                {...field}
+                placeholder="Chọn nhân sự"
+                fullWidth
+                options={[]}
+                renderOption={(props, option) => (
+                  <div key={option.id} {...props}>
+                    {option.label}
+                  </div>
+                )}
+                error={!!error}
+                helperText={error?.message}
+              />
+            )}
+          />
+        </Stack>
+      </Stack>
+
+      <CFormLabel label="Bậc 2" sx={{ mb: 2.5 }} />
       {fields.map((e, i) => (
         <Stack
           key={e._id}
@@ -53,12 +99,12 @@ export const MEmployeesForm: React.FC<IMEmployeesFormProps> = ({ control }) => {
           <CFormLabel label="Thứ tự" sx={{ flexShrink: 0 }} />
           <Controller
             control={control}
-            name={`payload.${i}.sort_order`}
+            name={`rank_2nd.${i}.sort_order`}
             render={({ field }) => <CInput {...field} type="number" />}
           />
           <Controller
             control={control}
-            name={`payload.${i}.position_id`}
+            name={`rank_2nd.${i}.position_id`}
             render={({ field }) => (
               <CAutocomplete
                 {...field}
@@ -75,7 +121,7 @@ export const MEmployeesForm: React.FC<IMEmployeesFormProps> = ({ control }) => {
           />
           <Controller
             control={control}
-            name={`payload.${i}.employee_id`}
+            name={`rank_2nd.${i}.employee_id`}
             render={({ field }) => (
               <CAutocomplete
                 {...field}

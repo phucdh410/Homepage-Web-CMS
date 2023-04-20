@@ -2,14 +2,14 @@ import { Control } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
 
-import { CFormLabel, CInput, CSwitch } from '@/controls/';
+import { CFormLabel, CImageUpload, CInput, CSwitch } from '@/controls/';
 import {
-  ICreateTimelineParams,
-  IUpdateTimelineParams,
-} from '@/types/timelines';
+  ICreateSchoolMasterParams,
+  IUpdateSchoolMasterParams,
+} from '@/types/school-masters';
 
 export interface IMFormProps {
-  control: Control<ICreateTimelineParams | IUpdateTimelineParams, any>;
+  control: Control<ICreateSchoolMasterParams | IUpdateSchoolMasterParams, any>;
 }
 
 export const MForm: React.FC<IMFormProps> = ({ control }) => {
@@ -62,17 +62,13 @@ export const MForm: React.FC<IMFormProps> = ({ control }) => {
         </Stack>
       </Stack>
       <Stack direction="column" spacing={1} mb={2.5}>
-        <CFormLabel label="Tiêu đề" htmlFor="title" required />
+        <CFormLabel label="Hình ảnh đại diện" required />
         <Controller
           control={control}
-          name="title"
+          name="file_id"
           render={({ field, fieldState: { error } }) => (
-            <CInput
+            <CImageUpload
               {...field}
-              id="title"
-              placeholder="Nhập tiêu đề..."
-              multiline
-              rows={4}
               error={!!error}
               helperText={error?.message}
             />

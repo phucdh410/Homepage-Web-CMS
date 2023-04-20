@@ -9,63 +9,56 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { deleteOrgStructure } from '@/apis/org-structures.api';
+import { deleteSubject } from '@/apis/subjects.api';
 import { confirm } from '@/confirm/';
-import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetOrgStructuresResponse } from '@/types/org-structures';
+import { IGetSubjectsResponse } from '@/types/subjects';
 
 import { IMCreateModalRef, MCreateModal } from './MCreateModal';
 import { IMEmployeesModalRef, MEmployeesModal } from './MEmployeesModal';
 import { IMUpdateModalRef, MUpdateModal } from './MUpdateModal';
-import { IMOrgStructureProps } from './types';
+import { IMSubjectProps } from './types';
 
 const MOCK_DATA = [
   {
     id: '1',
-    name: 'Ban chủ nhiệm khoa',
-    display: 2,
+    name: 'Khoa học máy tính',
     updated_date: new Date(),
     active: false,
   },
   {
     id: '2',
     name: 'Giảng viên',
-    display: 2,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
     name: 'Ban chủ nhiệm khoa',
-    display: 3,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
     name: 'Ban chủ nhiệm khoa',
-    display: 2,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '5',
     name: 'Giảng viên',
-    display: 3,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '6',
     name: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    display: 2,
     updated_date: new Date(),
     active: true,
   },
 ];
 
-export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
+export const MSubject: React.FC<IMSubjectProps> = ({ control }) => {
   //#region Ref
   const createRef = useRef<IMCreateModalRef | null>(null);
   const updateRef = useRef<IMUpdateModalRef | null>(null);
@@ -82,20 +75,10 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
     },
     {
       field: 'name',
-      headerName: 'TÊN TỔ CHỨC',
+      headerName: 'TÊN BỘ MÔN',
       headerAlign: 'left',
       align: 'left',
       flex: 1,
-    },
-    {
-      field: 'display',
-      headerName: 'DẠNG HIỂN THỊ',
-      minWidth: 200,
-      headerAlign: 'left',
-      align: 'left',
-      valueFormatter: (params: GridValueFormatterParams<DISPLAY_TYPES>) => {
-        return DISPLAY_LABELS[params.value];
-      },
     },
     {
       field: 'updated_date',
@@ -123,7 +106,7 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       headerAlign: 'center',
       align: 'center',
       minWidth: 150,
-      renderCell: (params: GridRenderCellParams<IGetOrgStructuresResponse>) => {
+      renderCell: (params: GridRenderCellParams<IGetSubjectsResponse>) => {
         return (
           <CActionsTable
             onCreate={() => onGoEmployee(params.row.id)}
@@ -139,7 +122,7 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
   //#endregion
 
   //#region Event
-  const onEdit = (id: string, data: IGetOrgStructuresResponse) =>
+  const onEdit = (id: string, data: IGetSubjectsResponse) =>
     updateRef.current?.open(id, data);
 
   const onDelete = async (id: string) => {
@@ -150,13 +133,12 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       })
     ) {
       try {
-        await deleteOrgStructure(id);
+        await deleteSubject(id);
 
-        toast.success('Xóa cơ cấu tổ chức thành công!');
+        toast.success('Xóa subject thành công!');
       } catch (error: any) {
         toast.error(
-          error?.response?.data?.message ||
-            'Xóa cơ cấu tổ chức không thành công!',
+          error?.response?.data?.message || 'Xóa subject không thành công!',
         );
       }
     }

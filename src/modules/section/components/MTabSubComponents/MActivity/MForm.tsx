@@ -3,10 +3,13 @@ import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
 
 import { CFormLabel, CInput, CSwitch } from '@/controls/';
-import { ICreateMajorParams, IUpdateMajorParams } from '@/types/majors';
+import {
+  ICreateActivityParams,
+  IUpdateActivityParams,
+} from '@/types/activities';
 
 export interface IMFormProps {
-  control: Control<ICreateMajorParams | IUpdateMajorParams, any>;
+  control: Control<ICreateActivityParams | IUpdateActivityParams, any>;
 }
 
 export const MForm: React.FC<IMFormProps> = ({ control }) => {
@@ -26,23 +29,7 @@ export const MForm: React.FC<IMFormProps> = ({ control }) => {
   return (
     <>
       <Stack direction="column" spacing={1} mb={2.5}>
-        <CFormLabel label="Tiêu đề" htmlFor="title" required />
-        <Controller
-          control={control}
-          name="title"
-          render={({ field, fieldState: { error } }) => (
-            <CInput
-              {...field}
-              id="title"
-              placeholder="Nhập tiêu đề..."
-              error={!!error}
-              helperText={error?.message}
-            />
-          )}
-        />
-      </Stack>
-      <Stack direction="column" spacing={1} mb={2.5}>
-        <CFormLabel label="Ngành đào tạo" htmlFor="name" required />
+        <CFormLabel label="Tên hoạt động" htmlFor="name" required />
         <Controller
           control={control}
           name="name"
@@ -50,7 +37,23 @@ export const MForm: React.FC<IMFormProps> = ({ control }) => {
             <CInput
               {...field}
               id="name"
-              placeholder="Nhập tiêu đề..."
+              placeholder="Nhập tên hoạt động..."
+              error={!!error}
+              helperText={error?.message}
+            />
+          )}
+        />
+      </Stack>
+      <Stack direction="column" spacing={1} mb={2.5}>
+        <CFormLabel label="Nội dung" htmlFor="description" required />
+        <Controller
+          control={control}
+          name="description"
+          render={({ field, fieldState: { error } }) => (
+            <CInput
+              {...field}
+              id="description"
+              placeholder="Nhập nội dung..."
               multiline
               rows={4}
               error={!!error}

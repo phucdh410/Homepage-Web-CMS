@@ -88,7 +88,6 @@ export const MFolderForm: React.FC<IMFolderFormProps> = ({ control }) => {
       </Stack>
 
       <Stack direction="row" spacing={3} mb={2.5} alignItems="center">
-        {' '}
         <CFormLabel label="Trạng thái" />
         <Controller
           control={control}

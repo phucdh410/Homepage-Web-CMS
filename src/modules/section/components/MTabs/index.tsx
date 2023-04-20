@@ -7,12 +7,15 @@ import { queryStringToObject } from '@/funcs/';
 import { useNavigateQuery } from '@/hooks/';
 
 import {
+  MActivity,
   MContact,
   MEducationAim,
   MEducationQuality,
   MMajor,
   MMasterQuality,
   MOrgStructure,
+  MSchoolMaster,
+  MSubject,
   MTimeline,
 } from '../MTabSubComponents';
 
@@ -37,11 +40,13 @@ interface TabPanelProps {
   current: number;
 }
 
+// IMPORTANT: value===current && ...render tab content
+// để tránh các lỗi về DOM đối với component đó khi tab đó không active
 function TabPanel(props: TabPanelProps) {
   const { children, value, current, ...other } = props;
   return (
     <div role="tabpanel" hidden={value !== current} {...other}>
-      {children}
+      {value === current && children}
     </div>
   );
 }
@@ -119,13 +124,13 @@ export const MTabs: React.FC<IMTabsProps> = ({ control }) => {
         <MOrgStructure control={control} />
       </TabPanel>
       <TabPanel value={7} current={currentTab}>
-        Tab Bộ môn
+        <MSubject control={control} />
       </TabPanel>
       <TabPanel value={8} current={currentTab}>
-        Tab Hoạt động
+        <MActivity control={control} />
       </TabPanel>
       <TabPanel value={9} current={currentTab}>
-        Tab Lãnh đạo qua các thời kỳ
+        <MSchoolMaster control={control} />
       </TabPanel>
       <TabPanel value={10} current={currentTab}>
         <MContact control={control} />

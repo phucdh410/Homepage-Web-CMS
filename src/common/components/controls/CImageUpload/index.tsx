@@ -7,19 +7,22 @@ import { uploadFile } from '@/apis/files.api';
 import defaultImage from '@/assets/images/default-image.png';
 
 import { mbToBytes } from './mbToBytes';
-import { ICImageUploadProps } from './types';
+import { ICImageUploadProps, ICImageUploadRef } from './types';
 
-export const CImageUpload = forwardRef(
-  ({
-    value,
-    onChange,
-    error,
-    helperText,
-    aspectRatio,
-    isSquare,
-    maxMb, // Tính theo megabytes (MB)
-    ...props
-  }: ICImageUploadProps) => {
+export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
+  (
+    {
+      value,
+      onChange,
+      error,
+      helperText,
+      aspectRatio,
+      isSquare,
+      maxMb, // Tính theo megabytes (MB)
+      ...props
+    },
+    ref,
+  ) => {
     //#region Data
     const wrapperRef = useRef<HTMLDivElement | null>(null);
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -139,6 +142,7 @@ export const CImageUpload = forwardRef(
     ) : (
       <>
         <Box
+          ref={ref}
           className="c-upload"
           margin="auto"
           position="relative"

@@ -3,10 +3,10 @@ import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
 
 import { CFormLabel, CInput, CSwitch } from '@/controls/';
-import { ICreateMajorParams, IUpdateMajorParams } from '@/types/majors';
+import { ICreateSubjectParams, IUpdateSubjectParams } from '@/types/subjects';
 
 export interface IMFormProps {
-  control: Control<ICreateMajorParams | IUpdateMajorParams, any>;
+  control: Control<ICreateSubjectParams | IUpdateSubjectParams, any>;
 }
 
 export const MForm: React.FC<IMFormProps> = ({ control }) => {
@@ -26,23 +26,7 @@ export const MForm: React.FC<IMFormProps> = ({ control }) => {
   return (
     <>
       <Stack direction="column" spacing={1} mb={2.5}>
-        <CFormLabel label="Tiêu đề" htmlFor="title" required />
-        <Controller
-          control={control}
-          name="title"
-          render={({ field, fieldState: { error } }) => (
-            <CInput
-              {...field}
-              id="title"
-              placeholder="Nhập tiêu đề..."
-              error={!!error}
-              helperText={error?.message}
-            />
-          )}
-        />
-      </Stack>
-      <Stack direction="column" spacing={1} mb={2.5}>
-        <CFormLabel label="Ngành đào tạo" htmlFor="name" required />
+        <CFormLabel label="Tên" htmlFor="name" required />
         <Controller
           control={control}
           name="name"
@@ -50,9 +34,7 @@ export const MForm: React.FC<IMFormProps> = ({ control }) => {
             <CInput
               {...field}
               id="name"
-              placeholder="Nhập tiêu đề..."
-              multiline
-              rows={4}
+              placeholder="Nhập tên bộ môn..."
               error={!!error}
               helperText={error?.message}
             />

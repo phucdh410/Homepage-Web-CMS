@@ -87,6 +87,32 @@ export const ORGANIZATION_STRUCTURES = {
   UPDATE_EMPLOYEES: '/org-structures', // :id/employees
 };
 
+export const SUBJECTS = {
+  CREATE: '/subjects',
+  GET_LIST: '/subjects/all',
+  GET_DETAIL: '/subjects', // :id
+  UPDATE: '/subjects', // :id
+  DELETE: '/subjects', // :id
+  UPDATE_EMPLOYEES: '/subjects', // :id/employees
+};
+
+export const ACTIVITIES = {
+  CREATE: '/activities',
+  GET_LIST: '/activities/all',
+  GET_DETAIL: '/activities', // :id
+  UPDATE: '/activities', // :id
+  DELETE: '/activities', // :id
+};
+
+export const SCHOOL_MASTERS = {
+  CREATE: '/school-masters',
+  GET_LIST: '/school-masters/all',
+  GET_DETAIL: '/school-masters', // :id
+  UPDATE: '/school-masters', // :id
+  DELETE: '/school-masters', // :id
+  UPDATE_EMPLOYEES: '/school-masters', // :id/employees
+};
+
 export const PAGES = {
   CREATE: '/pages',
   GET_LIST: '/pages/all',
