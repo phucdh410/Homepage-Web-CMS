@@ -28,7 +28,7 @@ export interface ICreateOrgParams extends ICreatePostBaseParams {
     employee_id: string;
     position_id: string;
     sort_order: number;
-    deleted: boolean;
+    deleted?: boolean;
   }[];
 }
 

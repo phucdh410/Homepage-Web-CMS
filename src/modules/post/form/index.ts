@@ -21,6 +21,8 @@ export const defaultValuesPost:
   link: '',
   show_homepage: true,
   featured: true,
+  viewed: true,
+  downloaded: true,
 };
 
 export const postResolver: Resolver<

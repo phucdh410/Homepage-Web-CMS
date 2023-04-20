@@ -1,3 +1,3 @@
-import { IMPostFormProps } from '../MPostForm/types';
+import { IMPostFormProps } from '../types';
 
 export interface IMSwitchProps extends Pick<IMPostFormProps, 'control'> {}
