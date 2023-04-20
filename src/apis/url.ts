@@ -113,6 +113,14 @@ export const SCHOOL_MASTERS = {
   UPDATE_EMPLOYEES: '/school-masters', // :id/employees
 };
 
+export const PARTIES = {
+  CREATE: '/parties',
+  GET_LIST: '/parties/all',
+  GET_DETAIL: '/parties', // :id
+  UPDATE: '/parties', // :id
+  DELETE: '/parties', // :id
+};
+
 export const PAGES = {
   CREATE: '/pages',
   GET_LIST: '/pages/all',

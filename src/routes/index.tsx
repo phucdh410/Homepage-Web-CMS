@@ -53,10 +53,6 @@ const routes: RouteObject[] = [
             element: <CDevelopment />,
           },
           {
-            path: '/information/unions',
-            element: <CDevelopment />,
-          },
-          {
             path: '/approve',
             element: <CDevelopment />,
           },

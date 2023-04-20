@@ -109,7 +109,7 @@ export const NAVIGATIONS: INavigationItem[] = [
         title: 'Đảng và Đoàn thể',
         icon: '',
         isChildren: false,
-        path: '/information/unions',
+        path: '/information/parties',
         level: 1,
       },
     ],

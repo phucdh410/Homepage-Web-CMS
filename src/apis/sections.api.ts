@@ -20,7 +20,7 @@ export const getSections = (
   return post(SECTIONS.GET_LIST, body);
 };
 
-export const getDetailSections = (
+export const getDetailSection = (
   id: string,
 ): Promise<IApiResponse<IGetDetailSection, any>> => {
   return get(`${SECTIONS.GET_DETAIL}/${id}`);
