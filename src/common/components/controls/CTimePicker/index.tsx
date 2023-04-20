@@ -1,36 +1,34 @@
 import { forwardRef } from 'react';
-import { CalendarMonth } from '@mui/icons-material';
+import { AccessTime } from '@mui/icons-material';
 import { InputAdornment } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
+import { MobileTimePicker } from '@mui/x-date-pickers';
 
-import { ICDatePickerProps } from './types';
+import { ICTimePickerProps } from './types';
 
 // Lưu ý: Bỏ slotProps ra khỏi text field
-export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
+export const CTimePicker = forwardRef<HTMLInputElement, ICTimePickerProps>(
   (
     {
       name,
       value,
       onChange,
       placeholder,
-      format,
+      views,
       error,
       helperText,
       onBlur,
       fullWidth,
-      shouldDisableDate,
       ...props
     },
     ref,
   ) => {
     return (
-      <DatePicker
-        className="c-datepicker"
+      <MobileTimePicker
+        className="c-timepicker"
         value={value}
         onChange={onChange}
-        format={format}
+        views={['hours', 'minutes']}
         inputRef={ref}
-        shouldDisableDate={shouldDisableDate}
         slotProps={{
           textField: ({ slotProps, ...params }) => ({
             ...params,
@@ -43,7 +41,7 @@ export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
             InputProps: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <CalendarMonth sx={{ color: '#177DB8' }} />
+                  <AccessTime sx={{ color: '#177DB8' }} />
                 </InputAdornment>
               ),
             },
@@ -55,6 +53,6 @@ export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
   },
 );
 
-CDatePicker.defaultProps = {
-  format: 'DD/MM/YYYY',
+CTimePicker.defaultProps = {
+  views: ['hours', 'minutes'],
 };

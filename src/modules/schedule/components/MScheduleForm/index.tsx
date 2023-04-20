@@ -1,7 +1,13 @@
 import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
 
-import { CDateTimePicker, CFormLabel, CInput, CSwitch } from '@/controls/';
+import {
+  CDatePicker,
+  CFormLabel,
+  CInput,
+  CSwitch,
+  CTimePicker,
+} from '@/controls/';
 
 import { IMScheduleFormProps } from './types';
 
@@ -62,18 +68,35 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
 
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
         <CFormLabel label="Thời gian diễn ra" required />
-        <Controller
-          control={control}
-          name="date"
-          render={({ field, fieldState: { error } }) => (
-            <CDateTimePicker
-              {...field}
-              id="date"
-              error={!!error}
-              helperText={error?.message}
-            />
-          )}
-        />
+        <Stack direction="row" spacing={3}>
+          <Controller
+            control={control}
+            name="date"
+            render={({ field, fieldState: { error } }) => (
+              <CDatePicker
+                {...field}
+                fullWidth
+                id="date"
+                format="DD/MM/YYYY"
+                error={!!error}
+                helperText={error?.message}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="date"
+            render={({ field, fieldState: { error } }) => (
+              <CTimePicker
+                {...field}
+                fullWidth
+                id="date"
+                error={!!error}
+                helperText={error?.message}
+              />
+            )}
+          />
+        </Stack>
       </Stack>
 
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>

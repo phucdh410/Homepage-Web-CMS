@@ -3,6 +3,7 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers';
 
 import { ICDateTimePickerProps } from './types';
 
+// Lưu ý: Bỏ slotProps ra khỏi text field
 export const CDateTimePicker = forwardRef<
   HTMLInputElement,
   ICDateTimePickerProps
@@ -32,7 +33,7 @@ export const CDateTimePicker = forwardRef<
         inputRef={ref}
         shouldDisableDate={shouldDisableDate}
         slotProps={{
-          textField: (params) => ({
+          textField: ({ slotProps, ...params }) => ({
             ...params,
             fullWidth,
             name,

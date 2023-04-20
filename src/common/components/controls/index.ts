@@ -10,3 +10,4 @@ export * from './CInputPassword';
 export * from './CRangePicker';
 export * from './CSearchInput';
 export * from './CSwitch';
+export * from './CTimePicker';

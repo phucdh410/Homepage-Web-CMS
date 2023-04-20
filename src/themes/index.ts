@@ -5,6 +5,7 @@ import {
   Theme,
 } from '@mui/material';
 import type {} from '@mui/x-data-grid/themeAugmentation';
+import type {} from '@mui/x-date-pickers/themeAugmentation';
 
 //#region Palatte & Typography
 let theme = createTheme({
@@ -31,6 +32,10 @@ let theme = createTheme({
     },
     inputBg: {
       main: '#f5f5f5',
+      contrastText: '#ffffff',
+    },
+    subBlue: {
+      main: '#177DB8',
       contrastText: '#ffffff',
     },
   },
@@ -152,7 +157,7 @@ theme = createTheme(theme, {
           '&.search-input': {
             filter: 'drop-shadow(5px 3px 30px rgba(19, 70, 131, 0.1))',
           },
-          '&.c-datepicker': {
+          '&.c-datepicker,&.c-timepicker': {
             '.MuiOutlinedInput-root': {
               backgroundColor: theme.palette.inputBg.main,
             },
@@ -351,6 +356,35 @@ theme = createTheme(theme, {
         },
       },
     },
+    MuiPickersToolbarText: {
+      styleOverrides: {
+        root: {
+          '&.Mui-selected': {
+            color: theme.palette.subBlue.main,
+            fontWeight: 700,
+          },
+        },
+      },
+    },
+    MuiClockPointer: {
+      styleOverrides: {
+        thumb: {
+          backgroundColor: theme.palette.subBlue.main,
+          borderColor: theme.palette.subBlue.main,
+        },
+      },
+    },
+    MuiPickersLayout: {
+      styleOverrides: {
+        root: {
+          '& .MuiPickersLayout-actionBar': {
+            '& .MuiButton-root': {
+              backgroundColor: theme.palette.subBlue.main,
+            },
+          },
+        },
+      },
+    },
   } as Components<Omit<Theme, 'components'>>,
 });
 //#endregion
@@ -372,6 +406,7 @@ declare module '@mui/material/styles' {
     skyblue: Palette['primary'];
     textTable: Palette['primary'];
     inputBg: Palette['primary'];
+    subBlue: Palette['primary'];
   }
 
   // allow configuration using `createTheme`
@@ -379,6 +414,7 @@ declare module '@mui/material/styles' {
     skyblue?: PaletteOptions['primary'];
     textTable?: PaletteOptions['primary'];
     inputBg?: PaletteOptions['primary'];
+    subBlue?: PaletteOptions['primary'];
   }
 }
 
@@ -387,6 +423,7 @@ declare module '@mui/material/Button' {
     skyblue: true;
     textTable: true;
     inputBg: true;
+    subBlue: true;
   }
 }
 

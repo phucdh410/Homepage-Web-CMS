@@ -42,9 +42,7 @@ const CreateSchedulePage = () => {
           date: dayjs(values.date).format('YYYY/MM/DD HH:mm:ss'),
         };
         await createSchedule(payload);
-
         toast.success('Thêm mới lịch công tác thành công!');
-
         onCancel();
       } catch (error: any) {
         toast.error(
