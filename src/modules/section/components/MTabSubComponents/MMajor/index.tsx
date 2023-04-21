@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Marquee from 'react-fast-marquee';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Button } from '@mui/material';
@@ -12,7 +13,7 @@ import dayjs from 'dayjs';
 import { deleteMajor } from '@/apis/majors.api';
 import { confirm } from '@/confirm/';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetMajorsResponse } from '@/types/majors';
+import { IGetMajorsResponse, IMajorData } from '@/types/majors';
 
 import { IMCreateModalRef, MCreateModal } from './MCreateModal';
 import { IMUpdateModalRef, MUpdateModal } from './MUpdateModal';
@@ -22,42 +23,54 @@ const MOCK_DATA = [
   {
     id: '1',
     title: 'Đại học',
-    name: 'Thạc sĩ Giải tích toán học',
+    majors: [
+      { sort_order: 1, name: 'Thạc sĩ Giải tích toán học' },
+      { sort_order: 2, name: 'Tiến sĩ siêu nhân' },
+      { sort_order: 3, name: 'Anh Duy Mập' },
+    ],
     updated_date: new Date(),
     active: false,
   },
   {
     id: '2',
     title: 'Đại học',
-    name: 'Thạc sĩ Giải tích toán học',
+    majors: [
+      { sort_order: 1, name: 'Ngành học 1' },
+      { sort_order: 2, name: 'Ngành học 2' },
+      { sort_order: 3, name: 'Ngành học siêu cấp 3' },
+    ],
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
     title: 'Đại học',
-    name: 'Thạc sĩ Giải tích toán học',
+    majors: [
+      { sort_order: 1, name: 'Siêu nhân gao' },
+      { sort_order: 2, name: 'Siêu nhân cuồng phong' },
+      { sort_order: 3, name: 'Mấy con oraku' },
+    ],
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
     title: 'Đại học',
-    name: 'Thạc sĩ Giải tích toán học',
+    majors: [{ sort_order: 1, name: 'Thạc sĩ Giải tích toán học' }],
     updated_date: new Date(),
     active: true,
   },
   {
     id: '5',
     title: 'Đại học',
-    name: 'Thạc sĩ Giải tích toán học',
+    majors: [{ sort_order: 1, name: 'Thạc sĩ Giải tích toán học' }],
     updated_date: new Date(),
     active: false,
   },
   {
     id: '6',
     title: 'Đại học',
-    name: 'Thạc sĩ Giải tích toán học',
+    majors: [{ sort_order: 1, name: 'Thạc sĩ Giải tích toán học' }],
     updated_date: new Date(),
     active: true,
   },
@@ -109,11 +122,25 @@ export const MMajor: React.FC<IMMajorProps> = ({ control }) => {
       align: 'left',
     },
     {
-      field: 'name',
+      field: 'majors',
       headerName: 'NGÀNH ĐÀO TẠO',
       headerAlign: 'left',
       align: 'left',
       flex: 1,
+      renderCell: (params: GridRenderCellParams<IMajorData[]>) => {
+        return (
+          <Marquee speed={100} gradient={false}>
+            {(params.value as IMajorData[]).map((e, i) => (
+              <p
+                style={{ marginRight: '2rem' }}
+                key={new Date().toString() + i}
+              >
+                {e.name}
+              </p>
+            ))}
+          </Marquee>
+        );
+      },
     },
     {
       field: 'updated_date',

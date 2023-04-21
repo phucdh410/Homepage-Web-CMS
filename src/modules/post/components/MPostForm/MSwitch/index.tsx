@@ -38,7 +38,7 @@ export const MSwitch: React.FC<IMSwitchProps> = ({ control }) => {
         />
       </Stack>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <CFormLabel label="Nổi bậc" />
+        <CFormLabel label="Nổi bật" />
         <Controller
           control={control}
           name="featured"
