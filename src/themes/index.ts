@@ -160,6 +160,14 @@ theme = createTheme(theme, {
           '&.c-datepicker,&.c-timepicker': {
             '.MuiOutlinedInput-root': {
               backgroundColor: theme.palette.inputBg.main,
+              '& .MuiInputAdornment-root .MuiSvgIcon-root': {
+                color: theme.palette.subBlue.main,
+              },
+            },
+          },
+          '&.c-timepicker': {
+            '.MuiOutlinedInput-input': {
+              cursor: 'pointer',
             },
           },
         },

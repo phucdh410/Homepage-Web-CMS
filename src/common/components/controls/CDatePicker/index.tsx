@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
 import { CalendarMonth } from '@mui/icons-material';
-import { InputAdornment } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 
 import { ICDatePickerProps } from './types';
@@ -31,6 +30,9 @@ export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
         format={format}
         inputRef={ref}
         shouldDisableDate={shouldDisableDate}
+        slots={{
+          openPickerIcon: CalendarMonth,
+        }}
         slotProps={{
           textField: ({ slotProps, ...params }) => ({
             ...params,
@@ -40,13 +42,6 @@ export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
             onBlur,
             error,
             helperText,
-            InputProps: {
-              endAdornment: (
-                <InputAdornment position="end">
-                  <CalendarMonth sx={{ color: '#177DB8' }} />
-                </InputAdornment>
-              ),
-            },
           }),
         }}
         {...props}
