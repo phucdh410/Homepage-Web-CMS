@@ -1,6 +1,7 @@
 export * from './CActionsForm';
 export * from './CAutocomplete';
 export * from './CCKEditor';
+export * from './CCollapseSelect';
 export * from './CDatePicker';
 export * from './CDateTimePicker';
 export * from './CFormLabel';

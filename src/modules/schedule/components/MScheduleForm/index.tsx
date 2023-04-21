@@ -58,7 +58,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
               id="content"
               multiline
               rows={4}
-              placeholder="Nhập học vị..."
+              placeholder="Nhập nội dung..."
               error={!!error}
               helperText={error?.message}
             />
@@ -110,7 +110,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
               id="location"
               multiline
               rows={2}
-              placeholder="Nhập tiêu đề..."
+              placeholder="Nhập địa điểm..."
               error={!!error}
               helperText={error?.message}
             />
@@ -129,7 +129,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
               id="attendee"
               multiline
               rows={2}
-              placeholder="Nhập tiêu đề..."
+              placeholder="Nhập thành phần tham dự..."
               error={!!error}
               helperText={error?.message}
             />

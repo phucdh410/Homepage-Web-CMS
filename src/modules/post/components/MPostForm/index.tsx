@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
 
-import { CAutocomplete, CFormLabel } from '@/controls/';
+import { CAutocomplete, CCollapseSelect, CFormLabel } from '@/controls/';
 
 import { MSwitch } from './MSwitch';
 import { MTypes } from './MTypes';
@@ -33,7 +33,7 @@ export const MPostForm: React.FC<IMPostFormProps> = ({ control }) => {
             render={({ field, fieldState: { error } }) => (
               <CAutocomplete
                 {...field}
-                placeholder="Chọn trang!"
+                placeholder="Chọn trang"
                 options={[]}
                 renderOption={(props, option) => (
                   <div key={option.id} {...props}>
@@ -53,16 +53,7 @@ export const MPostForm: React.FC<IMPostFormProps> = ({ control }) => {
             control={control}
             name="folder_id"
             render={({ field }) => (
-              <CAutocomplete
-                {...field}
-                placeholder="Chọn danh mục!"
-                options={[]}
-                renderOption={(props, option) => (
-                  <div key={option.id} {...props}>
-                    {option.label}
-                  </div>
-                )}
-              />
+              <CCollapseSelect {...field} placeholder="Chọn thư mục" />
             )}
           />
         </Stack>

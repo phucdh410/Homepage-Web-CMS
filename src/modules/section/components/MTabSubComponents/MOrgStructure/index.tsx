@@ -85,6 +85,7 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       headerName: 'TÊN TỔ CHỨC',
       headerAlign: 'left',
       align: 'left',
+      minWidth: 200,
       flex: 1,
     },
     {

@@ -7,7 +7,12 @@ import { useQuery } from '@tanstack/react-query';
 
 import { deleteBlog, getPosts } from '@/apis/posts.api';
 import { confirm } from '@/confirm/';
-import { CSearchInput } from '@/controls/';
+import {
+  CAutocomplete,
+  CCollapseSelect,
+  CFormLabel,
+  CSearchInput,
+} from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
 import { IGetPostsResponse } from '@/types/posts';
@@ -127,6 +132,8 @@ const ListPostsPage = () => {
       pages: 0,
       input: {
         search: '',
+        page_id: '',
+        folder_id: '',
       },
     },
   );
@@ -173,6 +180,20 @@ const ListPostsPage = () => {
 
   const onSearch = (value: string) =>
     setFilter((prev) => ({ ...prev, page: 1, input: { search: value } }));
+
+  const onFilterPage = (value: string) =>
+    setFilter((prev) => ({
+      ...prev,
+      page: 1,
+      input: { ...prev.input, page_id: value },
+    }));
+
+  const onFilterFolder = (value: string) =>
+    setFilter((prev) => ({
+      ...prev,
+      page: 1,
+      input: { ...prev.input, folder_id: value },
+    }));
   //#endregion
 
   useEffect(() => {
@@ -209,6 +230,31 @@ const ListPostsPage = () => {
           >
             Thêm mới
           </Button>
+        </Stack>
+      </Stack>
+
+      <Stack direction="row" spacing={3} mb={2}>
+        <Stack direction="column" spacing={1} flex={1}>
+          <CFormLabel label="Trang" />
+          <CAutocomplete
+            value={filter.input?.page_id}
+            onChange={onFilterPage}
+            placeholder="Tất cả"
+            options={[]}
+            renderOption={(props, option) => (
+              <div key={option.id} {...props}>
+                {option.label}
+              </div>
+            )}
+          />
+        </Stack>
+        <Stack direction="column" spacing={1} flex={1}>
+          <CFormLabel label="Danh mục" />
+          <CCollapseSelect
+            value={filter.input?.folder_id}
+            onChange={onFilterFolder}
+            placeholder="Tất cả"
+          />
         </Stack>
       </Stack>
 

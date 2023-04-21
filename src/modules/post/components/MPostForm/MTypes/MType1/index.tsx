@@ -81,17 +81,14 @@ export const MType1: React.FC<IMType1Props> = ({ control }) => {
         <Controller
           control={control}
           name="viewed"
-          render={({ field }) => {
-            console.log(field);
-            return (
-              <FormControlLabel
-                {...field}
-                checked={field.value}
-                control={<Checkbox />}
-                label="View File"
-              />
-            );
-          }}
+          render={({ field }) => (
+            <FormControlLabel
+              {...field}
+              checked={field.value}
+              control={<Checkbox />}
+              label="View File"
+            />
+          )}
         />
         <Controller
           control={control}
