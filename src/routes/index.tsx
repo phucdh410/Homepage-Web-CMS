@@ -5,6 +5,7 @@ import { CExceptionError, CNotFoundError } from '@/errors/';
 import { asyncLayout } from '@/funcs/';
 import { CLoginLayout } from '@/layouts/CLoginLayout';
 
+import { ApproveRoutes } from './approve.routes';
 import { FooterRoutes } from './footer.routes';
 import { HomepageRoutes } from './homepage.routes';
 import { InformationRoutes } from './information.routes';
@@ -40,6 +41,7 @@ const routes: RouteObject[] = [
           ...MenuRoutes,
           ...PostRoutes,
           ...ScheduleRoutes,
+          ...ApproveRoutes,
           ...StaffRoutes,
           ...FooterRoutes,
           ...LanguagesRoutes,
@@ -50,10 +52,6 @@ const routes: RouteObject[] = [
           },
           {
             path: '/information/centers',
-            element: <CDevelopment />,
-          },
-          {
-            path: '/approve',
             element: <CDevelopment />,
           },
         ],

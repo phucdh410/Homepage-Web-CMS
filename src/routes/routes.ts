@@ -74,6 +74,11 @@ export const ROUTES = {
     UPDATE: '/schedules/detail/:id',
   },
 
+  APPROVE: {
+    LIST: '/approve',
+    APPROVE: '/approve/detail',
+  },
+
   STAFF: {
     EMPLOYEES: {
       LIST: '/staff/employees',

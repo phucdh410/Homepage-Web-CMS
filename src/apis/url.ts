@@ -169,8 +169,9 @@ export const SCHEDULES = {
   DELETE: '/employees', // :id
 };
 
-// export const APPROVE = {
-// };
+export const APPROVE = {
+  GET_LIST: '/approve/all',
+};
 
 export const EMPLOYEES = {
   GET_LIST: '/employees/all',
