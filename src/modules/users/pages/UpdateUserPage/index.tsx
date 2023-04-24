@@ -57,9 +57,7 @@ const UpdateUserPage = () => {
       try {
         console.log(values);
         await updateUser(id as string, values);
-
         toast.success('Cập nhật người dùng thành công!');
-
         onBack();
       } catch (error: any) {
         toast.error(

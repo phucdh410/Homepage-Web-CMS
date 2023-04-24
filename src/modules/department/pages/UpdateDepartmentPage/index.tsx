@@ -45,6 +45,7 @@ const UpdateDepartmentPage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await updateDepartment(id as string, values);
         toast.success('Chỉnh sửa phòng ban thành công!');
         onCancel();

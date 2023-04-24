@@ -45,6 +45,7 @@ const UpdateSectionPage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await updateSection(id as string, values);
         toast.success('Chỉnh sửa khoa thành công!');
         onCancel();

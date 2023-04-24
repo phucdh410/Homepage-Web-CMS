@@ -55,10 +55,9 @@ const UpdateSchedulePage = () => {
           ...values,
           date: dayjs(values.date).format('YYYY/MM/DD HH:mm:ss'),
         };
+        console.log(payload);
         await updateSchedule(id as string, payload);
-
         toast.success('Cập nhật lịch công tác thành công!');
-
         onCancel();
       } catch (error: any) {
         toast.error(

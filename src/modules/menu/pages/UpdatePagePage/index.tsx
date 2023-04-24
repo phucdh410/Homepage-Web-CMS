@@ -49,9 +49,7 @@ const UpdatePagePage = () => {
       try {
         console.log(values);
         await updatePage(id as string, values);
-
         toast.success('Chỉnh sửa trang thành công!');
-
         onCancel();
       } catch (error: any) {
         toast.error(

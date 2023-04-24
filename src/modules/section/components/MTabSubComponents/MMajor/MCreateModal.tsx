@@ -40,6 +40,7 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
     const onSubmit = () => {
       handleSubmit(async (values) => {
         try {
+          console.log(values);
           await createMajor(values);
           toast.success('Thêm mới ngành đào tạo thành công!');
           onCancel();

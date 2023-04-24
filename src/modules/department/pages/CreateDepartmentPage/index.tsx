@@ -34,6 +34,7 @@ const CreateDepartmentPage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await createDepartment(values);
         toast.success('Thêm mới phòng ban thành công!');
         onCancel();

@@ -38,6 +38,7 @@ export const MEmployeesModal = forwardRef<IMEmployeesModalRef, any>(
     const onSubmit = () => {
       handleSubmit(async (values) => {
         try {
+          console.log(values);
           await updateSchoolMasterEmployee(id, values);
           toast.success('Cập nhật nhân sự thành công!');
           onCancel();

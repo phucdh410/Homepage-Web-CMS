@@ -40,7 +40,7 @@ export const MUpdatePositionModal = forwardRef<IMUpdatePositionModalRef, any>(
       handleSubmit(async (values) => {
         try {
           console.log(values);
-          const res = await updatePosition(id, values);
+          await updatePosition(id, values);
           toast.success('Cập nhật thông báo thành công!');
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');

@@ -34,6 +34,7 @@ const CreateMenuPage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await createMenu(values);
         toast.success('Thêm mới menu thành công!');
         onCancel();

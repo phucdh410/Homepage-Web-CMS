@@ -45,6 +45,7 @@ const UpdateInstitutePage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await updateInstitute(id as string, values);
         toast.success('Chỉnh sửa trung tâm thành công!');
         onCancel();

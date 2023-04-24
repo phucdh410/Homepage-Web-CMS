@@ -53,9 +53,7 @@ const DetailUserPage = () => {
       try {
         console.log(values);
         await createUser(values);
-
         toast.success('Thêm mới người dùng thành công!');
-
         onBack();
       } catch (error: any) {
         toast.error(

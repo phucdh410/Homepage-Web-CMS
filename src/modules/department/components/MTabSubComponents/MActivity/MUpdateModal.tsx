@@ -42,13 +42,14 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
     const onSubmit = () => {
       handleSubmit(async (values) => {
         try {
+          console.log(values);
           await updateActivity(id, values);
-          toast.success('Chỉnh sửa activity thành công!');
+          toast.success('Chỉnh sửa hoạt động thành công!');
           onCancel();
         } catch (error: any) {
           toast.error(
             error?.response?.data?.message ||
-              'Chỉnh sửa activity không thành công!',
+              'Chỉnh sửa hoạt động không thành công!',
           );
         }
       })();

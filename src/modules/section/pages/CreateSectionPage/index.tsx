@@ -34,6 +34,7 @@ const CreateSectionPage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await createSection(values);
         toast.success('Thêm mới khoa thành công!');
         onCancel();

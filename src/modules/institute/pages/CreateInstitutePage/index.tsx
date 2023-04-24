@@ -34,6 +34,7 @@ const CreateInstitutePage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await createInstitute(values);
         toast.success('Thêm mới trung tâm thành công!');
         onCancel();

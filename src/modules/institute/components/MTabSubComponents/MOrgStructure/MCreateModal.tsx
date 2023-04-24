@@ -40,6 +40,7 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
     const onSubmit = () => {
       handleSubmit(async (values) => {
         try {
+          console.log(values);
           await createOrgStructure(values);
           toast.success('Thêm mới cơ cấu tổ chức thành công!');
           onCancel();

@@ -41,6 +41,7 @@ const CreateSchedulePage = () => {
           ...values,
           date: dayjs(values.date).format('YYYY/MM/DD HH:mm:ss'),
         };
+        console.log(payload);
         await createSchedule(payload);
         toast.success('Thêm mới lịch công tác thành công!');
         onCancel();

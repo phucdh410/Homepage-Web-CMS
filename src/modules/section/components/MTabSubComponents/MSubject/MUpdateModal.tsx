@@ -42,6 +42,7 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
     const onSubmit = () => {
       handleSubmit(async (values) => {
         try {
+          console.log(values);
           await updateSubject(id, values);
           toast.success('Chỉnh sửa subject thành công!');
           onCancel();

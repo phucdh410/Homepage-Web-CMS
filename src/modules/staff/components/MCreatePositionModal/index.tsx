@@ -35,7 +35,7 @@ export const MCreatePositionModal = forwardRef<IMCreatePositionModalRef, any>(
       handleSubmit(async (values) => {
         try {
           console.log(values);
-          const res = await createPosition(values);
+          await createPosition(values);
           toast.success('Tạo mới chức vụ thành công!');
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');

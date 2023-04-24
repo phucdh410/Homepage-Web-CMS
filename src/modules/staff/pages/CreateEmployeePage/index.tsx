@@ -36,10 +36,9 @@ const CreateEmployeePage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        console.log(values);
         await createEmployee(values);
-
         toast.success('Thêm mới nhân sự thành công!');
-
         onCancel();
       } catch (error: any) {
         toast.error(
