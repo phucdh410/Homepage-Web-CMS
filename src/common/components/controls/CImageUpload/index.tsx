@@ -17,7 +17,7 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
       error,
       helperText,
       aspectRatio,
-      isSquare,
+      maxWidth,
       maxMb, // Tính theo megabytes (MB)
       ...props
     },
@@ -146,15 +146,15 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
           className="c-upload"
           margin="auto"
           position="relative"
-          width={isSquare ? 270 : '100%'}
           minWidth={250}
-          height={isSquare ? 270 : 150}
+          maxWidth={maxWidth}
+          // height={isSquare ? 270 : 150}
           borderRadius={3}
           display="flex"
           alignItems="center"
           justifyContent="center"
           component="label"
-          sx={{ backgroundColor: '#eeeeee' }}
+          sx={{ backgroundColor: '#eeeeee', aspectRatio: aspectRatio }}
         >
           <Box
             component="label"
@@ -168,6 +168,8 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
             borderRadius="inherit"
             border="3px dashed #a1a0a0"
             borderColor={error ? 'red' : '#a1a0a0'}
+            marginTop="-3px"
+            marginLeft="-3px"
             sx={{
               inset: 0,
               backgroundColor: 'transparent',
@@ -210,5 +212,7 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
 );
 
 CImageUpload.defaultProps = {
+  aspectRatio: '16/9',
+  maxWidth: 600,
   maxMb: 5,
 };

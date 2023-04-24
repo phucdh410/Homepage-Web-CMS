@@ -14,7 +14,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
 
   //#region Render
   return (
-    <Grid container spacing={2.5} mb={4}>
+    <Grid container spacing={3} mb={4}>
       <Grid xs={12} lg={8} order={{ xs: 2, lg: 1 }}>
         <Stack direction="column" spacing={1} flex={1} mb={2.5}>
           <CFormLabel label="Họ và tên nhân sự" required />
@@ -71,7 +71,7 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
               <CImageUpload
                 {...field}
                 aspectRatio="1/1"
-                isSquare
+                maxWidth={300}
                 error={!!error}
                 helperText={error?.message}
               />
