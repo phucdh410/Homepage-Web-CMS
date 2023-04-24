@@ -94,7 +94,8 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
                 render={({ field, fieldState: { error } }) => (
                   <CImageUpload
                     {...field}
-                    aspectRatio="16/9"
+                    aspectRatio="4/1"
+                    maxWidth={700}
                     error={!!error}
                     helperText={error?.message}
                   />
