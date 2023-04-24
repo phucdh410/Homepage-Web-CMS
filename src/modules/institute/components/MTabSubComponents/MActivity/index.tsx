@@ -6,76 +6,69 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridValueFormatterParams,
-  GridValueGetterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { deleteTimeline } from '@/apis/timelines.api';
+import { deleteActivity } from '@/apis/activities.api';
 import { confirm } from '@/confirm/';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetTimelinesResponse } from '@/types/timelines';
+import { IGetActivitiesResponse } from '@/types/activities';
 
 import { IMCreateModalRef, MCreateModal } from './MCreateModal';
 import { IMUpdateModalRef, MUpdateModal } from './MUpdateModal';
-import { IMTimelineProps } from './types';
+import { IMActivityProps } from './types';
 
 const MOCK_DATA = [
   {
     id: '1',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2018,
+    name: 'Nghiên cứu khoa học',
+    description: 'Thạc sĩ Giải tích toán học',
     updated_date: new Date(),
     active: false,
   },
   {
     id: '2',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2023,
+    name: 'Nghiên cứu khoa học',
+    description: 'Thạc sĩ Giải tích toán học',
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2018,
+    name: 'Nghiên cứu khoa học',
+    description: 'Thạc sĩ Giải tích toán học',
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2023,
+    name: 'Nghiên cứu khoa học',
+    description: 'Thạc sĩ Giải tích toán học',
     updated_date: new Date(),
     active: true,
   },
   {
     id: '5',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2018,
+    name: 'Nghiên cứu khoa học',
+    description: 'Thạc sĩ Giải tích toán học',
     updated_date: new Date(),
     active: false,
   },
   {
     id: '6',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2023,
+    name: 'Nghiên cứu khoa học',
+    description: 'Thạc sĩ Giải tích toán học',
     updated_date: new Date(),
     active: true,
   },
 ];
 
-export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
+export const MActivity: React.FC<IMActivityProps> = ({ control }) => {
   //#region Ref
   const createRef = useRef<IMCreateModalRef | null>(null);
   const updateRef = useRef<IMUpdateModalRef | null>(null);
 
-  const onEdit = (id: string, data: IGetTimelinesResponse) =>
+  const onEdit = (id: string, data: IGetActivitiesResponse) =>
     updateRef.current?.open(id, data);
 
   const onDelete = async (id: string) => {
@@ -86,17 +79,16 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       })
     ) {
       try {
-        await deleteTimeline(id);
+        await deleteActivity(id);
 
-        toast.success('Xóa timeline thành công!');
+        toast.success('Xóa hoạt động thành công!');
       } catch (error: any) {
         toast.error(
-          error?.response?.data?.message || 'Xóa timeline không thành công!',
+          error?.response?.data?.message || 'Xóa hoạt động không thành công!',
         );
       }
     }
   };
-
   //#endregion
 
   //#region Data
@@ -108,24 +100,18 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       align: 'center',
     },
     {
-      field: 'time',
-      headerName: 'MỐC THỜI GIAN',
-      headerAlign: 'center',
-      align: 'center',
-      minWidth: 200,
-      valueGetter: (params: GridValueGetterParams<IGetTimelinesResponse>) => {
-        return `${params.row.from} - ${
-          params.row.to === new Date().getFullYear() ? 'NAY' : params.row.to
-        }`;
-      },
-    },
-    {
-      field: 'title',
-      headerName: 'TÊN KHOA',
+      field: 'name',
+      headerName: 'TÊN HOẠT ĐỘNG',
       headerAlign: 'left',
       align: 'left',
-      minWidth: 300,
       flex: 1,
+    },
+    {
+      field: 'description',
+      headerName: 'NỘI DUNG',
+      headerAlign: 'left',
+      align: 'left',
+      minWidth: 220,
     },
     {
       field: 'updated_date',
@@ -153,7 +139,7 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       headerAlign: 'center',
       align: 'center',
       minWidth: 150,
-      renderCell: (params: GridRenderCellParams<IGetTimelinesResponse>) => {
+      renderCell: (params: GridRenderCellParams<IGetActivitiesResponse>) => {
         return (
           <CActionsTable
             onEdit={() => onEdit(params.row.id, params.row)}

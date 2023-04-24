@@ -70,6 +70,14 @@ export const DEPARTMENTS = {
   DELETE: '/departments', // :id
 };
 
+export const INSTITUTES = {
+  CREATE: '/institudes',
+  GET_LIST: '/institudes/all',
+  GET_DETAIL: '/institudes', // :id
+  UPDATE: '/institudes', // :id
+  DELETE: '/institudes', // :id
+};
+
 export const TIMELINES = {
   CREATE: '/timelines',
   GET_LIST: '/timelines/all',

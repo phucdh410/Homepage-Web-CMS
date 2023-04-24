@@ -102,7 +102,7 @@ export const NAVIGATIONS: INavigationItem[] = [
         title: 'Trung tâm và Viện',
         icon: '',
         isChildren: false,
-        path: '/information/centers',
+        path: '/information/institutes',
         level: 1,
       },
       {

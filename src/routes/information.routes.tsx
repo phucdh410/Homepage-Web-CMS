@@ -27,6 +27,16 @@ const UpdateDepartmentPage = lazy(
   () => import('@/modules/department/pages/UpdateDepartmentPage'),
 );
 
+const ListInstitutesPage = lazy(
+  () => import('@/modules/institute/pages/ListInstitutesPage'),
+);
+const CreateInstitutePage = lazy(
+  () => import('@/modules/institute/pages/CreateInstitutePage'),
+);
+const UpdateInstitutePage = lazy(
+  () => import('@/modules/institute/pages/UpdateInstitutePage'),
+);
+
 const ListPartiesPage = lazy(
   () => import('@/modules/party/pages/ListPartiesPage'),
 );
@@ -58,6 +68,16 @@ export const InformationRoutes: RouteObject[] = [
   {
     path: ROUTES.INFORMATION.DEPARTMENTS.UPDATE,
     element: <UpdateDepartmentPage />,
+  },
+
+  { path: ROUTES.INFORMATION.INSTITUTES.LIST, element: <ListInstitutesPage /> },
+  {
+    path: ROUTES.INFORMATION.INSTITUTES.CREATE,
+    element: <CreateInstitutePage />,
+  },
+  {
+    path: ROUTES.INFORMATION.INSTITUTES.UPDATE,
+    element: <UpdateInstitutePage />,
   },
 
   { path: ROUTES.INFORMATION.PARTIES.LIST, element: <ListPartiesPage /> },

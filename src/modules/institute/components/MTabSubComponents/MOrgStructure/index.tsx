@@ -6,97 +6,70 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridValueFormatterParams,
-  GridValueGetterParams,
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { deleteTimeline } from '@/apis/timelines.api';
+import { deleteOrgStructure } from '@/apis/org-structures.api';
 import { confirm } from '@/confirm/';
+import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetTimelinesResponse } from '@/types/timelines';
+import { IGetOrgStructuresResponse } from '@/types/org-structures';
 
 import { IMCreateModalRef, MCreateModal } from './MCreateModal';
+import { IMEmployeesModalRef, MEmployeesModal } from './MEmployeesModal';
 import { IMUpdateModalRef, MUpdateModal } from './MUpdateModal';
-import { IMTimelineProps } from './types';
+import { IMOrgStructureProps } from './types';
 
 const MOCK_DATA = [
   {
     id: '1',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2018,
+    name: 'Ban chủ nhiệm khoa',
+    display: 2,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '2',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2023,
+    name: 'Giảng viên',
+    display: 2,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '3',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2018,
+    name: 'Ban chủ nhiệm khoa',
+    display: 3,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '4',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2023,
+    name: 'Ban chủ nhiệm khoa',
+    display: 2,
     updated_date: new Date(),
     active: true,
   },
   {
     id: '5',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2018,
+    name: 'Giảng viên',
+    display: 3,
     updated_date: new Date(),
     active: false,
   },
   {
     id: '6',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
-    from: 2013,
-    to: 2023,
+    name: 'Khoa Toán Đại học Sư phạm Sài Gòn',
+    display: 2,
     updated_date: new Date(),
     active: true,
   },
 ];
 
-export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
+export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
   //#region Ref
   const createRef = useRef<IMCreateModalRef | null>(null);
   const updateRef = useRef<IMUpdateModalRef | null>(null);
-
-  const onEdit = (id: string, data: IGetTimelinesResponse) =>
-    updateRef.current?.open(id, data);
-
-  const onDelete = async (id: string) => {
-    if (
-      await confirm({
-        confirmation: 'Thao tác xóa sẽ không thể hoàn tác!',
-        acceptBtnText: 'Xác nhận',
-      })
-    ) {
-      try {
-        await deleteTimeline(id);
-
-        toast.success('Xóa timeline thành công!');
-      } catch (error: any) {
-        toast.error(
-          error?.response?.data?.message || 'Xóa timeline không thành công!',
-        );
-      }
-    }
-  };
-
+  const employeeRef = useRef<IMEmployeesModalRef | null>(null);
   //#endregion
 
   //#region Data
@@ -108,24 +81,22 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       align: 'center',
     },
     {
-      field: 'time',
-      headerName: 'MỐC THỜI GIAN',
-      headerAlign: 'center',
-      align: 'center',
-      minWidth: 200,
-      valueGetter: (params: GridValueGetterParams<IGetTimelinesResponse>) => {
-        return `${params.row.from} - ${
-          params.row.to === new Date().getFullYear() ? 'NAY' : params.row.to
-        }`;
-      },
-    },
-    {
-      field: 'title',
-      headerName: 'TÊN KHOA',
+      field: 'name',
+      headerName: 'TÊN TỔ CHỨC',
       headerAlign: 'left',
       align: 'left',
-      minWidth: 300,
+      minWidth: 200,
       flex: 1,
+    },
+    {
+      field: 'display',
+      headerName: 'DẠNG HIỂN THỊ',
+      minWidth: 200,
+      headerAlign: 'left',
+      align: 'left',
+      valueFormatter: (params: GridValueFormatterParams<DISPLAY_TYPES>) => {
+        return DISPLAY_LABELS[params.value];
+      },
     },
     {
       field: 'updated_date',
@@ -153,9 +124,10 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       headerAlign: 'center',
       align: 'center',
       minWidth: 150,
-      renderCell: (params: GridRenderCellParams<IGetTimelinesResponse>) => {
+      renderCell: (params: GridRenderCellParams<IGetOrgStructuresResponse>) => {
         return (
           <CActionsTable
+            onCreate={() => onGoEmployee(params.row.id)}
             onEdit={() => onEdit(params.row.id, params.row)}
             onDelete={() => onDelete(params.row.id)}
           />
@@ -168,6 +140,30 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
   //#endregion
 
   //#region Event
+  const onEdit = (id: string, data: IGetOrgStructuresResponse) =>
+    updateRef.current?.open(id, data);
+
+  const onDelete = async (id: string) => {
+    if (
+      await confirm({
+        confirmation: 'Thao tác xóa sẽ không thể hoàn tác!',
+        acceptBtnText: 'Xác nhận',
+      })
+    ) {
+      try {
+        await deleteOrgStructure(id);
+
+        toast.success('Xóa cơ cấu tổ chức thành công!');
+      } catch (error: any) {
+        toast.error(
+          error?.response?.data?.message ||
+            'Xóa cơ cấu tổ chức không thành công!',
+        );
+      }
+    }
+  };
+
+  const onGoEmployee = (id: string) => employeeRef.current?.open(id);
   //#endregion
 
   //#region Cycle
@@ -198,6 +194,7 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
 
       <MCreateModal ref={createRef} />
       <MUpdateModal ref={updateRef} />
+      <MEmployeesModal ref={employeeRef} />
     </>
   );
   //#endregion

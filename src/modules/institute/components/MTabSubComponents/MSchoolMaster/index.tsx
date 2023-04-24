@@ -10,19 +10,19 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { deleteTimeline } from '@/apis/timelines.api';
+import { deleteSchoolMaster } from '@/apis/school-masters.api';
 import { confirm } from '@/confirm/';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
-import { IGetTimelinesResponse } from '@/types/timelines';
+import { IGetSchoolMastersResponse } from '@/types/school-masters';
 
 import { IMCreateModalRef, MCreateModal } from './MCreateModal';
+import { IMEmployeesModalRef, MEmployeesModal } from './MEmployeesModal';
 import { IMUpdateModalRef, MUpdateModal } from './MUpdateModal';
-import { IMTimelineProps } from './types';
+import { IMSchoolMasterProps } from './types';
 
 const MOCK_DATA = [
   {
     id: '1',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
     from: 2013,
     to: 2018,
     updated_date: new Date(),
@@ -30,7 +30,6 @@ const MOCK_DATA = [
   },
   {
     id: '2',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
     from: 2013,
     to: 2023,
     updated_date: new Date(),
@@ -38,7 +37,6 @@ const MOCK_DATA = [
   },
   {
     id: '3',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
     from: 2013,
     to: 2018,
     updated_date: new Date(),
@@ -46,7 +44,6 @@ const MOCK_DATA = [
   },
   {
     id: '4',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
     from: 2013,
     to: 2023,
     updated_date: new Date(),
@@ -54,7 +51,6 @@ const MOCK_DATA = [
   },
   {
     id: '5',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
     from: 2013,
     to: 2018,
     updated_date: new Date(),
@@ -62,41 +58,18 @@ const MOCK_DATA = [
   },
   {
     id: '6',
-    title: 'Khoa Toán Đại học Sư phạm Sài Gòn',
     from: 2013,
-    to: 2023,
+    to: 2018,
     updated_date: new Date(),
     active: true,
   },
 ];
 
-export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
+export const MSchoolMaster: React.FC<IMSchoolMasterProps> = ({ control }) => {
   //#region Ref
   const createRef = useRef<IMCreateModalRef | null>(null);
   const updateRef = useRef<IMUpdateModalRef | null>(null);
-
-  const onEdit = (id: string, data: IGetTimelinesResponse) =>
-    updateRef.current?.open(id, data);
-
-  const onDelete = async (id: string) => {
-    if (
-      await confirm({
-        confirmation: 'Thao tác xóa sẽ không thể hoàn tác!',
-        acceptBtnText: 'Xác nhận',
-      })
-    ) {
-      try {
-        await deleteTimeline(id);
-
-        toast.success('Xóa timeline thành công!');
-      } catch (error: any) {
-        toast.error(
-          error?.response?.data?.message || 'Xóa timeline không thành công!',
-        );
-      }
-    }
-  };
-
+  const employeeRef = useRef<IMEmployeesModalRef | null>(null);
   //#endregion
 
   //#region Data
@@ -113,25 +86,21 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       headerAlign: 'center',
       align: 'center',
       minWidth: 200,
-      valueGetter: (params: GridValueGetterParams<IGetTimelinesResponse>) => {
+      flex: 1,
+      valueGetter: (
+        params: GridValueGetterParams<IGetSchoolMastersResponse>,
+      ) => {
         return `${params.row.from} - ${
           params.row.to === new Date().getFullYear() ? 'NAY' : params.row.to
         }`;
       },
     },
     {
-      field: 'title',
-      headerName: 'TÊN KHOA',
-      headerAlign: 'left',
-      align: 'left',
-      minWidth: 300,
-      flex: 1,
-    },
-    {
       field: 'updated_date',
       headerName: 'NGÀY CẬP NHẬT',
       headerAlign: 'center',
       align: 'center',
+      flex: 1,
       minWidth: 200,
       valueFormatter: (params: GridValueFormatterParams<Date>) => {
         return dayjs(params.value).format('DD/MM/YYYY');
@@ -153,9 +122,10 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       headerAlign: 'center',
       align: 'center',
       minWidth: 150,
-      renderCell: (params: GridRenderCellParams<IGetTimelinesResponse>) => {
+      renderCell: (params: GridRenderCellParams<IGetSchoolMastersResponse>) => {
         return (
           <CActionsTable
+            onCreate={() => onGoEmployee(params.row.id)}
             onEdit={() => onEdit(params.row.id, params.row)}
             onDelete={() => onDelete(params.row.id)}
           />
@@ -168,6 +138,27 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
   //#endregion
 
   //#region Event
+  const onEdit = (id: string, data: IGetSchoolMastersResponse) =>
+    updateRef.current?.open(id, data);
+
+  const onDelete = async (id: string) => {
+    if (
+      await confirm({
+        confirmation: 'Thao tác xóa sẽ không thể hoàn tác!',
+        acceptBtnText: 'Xác nhận',
+      })
+    ) {
+      try {
+        await deleteSchoolMaster(id);
+
+        toast.success('Xóa thành công!');
+      } catch (error: any) {
+        toast.error(error?.response?.data?.message || 'Xóa không thành công!');
+      }
+    }
+  };
+
+  const onGoEmployee = (id: string) => employeeRef.current?.open(id);
   //#endregion
 
   //#region Cycle
@@ -198,6 +189,7 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
 
       <MCreateModal ref={createRef} />
       <MUpdateModal ref={updateRef} />
+      <MEmployeesModal ref={employeeRef} />
     </>
   );
   //#endregion

@@ -126,6 +126,7 @@ export const MMajor: React.FC<IMMajorProps> = ({ control }) => {
       headerName: 'NGÀNH ĐÀO TẠO',
       headerAlign: 'left',
       align: 'left',
+      minWidth: 400,
       flex: 1,
       renderCell: (params: GridRenderCellParams<IMajorData[]>) => {
         return (

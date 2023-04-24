@@ -42,6 +42,11 @@ export const ROUTES = {
       CREATE: '/information/departments/detail',
       UPDATE: '/information/departments/detail/:id',
     },
+    INSTITUTES: {
+      LIST: '/information/institutes',
+      CREATE: '/information/institutes/detail',
+      UPDATE: '/information/institutes/detail/:id',
+    },
     PARTIES: {
       LIST: '/information/parties',
       CREATE: '/information/parties/detail',

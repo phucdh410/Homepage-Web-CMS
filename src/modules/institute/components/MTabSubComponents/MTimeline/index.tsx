@@ -124,7 +124,6 @@ export const MTimeline: React.FC<IMTimelineProps> = ({ control }) => {
       headerName: 'TÊN KHOA',
       headerAlign: 'left',
       align: 'left',
-      minWidth: 300,
       flex: 1,
     },
     {

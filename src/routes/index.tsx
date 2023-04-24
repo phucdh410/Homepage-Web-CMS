@@ -1,4 +1,3 @@
-import { lazy } from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
 
 import { CExceptionError, CNotFoundError } from '@/errors/';
@@ -15,10 +14,6 @@ import { PostRoutes } from './posts.routes';
 import { ScheduleRoutes } from './schedule.routes';
 import { StaffRoutes } from './staff.routes';
 import { UsersRoutes } from './users.routes';
-
-const CDevelopment = lazy(
-  () => import('../common/components/others/CDevelopment'),
-);
 
 const routes: RouteObject[] = [
   {
@@ -45,11 +40,6 @@ const routes: RouteObject[] = [
           ...StaffRoutes,
           ...FooterRoutes,
           ...LanguagesRoutes,
-
-          {
-            path: '/information/centers',
-            element: <CDevelopment />,
-          },
         ],
       },
       {
