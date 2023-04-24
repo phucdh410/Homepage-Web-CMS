@@ -9,7 +9,7 @@ import {
 
 export const defaultValuesTimeline: ICreateTimelineParams = {
   from: new Date().getFullYear(),
-  to: new Date().getFullYear() + 1,
+  to: null,
   title: '',
   active: true,
 };
@@ -21,9 +21,7 @@ export const timelineResolver: Resolver<
     from: number()
       .typeError('Vui lòng nhập mốc thời gian!')
       .required('Vui lòng nhập mốc thời gian!'),
-    to: number()
-      .typeError('Vui lòng nhập mốc thời gian!')
-      .required('Vui lòng nhập mốc thời gian!'),
+    to: number().typeError('Vui lòng nhập mốc thời gian!').nullable(),
     title: string().required('Vui lòng nhập tiêu đề!'),
     active: boolean(),
   }),

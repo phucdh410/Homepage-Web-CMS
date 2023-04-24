@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import {
@@ -11,6 +11,8 @@ import {
   useTheme,
 } from '@mui/material';
 
+import { NavigationContext } from '../navigation-context';
+
 import { ICCollapseProps } from './types';
 
 export const CCollapse: React.FC<ICCollapseProps> = ({
@@ -21,6 +23,8 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
   //#region Data
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  const { current, setCurrent } = useContext(NavigationContext);
 
   const theme = useTheme();
 
@@ -36,8 +40,15 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
   //#endregion
 
   //#region Event
-  const toggleCollapse = () => setOpen(!open);
+  const toggleCollapse = (leadingPath: string) => {
+    setCurrent(leadingPath.split('/')[1]);
+    setOpen(!open);
+  };
   //#endregion
+
+  useEffect(() => {
+    if (!data.path.includes(current)) setOpen(false);
+  }, [current, data]);
 
   //#region Render
   return (
@@ -61,7 +72,7 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
             },
           }}
           selected={selected}
-          onClick={toggleCollapse}
+          onClick={() => toggleCollapse(data.path)}
         >
           {data?.icon ? (
             <ListItemIcon sx={{ minWidth: 40 }}>{data.icon}</ListItemIcon>
@@ -73,7 +84,11 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
         </ListItemButton>
       </Fade>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse
+        in={open && data.path.includes(current)}
+        timeout="auto"
+        unmountOnExit
+      >
         <List disablePadding>
           {dropdownList.map((e, i: number) =>
             e?.isChildren && e?.children ? (

@@ -10,7 +10,7 @@ import {
 
 export const defaultValuesSchoolMaster: ICreateSchoolMasterParams = {
   from: new Date().getFullYear(),
-  to: new Date().getFullYear() + 1,
+  to: null,
   file_id: '',
   active: true,
 };
@@ -34,7 +34,7 @@ export const schoolMasterResolver: Resolver<
 > = yupResolver(
   object({
     from: number().required('Vui lòng chọn thời gian!'),
-    to: number().required('Vui lòng chọn thời gian!'),
+    to: number().nullable(),
     file_id: string().required('Vui lòng chọn hình ảnh!'),
     active: boolean(),
   }),
