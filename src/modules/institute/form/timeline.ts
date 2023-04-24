@@ -21,7 +21,12 @@ export const timelineResolver: Resolver<
     from: number()
       .typeError('Vui lòng nhập mốc thời gian!')
       .required('Vui lòng nhập mốc thời gian!'),
-    to: number().typeError('Vui lòng nhập mốc thời gian!').nullable(),
+    to: number()
+      .nullable()
+      .transform((value) => {
+        if (value === '' || value === undefined || isNaN(value)) return null;
+        else return value;
+      }),
     title: string().required('Vui lòng nhập tiêu đề!'),
     active: boolean(),
   }),

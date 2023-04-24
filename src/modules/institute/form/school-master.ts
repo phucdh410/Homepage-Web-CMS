@@ -34,7 +34,12 @@ export const schoolMasterResolver: Resolver<
 > = yupResolver(
   object({
     from: number().required('Vui lòng chọn thời gian!'),
-    to: number().nullable(),
+    to: number()
+      .nullable()
+      .transform((value) => {
+        if (value === '' || value === undefined || isNaN(value)) return null;
+        else return value;
+      }),
     file_id: string().required('Vui lòng chọn hình ảnh!'),
     active: boolean(),
   }),

@@ -40,6 +40,7 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
     const onSubmit = () => {
       handleSubmit(async (values) => {
         try {
+          console.log(values);
           await createTimeline(values);
           toast.success('Thêm mới timeline thành công!');
           onCancel();
