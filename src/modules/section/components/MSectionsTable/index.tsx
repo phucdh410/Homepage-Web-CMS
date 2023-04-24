@@ -7,7 +7,7 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { DISPLAY_LABELS } from '@/constants/enums';
+import { DISPLAY_LABELS2 } from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
 import { CActiveTag } from '@/others/';
 
@@ -63,7 +63,7 @@ export const MSectionsTable: React.FC<IMSectionsTableProps> = ({
       headerAlign: 'left',
       align: 'left',
       valueFormatter: (params: GridValueFormatterParams<1 | 4>) => {
-        return DISPLAY_LABELS[params.value];
+        return DISPLAY_LABELS2[params.value];
       },
     },
     {

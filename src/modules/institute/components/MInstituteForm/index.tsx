@@ -59,7 +59,7 @@ export const MInstituteForm: React.FC<IMInstituteFormProps> = ({ control }) => {
               <FormControlLabel
                 value={1}
                 control={<Radio />}
-                label="Bài viết"
+                label="Thông tin"
               />
             </RadioGroup>
           )}

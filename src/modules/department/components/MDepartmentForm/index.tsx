@@ -61,7 +61,7 @@ export const MDepartmentForm: React.FC<IMDepartmentFormProps> = ({
               <FormControlLabel
                 value={1}
                 control={<Radio />}
-                label="Bài viết"
+                label="Thông tin"
               />
             </RadioGroup>
           )}

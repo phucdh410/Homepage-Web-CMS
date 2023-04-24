@@ -19,6 +19,14 @@ export const DISPLAY_LABELS = {
   [DISPLAY_ENUMS.NO_PAGE]: 'Trang trống',
 };
 
+export const DISPLAY_LABELS2 = {
+  [DISPLAY_ENUMS.POST]: 'Thông tin',
+  [DISPLAY_ENUMS.DIAGRAM]: 'Sơ đồ',
+  [DISPLAY_ENUMS.LIST]: 'Danh sách',
+  [DISPLAY_ENUMS.LINK]: 'Liên kết',
+  [DISPLAY_ENUMS.NO_PAGE]: 'Trang trống',
+};
+
 export const DISPLAY_OPTIONS: IOption[] = [
   { id: 1, label: DISPLAY_LABELS[1], value: DISPLAY_ENUMS.POST },
   { id: 2, label: DISPLAY_LABELS[2], value: DISPLAY_ENUMS.DIAGRAM },

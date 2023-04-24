@@ -104,7 +104,7 @@ export const MSectionForm: React.FC<IMSectionFormProps> = ({ control }) => {
               <FormControlLabel
                 value={1}
                 control={<Radio />}
-                label="Bài viết"
+                label="Thông tin"
               />
             </RadioGroup>
           )}

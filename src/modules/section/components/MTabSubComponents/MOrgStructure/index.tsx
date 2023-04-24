@@ -11,7 +11,7 @@ import dayjs from 'dayjs';
 
 import { deleteOrgStructure } from '@/apis/org-structures.api';
 import { confirm } from '@/confirm/';
-import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
+import { DISPLAY_LABELS2, DISPLAY_TYPES } from '@/constants/enums';
 import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
 import { IGetOrgStructuresResponse } from '@/types/org-structures';
 
@@ -95,7 +95,7 @@ export const MOrgStructure: React.FC<IMOrgStructureProps> = ({ control }) => {
       headerAlign: 'left',
       align: 'left',
       valueFormatter: (params: GridValueFormatterParams<DISPLAY_TYPES>) => {
-        return DISPLAY_LABELS[params.value];
+        return DISPLAY_LABELS2[params.value];
       },
     },
     {
