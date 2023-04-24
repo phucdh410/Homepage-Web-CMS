@@ -47,10 +47,6 @@ const routes: RouteObject[] = [
           ...LanguagesRoutes,
 
           {
-            path: '/information/departments',
-            element: <CDevelopment />,
-          },
-          {
             path: '/information/centers',
             element: <CDevelopment />,
           },

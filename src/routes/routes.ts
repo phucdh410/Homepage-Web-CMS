@@ -37,6 +37,11 @@ export const ROUTES = {
       CREATE: '/information/sections/detail',
       UPDATE: '/information/sections/detail/:id',
     },
+    DEPARTMENTS: {
+      LIST: '/information/departments',
+      CREATE: '/information/departments/detail',
+      UPDATE: '/information/departments/detail/:id',
+    },
     PARTIES: {
       LIST: '/information/parties',
       CREATE: '/information/parties/detail',
