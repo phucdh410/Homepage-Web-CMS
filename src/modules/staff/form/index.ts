@@ -18,7 +18,7 @@ export const defaultValuesEmployee = {
 export const employeeResolver: Resolver<IEmployeeForm> = yupResolver(
   object({
     fullname: string().trim().required('Vui lòng nhập họ và tên nhân sự!'),
-    academic_degree: string().trim().required('Vui lòng nhập học vị!'),
+    academic_degree: string().trim(),
     active: boolean(),
     file: object().required('Vui lòng chọn hình ảnh!'),
   }),
