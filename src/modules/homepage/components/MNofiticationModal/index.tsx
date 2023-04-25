@@ -3,6 +3,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Dialog, FormLabel, Stack } from '@mui/material';
 
+import {
+  createNotification,
+  updateNotification,
+} from '@/apis/notifications.api';
 import { CActionsForm, CFormLabel, CInput, CSwitch } from '@/controls/';
 import {
   defaultValuesNotification,
@@ -16,7 +20,7 @@ import {
 import { IMNotificationModalRef } from './types';
 
 export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
-  ({ ...props }, ref) => {
+  ({ refetch }, ref) => {
     //#region Data
     const [open, setOpen] = useState(false);
     const [id, setId] = useState<string>('');
@@ -33,20 +37,23 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
     //#region Event
     const close = () => {
       reset();
-
       setId('');
       setOpen(false);
     };
 
     const onSubmit = () => {
-      handleSubmit((values) => {
+      handleSubmit(async (values) => {
         try {
-          console.log(values);
+          id
+            ? await updateNotification(id, values)
+            : await createNotification(values);
           toast.success(
             id
               ? 'Cập nhật thông báo thành công!'
               : 'Tạo mới thông báo thành công!',
           );
+          refetch();
+          close();
         } catch (error: any) {
           toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
         }
@@ -98,7 +105,12 @@ export const MNotificationModal = forwardRef<IMNotificationModalRef, any>(
                 />
               </Stack>
 
-              <Stack direction="row" spacing={1} minWidth={200}>
+              <Stack
+                direction="row"
+                spacing={3}
+                minWidth={200}
+                alignItems="center"
+              >
                 <CFormLabel label="Trạng thái" />
                 <Controller
                   control={control}

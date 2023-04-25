@@ -1,7 +1,7 @@
 import { Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import dayjs from 'dayjs';
-import { boolean, date, number, object, string } from 'yup';
+import { boolean, date, object, string } from 'yup';
 
 import { IBannerForm } from '@/types/banners';
 import { IEventForm } from '@/types/events';
@@ -60,7 +60,6 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
 export const defaultValuesNotification = {
   title: '',
   active: true,
-  language_id: 1,
 };
 
 export const notificationResolver: Resolver<ICreateNotificationParams> =
@@ -72,7 +71,6 @@ export const notificationResolver: Resolver<ICreateNotificationParams> =
         .strict()
         .max(500, 'Tiêu đề tối đa 500 kí tự!'),
       active: boolean(),
-      language_id: number(),
     }),
   );
 //#endregion
@@ -83,8 +81,6 @@ export const defaultValuesEvent = {
   file_id: '',
   start_date: null,
   end_date: null,
-  // start_date: dayjs(),
-  // end_date: dayjs().endOf('year'),
 };
 
 export const eventResolver: Resolver<IEventForm> = yupResolver(
@@ -132,7 +128,7 @@ export const defaultValuesLink: ILinks = {
   youth: '',
   online: '',
   certificate: '',
-  help: '',
+  support: '',
   facebook: '',
 };
 

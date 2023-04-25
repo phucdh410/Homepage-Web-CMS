@@ -16,64 +16,6 @@ import { IGetNotificationsResponse } from '@/types/notifications';
 
 import { IMNotificationModalRef } from '../../components/MNofiticationModal/types';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: false,
-  },
-  {
-    id: '3',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: true,
-  },
-  {
-    id: '4',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: false,
-  },
-  {
-    id: '6',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: true,
-  },
-  {
-    id: '7',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: false,
-  },
-  {
-    id: '8',
-    title: 'Ra mắt “Cổng thông tin điện tử sinh viên HCMUE”',
-    updated_date: new Date(),
-    created_date: new Date(),
-    active: true,
-  },
-];
 const ListNotificationsPage = () => {
   //#region Data
   const modalRef = useRef<IMNotificationModalRef | null>(null);
@@ -88,7 +30,7 @@ const ListNotificationsPage = () => {
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
-  const { data, refetch } = useQuery({
+  const { data, refetch, isFetching } = useQuery({
     queryKey: ['notifications', filter],
     queryFn: () => getNotifications(filter),
   });
@@ -163,10 +105,11 @@ const ListNotificationsPage = () => {
 
       <Paper variant="wrapper">
         <MNotificationsTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}
+          loading={isFetching}
         />
       </Paper>
 
@@ -176,7 +119,7 @@ const ListNotificationsPage = () => {
         onChange={onPageChange}
       />
 
-      <MNotificationModal ref={modalRef} />
+      <MNotificationModal ref={modalRef} refetch={refetch} />
     </Box>
   );
   //#endregion

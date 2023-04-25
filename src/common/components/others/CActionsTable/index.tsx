@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { AddCircle, BorderColor, DeleteForever } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem, Stack, Tooltip } from '@mui/material';
-
-import apiInstance from '@/axios/index';
+import Cookies from 'js-cookie';
 
 import { ICActionsTableProps } from './types';
 
@@ -46,7 +45,7 @@ export const CActionsTable: React.FC<ICActionsTableProps> = ({
   const onClose = () => setAnchorEl(null);
 
   const onLanguageSelect = (value: string) => {
-    apiInstance.defaults.headers.common['Cookie'] = `language=${value}`;
+    Cookies.set('language', value);
     selection === 'edit' ? onEdit() : onDelete();
     setSelection('');
     onClose();

@@ -45,6 +45,12 @@ export const EVENTS = {
   DELETE: '/events', // :id
 };
 
+export const LINKS = {
+  CREATE: '/links',
+  GET_DETAIL: '/links',
+  UPDATE: '/links',
+};
+
 export const SECTION_GROUPS = {
   CREATE: '/section-groups',
   GET_LIST: '/section-groups/all',

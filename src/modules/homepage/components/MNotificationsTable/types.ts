@@ -5,4 +5,5 @@ export interface IMNotificationsTableProps {
   onEdit: (data: IGetNotificationsResponse) => void;
   onDelete: (id: string) => void;
   page: number;
+  loading?: boolean;
 }

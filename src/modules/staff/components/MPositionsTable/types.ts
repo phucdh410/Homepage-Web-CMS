@@ -5,4 +5,5 @@ export interface IMPositionsTableProps {
   onEdit: (id: string, data: IGetPositionsResponse) => void;
   onDelete: (id: string) => void;
   page: number;
+  loading?: boolean;
 }

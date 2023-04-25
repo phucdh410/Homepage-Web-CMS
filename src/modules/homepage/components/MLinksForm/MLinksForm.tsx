@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Stack } from '@mui/material';
 
+import { createLinks, updateLinks } from '@/apis/links.api';
 import { CActionsForm, CFormLabel, CInput } from '@/controls/';
 import { ILinks } from '@/types/homepage-link';
 
@@ -26,20 +28,31 @@ export const MLinksForm: React.FC<IMLinksFormProps> = ({ data }) => {
   //#region Event
   const onSubmit = () => {
     handleSubmit(async (values) => {
-      console.log(values);
-      toast.success('Cập nhật liên kết thành công!');
+      try {
+        data ? await updateLinks(values) : createLinks(values);
+        toast.success('Cập nhật liên kết thành công!');
+      } catch (error: any) {
+        toast.error(
+          error?.response?.data?.message ||
+            'Cập nhật liên kết không thành công!',
+        );
+      }
     })();
   };
-
+  console.log(data);
   const onCancel = () => {
     data ? reset(data) : reset();
   };
+
+  useEffect(() => {
+    if (data) reset({ ...data });
+  }, [data]);
   //#endregion
 
   //#region Render
   return (
     <Box>
-      <form onSubmit={onSubmit}>
+      <form>
         <Box mb={2}>
           <CFormLabel label="Liên kết" required />
         </Box>
@@ -100,13 +113,13 @@ export const MLinksForm: React.FC<IMLinksFormProps> = ({ data }) => {
           </Stack>
 
           <Stack direction="column" spacing={1} mb={2.5}>
-            <CFormLabel label="Hỗ trợ sinh viên" required htmlFor="help" />
+            <CFormLabel label="Hỗ trợ sinh viên" required htmlFor="support" />
             <Controller
               control={control}
-              name="help"
+              name="support"
               render={({ field, fieldState: { error } }) => (
                 <CInput
-                  id="help"
+                  id="support"
                   {...field}
                   placeholder="Nhập liên kết"
                   error={!!error}

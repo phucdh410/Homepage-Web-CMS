@@ -13,6 +13,7 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
   startName,
   endName,
   trigger,
+  disablePast,
 }) => {
   //#region Data
   const startValue = useWatch({ control, name: startName });
@@ -55,6 +56,7 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
             error={!!error}
             helperText={error?.message}
             shouldDisableDate={disableStartDate}
+            disablePast={disablePast}
           />
         )}
       />
@@ -69,6 +71,7 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
             error={!!error}
             helperText={error?.message}
             shouldDisableDate={disableEndDate}
+            disablePast={disablePast}
           />
         )}
       />

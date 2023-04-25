@@ -18,6 +18,7 @@ export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
       onBlur,
       fullWidth,
       shouldDisableDate,
+      disablePast,
       ...props
     },
     ref,
@@ -33,6 +34,7 @@ export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
         slots={{
           openPickerIcon: CalendarMonth,
         }}
+        disablePast={disablePast}
         slotProps={{
           textField: ({ slotProps, ...params }) => ({
             ...params,

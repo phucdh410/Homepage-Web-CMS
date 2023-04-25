@@ -7,5 +7,6 @@ export interface ICDatePickerProps
   placeholder?: string;
   format?: string;
   fullWidth?: boolean;
+  disablePast?: boolean;
   shouldDisableDate?: (day: Dayjs | Date | string) => boolean;
 }

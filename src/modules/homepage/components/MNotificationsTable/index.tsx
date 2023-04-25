@@ -71,6 +71,7 @@ export const MNotificationsTable: React.FC<IMNotificationsTableProps> = ({
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetNotificationsResponse>) => (
         <CActionsTable
+          multiLanguages
           onEdit={() => onEdit(params.row)}
           onDelete={() => onDelete(params.row.id)}
         />

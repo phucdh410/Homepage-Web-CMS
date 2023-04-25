@@ -2,7 +2,7 @@ export interface ILinks {
   youth: string;
   online: string;
   certificate: string;
-  help: string;
+  support: string;
   facebook: string;
 }
 

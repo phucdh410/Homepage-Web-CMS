@@ -16,6 +16,7 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
   onEdit,
   onDelete,
   page,
+  loading,
 }) => {
   //#region Data
   const columns: GridColDef[] = [
@@ -36,7 +37,7 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
     },
     {
       field: 'time',
-      headerName: 'THỜI GIAN TRẠNG THÁI',
+      headerName: 'THỜI GIAN HIỂN THỊ',
       minWidth: 250,
       headerAlign: 'center',
       align: 'center',
@@ -87,6 +88,8 @@ export const MBannersTable: React.FC<IMBannersTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={data} page={page} />;
+  return (
+    <CDataGrid loading={loading} columns={columns} rows={data} page={page} />
+  );
   //#endregion
 };

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
+import Cookies from 'js-cookie';
 
 import { createBanner, updateBanner } from '@/apis/banners.api';
 import {
@@ -21,7 +22,13 @@ import { IMBannerFormProps } from './types';
 
 export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
   //#region Data
-  const { control, handleSubmit, reset, trigger } = useForm<IBannerForm>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    trigger,
+    formState: { isSubmitting },
+  } = useForm<IBannerForm>({
     mode: 'all',
     resolver: bannerResolver,
     defaultValues: defaultValuesBanner,
@@ -33,19 +40,22 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
   //#region Event
   const onBack = () => {
     reset(defaultValuesBanner);
-
+    Cookies.remove('language');
     navigate(-1);
   };
 
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
+        const payload = {
+          ...values,
+          start_date: dayjs(values.start_date).format('YYYY-MM-DD'),
+          end_date: dayjs(values.end_date).format('YYYY-MM-DD'),
+        };
         data
-          ? await updateBanner(data?.id, values)
-          : await createBanner(values);
-
+          ? await updateBanner(data?.id, payload)
+          : await createBanner(payload);
         toast.success('Cập nhật banner thành công!');
-
         onBack();
       } catch (error: any) {
         toast.error(
@@ -119,11 +129,16 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
                 startName="start_date"
                 endName="end_date"
                 trigger={trigger}
+                disablePast
               />
             </Stack>
           </Stack>
 
-          <CActionsForm onCancel={onBack} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={onBack}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Paper>
     </>

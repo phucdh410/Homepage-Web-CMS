@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
+import Cookies from 'js-cookie';
 
 import { deleteBanner, getBanners } from '@/apis/banners.api';
 import { confirm } from '@/confirm/';
@@ -25,7 +26,7 @@ const ListBannersPage = () => {
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
-  const { data, refetch } = useQuery({
+  const { data, refetch, isFetching } = useQuery({
     queryKey: ['banners', filter],
     queryFn: () => getBanners(filter),
   });
@@ -53,9 +54,8 @@ const ListBannersPage = () => {
     ) {
       try {
         await deleteBanner(id);
-
+        Cookies.remove('language');
         refetch();
-
         toast.success('Xóa banner thành công!');
       } catch (error: any) {
         toast.error(
@@ -108,6 +108,7 @@ const ListBannersPage = () => {
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}
+          loading={isFetching}
         />
       </Paper>
 

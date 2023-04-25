@@ -36,7 +36,7 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
     },
     {
       field: 'time',
-      headerName: 'THỜI GIAN TRẠNG THÁI',
+      headerName: 'THỜI GIAN HIỂN THỊ',
       minWidth: 250,
       headerAlign: 'center',
       align: 'center',
@@ -74,6 +74,7 @@ export const MEventsTable: React.FC<IMEventsTableProps> = ({
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetEventsResponse>) => (
         <CActionsTable
+          multiLanguages
           onEdit={() => onEdit(params.row.id)}
           onDelete={() => onDelete(params.row.id)}
         />

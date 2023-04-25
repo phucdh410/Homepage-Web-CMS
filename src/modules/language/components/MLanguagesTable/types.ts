@@ -5,4 +5,5 @@ export interface IMLanguagesTableProps {
   onEdit: (id: string, data: IGetLanguagesResponse) => void;
   onDelete: (id: string) => void;
   page: number;
+  loading?: boolean;
 }

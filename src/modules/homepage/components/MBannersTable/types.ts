@@ -5,4 +5,5 @@ export interface IMBannersTableProps {
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
   page: number;
+  loading?: boolean;
 }

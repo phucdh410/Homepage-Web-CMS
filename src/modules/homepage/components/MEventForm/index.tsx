@@ -3,6 +3,8 @@ import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Stack, Typography } from '@mui/material';
+import dayjs from 'dayjs';
+import Cookies from 'js-cookie';
 
 import { createEvent, updateEvent } from '@/apis/events.api';
 import {
@@ -20,7 +22,13 @@ import { IMEventFormProps } from './types';
 
 export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#region Data
-  const { control, handleSubmit, reset, trigger } = useForm<IEventForm>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    trigger,
+    formState: { isSubmitting },
+  } = useForm<IEventForm>({
     mode: 'all',
 
     resolver: eventResolver,
@@ -33,14 +41,21 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#region Event
   const onBack = () => {
     reset(defaultValuesEvent);
-
+    Cookies.remove('language');
     navigate(-1);
   };
 
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        data ? await updateEvent(data?.id, values) : await createEvent(values);
+        const payload = {
+          ...values,
+          start_date: dayjs(values.start_date).format('YYYY-MM-DD'),
+          end_date: dayjs(values.end_date).format('YYYY-MM-DD'),
+        };
+        data
+          ? await updateEvent(data?.id, payload)
+          : await createEvent(payload);
 
         toast.success('Cập nhật event thành công!');
 
@@ -55,7 +70,12 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#endregion
 
   useEffect(() => {
-    if (data) reset({ ...data });
+    if (data)
+      reset({
+        ...data,
+        start_date: dayjs(data.start_date),
+        end_date: dayjs(data.end_date),
+      });
   }, [data]);
 
   //#region Render
@@ -68,7 +88,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
       </Box>
 
       <Paper variant="wrapper">
-        <form onSubmit={onSubmit}>
+        <form>
           <Stack direction="column" spacing={2.5} mb={2.5}>
             <Stack direction="column" spacing={1} flex={1}>
               <CFormLabel label="Tiêu đề " required />
@@ -112,11 +132,16 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
                 startName="start_date"
                 endName="end_date"
                 trigger={trigger}
+                disablePast
               />
             </Stack>
           </Stack>
 
-          <CActionsForm onCancel={onBack} />
+          <CActionsForm
+            onCancel={onBack}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Paper>
     </>
