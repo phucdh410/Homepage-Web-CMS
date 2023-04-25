@@ -8,10 +8,10 @@ import {
   IUsersDataTable,
 } from '@/types/user';
 
-import { AUTH, USERS } from './url';
+import { USERS } from './url';
 
 export const createUser = async (body: IUserFormParams) => {
-  return await post(AUTH.REGISTER, body);
+  return await post(USERS.CREATE, body);
 };
 
 export const getUsers = async (

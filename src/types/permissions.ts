@@ -1,5 +1,12 @@
 export interface IPermissionsPayload {
-  permission_code: string;
+  id?: string;
+  code?: string;
   allowed: boolean;
-  label?: string;
+  name?: string;
+}
+
+export interface IUserPermissionsResponse {
+  permission_code: string;
+  permission_name: string;
+  allowed: boolean;
 }

@@ -8,8 +8,7 @@ export const PERMISSIONS = {
 
 export const AUTH = {
   LOGIN: '/auth/login',
-  REGISTER: '/auth/register',
-  GET_PROFILE: '/auth/get-profile',
+  GET_PROFILE: '/auth/profile',
   LOGOUT: '/auth/logout',
   REFETCH_TOKEN: '/auth/refetch',
 };

@@ -70,7 +70,7 @@ const ListNewsPage = () => {
     params || {
       page: 1,
       pages: 0,
-      input: {
+      inputs: {
         search: '',
       },
     },

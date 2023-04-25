@@ -8,7 +8,7 @@ export const defaultValues: IUserFormParams = {
   username: '',
   password: '',
   active: true,
-  permissions: [],
+  permission: [],
   isEdit: false,
 };
 

@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { shallowEqual, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
@@ -6,12 +7,18 @@ import { Box, Paper, Typography } from '@mui/material';
 import { createUser } from '@/apis/users.api';
 import { CActionsForm } from '@/controls/';
 import { MForm } from '@/modules/users/components';
+import { RootState } from '@/redux/';
+import { IPermissionState } from '@/slices/permission';
 import { IUserFormParams } from '@/types/user';
 
 import { defaultValues, userResolver } from '../../form';
-
 const DetailUserPage = () => {
   //#region Data
+  const { permissions } = useSelector<RootState, IPermissionState>(
+    (state) => state.permission,
+    shallowEqual,
+  );
+
   const navigate = useNavigate();
 
   const {
@@ -25,18 +32,7 @@ const DetailUserPage = () => {
     resolver: userResolver,
     defaultValues: {
       ...defaultValues,
-      permissions: [
-        { permission_code: '1', allowed: false, label: 'Quản lý người dùng' },
-        { permission_code: '2', allowed: false, label: 'Quản lý trang chủ' },
-        { permission_code: '3', allowed: false, label: 'Quản lý thông tin' },
-        { permission_code: '4', allowed: false, label: 'Quản lý menu' },
-        { permission_code: '5', allowed: false, label: 'Quản lý nội dung' },
-        { permission_code: '6', allowed: false, label: 'Lịch công tác' },
-        { permission_code: '7', allowed: false, label: 'Duyệt tin' },
-        { permission_code: '8', allowed: false, label: 'Nhân sự' },
-        { permission_code: '9', allowed: false, label: 'Footer' },
-        { permission_code: '10', allowed: false, label: 'Ngôn ngữ' },
-      ],
+      permission: permissions || [],
     },
   });
   //#endregion
@@ -51,8 +47,14 @@ const DetailUserPage = () => {
   const onSubmit = async () => {
     handleSubmit(async (values) => {
       try {
-        console.log(values);
-        await createUser(values);
+        const payload = {
+          ...values,
+          permission: values.permission.map((e) => ({
+            permission_code: e.code,
+            allowed: e.allowed,
+          })),
+        };
+        await createUser(payload);
         toast.success('Thêm mới người dùng thành công!');
         onBack();
       } catch (error: any) {

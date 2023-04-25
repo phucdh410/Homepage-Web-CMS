@@ -12,57 +12,19 @@ import { MUsersTable } from '@/modules/users/components';
 import { CPagination } from '@/others/';
 import { IUsersDataTable } from '@/types/user';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    username: 'Abc123455',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    username: 'Abc123455',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    username: 'Abc123455',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    username: 'Abc123455',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '5',
-    username: 'Abc123455',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-];
-
 const ListUsersPage = () => {
   //#region Data
   const [filter, setFilter] = useState({
     page: 1,
     pages: 0,
-    input: {
+    inputs: {
       search: '',
     },
   });
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
-  const { data, refetch } = useQuery({
+  const { data, refetch, isFetching } = useQuery({
     queryKey: ['users', filter],
     queryFn: () => getUsers(filter),
   });
@@ -103,7 +65,7 @@ const ListUsersPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, page: 1, input: { search: value } }));
+    setFilter((prev) => ({ ...prev, page: 1, inputs: { search: value } }));
   //#endregion
 
   useEffect(() => {
@@ -141,10 +103,11 @@ const ListUsersPage = () => {
 
       <Paper variant="wrapper">
         <MUsersTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}
+          loading={isFetching}
         />
       </Paper>
 

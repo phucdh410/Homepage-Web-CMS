@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { Controller, useFieldArray } from 'react-hook-form';
-// import { shallowEqual, useSelector } from 'react-redux';
 import {
   Box,
   Button,
@@ -14,20 +13,13 @@ import {
 import { CFormLabel, CInput, CInputPassword, CSwitch } from '@/controls/';
 import { IPermissionsPayload } from '@/types/permissions';
 
-// import { RootState } from '@/redux/';
-// import { IPermissionState } from '@/slices/permission';
 import { IMFormProps } from './types';
 
 export const MForm: React.FC<IMFormProps> = ({ control, isEdit }) => {
   //#region Data
-  // const { permissions } = useSelector<RootState, IPermissionState>(
-  //   (state) => state.permission,
-  //   shallowEqual,
-  // );
-
   const { fields, replace, update } = useFieldArray({
     control,
-    name: 'permissions',
+    name: 'permission',
   });
 
   const disabledCheckAll = useMemo(() => {
@@ -138,7 +130,7 @@ export const MForm: React.FC<IMFormProps> = ({ control, isEdit }) => {
 
         <Controller
           control={control}
-          name="permissions"
+          name="permission"
           render={({ fieldState: { error } }) => (
             <Typography display={!!error ? 'block' : 'none'} color="error">
               {error?.message}
@@ -153,7 +145,7 @@ export const MForm: React.FC<IMFormProps> = ({ control, isEdit }) => {
                 checked={e.allowed}
                 onChange={() => onCheck(i, e)}
                 control={<Checkbox />}
-                label={e.label}
+                label={e.name}
               />
             </Grid>
           ))}

@@ -179,7 +179,7 @@ const ListPostsPage = () => {
   };
 
   const onSearch = (value: string) =>
-    setFilter((prev) => ({ ...prev, page: 1, input: { search: value } }));
+    setFilter((prev) => ({ ...prev, page: 1, inputs: { search: value } }));
 
   const onFilterPage = (value: string) =>
     setFilter((prev) => ({

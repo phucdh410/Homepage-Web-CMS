@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { shallowEqual, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
@@ -8,6 +10,8 @@ import { getDetailUser } from '@/apis/users.api';
 import { updateUser } from '@/apis/users.api';
 import { CActionsForm } from '@/controls/';
 import { MForm } from '@/modules/users/components';
+import { RootState } from '@/redux/';
+import { IPermissionState } from '@/slices/permission';
 import { IUserFormParams } from '@/types/user';
 
 import { defaultValues, userResolver } from '../../form';
@@ -20,14 +24,17 @@ const UpdateUserPage = () => {
   const { data, error, isError } = useQuery(
     ['user', id],
     () => getDetailUser(id as string),
-    {
-      enabled: !!id,
-    },
+    { enabled: !!id },
   );
 
   if (error && isError) {
     toast.error((error as any)?.repsonse?.data?.message || 'Có lỗi xảy ra!');
   }
+
+  const { permissions } = useSelector<RootState, IPermissionState>(
+    (state) => state.permission,
+    shallowEqual,
+  );
 
   const {
     control,
@@ -36,11 +43,11 @@ const UpdateUserPage = () => {
     formState: { isSubmitting },
   } = useForm<IUserFormParams>({
     mode: 'all',
-
     resolver: userResolver,
     defaultValues: {
-      ...data,
+      ...data?.data?.data,
       isEdit: true,
+      permission: permissions || [],
     },
   });
   //#endregion
@@ -55,8 +62,14 @@ const UpdateUserPage = () => {
   const onSubmit = async () => {
     handleSubmit(async (values) => {
       try {
-        console.log(values);
-        await updateUser(id as string, values);
+        const payload = {
+          ...values,
+          permission: values.permission.map((e) => ({
+            permission_code: e.code,
+            allowed: e.allowed,
+          })),
+        };
+        await updateUser(id as string, payload);
         toast.success('Cập nhật người dùng thành công!');
         onBack();
       } catch (error: any) {
@@ -68,6 +81,21 @@ const UpdateUserPage = () => {
     })();
   };
   //#endregion
+
+  useEffect(() => {
+    if (data?.data?.data) {
+      const { data: dataValue } = data.data;
+      reset({
+        ...dataValue,
+        isEdit: true,
+        permission: dataValue?.permission.map((e) => ({
+          code: e.permission_code,
+          name: e.permission_name,
+          allowed: e.allowed,
+        })),
+      });
+    }
+  }, [data]);
 
   //#endregion
   return (

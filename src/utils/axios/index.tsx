@@ -78,8 +78,6 @@ apiInstance.interceptors.response.use(
     }
     // if (error?.message === 'canceled') return;
 
-    if (error?.response?.status === 401) return handleRefetch(error);
-
     if (error?.response?.status === 403) {
       console.log('Thiếu quyền truy cập');
 

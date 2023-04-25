@@ -15,6 +15,7 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   onEdit,
   onDelete,
   page,
+  loading,
 }) => {
   //#region Data
   const columns: GridColDef[] = [
@@ -83,6 +84,8 @@ export const MUsersTable: React.FC<IMUsersTableProps> = ({
   //#endregion
 
   //#region Render
-  return <CDataGrid columns={columns} rows={data} page={page} />;
+  return (
+    <CDataGrid loading={loading} columns={columns} rows={data} page={page} />
+  );
   //#endregion
 };

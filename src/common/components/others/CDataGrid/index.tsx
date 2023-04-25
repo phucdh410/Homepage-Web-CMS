@@ -31,6 +31,7 @@ export const CDataGrid = ({
   //#region Render
   return (
     <DataGrid
+      loading={loading}
       autoHeight
       disableColumnMenu
       disableVirtualization

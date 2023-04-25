@@ -46,7 +46,7 @@ const CMainLayout = () => {
   }, []);
 
   //#region Render
-  return (
+  return isLogined ? (
     <Box display="flex" flexDirection="column" height="100vh">
       <CHeader toggleSidebar={toggleSidebar} />
 
@@ -66,26 +66,9 @@ const CMainLayout = () => {
         </Box>
       </Stack>
     </Box>
+  ) : (
+    <Navigate to={ROUTES.LOGIN} replace={true} />
   );
-
-  // Bỏ comment bên dưới,xóa trên
-  // return isLogined ? (
-  //   <Box display="flex" flexDirection="column" height="100vh">
-  //     <CHeader toggleSidebar={toggleSidebar} />
-
-  //     <Stack direction="row" flex={1}>
-  //       <CSidebar open={open} toggleSidebar={toggleSidebar} />
-
-  //       <Box paddingX="20px" paddingY="30px" flex={1} position="relative" overflow="hidden" >
-  //         <Suspense fallback={<CPageLoader />}>
-  //           <Outlet />
-  //         </Suspense>
-  //       </Box>
-  //     </Stack>
-  //   </Box>
-  // ) : (
-  //   <Navigate to={ROUTES.LOGIN} replace={true} />
-  // );
   //#endregion
 };
 
