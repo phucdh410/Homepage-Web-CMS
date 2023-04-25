@@ -46,6 +46,22 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
       }
     };
 
+    const handleUpload = async (file: File) => {
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
+
+      try {
+        const res = await uploadFile(file);
+
+        onChange && onChange(res?.data?.data?.id);
+      } catch (error: any) {
+        toast.error(
+          error?.response?.data?.message || 'Upload file không thành công!',
+        );
+      }
+    };
+
     const onDragEnter = () => {
       wrapperRef.current?.classList?.add('dragover');
     };
@@ -65,21 +81,7 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
       const file = e.target.files?.[0];
       if (file) {
         const isValid = checkImageFile(file);
-        if (isValid) {
-          if (inputRef.current) {
-            inputRef.current.value = '';
-          }
-
-          try {
-            const res = await uploadFile(file);
-
-            onChange && onChange(res?.data?.id);
-          } catch (error: any) {
-            toast.error(
-              error?.response?.data?.message || 'Upload file không thành công!',
-            );
-          }
-        }
+        if (isValid) handleUpload(file);
       }
     };
 
@@ -89,21 +91,7 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
       wrapperRef.current?.classList.remove('dragover');
       const file = e?.dataTransfer?.files[0];
       const isValid = checkImageFile(file);
-      if (isValid) {
-        if (inputRef.current) {
-          inputRef.current.value = '';
-        }
-
-        try {
-          const res = await uploadFile(file);
-
-          onChange && onChange(res?.data?.id);
-        } catch (error: any) {
-          toast.error(
-            error?.response?.data?.message || 'Upload file không thành công!',
-          );
-        }
-      }
+      if (isValid) handleUpload(file);
     };
 
     const onImageError = () => setIsImgError(true);
@@ -130,11 +118,22 @@ export const CImageUpload = forwardRef<ICImageUploadRef, ICImageUploadProps>(
           </Button>
         </Box>
 
-        <Box maxWidth={{ xs: 330, sm: 400, md: 600, lg: 640, xl: 720 }}>
+        <Box
+          position="relative"
+          minWidth={250}
+          maxWidth={maxWidth}
+          sx={{ aspectRatio: aspectRatio }}
+        >
           <img
             src={isImgError ? defaultImage : value}
             alt=""
-            style={{ maxWidth: '100%', height: 'auto' }}
+            style={{
+              inset: 0,
+              position: 'absolute',
+              height: '100%',
+              width: '100%',
+              objectFit: 'cover',
+            }}
             onError={onImageError}
           />
         </Box>

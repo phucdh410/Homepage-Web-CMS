@@ -3,6 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Stack, Typography } from '@mui/material';
+import dayjs from 'dayjs';
 
 import { createBanner, updateBanner } from '@/apis/banners.api';
 import {
@@ -22,7 +23,6 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
   //#region Data
   const { control, handleSubmit, reset, trigger } = useForm<IBannerForm>({
     mode: 'all',
-
     resolver: bannerResolver,
     defaultValues: defaultValuesBanner,
   });
@@ -57,7 +57,12 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
   //#endregion
 
   useEffect(() => {
-    if (data) reset({ ...data });
+    if (data)
+      reset({
+        ...data,
+        start_date: dayjs(data.start_date),
+        end_date: dayjs(data.end_date),
+      });
   }, [data]);
 
   //#region Render
@@ -70,7 +75,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
       </Box>
 
       <Paper variant="wrapper">
-        <form onSubmit={onSubmit}>
+        <form>
           <Stack direction="column" spacing={2.5} mb={2.5}>
             <Stack direction="column" spacing={1} flex={1}>
               <CFormLabel label="Tiêu đề" required />
@@ -118,7 +123,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
             </Stack>
           </Stack>
 
-          <CActionsForm onCancel={onBack} />
+          <CActionsForm onCancel={onBack} onSubmit={onSubmit} />
         </form>
       </Paper>
     </>

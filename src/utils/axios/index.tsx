@@ -12,7 +12,7 @@ import { objectToQueryString } from '../funcs';
 import { post } from './request';
 
 const apiInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: '/api/',
   timeout: import.meta.env.VITE_API_TIMEOUT,
   paramsSerializer: {
     serialize: (params) => objectToQueryString(params),

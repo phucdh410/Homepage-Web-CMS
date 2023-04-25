@@ -21,20 +21,6 @@ const MOCK_LANGUAGES = [
     abbr: 'EN',
     disabled: false,
   },
-  {
-    id: '3',
-    code: '3',
-    label: 'Tiếng Đức',
-    abbr: 'GER',
-    disabled: false,
-  },
-  {
-    id: '4',
-    code: '4',
-    label: 'Tiếng Pháp',
-    abbr: 'FR',
-    disabled: false,
-  },
 ];
 
 export const CActionsTable: React.FC<ICActionsTableProps> = ({
@@ -60,7 +46,7 @@ export const CActionsTable: React.FC<ICActionsTableProps> = ({
   const onClose = () => setAnchorEl(null);
 
   const onLanguageSelect = (value: string) => {
-    apiInstance.defaults.headers['Cookie'] = `language=${value}`;
+    apiInstance.defaults.headers.common['Cookie'] = `language=${value}`;
     selection === 'edit' ? onEdit() : onDelete();
     setSelection('');
     onClose();
@@ -93,11 +79,7 @@ export const CActionsTable: React.FC<ICActionsTableProps> = ({
 
         <Menu anchorEl={anchorEl} open={open} onClose={onClose}>
           {MOCK_LANGUAGES.map((e) => (
-            <MenuItem
-              disabled={e.disabled}
-              key={e.id}
-              onClick={() => onLanguageSelect(e.code)}
-            >
+            <MenuItem key={e.id} onClick={() => onLanguageSelect(e.code)}>
               {e.abbr}
             </MenuItem>
           ))}

@@ -5,3 +5,10 @@ export interface IFileUpload {
   size: number;
   url: string;
 }
+
+export interface IFileResponse {
+  id: string;
+  originalName: string;
+  url: string;
+  extension: string;
+}

@@ -17,7 +17,6 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
   //#region Data
   const startValue = useWatch({ control, name: startName });
   const endValue = useWatch({ control, name: endName });
-
   //#endregion
 
   //#region Event

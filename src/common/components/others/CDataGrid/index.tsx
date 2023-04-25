@@ -21,7 +21,7 @@ export const CDataGrid = ({
       ...e,
       __index: (page - 1) * pageSize + (i + 1),
     }));
-  }, [rows]);
+  }, [rows, page]);
   //#endregion
 
   //#region Event

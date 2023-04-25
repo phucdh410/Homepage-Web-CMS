@@ -14,8 +14,6 @@ export const defaultValuesBanner: IBannerForm = {
   file_id: '',
   start_date: null,
   end_date: null,
-  // start_date: dayjs(),
-  // end_date: dayjs().endOf('year'),
 };
 
 export const bannerResolver: Resolver<IBannerForm> = yupResolver(
@@ -54,7 +52,6 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
           return true;
         },
       ),
-    language_id: number().required(),
   }),
 );
 //#endregion
@@ -126,7 +123,6 @@ export const eventResolver: Resolver<IEventForm> = yupResolver(
           return true;
         },
       ),
-    language_id: number().required(),
   }),
 );
 //#endregion
