@@ -8,7 +8,7 @@ import {
 } from '@/types/languages';
 
 export const defaultValuesLanguage = {
-  title: '',
+  name: '',
   active: true,
   abbr: '',
 };
@@ -17,7 +17,7 @@ export const languageResolver: Resolver<
   ICreateLanguageParams | IUpdateLanguageParams
 > = yupResolver(
   object({
-    title: string().trim().required('Vui lòng nhập tên ngôn ngữ!'),
+    name: string().trim().required('Vui lòng nhập tên ngôn ngữ!'),
     abbr: string()
       .length(2, 'Tối đa 2 kí tự!')
       .required('Vui lòng nhập mã kí tự cho ngôn ngữ!'),

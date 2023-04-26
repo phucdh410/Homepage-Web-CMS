@@ -1,4 +1,3 @@
-import { IQueryRefetch } from '@/types/modal';
 import { IGetNotificationsResponse } from '@/types/notifications';
 
 export interface IMNotificationModalRef {
@@ -6,5 +5,5 @@ export interface IMNotificationModalRef {
 }
 
 export interface IMNotificationModalProps {
-  refetch: IQueryRefetch;
+  refetch: () => void;
 }

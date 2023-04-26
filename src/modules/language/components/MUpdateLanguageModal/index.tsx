@@ -13,69 +13,70 @@ import {
 import { defaultValuesLanguage, languageResolver } from '../../form';
 import { MLanguageForm } from '../MLanguageForm';
 
-import { IMUpdateLanguageModalRef } from './types';
+import { IMUpdateLanguageModalProps, IMUpdateLanguageModalRef } from './types';
 
-export const MUpdateLanguageModal = forwardRef<IMUpdateLanguageModalRef, any>(
-  ({ ...props }, ref) => {
-    //#region Data
-    const [open, setOpen] = useState(false);
-    const [id, setId] = useState<string>('');
+export const MUpdateLanguageModal = forwardRef<
+  IMUpdateLanguageModalRef,
+  IMUpdateLanguageModalProps
+>(({ refetch }, ref) => {
+  //#region Data
+  const [open, setOpen] = useState(false);
+  const [id, setId] = useState<string>('');
 
-    const { control, handleSubmit, reset } = useForm<IUpdateLanguageParams>({
-      resolver: languageResolver,
-      defaultValues: defaultValuesLanguage,
-      mode: 'all',
-    });
-    //#endregion
+  const { control, handleSubmit, reset } = useForm<IUpdateLanguageParams>({
+    resolver: languageResolver,
+    defaultValues: defaultValuesLanguage,
+    mode: 'all',
+  });
+  //#endregion
 
-    //#region Event
-    const onCancel = () => {
-      reset();
+  //#region Event
+  const onCancel = () => {
+    reset();
+    setId('');
+    setOpen(false);
+  };
 
-      setId('');
-      setOpen(false);
-    };
+  const onSubmit = () => {
+    handleSubmit(async (values) => {
+      try {
+        await updateLanguage(id, values);
+        toast.success('Cập nhật ngôn ngữ thành công!');
+        refetch?.();
+        onCancel();
+      } catch (error: any) {
+        toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
+      }
+    })();
+  };
+  //#endregion
 
-    const onSubmit = () => {
-      handleSubmit(async (values) => {
-        try {
-          console.log(values);
-          await updateLanguage(id, values);
-          toast.success('Cập nhật ngôn ngữ thành công!');
-        } catch (error: any) {
-          toast.error(error?.response?.data?.message || 'Có lỗi xảy ra!');
-        }
-      })();
-    };
-    //#endregion
+  useImperativeHandle(ref, () => ({
+    open: (id: string, data: IGetLanguagesResponse) => {
+      if (data && id) {
+        reset({ ...data });
+        setId(id);
+      }
 
-    useImperativeHandle(ref, () => ({
-      open: (id: string, data: IGetLanguagesResponse) => {
-        if (data && id) {
-          reset({ ...data });
-          setId(id);
-        }
+      setOpen(true);
+    },
+  }));
 
-        setOpen(true);
-      },
-    }));
+  //#region Render
+  return (
+    <Dialog
+      open={open}
+      onClose={onCancel}
+      PaperProps={{ sx: { minWidth: '400px' } }}
+    >
+      <Box p={2.5}>
+        <form>
+          <MLanguageForm control={control} />
 
-    //#region Render
-    return (
-      <Dialog
-        open={open}
-        onClose={onCancel}
-        PaperProps={{ sx: { minWidth: '400px' } }}
-      >
-        <Box p={2.5}>
-          <form>
-            <MLanguageForm control={control} />
-
-            <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
-          </form>
-        </Box>
-      </Dialog>
-    );
-    //#endregion
-  },
-);
+          <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+        </form>
+      </Box>
+    </Dialog>
+  );
+  //#endregion
+});

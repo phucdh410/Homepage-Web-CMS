@@ -20,81 +20,6 @@ import {
 import { IMCreateLanguageModalRef } from '../../components/MCreateLanguageModal/types';
 import { IMUpdateLanguageModalRef } from '../../components/MUpdateLanguageModal/types';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    name: 'Tiếng Việt',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: true,
-  },
-  {
-    id: '2',
-    name: 'Tiếng Anh',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: true,
-  },
-  {
-    id: '3',
-    name: 'Tiếng Thái',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: false,
-  },
-  {
-    id: '4',
-    name: 'Tiếng Nhật',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: true,
-  },
-  {
-    id: '5',
-    name: 'Tiếng Hàn',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: true,
-  },
-  {
-    id: '6',
-    name: 'Tiếng Trung',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: false,
-  },
-  {
-    id: '7',
-    name: 'Tiếng Pháp',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: true,
-  },
-  {
-    id: '8',
-    name: 'Tiếng lòng....mẹ bao la như biển thái bình',
-    created_date: new Date(),
-    updated_date: new Date(),
-    code: '1',
-    abbr: '',
-    active: false,
-  },
-];
-
 const ListLanguagesPage = () => {
   //#region Data
   const location = useLocation();
@@ -199,7 +124,7 @@ const ListLanguagesPage = () => {
 
       <Paper variant="wrapper">
         <MLanguagesTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}
@@ -212,8 +137,8 @@ const ListLanguagesPage = () => {
         onChange={onPageChange}
       />
 
-      <MCreateLanguageModal ref={createModalRef} />
-      <MUpdateLanguageModal ref={updateModalRef} />
+      <MCreateLanguageModal ref={createModalRef} refetch={refetch} />
+      <MUpdateLanguageModal ref={updateModalRef} refetch={refetch} />
     </Box>
   );
   //#endregion

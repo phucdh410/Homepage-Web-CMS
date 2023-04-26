@@ -9,7 +9,7 @@ export const MLanguageForm: React.FC<IMLanguageFormProps> = ({ control }) => {
   return (
     <Stack direction="column" spacing={2.5} mb={2.5}>
       <Stack direction="column" spacing={1} flex={1}>
-        <CFormLabel label="Ngôn ngữ" required />
+        <CFormLabel label="Ngôn ngữ" required htmlFor="name" />
         <Controller
           control={control}
           name="name"
@@ -24,8 +24,23 @@ export const MLanguageForm: React.FC<IMLanguageFormProps> = ({ control }) => {
           )}
         />
       </Stack>
-
-      <Stack direction="row" spacing={3} minWidth={200}>
+      <Stack direction="column" spacing={1} flex={1}>
+        <CFormLabel label="Viết tắt" htmlFor="abbr" required />
+        <Controller
+          control={control}
+          name="abbr"
+          render={({ field, fieldState: { error } }) => (
+            <CInput
+              {...field}
+              id="abbr"
+              placeholder="Nhập tên viết tắt (ex: VN)"
+              error={!!error}
+              helperText={error?.message}
+            />
+          )}
+        />
+      </Stack>
+      <Stack direction="row" spacing={3} minWidth={200} alignItems="center">
         <CFormLabel label="Trạng thái" />
         <Controller
           control={control}

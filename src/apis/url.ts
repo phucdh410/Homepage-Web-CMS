@@ -216,8 +216,8 @@ export const FOOTER = {
 };
 
 export const LANGUAGES = {
-  CREATE: '/notifications',
-  GET_LIST: '/notifications/all',
-  UPDATE: '/notifications', // :id
-  DELETE: '/notifications', // :id
+  CREATE: '/languages',
+  GET_LIST: '/languages/all',
+  UPDATE: '/languages', // :id
+  DELETE: '/languages', // :id
 };
