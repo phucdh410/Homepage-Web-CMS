@@ -14,6 +14,7 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
   endName,
   trigger,
   disablePast,
+  noEnd,
 }) => {
   //#region Data
   const startValue = useWatch({ control, name: startName });
@@ -60,12 +61,14 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
           />
         )}
       />
+
       <Controller
         control={control}
         name={endName}
         render={({ field, fieldState: { error } }) => (
           <CDatePicker
             {...field}
+            disabled={noEnd}
             placeholder="Ngày kết thúc"
             onChange={onValueChange(field.onChange)}
             error={!!error}

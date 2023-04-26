@@ -35,4 +35,5 @@ export interface IBannerForm {
   file_id: string;
   start_date: Date | Dayjs | string | null;
   end_date: Date | Dayjs | string | null;
+  no_end?: boolean;
 }

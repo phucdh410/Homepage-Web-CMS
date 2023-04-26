@@ -14,6 +14,7 @@ export const defaultValuesBanner: IBannerForm = {
   file_id: '',
   start_date: null,
   end_date: null,
+  no_end: false,
 };
 
 export const bannerResolver: Resolver<IBannerForm> = yupResolver(
@@ -25,8 +26,8 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
       .max(500, 'Tiêu đề tối đa 500 kí tự!'),
     file_id: string().required('Vui lòng chọn hình ảnh!'),
     start_date: date()
-      .typeError('Định dạng ngày không hợp lệ!')
-      .required('Vui lòng chọn ngày!')
+      .typeError('Chọn ngày bắt đầu!')
+      .required('Chọn ngày bắt đầu!')
       .test(
         'invalid',
         'Ngày bắt đầu không được sau ngày kết thúc!',
@@ -39,8 +40,8 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
         },
       ),
     end_date: date()
-      .typeError('Định dạng ngày không hợp lệ!')
-      .required('Vui lòng chọn ngày!')
+      .typeError('Chọn ngày kết thúc!')
+      .nullable()
       .test(
         'invalid',
         'Ngày kết thúc không được trước ngày bắt đầu!',
@@ -51,7 +52,26 @@ export const bannerResolver: Resolver<IBannerForm> = yupResolver(
 
           return true;
         },
-      ),
+      )
+      .when('no_end', {
+        is: (value: boolean) => !value,
+        then: () =>
+          date()
+            .typeError('Chọn ngày kết thúc!')
+            .required('Chọn ngày kết thúc')
+            .test(
+              'invalid',
+              'Ngày kết thúc không được trước ngày bắt đầu!',
+              (value, context) => {
+                const { parent } = context;
+
+                if (dayjs(value).isBefore(parent?.start_date, 'date'))
+                  return false;
+
+                return true;
+              },
+            ),
+      }),
   }),
 );
 //#endregion
@@ -76,11 +96,12 @@ export const notificationResolver: Resolver<ICreateNotificationParams> =
 //#endregion
 
 //#region Event
-export const defaultValuesEvent = {
+export const defaultValuesEvent: IEventForm = {
   title: '',
   file_id: '',
   start_date: null,
   end_date: null,
+  no_end: false,
 };
 
 export const eventResolver: Resolver<IEventForm> = yupResolver(
@@ -106,8 +127,8 @@ export const eventResolver: Resolver<IEventForm> = yupResolver(
         },
       ),
     end_date: date()
-      .typeError('Định dạng ngày không hợp lệ!')
-      .required('Vui lòng chọn ngày!')
+      .typeError('Chọn ngày kết thúc!')
+      .nullable()
       .test(
         'invalid',
         'Ngày kết thúc không được trước ngày bắt đầu!',
@@ -118,7 +139,26 @@ export const eventResolver: Resolver<IEventForm> = yupResolver(
 
           return true;
         },
-      ),
+      )
+      .when('no_end', {
+        is: (value: boolean) => !value,
+        then: () =>
+          date()
+            .typeError('Chọn ngày kết thúc!')
+            .required('Chọn ngày kết thúc')
+            .test(
+              'invalid',
+              'Ngày kết thúc không được trước ngày bắt đầu!',
+              (value, context) => {
+                const { parent } = context;
+
+                if (dayjs(value).isBefore(parent?.start_date, 'date'))
+                  return false;
+
+                return true;
+              },
+            ),
+      }),
   }),
 );
 //#endregion

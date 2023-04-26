@@ -1,8 +1,15 @@
 import { useEffect } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useController, useForm, useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Checkbox,
+  FormControlLabel,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import dayjs from 'dayjs';
 
 import { createEvent, updateEvent } from '@/apis/events.api';
@@ -21,6 +28,8 @@ import { IMEventFormProps } from './types';
 
 export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#region Data
+  const navigate = useNavigate();
+
   const {
     control,
     handleSubmit,
@@ -29,12 +38,14 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
     formState: { isSubmitting },
   } = useForm<IEventForm>({
     mode: 'all',
-
     resolver: eventResolver,
     defaultValues: defaultValuesEvent,
   });
 
-  const navigate = useNavigate();
+  const endValue = useWatch({ control, name: 'no_end' });
+  const {
+    field: { onChange },
+  } = useController({ control, name: 'end_date' });
   //#endregion
 
   //#region Event
@@ -64,6 +75,15 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
         );
       }
     })();
+  };
+
+  const onToggleEnd = (
+    event: React.SyntheticEvent<Element, Event>,
+    checked: boolean,
+    CallbackFnc: (checked: boolean) => void,
+  ) => {
+    CallbackFnc(checked);
+    if (checked) onChange(null);
   };
   //#endregion
 
@@ -120,18 +140,36 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
                 )}
               />
             </Stack>
-          </Stack>
 
-          <Stack direction="column" spacing={1} flex={1}>
-            <CFormLabel label="Ngày hiển thị" required />
-            <Stack direction="row" alignItems="center" spacing={1}>
-              <CRangePicker
+            <div>
+              <Controller
                 control={control}
-                startName="start_date"
-                endName="end_date"
-                trigger={trigger}
-                disablePast
+                name="no_end"
+                render={({ field }) => (
+                  <FormControlLabel
+                    {...field}
+                    onChange={(e, checked) =>
+                      onToggleEnd(e, checked, field.onChange)
+                    }
+                    control={<Checkbox />}
+                    label="Không kết thúc"
+                  />
+                )}
               />
+            </div>
+
+            <Stack direction="column" spacing={1} flex={1}>
+              <CFormLabel label="Ngày hiển thị" required />
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <CRangePicker
+                  control={control}
+                  startName="start_date"
+                  endName="end_date"
+                  trigger={trigger}
+                  disablePast
+                  noEnd={endValue}
+                />
+              </Stack>
             </Stack>
           </Stack>
 

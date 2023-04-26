@@ -6,4 +6,5 @@ export interface ICRangePickerProps {
   endName: string;
   trigger: UseFormTrigger<any>;
   disablePast?: boolean;
+  noEnd?: boolean;
 }
