@@ -12,13 +12,13 @@ export const permissionSlice = createSlice({
   name: 'permission',
   initialState,
   reducers: {
-    setPermission: (state, action) => {
+    setPermissions: (state, action) => {
       state.permissions = action.payload;
     },
   },
 });
 
-export const { setPermission } = permissionSlice.actions;
+export const { setPermissions } = permissionSlice.actions;
 
 const persistConfig = {
   key: 'permission',

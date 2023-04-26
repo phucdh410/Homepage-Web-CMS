@@ -3,10 +3,12 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import { Box, Stack } from '@mui/material';
 
+import { getAllLanguages } from '@/apis/languages.api';
 import { getPermissions } from '@/apis/permissions';
 import { RootState } from '@/redux/';
 import { ROUTES } from '@/routes/routes';
-import { setPermission } from '@/slices/permission/permission.slice';
+import { setLanguages } from '@/slices/language';
+import { setPermissions } from '@/slices/permission/permission.slice';
 
 import { CPageLoader } from '../../others/CPageLoader';
 
@@ -36,13 +38,25 @@ const CMainLayout = () => {
 
         const { data } = res.data;
 
-        dispatch(setPermission(data));
+        dispatch(setPermissions(data));
+      } catch (error: any) {
+        throw error;
+      }
+    };
+    const handleGetAllLanguages = async () => {
+      try {
+        const res = await getAllLanguages();
+
+        const { data } = res.data;
+
+        dispatch(setLanguages(data));
       } catch (error: any) {
         throw error;
       }
     };
 
     handleGetAllPermissions();
+    handleGetAllLanguages();
   }, []);
 
   //#region Render

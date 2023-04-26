@@ -15,7 +15,7 @@ export const MFolderForm: React.FC<IMFolderFormProps> = ({ control }) => {
   const onDisplayChange =
     (CallbackFnc: any) => (e: React.ChangeEvent<HTMLInputElement>) => {
       CallbackFnc(e);
-      if (e.target.value === '1') onChange(true);
+      if (e.target.value === '3') onChange(true);
       else onChange(false);
     };
   return (

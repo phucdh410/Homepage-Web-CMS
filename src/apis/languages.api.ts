@@ -1,4 +1,4 @@
-import { post, put, remove } from '@/axios/request';
+import { get, post, put, remove } from '@/axios/request';
 import {
   ICreateLanguageParams,
   IGetLanguagesParams,
@@ -25,4 +25,10 @@ export const updateLanguage = (id: string, body: IUpdateLanguageParams) => {
 
 export const deleteLanguage = (id: string) => {
   return remove(`${LANGUAGES.DELETE}/${id}`);
+};
+
+export const getAllLanguages = (): Promise<
+  IApiResponse<IGetLanguagesResponse[], any>
+> => {
+  return get(LANGUAGES.GET_ALL);
 };

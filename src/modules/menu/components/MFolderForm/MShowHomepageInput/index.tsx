@@ -17,7 +17,7 @@ export const MShowHomepageInput: React.FC<IMShowHomepageInputProps> = ({
         control={control}
         name="show_homepage"
         render={({ field }) => (
-          <CSwitch disabled={displayValue.toString() !== '1'} {...field} />
+          <CSwitch disabled={displayValue.toString() !== '3'} {...field} />
         )}
       />
     </Stack>

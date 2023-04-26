@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -59,6 +60,10 @@ const UpdatePagePage = () => {
     })();
   };
   //#endregion
+
+  useEffect(() => {
+    if (data?.data?.data) reset({ ...data.data.data });
+  }, [data]);
 
   //#region Render
   return (

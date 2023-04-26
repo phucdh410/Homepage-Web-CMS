@@ -73,6 +73,7 @@ export const MPagesTable: React.FC<IMPagesTableProps> = ({
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetPagesResponse>) => (
         <CActionsTable
+          multiLanguages
           onEdit={() => onEdit(params.row.id)}
           onDelete={() => onDelete(params.row.id)}
         />

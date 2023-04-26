@@ -33,3 +33,9 @@ export const updatePage = async (id: string, body: IUpdatePageParams) => {
 export const deletePage = async (id: string) => {
   return await remove(`${PAGES.DELETE}/${id}`);
 };
+
+export const getAllPages = (): Promise<
+  IApiResponse<IGetPagesResponse[], any>
+> => {
+  return get(PAGES.GET_ALL);
+};

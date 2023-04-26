@@ -64,6 +64,7 @@ export const MSectionGroupsTable: React.FC<IMSectionGroupsTableProps> = ({
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetSectionGroupsResponse>) => (
         <CActionsTable
+          multiLanguages
           onEdit={() => onEdit(params.value?.id, params.value)}
           onDelete={() => onDelete(params.value)}
         />

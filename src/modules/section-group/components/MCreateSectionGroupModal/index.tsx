@@ -10,12 +10,12 @@ import { ICreateSectionGroupParams } from '@/types/section-groups';
 import { defaultValues, sectionGroupResolver } from '../../form';
 import { MSectionGroupForm } from '..';
 
-import { IMCreateSectionGroupRef } from './types';
+import { IMCreateSectionGroupProps, IMCreateSectionGroupRef } from './types';
 
 export const MCreateSectionGroupModal = forwardRef<
   IMCreateSectionGroupRef,
-  any
->(({ ...props }, ref) => {
+  IMCreateSectionGroupProps
+>(({ refetch }, ref) => {
   //#region Data
   const [open, setOpen] = useState<boolean>(false);
 
@@ -35,9 +35,9 @@ export const MCreateSectionGroupModal = forwardRef<
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        console.log(values);
         await createSectionGroup(values);
         toast.success('Thêm mới nhóm khoa thành công!');
+        refetch();
         onCancel();
       } catch (error: any) {
         toast.error(

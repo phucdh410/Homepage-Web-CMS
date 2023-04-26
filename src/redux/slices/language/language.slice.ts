@@ -12,13 +12,13 @@ export const languageSlice = createSlice({
   name: 'language',
   initialState,
   reducers: {
-    setLanguage: (state, action) => {
+    setLanguages: (state, action) => {
       state.languages = action.payload;
     },
   },
 });
 
-export const { setLanguage } = languageSlice.actions;
+export const { setLanguages } = languageSlice.actions;
 
 const persistConfig = {
   key: 'language',

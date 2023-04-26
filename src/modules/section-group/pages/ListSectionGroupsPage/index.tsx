@@ -60,7 +60,7 @@ const ListSectionGroupsPage = () => {
   const onPageChange = (event: any, newPage: number) =>
     setFilter((prev) => ({ ...prev, page: newPage }));
 
-  const onEdit = (id: string, data: IGetSectionGroupsResponse) => () =>
+  const onEdit = (id: string, data: IGetSectionGroupsResponse) =>
     updateRef.current?.open(id, data);
 
   const onDelete = async (id: string) => {
@@ -140,8 +140,8 @@ const ListSectionGroupsPage = () => {
         onChange={onPageChange}
       />
 
-      <MCreateSectionGroupModal ref={createRef} />
-      <MUpdateSectionGroupModal ref={updateRef} />
+      <MCreateSectionGroupModal ref={createRef} refetch={refetch} />
+      <MUpdateSectionGroupModal ref={updateRef} refetch={refetch} />
     </Box>
   );
   //#endregion

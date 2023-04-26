@@ -148,6 +148,7 @@ export const PAGES = {
   GET_DETAIL: '/pages', // :id
   UPDATE: '/pages', // :id
   DELETE: '/pages', // :id
+  GET_ALL: '/pages',
 };
 
 export const FOLDERS = {
@@ -220,4 +221,5 @@ export const LANGUAGES = {
   GET_LIST: '/languages/all',
   UPDATE: '/languages', // :id
   DELETE: '/languages', // :id
+  GET_ALL: '/languages',
 };

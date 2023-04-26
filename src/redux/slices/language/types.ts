@@ -1,3 +1,5 @@
+import { IGetLanguagesResponse } from '@/types/languages';
+
 export interface ILanguageState {
-  languages: any[];
+  languages: IGetLanguagesResponse[];
 }
