@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import Cookies from 'js-cookie';
 
 import { deleteBanner, getBanners } from '@/apis/banners.api';
 import { confirm } from '@/confirm/';
@@ -54,7 +53,6 @@ const ListBannersPage = () => {
     ) {
       try {
         await deleteBanner(id);
-        Cookies.remove('language');
         refetch();
         toast.success('Xóa banner thành công!');
       } catch (error: any) {

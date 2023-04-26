@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import Cookies from 'js-cookie';
 
 import { createEvent, updateEvent } from '@/apis/events.api';
 import {
@@ -41,7 +40,6 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#region Event
   const onBack = () => {
     reset(defaultValuesEvent);
-    Cookies.remove('language');
     navigate(-1);
   };
 

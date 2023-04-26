@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import Cookies from 'js-cookie';
 
 import { createBanner, updateBanner } from '@/apis/banners.api';
 import {
@@ -40,7 +39,6 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
   //#region Event
   const onBack = () => {
     reset(defaultValuesBanner);
-    Cookies.remove('language');
     navigate(-1);
   };
 

@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import Cookies from 'js-cookie';
 
 import { deleteEvent, getEvents } from '@/apis/events.api';
 import { confirm } from '@/confirm/';
@@ -53,7 +52,6 @@ const ListEventsPage = () => {
     ) {
       try {
         await deleteEvent(id);
-        Cookies.remove('language');
         refetch();
         toast.success('Xóa sự kiện thành công!');
       } catch (error: any) {
