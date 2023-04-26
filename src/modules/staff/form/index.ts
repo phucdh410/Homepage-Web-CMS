@@ -25,7 +25,7 @@ export const employeeResolver: Resolver<IEmployeeForm> = yupResolver(
 );
 
 export const defaultValuesPosition = {
-  title: '',
+  name: '',
   active: true,
 };
 
@@ -33,7 +33,7 @@ export const positionResolver: Resolver<
   ICreatePositionParams | IUpdatePositionParams
 > = yupResolver(
   object({
-    title: string().trim().required('Vui lòng nhập tên chức vụ!'),
+    name: string().trim().required('Vui lòng nhập tên chức vụ!'),
     active: boolean(),
   }),
 );

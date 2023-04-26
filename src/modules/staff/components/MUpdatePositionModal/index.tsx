@@ -3,23 +3,27 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Box, Dialog } from '@mui/material';
 
-import { createPosition } from '@/apis/positions.api';
+import { updatePosition } from '@/apis/positions.api';
 import { CActionsForm } from '@/controls/';
-import { ICreatePositionParams } from '@/types/positions';
+import {
+  IGetPositionsResponse,
+  IUpdatePositionParams,
+} from '@/types/positions';
 
 import { defaultValuesPosition, positionResolver } from '../../form';
 import { MPositionForm } from '../MPositionForm';
 
-import { IMCreatePositionModalProps, IMCreatePositionModalRef } from './types';
+import { IMUpdatePositionModalProps, IMUpdatePositionModalRef } from './types';
 
-export const MCreatePositionModal = forwardRef<
-  IMCreatePositionModalRef,
-  IMCreatePositionModalProps
+export const MUpdatePositionModal = forwardRef<
+  IMUpdatePositionModalRef,
+  IMUpdatePositionModalProps
 >(({ refetch }, ref) => {
   //#region Data
   const [open, setOpen] = useState(false);
+  const [id, setId] = useState<string>('');
 
-  const { control, handleSubmit, reset } = useForm<ICreatePositionParams>({
+  const { control, handleSubmit, reset } = useForm<IUpdatePositionParams>({
     resolver: positionResolver,
     defaultValues: defaultValuesPosition,
     mode: 'all',
@@ -29,6 +33,7 @@ export const MCreatePositionModal = forwardRef<
   //#region Event
   const onCancel = () => {
     reset();
+    setId('');
     setOpen(false);
   };
 
@@ -36,8 +41,8 @@ export const MCreatePositionModal = forwardRef<
     handleSubmit(async (values) => {
       try {
         console.log(values);
-        await createPosition(values);
-        toast.success('Tạo mới chức vụ thành công!');
+        await updatePosition(id, values);
+        toast.success('Cập nhật thông báo thành công!');
         refetch();
         onCancel();
       } catch (error: any) {
@@ -48,7 +53,14 @@ export const MCreatePositionModal = forwardRef<
   //#endregion
 
   useImperativeHandle(ref, () => ({
-    open: () => setOpen(true),
+    open: (id: string, data: IGetPositionsResponse) => {
+      if (data && id) {
+        reset({ ...data });
+        setId(id);
+      }
+
+      setOpen(true);
+    },
   }));
 
   //#region Render

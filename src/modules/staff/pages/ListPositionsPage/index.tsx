@@ -18,7 +18,7 @@ import {
   MUpdatePositionModal,
 } from '../../components';
 import { IMCreatePositionModalRef } from '../../components/MCreatePositionModal/types';
-import { IMUpdatePositionModalRef } from '../../components/MUpdateLanguageModal/types';
+import { IMUpdatePositionModalRef } from '../../components/MUpdatePositionModal/types';
 
 const ListPositionsPage = () => {
   //#region Data
@@ -137,8 +137,8 @@ const ListPositionsPage = () => {
         onChange={onPageChange}
       />
 
-      <MCreatePositionModal ref={createModalRef} />
-      <MUpdatePositionModal ref={updateModalRef} />
+      <MCreatePositionModal ref={createModalRef} refetch={refetch} />
+      <MUpdatePositionModal ref={updateModalRef} refetch={refetch} />
     </Box>
   );
   //#endregion

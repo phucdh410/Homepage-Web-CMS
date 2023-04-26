@@ -9,14 +9,14 @@ export const MPositionForm: React.FC<IMPositionFormProps> = ({ control }) => {
   return (
     <Stack direction="column" spacing={2.5} mb={2.5}>
       <Stack direction="column" spacing={1} flex={1}>
-        <CFormLabel label="Chức vụ" required htmlFor="title" />
+        <CFormLabel label="Chức vụ" required htmlFor="name" />
         <Controller
           control={control}
-          name="title"
+          name="name"
           render={({ field, fieldState: { error } }) => (
             <CInput
               {...field}
-              id="title"
+              id="name"
               placeholder="Nhập tên chức vụ"
               error={!!error}
               helperText={error?.message}
