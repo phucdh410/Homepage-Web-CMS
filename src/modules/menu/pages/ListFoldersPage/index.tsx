@@ -18,51 +18,6 @@ import { IGetFoldersResponse } from '@/types/folders';
 
 import { MFoldersTable } from '../../components';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    title: 'Khoa và Bộ Môn',
-    display: 1,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    title: 'Khoa và Bộ Môn',
-    display: 1,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    title: 'Khoa và Bộ Môn',
-    display: 2,
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    title: 'Khoa và Bộ Môn',
-    display: 3,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    title: 'Khoa và Bộ Môn',
-    display: 4,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '6',
-    title: 'Khoa và Bộ Môn',
-    display: 5,
-    updated_date: new Date(),
-    active: false,
-  },
-];
-
 const ListFoldersPage = () => {
   //#region Data
   const location = useLocation();
@@ -164,7 +119,7 @@ const ListFoldersPage = () => {
 
       <Paper variant="wrapper">
         <MFoldersTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}

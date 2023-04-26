@@ -27,7 +27,7 @@ export const MPositionsTable: React.FC<IMPositionsTableProps> = ({
       align: 'center',
     },
     {
-      field: 'name',
+      field: 'title',
       headerName: 'TÊN CHỨC VỤ',
       minWidth: 300,
       headerAlign: 'left',

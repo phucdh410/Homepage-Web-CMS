@@ -4,7 +4,7 @@ import { IBasePaginateParams } from './params';
 
 export interface IGetEmployeesResponse {
   id: string;
-  fullname: string;
+  name: string;
   academic_degree?: string;
   updated_date: Date | Dayjs | string | null;
   active: boolean;
@@ -13,7 +13,7 @@ export interface IGetEmployeesResponse {
 export interface IGetEmployeesParams extends IBasePaginateParams {}
 
 export interface ICreateEmployeeParams {
-  fullname: string;
+  name: string;
   academic_degree: string;
   active: boolean;
   file_id: string;
@@ -21,7 +21,7 @@ export interface ICreateEmployeeParams {
 
 export interface IGetDetailEmployeeResponse {
   id: string;
-  fullname: string;
+  name: string;
   academic_degree: string;
   active: boolean;
   file_id: string;

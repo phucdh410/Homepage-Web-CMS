@@ -20,51 +20,6 @@ import {
 import { IMCreatePositionModalRef } from '../../components/MCreatePositionModal/types';
 import { IMUpdatePositionModalRef } from '../../components/MUpdateLanguageModal/types';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    name: 'Hiệu trưởng',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    name: 'Phó hiệu trưởng',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    name: 'Trưởng bộ môn',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    name: 'Trưởng khoa',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    name: 'Phó trưởng khoa',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '6',
-    name: 'Trưởng phòng',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: false,
-  },
-];
-
 const ListPositionsPage = () => {
   //#region Data
   const location = useLocation();
@@ -169,7 +124,7 @@ const ListPositionsPage = () => {
 
       <Paper variant="wrapper">
         <MPositionsTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}

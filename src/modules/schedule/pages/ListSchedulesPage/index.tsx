@@ -14,51 +14,6 @@ import { IGetSchedulesResponse } from '@/types/schedules';
 
 import { MSchedulesTable } from '../../components';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    title:
-      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
-    date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    title:
-      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
-    date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    title:
-      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
-    date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    title:
-      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
-    date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    title:
-      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
-    date: new Date(),
-    active: true,
-  },
-  {
-    id: '6',
-    title:
-      'Hội nghị triển khai công tác quy hoạch cán bộ công đoàn Trường Đại học Sư phạm Thành phố Hồ Chí Minh nhiệm kỳ 2023 - 2028',
-    date: new Date(),
-    active: false,
-  },
-];
-
 const ListSchedulesPage = () => {
   //#region Data
   const location = useLocation();
@@ -161,7 +116,7 @@ const ListSchedulesPage = () => {
 
       <Paper variant="wrapper">
         <MSchedulesTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}

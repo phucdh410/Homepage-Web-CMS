@@ -19,105 +19,6 @@ import { IGetPostsResponse } from '@/types/posts';
 
 import { MPostsTable } from '../../components';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    page: {
-      id: '1',
-      title: 'Trang giải đáp thắc mắc',
-    },
-    folder: {
-      id: '1',
-      title: 'Bộ câu hỏi về Axit Sunfuric',
-    },
-    title: 'Chăm sóc sức khỏe',
-    show_homepage: true,
-    display: 4,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    page: {
-      id: '1',
-      title: 'Trang giải đáp thắc mắc',
-    },
-    folder: {
-      id: '1',
-      title: 'Bộ câu hỏi về Axit Sunfuric',
-    },
-    title: 'Chăm sóc sức khỏe',
-    show_homepage: true,
-    display: 4,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    page: {
-      id: '1',
-      title: 'Trang giải đáp thắc mắc',
-    },
-    folder: {
-      id: '1',
-      title: 'Bộ câu hỏi về Axit Sunfuric',
-    },
-    title: 'Chăm sóc sức khỏe',
-    show_homepage: true,
-    display: 4,
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    page: {
-      id: '1',
-      title: 'Trang giải đáp thắc mắc',
-    },
-    folder: {
-      id: '1',
-      title: 'Bộ câu hỏi về Axit Sunfuric',
-    },
-    title: 'Chăm sóc sức khỏe',
-    show_homepage: true,
-    display: 4,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    page: {
-      id: '1',
-      title: 'Trang giải đáp thắc mắc',
-    },
-    folder: {
-      id: '1',
-      title: 'Bộ câu hỏi về Axit Sunfuric',
-    },
-    title: 'Chăm sóc sức khỏe',
-    show_homepage: true,
-    display: 4,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '6',
-    page: {
-      id: '1',
-      title: 'Trang giải đáp thắc mắc',
-    },
-    folder: {
-      id: '1',
-      title: 'Bộ câu hỏi về Axit Sunfuric',
-    },
-    title: 'Chăm sóc sức khỏe',
-    show_homepage: true,
-    display: 4,
-    updated_date: new Date(),
-    active: false,
-  },
-];
-
 const ListPostsPage = () => {
   //#region Data
   const location = useLocation();
@@ -260,7 +161,7 @@ const ListPostsPage = () => {
 
       <Paper variant="wrapper">
         <MPostsTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}

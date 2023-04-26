@@ -23,58 +23,6 @@ import {
 import { IMCreateSectionGroupRef } from '../../components/MCreateSectionGroupModal/types';
 import { IMUpdateSectionGroupRef } from '../../components/MUpdateSectionGroupModal/types';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    name: 'Khoa học xã hội',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    name: 'Khoa học xã hội',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    name: 'Khoa học xã hội',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    name: 'Khoa học xã hội',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    name: 'Khoa học xã hội',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '6',
-    name: 'Khoa học xã hội',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '7',
-    name: 'Khoa học xã hội',
-    created_date: new Date(),
-    updated_date: new Date(),
-    active: false,
-  },
-];
-
 const ListSectionGroupsPage = () => {
   //#region Data
   const createRef = useRef<IMCreateSectionGroupRef | null>(null);
@@ -179,7 +127,7 @@ const ListSectionGroupsPage = () => {
 
       <Paper variant="wrapper">
         <MSectionGroupsTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}

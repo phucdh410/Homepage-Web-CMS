@@ -14,51 +14,6 @@ import { IGetEmployeesResponse } from '@/types/employees';
 
 import { MEmployeesTable } from '../../components';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '6',
-    fullname: 'Nguyễn Văn AAAAAA AAA AAA',
-    academic_degree: 'Tiến sĩ',
-    updated_date: new Date(),
-    active: false,
-  },
-];
-
 const ListEmployeesPage = () => {
   //#region Data
   const location = useLocation();
@@ -160,7 +115,7 @@ const ListEmployeesPage = () => {
 
       <Paper variant="wrapper">
         <MEmployeesTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}

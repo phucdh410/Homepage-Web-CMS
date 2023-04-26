@@ -37,7 +37,7 @@ export const MPostsTable: React.FC<IMPostsTableProps> = ({
       valueFormatter: (
         params: GridValueFormatterParams<{ id: string; title: 'string' }>,
       ) => {
-        return params.value.title;
+        return params.value?.title;
       },
     },
     {
@@ -49,7 +49,7 @@ export const MPostsTable: React.FC<IMPostsTableProps> = ({
       valueFormatter: (
         params: GridValueFormatterParams<{ id: string; title: 'string' }>,
       ) => {
-        return params.value.title;
+        return params.value?.title;
       },
     },
     {

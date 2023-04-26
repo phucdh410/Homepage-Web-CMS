@@ -9,7 +9,7 @@ import {
 } from '@/types/positions';
 
 export const defaultValuesEmployee = {
-  fullname: '',
+  name: '',
   academic_degree: '',
   file: null,
   active: true,
@@ -17,7 +17,7 @@ export const defaultValuesEmployee = {
 
 export const employeeResolver: Resolver<IEmployeeForm> = yupResolver(
   object({
-    fullname: string().trim().required('Vui lòng nhập họ và tên nhân sự!'),
+    name: string().trim().required('Vui lòng nhập họ và tên nhân sự!'),
     academic_degree: string().trim(),
     active: boolean(),
     file: object().required('Vui lòng chọn hình ảnh!'),
@@ -25,7 +25,7 @@ export const employeeResolver: Resolver<IEmployeeForm> = yupResolver(
 );
 
 export const defaultValuesPosition = {
-  name: '',
+  title: '',
   active: true,
 };
 
@@ -33,7 +33,7 @@ export const positionResolver: Resolver<
   ICreatePositionParams | IUpdatePositionParams
 > = yupResolver(
   object({
-    name: string().trim().required('Vui lòng nhập tên chức vụ!'),
+    title: string().trim().required('Vui lòng nhập tên chức vụ!'),
     active: boolean(),
   }),
 );

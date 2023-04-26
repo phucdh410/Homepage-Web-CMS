@@ -40,7 +40,7 @@ export interface ICreateRefParams extends ICreatePostBaseParams {
 export interface IGetPostsResponse {
   id: string;
   page: { id: string; title: string };
-  folder: { id: string; title: string };
+  folder: { id: string; title: string } | null;
   title: string;
   display: number;
   show_homepage: boolean;

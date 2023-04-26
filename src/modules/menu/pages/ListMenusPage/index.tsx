@@ -18,51 +18,6 @@ import { IGetMenusResponse } from '@/types/menus';
 
 import { MMenusTable } from '../../components';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 1,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '2',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 1,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '3',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 2,
-    updated_date: new Date(),
-    active: false,
-  },
-  {
-    id: '4',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 2,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '5',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 1,
-    updated_date: new Date(),
-    active: true,
-  },
-  {
-    id: '6',
-    title: 'Giới thiệu, Tin tức - Sự kiện',
-    display: 1,
-    updated_date: new Date(),
-    active: false,
-  },
-];
-
 const ListMenusPage = () => {
   //#region Data
   const location = useLocation();
@@ -164,7 +119,7 @@ const ListMenusPage = () => {
 
       <Paper variant="wrapper">
         <MMenusTable
-          data={MOCK_DATA || listData || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}

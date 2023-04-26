@@ -17,14 +17,14 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
     <Grid container spacing={3} mb={4}>
       <Grid xs={12} lg={8} order={{ xs: 2, lg: 1 }}>
         <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-          <CFormLabel label="Họ và tên nhân sự" required />
+          <CFormLabel label="Họ và tên nhân sự" required htmlFor="name" />
           <Controller
             control={control}
-            name="fullname"
+            name="name"
             render={({ field, fieldState: { error } }) => (
               <CInput
                 {...field}
-                id="fullname"
+                id="name"
                 placeholder="Nhập tên..."
                 error={!!error}
                 helperText={error?.message}
