@@ -5,7 +5,7 @@ import { Box, Paper, Typography } from '@mui/material';
 
 import { createEmployee } from '@/apis/employees';
 import { CActionsForm } from '@/controls/';
-import { IEmployeeForm } from '@/types/employees';
+import { ICreateEmployeeParams } from '@/types/employees';
 
 import { MEmployeeForm } from '../../components';
 import { defaultValuesEmployee, employeeResolver } from '../../form';
@@ -17,7 +17,7 @@ const CreateEmployeePage = () => {
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<IEmployeeForm>({
+  } = useForm<ICreateEmployeeParams>({
     mode: 'all',
     resolver: employeeResolver,
     defaultValues: defaultValuesEmployee,
@@ -36,7 +36,6 @@ const CreateEmployeePage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        console.log(values);
         await createEmployee(values);
         toast.success('Thêm mới nhân sự thành công!');
         onCancel();

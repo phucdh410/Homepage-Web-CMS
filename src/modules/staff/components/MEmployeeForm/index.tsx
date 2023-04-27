@@ -50,14 +50,12 @@ export const MEmployeeForm: React.FC<IMEmployeeFormProps> = ({ control }) => {
           />
         </Stack>
 
-        <Stack direction="row" spacing={1} flex={1} mb={2.5}>
+        <Stack direction="row" spacing={3} flex={1} mb={2.5}>
           <CFormLabel label="Trạng thái" />
           <Controller
             control={control}
             name="active"
-            render={({ field, fieldState: { error } }) => (
-              <CSwitch {...field} />
-            )}
+            render={({ field }) => <CSwitch {...field} />}
           />
         </Stack>
       </Grid>

@@ -199,9 +199,11 @@ theme = createTheme(theme, {
         },
         input: {
           padding: '10px 15px',
+          fontWeight: 500,
           '&::placeholder': {
             color: '#5B5B5B',
-            opacity: 1,
+            opacity: 0.8,
+            fontWeight: 400,
           },
         },
         notchedOutline: {

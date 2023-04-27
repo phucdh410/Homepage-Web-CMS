@@ -1,7 +1,10 @@
 import { Control } from 'react-hook-form';
 
-import { IEmployeeForm } from '@/types/employees';
+import {
+  ICreateEmployeeParams,
+  IUpdateEmployeeParams,
+} from '@/types/employees';
 
 export interface IMEmployeeFormProps {
-  control: Control<IEmployeeForm, any>;
+  control: Control<ICreateEmployeeParams | IUpdateEmployeeParams, any>;
 }

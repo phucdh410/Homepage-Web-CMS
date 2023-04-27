@@ -1,12 +1,13 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { createEmployee, getDetailEmployee } from '@/apis/employees';
+import { getDetailEmployee, updateEmployee } from '@/apis/employees';
 import { CActionsForm } from '@/controls/';
-import { IEmployeeForm } from '@/types/employees';
+import { IUpdateEmployeeParams } from '@/types/employees';
 
 import { MEmployeeForm } from '../../components';
 import { defaultValuesEmployee, employeeResolver } from '../../form';
@@ -32,7 +33,7 @@ const UpdateEmployeePage = () => {
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<IEmployeeForm>({
+  } = useForm<IUpdateEmployeeParams>({
     mode: 'all',
     resolver: employeeResolver,
     defaultValues: data?.data?.data || defaultValuesEmployee,
@@ -49,8 +50,7 @@ const UpdateEmployeePage = () => {
   const onSubmit = () => {
     handleSubmit(async (values) => {
       try {
-        console.log(values);
-        await createEmployee(values);
+        await updateEmployee(id as string, values);
         toast.success('Thêm mới nhân sự thành công!');
         onCancel();
       } catch (error: any) {
@@ -62,6 +62,10 @@ const UpdateEmployeePage = () => {
     })();
   };
   //#endregion
+
+  useEffect(() => {
+    if (data?.data?.data) reset({ ...data.data.data });
+  }, [data]);
 
   //#region Render
   return (

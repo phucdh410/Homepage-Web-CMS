@@ -27,7 +27,7 @@ export interface IGetDetailEmployeeResponse {
   file_id: string;
 }
 
-export interface IEmployeeForm extends Omit<IGetDetailEmployeeResponse, 'id'> {}
+// export interface IEmployeeForm extends Omit<IGetDetailEmployeeResponse, 'id'> {}
 
 export interface IUpdateEmployeeParams extends ICreateEmployeeParams {}
 
