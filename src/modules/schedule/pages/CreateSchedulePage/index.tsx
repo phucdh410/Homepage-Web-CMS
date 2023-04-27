@@ -13,6 +13,8 @@ import { defaultValuesSchedule, scheduleResolver } from '../../form';
 
 const CreateSchedulePage = () => {
   //#region Data
+  const navigate = useNavigate();
+
   const {
     control,
     handleSubmit,
@@ -23,8 +25,6 @@ const CreateSchedulePage = () => {
     resolver: scheduleResolver,
     defaultValues: defaultValuesSchedule,
   });
-
-  const navigate = useNavigate();
   //#endregion
 
   //#region Event
@@ -39,9 +39,9 @@ const CreateSchedulePage = () => {
       try {
         const payload = {
           ...values,
-          date: dayjs(values.date).format('YYYY/MM/DD HH:mm:ss'),
+          date: dayjs(values.date).toJSON(),
         };
-        console.log(payload);
+        // Dùng toJSON để chuyển về timezone 0, tránh lỗi +7
         await createSchedule(payload);
         toast.success('Thêm mới lịch công tác thành công!');
         onCancel();

@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import { AccessTime } from '@mui/icons-material';
 import { InputAdornment } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 import { ICTimePickerProps } from './types';
 
@@ -25,7 +26,7 @@ export const CTimePicker = forwardRef<HTMLInputElement, ICTimePickerProps>(
     return (
       <MobileTimePicker
         className="c-timepicker"
-        value={value}
+        value={dayjs(value)}
         onChange={onChange}
         views={['hours', 'minutes']}
         inputRef={ref}

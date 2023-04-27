@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { CalendarMonth } from '@mui/icons-material';
 import { DatePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 import { ICDatePickerProps } from './types';
 
@@ -26,7 +27,7 @@ export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
     return (
       <DatePicker
         className="c-datepicker"
-        value={value}
+        value={dayjs(value)}
         onChange={onChange}
         format={format}
         inputRef={ref}

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -38,7 +39,6 @@ const UpdateSchedulePage = () => {
     resolver: scheduleResolver,
     defaultValues: data?.data?.data || defaultValuesSchedule,
   });
-
   //#endregion
 
   //#region Event
@@ -53,9 +53,9 @@ const UpdateSchedulePage = () => {
       try {
         const payload = {
           ...values,
-          date: dayjs(values.date).format('YYYY/MM/DD HH:mm:ss'),
+          date: dayjs(values.date).toJSON(),
         };
-        console.log(payload);
+        // Dùng toJSON để chuyển về timezone 0, tránh lỗi +7
         await updateSchedule(id as string, payload);
         toast.success('Cập nhật lịch công tác thành công!');
         onCancel();
@@ -68,6 +68,10 @@ const UpdateSchedulePage = () => {
     })();
   };
   //#endregion
+
+  useEffect(() => {
+    if (data?.data?.data) reset({ ...data.data.data });
+  }, [data]);
 
   //#region Render
   return (
