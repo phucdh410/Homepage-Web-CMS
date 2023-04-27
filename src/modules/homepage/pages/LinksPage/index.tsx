@@ -10,7 +10,7 @@ import { MLinksForm } from '../../components';
 const ListEventsPage = () => {
   //#region Data
   const { data } = useQuery(['links'], () => getLinks());
-  console.log(data);
+
   const formData = useMemo(() => {
     if (data?.data?.data) {
       const values: ICreateLinksParams = {
@@ -31,7 +31,7 @@ const ListEventsPage = () => {
     } else return undefined;
   }, [data]);
   //#endregion
-  console.log(formData);
+
   //#region Event
   //#endregion
 

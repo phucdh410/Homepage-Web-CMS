@@ -39,7 +39,7 @@ export const MLinksForm: React.FC<IMLinksFormProps> = ({ data }) => {
       }
     })();
   };
-  console.log(data);
+
   const onCancel = () => {
     data ? reset(data) : reset();
   };

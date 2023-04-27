@@ -183,7 +183,7 @@ export const linkResolver: Resolver<ILinks> = yupResolver(
     certificate: string()
       .url('Đường dẫn/Liên kết không hợp lệ!')
       .required('Vui lòng nhập đường dẫn/liên kết!'),
-    help: string()
+    support: string()
       .url('Đường dẫn/Liên kết không hợp lệ!')
       .required('Vui lòng nhập đường dẫn/liên kết!'),
     facebook: string()
