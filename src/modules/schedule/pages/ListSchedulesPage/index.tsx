@@ -108,6 +108,12 @@ const ListSchedulesPage = () => {
             className="add-button"
             startIcon={<AddCircleOutline />}
             onClick={() => navigate('detail')}
+            sx={{
+              transition: '150ms',
+              '&:hover': {
+                transform: 'scale(1.1)',
+              },
+            }}
           >
             Thêm mới
           </Button>
