@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
@@ -7,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { deleteNotification, getNotifications } from '@/apis/notifications.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
+import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import {
   MNotificationModal,
   MNotificationsTable,
@@ -18,15 +20,22 @@ import { IMNotificationModalRef } from '../../components/MNofiticationModal/type
 
 const ListNotificationsPage = () => {
   //#region Data
+  const location = useLocation();
+
+  const { navigateWithNewQuery } = useNavigateQuery();
+  const params = useRevertQuery(location.search);
+
   const modalRef = useRef<IMNotificationModalRef | null>(null);
 
-  const [filter, setFilter] = useState({
-    page: 1,
-    pages: 0,
-    inputs: {
-      search: '',
+  const [filter, setFilter] = useState(
+    params || {
+      page: 1,
+      pages: 0,
+      inputs: {
+        search: '',
+      },
     },
-  });
+  );
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
@@ -76,6 +85,10 @@ const ListNotificationsPage = () => {
       pages: data?.data?.data?.pages || 0,
     });
   }, [data]);
+
+  useEffect(() => {
+    navigateWithNewQuery(filter);
+  }, [filter]);
 
   //#region Render
   return (

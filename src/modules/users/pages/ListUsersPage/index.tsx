@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
@@ -8,19 +8,28 @@ import { useQuery } from '@tanstack/react-query';
 import { deleteUser, getUsers } from '@/apis/users.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
+import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { MUsersTable } from '@/modules/users/components';
 import { CPagination } from '@/others/';
 import { IUsersDataTable } from '@/types/user';
 
 const ListUsersPage = () => {
   //#region Data
-  const [filter, setFilter] = useState({
-    page: 1,
-    pages: 0,
-    inputs: {
-      search: '',
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { navigateWithNewQuery } = useNavigateQuery();
+  const params = useRevertQuery(location.search);
+
+  const [filter, setFilter] = useState(
+    params || {
+      page: 1,
+      pages: 0,
+      inputs: {
+        search: '',
+      },
     },
-  });
+  );
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
@@ -33,8 +42,6 @@ const ListUsersPage = () => {
     () => data?.data?.data?.data || [],
     [data],
   );
-
-  const navigate = useNavigate();
   //#endregion
 
   //#region Event
@@ -74,6 +81,10 @@ const ListUsersPage = () => {
       pages: data?.data?.data?.pages || 0,
     });
   }, [data]);
+
+  useEffect(() => {
+    navigateWithNewQuery(filter);
+  }, [filter]);
 
   //#region Render
   return (
