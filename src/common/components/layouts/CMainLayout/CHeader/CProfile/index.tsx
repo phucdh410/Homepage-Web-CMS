@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { AccountCircle } from '@mui/icons-material';
+import { AccountCircle, Logout } from '@mui/icons-material';
 import {
+  Avatar,
   Box,
   ButtonBase,
   Menu,
@@ -36,7 +37,7 @@ export const CProfile = () => {
   //#region Render
   return (
     <>
-      <ButtonBase onClick={toggle} onMouseOver={toggle}>
+      <ButtonBase onClick={toggle}>
         <Stack direction="row" spacing={1} alignItems="center">
           <AccountCircle sx={{ height: '1.5em', width: '1.5em' }} />
           <Box>
@@ -54,10 +55,36 @@ export const CProfile = () => {
         onClick={close}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-        MenuListProps={{ onMouseLeave: close }}
       >
-        <MenuItem onClick={onLogout} sx={{ minWidth: '200px' }}>
-          Logout
+        <MenuItem
+          onClick={onLogout}
+          sx={{
+            minWidth: '200px',
+            textAlign: 'center',
+            '*': {
+              transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+            },
+            ':hover': {
+              bgcolor: (theme) => theme.palette.secondary.main,
+              '.MuiTypography-root': {
+                fontSize: '1em',
+                px: 2,
+                py: 1,
+              },
+            },
+          }}
+        >
+          <Typography
+            component="span"
+            fontWeight={600}
+            fontSize={0}
+            color="white"
+          >
+            Đăng xuất
+          </Typography>
+          <Avatar sx={{ bgcolor: (theme) => theme.palette.secondary.main }}>
+            <Logout sx={{ color: 'white' }} />
+          </Avatar>
         </MenuItem>
       </Menu>
     </>
