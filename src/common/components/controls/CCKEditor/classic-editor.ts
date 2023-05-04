@@ -17,9 +17,9 @@ import {
   ImageResize,
   ImageStyle,
   ImageToolbar,
+  ImageUpload,
   PictureEditing,
 } from '@ckeditor/ckeditor5-image';
-import ImageInsertViaUrl from '@ckeditor/ckeditor5-image/src/imageinsertviaurl';
 import { Indent } from '@ckeditor/ckeditor5-indent';
 import { Link } from '@ckeditor/ckeditor5-link';
 import { List } from '@ckeditor/ckeditor5-list';
@@ -37,7 +37,7 @@ import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleu
 import { WordCount } from '@ckeditor/ckeditor5-word-count';
 
 import { REDUCED_MATERIAL_COLORS } from './color';
-
+import { CUploadAdapterPlugin } from './extra-plugins';
 //#endregion
 
 export default class ClassicEditor extends ClassicEditorBase {}
@@ -53,7 +53,7 @@ ClassicEditor.builtinPlugins = [
   FontColor,
   Image,
   ImageCaption,
-  ImageInsertViaUrl,
+  ImageUpload,
   ImageResize,
   ImageStyle,
   ImageToolbar,
@@ -96,8 +96,7 @@ ClassicEditor.defaultConfig = {
       'indent',
       '|',
       'insertTable',
-      'simpleUpload',
-      'insertImage',
+      'uploadImage',
       'link',
       'mediaEmbed',
       '|',
@@ -108,6 +107,7 @@ ClassicEditor.defaultConfig = {
       'redo',
     ],
   },
+  extraPlugins: [CUploadAdapterPlugin],
   list: {
     properties: {
       styles: true,
@@ -146,14 +146,5 @@ ClassicEditor.defaultConfig = {
       'tableCellProperties',
     ],
   },
-  simpleUpload: {
-    uploadUrl: 'http://example.com',
-    withCredentials: true,
-    headers: {
-      'X-CSRF-TOKEN': 'CSRF-Token',
-      Authorization: 'Bearer <JSON Web Token>',
-    },
-  },
-  // This value must be kept in sync with the language defined in webpack.config.js.
   language: 'vi',
 };

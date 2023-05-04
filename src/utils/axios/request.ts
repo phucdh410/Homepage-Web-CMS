@@ -1,6 +1,8 @@
+import { AxiosRequestConfig } from 'axios';
+
 import apiInstance from '.';
 
-export const get = async (url: string, options = {}) => {
+export const get = async (url: string, options: AxiosRequestConfig = {}) => {
   try {
     return await apiInstance.get(url, { ...options });
   } catch (err) {
@@ -8,7 +10,11 @@ export const get = async (url: string, options = {}) => {
   }
 };
 
-export async function post(url: string, body: any, options = {}) {
+export async function post(
+  url: string,
+  body: any,
+  options: AxiosRequestConfig = {},
+) {
   try {
     return await apiInstance.post(url, body, { ...options });
   } catch (err) {
@@ -16,7 +22,11 @@ export async function post(url: string, body: any, options = {}) {
   }
 }
 
-export async function put(url: string, body?: any, options = {}) {
+export async function put(
+  url: string,
+  body?: any,
+  options: AxiosRequestConfig = {},
+) {
   try {
     return await apiInstance.put(url, body, { ...options });
   } catch (err) {
@@ -24,7 +34,7 @@ export async function put(url: string, body?: any, options = {}) {
   }
 }
 
-export async function remove(url: string, options = {}) {
+export async function remove(url: string, options: AxiosRequestConfig = {}) {
   try {
     return await apiInstance.delete(url, { ...options });
   } catch (err) {
