@@ -3,6 +3,7 @@ import {
   Components,
   createTheme,
   Theme,
+  Zoom,
 } from '@mui/material';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
@@ -360,6 +361,10 @@ theme = createTheme(theme, {
       },
     },
     MuiDialog: {
+      defaultProps: {
+        transitionDuration: 400,
+        TransitionComponent: Zoom,
+      },
       styleOverrides: {
         paper: {
           borderRadius: '20px',
