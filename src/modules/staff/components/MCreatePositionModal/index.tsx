@@ -19,7 +19,12 @@ export const MCreatePositionModal = forwardRef<
   //#region Data
   const [open, setOpen] = useState(false);
 
-  const { control, handleSubmit, reset } = useForm<ICreatePositionParams>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ICreatePositionParams>({
     resolver: positionResolver,
     defaultValues: defaultValuesPosition,
     mode: 'all',
@@ -62,7 +67,11 @@ export const MCreatePositionModal = forwardRef<
         <form>
           <MPositionForm control={control} />
 
-          <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={onCancel}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Box>
     </Dialog>

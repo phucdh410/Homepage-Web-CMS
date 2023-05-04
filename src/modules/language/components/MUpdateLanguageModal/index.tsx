@@ -23,7 +23,12 @@ export const MUpdateLanguageModal = forwardRef<
   const [open, setOpen] = useState(false);
   const [id, setId] = useState<string>('');
 
-  const { control, handleSubmit, reset } = useForm<IUpdateLanguageParams>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<IUpdateLanguageParams>({
     resolver: languageResolver,
     defaultValues: defaultValuesLanguage,
     mode: 'all',
@@ -73,7 +78,11 @@ export const MUpdateLanguageModal = forwardRef<
         <form>
           <MLanguageForm control={control} />
 
-          <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={onCancel}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Box>
     </Dialog>

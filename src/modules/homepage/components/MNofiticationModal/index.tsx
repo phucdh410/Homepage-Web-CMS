@@ -27,7 +27,12 @@ export const MNotificationModal = forwardRef<
   const [open, setOpen] = useState(false);
   const [id, setId] = useState<string>('');
 
-  const { control, handleSubmit, reset } = useForm<ICreateNotificationParams>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ICreateNotificationParams>({
     resolver: notificationResolver,
     defaultValues: defaultValuesNotification,
     mode: 'all',
@@ -117,7 +122,11 @@ export const MNotificationModal = forwardRef<
             </Stack>
           </Stack>
 
-          <CActionsForm onCancel={close} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={close}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Box>
     </Dialog>

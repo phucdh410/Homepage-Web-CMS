@@ -24,7 +24,12 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
     //#region Data
     const [open, setOpen] = useState<boolean>(false);
 
-    const { control, handleSubmit, reset } = useForm({
+    const {
+      control,
+      handleSubmit,
+      reset,
+      formState: { isSubmitting },
+    } = useForm({
       mode: 'all',
       resolver: orgStructureResolver,
       defaultValues: defaultValuesSubject,
@@ -70,7 +75,11 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
         <Box p={2.5}>
           <form>
             <MForm control={control} />
-            <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+            <CActionsForm
+              onCancel={onCancel}
+              onSubmit={onSubmit}
+              isSubmitting={isSubmitting}
+            />
           </form>
         </Box>
       </Dialog>

@@ -20,7 +20,12 @@ export const MUpdateSectionGroupModal = forwardRef<
   const [open, setOpen] = useState<boolean>(false);
   const [id, setId] = useState<string>('');
 
-  const { control, handleSubmit, reset } = useForm<IUpdateSectionGroupParams>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<IUpdateSectionGroupParams>({
     mode: 'all',
     resolver: sectionGroupResolver,
     defaultValues: defaultValues,
@@ -72,7 +77,11 @@ export const MUpdateSectionGroupModal = forwardRef<
         <form>
           <MSectionGroupForm control={control} />
 
-          <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={onCancel}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Box>
     </Dialog>

@@ -22,7 +22,12 @@ export const MEmployeesModal = forwardRef<IMEmployeesModalRef, any>(
     const [open, setOpen] = useState<boolean>(false);
     const [id, setId] = useState<string>('');
 
-    const { control, handleSubmit, reset } = useForm({
+    const {
+      control,
+      handleSubmit,
+      reset,
+      formState: { isSubmitting },
+    } = useForm({
       mode: 'all',
       // resolver: orgStructureResolver,
       defaultValues: defaultValuesEmployee,
@@ -71,7 +76,11 @@ export const MEmployeesModal = forwardRef<IMEmployeesModalRef, any>(
         <Box p={2.5}>
           <form>
             <MEmployeesForm control={control} />
-            <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+            <CActionsForm
+              onCancel={onCancel}
+              onSubmit={onSubmit}
+              isSubmitting={isSubmitting}
+            />
           </form>
         </Box>
       </Dialog>

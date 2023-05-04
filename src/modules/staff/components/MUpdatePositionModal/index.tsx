@@ -23,7 +23,12 @@ export const MUpdatePositionModal = forwardRef<
   const [open, setOpen] = useState(false);
   const [id, setId] = useState<string>('');
 
-  const { control, handleSubmit, reset } = useForm<IUpdatePositionParams>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<IUpdatePositionParams>({
     resolver: positionResolver,
     defaultValues: defaultValuesPosition,
     mode: 'all',
@@ -74,7 +79,11 @@ export const MUpdatePositionModal = forwardRef<
         <form>
           <MPositionForm control={control} />
 
-          <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={onCancel}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Box>
     </Dialog>

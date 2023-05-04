@@ -19,7 +19,12 @@ export const MCreateLanguageModal = forwardRef<
   //#region Data
   const [open, setOpen] = useState(false);
 
-  const { control, handleSubmit, reset } = useForm<ICreateLanguageParams>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ICreateLanguageParams>({
     resolver: languageResolver,
     defaultValues: defaultValuesLanguage,
     mode: 'all',
@@ -62,7 +67,11 @@ export const MCreateLanguageModal = forwardRef<
         <form>
           <MLanguageForm control={control} />
 
-          <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={onCancel}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Box>
     </Dialog>

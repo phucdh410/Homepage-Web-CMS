@@ -26,7 +26,12 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
     const [open, setOpen] = useState<boolean>(false);
     const [id, setId] = useState<string>('');
 
-    const { control, handleSubmit, reset } = useForm({
+    const {
+      control,
+      handleSubmit,
+      reset,
+      formState: { isSubmitting },
+    } = useForm({
       mode: 'all',
       resolver: schoolMasterResolver,
       defaultValues: defaultValuesSchoolMaster,
@@ -79,7 +84,11 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
         <Box p={2.5}>
           <form>
             <MForm control={control} />
-            <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+            <CActionsForm
+              onCancel={onCancel}
+              onSubmit={onSubmit}
+              isSubmitting={isSubmitting}
+            />
           </form>
         </Box>
       </Dialog>

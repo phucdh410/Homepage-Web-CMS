@@ -19,7 +19,12 @@ export const MCreateSectionGroupModal = forwardRef<
   //#region Data
   const [open, setOpen] = useState<boolean>(false);
 
-  const { control, handleSubmit, reset } = useForm<ICreateSectionGroupParams>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ICreateSectionGroupParams>({
     mode: 'all',
     resolver: sectionGroupResolver,
     defaultValues: defaultValues,
@@ -64,7 +69,11 @@ export const MCreateSectionGroupModal = forwardRef<
         <form>
           <MSectionGroupForm control={control} />
 
-          <CActionsForm onCancel={onCancel} onSubmit={onSubmit} />
+          <CActionsForm
+            onCancel={onCancel}
+            onSubmit={onSubmit}
+            isSubmitting={isSubmitting}
+          />
         </form>
       </Box>
     </Dialog>
