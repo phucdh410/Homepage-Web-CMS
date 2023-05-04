@@ -19,6 +19,7 @@ export const CInput = forwardRef<ICInputRef, ICInputProps>(
       endAdornment,
       fullWidth,
       sx,
+      maxLength,
       ...props
     },
     ref,
@@ -44,6 +45,7 @@ export const CInput = forwardRef<ICInputRef, ICInputProps>(
           startAdornment,
           endAdornment,
         }}
+        inputProps={{ maxLength: maxLength }}
         {...props}
       />
     );

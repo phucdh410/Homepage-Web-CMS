@@ -15,9 +15,11 @@ export const CActionsForm: React.FC<ICActionsFormProps> = ({
   onCancel,
   onSubmit,
   isSubmitting,
+  isDirty,
+  isValid,
 }) => {
   return (
-    <Stack direction="row" spacing={3} justifyContent="end">
+    <Stack direction="row" spacing={3} alignItems="center" justifyContent="end">
       <StyledFormButton
         id="cancel_btn"
         variant="outlined"
@@ -32,6 +34,7 @@ export const CActionsForm: React.FC<ICActionsFormProps> = ({
         variant="contained"
         color="primary"
         type="button"
+        disabled={!isDirty}
         loading={isSubmitting}
         onClick={onSubmit}
       >

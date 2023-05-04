@@ -6,6 +6,13 @@ import { CFormLabel, CInput, CSwitch } from '@/controls/';
 import { IMLanguageFormProps } from './types';
 
 export const MLanguageForm: React.FC<IMLanguageFormProps> = ({ control }) => {
+  const onAbbrChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    onFieldChange: (value: string) => void,
+  ) => {
+    onFieldChange(event.target.value?.toUpperCase());
+  };
+
   return (
     <Stack direction="column" spacing={2.5} mb={2.5}>
       <Stack direction="column" spacing={1} flex={1}>
@@ -32,8 +39,10 @@ export const MLanguageForm: React.FC<IMLanguageFormProps> = ({ control }) => {
           render={({ field, fieldState: { error } }) => (
             <CInput
               {...field}
+              onChange={(event) => onAbbrChange(event, field.onChange)}
               id="abbr"
               placeholder="Nhập tên viết tắt (ex: VN)"
+              maxLength={2}
               error={!!error}
               helperText={error?.message}
             />

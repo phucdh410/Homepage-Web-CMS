@@ -13,4 +13,5 @@ export interface ICInputProps extends IFormInputComponentProps {
   maxRows?: number;
   sx?: SxProps<Theme>;
   fullWidth?: boolean;
+  maxLength?: number;
 }

@@ -23,7 +23,7 @@ export const MCreateLanguageModal = forwardRef<
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreateLanguageParams>({
     resolver: languageResolver,
     defaultValues: defaultValuesLanguage,
@@ -71,6 +71,7 @@ export const MCreateLanguageModal = forwardRef<
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Box>
