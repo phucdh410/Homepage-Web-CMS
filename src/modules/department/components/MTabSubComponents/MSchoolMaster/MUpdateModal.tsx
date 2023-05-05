@@ -49,12 +49,12 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
         try {
           console.log(values);
           await updateSchoolMaster(id, values);
-          toast.success('Chỉnh sửa org-structure thành công!');
+          toast.success('Chỉnh sửa lãnh đạo thành công!');
           onCancel();
         } catch (error: any) {
           toast.error(
             error?.response?.data?.message ||
-              'Chỉnh sửa org-structure không thành công!',
+              'Chỉnh sửa lãnh đạo không thành công!',
           );
         }
       })();
