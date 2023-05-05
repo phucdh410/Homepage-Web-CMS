@@ -8,7 +8,7 @@ import {
 } from '@/types/activities';
 
 export const defaultValuesActivity: ICreateActivityParams = {
-  name: '',
+  title: '',
   description: '',
   active: true,
 };
@@ -17,7 +17,7 @@ export const activityResolver: Resolver<
   ICreateActivityParams | IUpdateActivityParams
 > = yupResolver(
   object({
-    name: string().required('Vui lòng nhập tiêu đề hoạt động!'),
+    title: string().required('Vui lòng nhập tiêu đề hoạt động!'),
     description: string().required('Vui lòng nhập nội dung!'),
     active: boolean(),
   }),

@@ -29,14 +29,14 @@ export const MForm: React.FC<IMFormProps> = ({ control }) => {
   return (
     <>
       <Stack direction="column" spacing={1} mb={2.5}>
-        <CFormLabel label="Tên hoạt động" htmlFor="name" required />
+        <CFormLabel label="Tên hoạt động" htmlFor="title" required />
         <Controller
           control={control}
-          name="name"
+          name="title"
           render={({ field, fieldState: { error } }) => (
             <CInput
               {...field}
-              id="name"
+              id="title"
               placeholder="Nhập tên hoạt động..."
               error={!!error}
               helperText={error?.message}

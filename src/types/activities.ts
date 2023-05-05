@@ -1,14 +1,14 @@
 import { Dayjs } from 'dayjs';
 
 export interface ICreateActivityParams {
-  name: string;
+  title: string;
   description: string;
   active: boolean;
 }
 
 export interface IGetActivitiesResponse {
   id: string;
-  name: string;
+  title: string;
   description: string;
   updated_date: Date | Dayjs | string | null;
   active: boolean;

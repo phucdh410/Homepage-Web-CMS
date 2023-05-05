@@ -47,11 +47,12 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
         try {
           console.log(values);
           await createSchoolMaster(values);
-          toast.success('Thêm mới thành công!');
+          toast.success('Thêm mới lãnh đạo thành công!');
           onCancel();
         } catch (error: any) {
           toast.error(
-            error?.response?.data?.message || 'Thêm mới không thành công!',
+            error?.response?.data?.message ||
+              'Thêm mới lãnh đạo không thành công!',
           );
         }
       })();

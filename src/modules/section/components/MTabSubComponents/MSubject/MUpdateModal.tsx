@@ -49,12 +49,12 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
         try {
           console.log(values);
           await updateSubject(id, values);
-          toast.success('Chỉnh sửa subject thành công!');
+          toast.success('Chỉnh sửa bộ môn thành công!');
           onCancel();
         } catch (error: any) {
           toast.error(
             error?.response?.data?.message ||
-              'Chỉnh sửa subject không thành công!',
+              'Chỉnh sửa bộ môn không thành công!',
           );
         }
       })();

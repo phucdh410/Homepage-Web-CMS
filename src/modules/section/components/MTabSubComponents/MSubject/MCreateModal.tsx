@@ -47,12 +47,12 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
         try {
           console.log(values);
           await createSubject(values);
-          toast.success('Thêm mới cơ cấu tổ chức thành công!');
+          toast.success('Thêm mới bộ môn thành công!');
           onCancel();
         } catch (error: any) {
           toast.error(
             error?.response?.data?.message ||
-              'Thêm mới cơ cấu tổ chức không thành công!',
+              'Thêm mới bộ môn không thành công!',
           );
         }
       })();
