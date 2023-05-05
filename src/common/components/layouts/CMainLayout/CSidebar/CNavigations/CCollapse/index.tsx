@@ -5,12 +5,11 @@ import {
   Collapse,
   Fade,
   List,
-  ListItemButton,
   ListItemIcon,
   ListItemText,
-  useTheme,
 } from '@mui/material';
 
+import CStyledListItemButton from '../CStyledListItemButton';
 import { NavigationContext } from '../navigation-context';
 
 import { ICCollapseProps } from './types';
@@ -25,8 +24,6 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
   const navigate = useNavigate();
 
   const { current, setCurrent } = useContext(NavigationContext);
-
-  const theme = useTheme();
 
   const selected = useMemo(() => {
     for (let e of dropdownList) {
@@ -54,23 +51,8 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
   return (
     <>
       <Fade in timeout={500} style={{ transitionDelay: `${index * 100}ms` }}>
-        <ListItemButton
+        <CStyledListItemButton
           key={data.title}
-          sx={{
-            fontSize: '16px',
-            padding: '10px 18px',
-            borderTopLeftRadius: '10px',
-            borderBottomLeftRadius: '10px',
-            '&:hover': { backgroundColor: '#FFF2F2' },
-            '&.Mui-selected': {
-              backgroundColor: '#FFF2F2',
-              borderRight: '2px solid #CF373D',
-              '& path,& .MuiTypography-root': {
-                color: theme.palette.secondary.main,
-                fontWeight: 600,
-              },
-            },
-          }}
           selected={selected}
           onClick={() => toggleCollapse(data.path)}
         >
@@ -81,7 +63,7 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
           )}
           <ListItemText primary={data.title} />
           {data?.isChildren && (open ? <ArrowDropUp /> : <ArrowDropDown />)}
-        </ListItemButton>
+        </CStyledListItemButton>
       </Fade>
 
       <Collapse
@@ -105,29 +87,14 @@ export const CCollapse: React.FC<ICCollapseProps> = ({
                 timeout={500}
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <ListItemButton
+                <CStyledListItemButton
                   key={data.title}
-                  sx={{
-                    fontSize: '16px',
-                    padding: '10px 18px',
-                    borderTopLeftRadius: '10px',
-                    borderBottomLeftRadius: '10px',
-                    '&:hover': { backgroundColor: '#FFF2F2' },
-                    '&.Mui-selected': {
-                      backgroundColor: '#FFF2F2',
-                      borderRight: '2px solid #CF373D',
-                      '& .MuiTypography-root': {
-                        color: theme.palette.secondary.main,
-                        fontWeight: 600,
-                      },
-                    },
-                  }}
                   selected={e.path.includes(pathname.split('/')[2])}
                   onClick={() => navigate(e.path)}
                 >
                   <ListItemIcon sx={{ minWidth: 40 * e.level }} />
                   <ListItemText primary={e.title} />
-                </ListItemButton>
+                </CStyledListItemButton>
               </Fade>
             ),
           )}

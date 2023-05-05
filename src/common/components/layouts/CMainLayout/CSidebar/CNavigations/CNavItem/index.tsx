@@ -1,11 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  Fade,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  useTheme,
-} from '@mui/material';
+import { Fade, ListItemIcon, ListItemText } from '@mui/material';
+
+import CStyledListItemButton from '../CStyledListItemButton';
 
 import { ICNavItemProps } from './types';
 
@@ -13,8 +9,6 @@ export const CNavItem: React.FC<ICNavItemProps> = ({ data, index }) => {
   //#region Data
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
-  const theme = useTheme();
   //#endregion
 
   //#region Event
@@ -23,23 +17,8 @@ export const CNavItem: React.FC<ICNavItemProps> = ({ data, index }) => {
   //#region Render
   return (
     <Fade in timeout={500} style={{ transitionDelay: `${index * 100}ms` }}>
-      <ListItemButton
+      <CStyledListItemButton
         key={data.title}
-        sx={{
-          fontSize: '16px',
-          padding: '10px 18px',
-          borderTopLeftRadius: '10px',
-          borderBottomLeftRadius: '10px',
-          '&:hover': { backgroundColor: '#FFF2F2' },
-          '&.Mui-selected': {
-            backgroundColor: '#FFF2F2',
-            borderRight: '2px solid #CF373D',
-            '& path,& .MuiTypography-root': {
-              color: theme.palette.secondary.main,
-              fontWeight: 600,
-            },
-          },
-        }}
         selected={pathname.includes(data.path)}
         onClick={() => navigate(data.path)}
       >
@@ -47,7 +26,7 @@ export const CNavItem: React.FC<ICNavItemProps> = ({ data, index }) => {
           <ListItemIcon sx={{ minWidth: 40 }}>{data.icon}</ListItemIcon>
         )}
         <ListItemText primary={data.title} />
-      </ListItemButton>
+      </CStyledListItemButton>
     </Fade>
   );
   //#endregion
