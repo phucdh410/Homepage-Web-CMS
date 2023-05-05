@@ -10,7 +10,7 @@ export const AUTH = {
   LOGIN: '/auth/login',
   GET_PROFILE: '/auth/profile',
   LOGOUT: '/auth/logout',
-  REFETCH_TOKEN: '/auth/refetch',
+  REFETCH_TOKEN: '/auth/renew-token',
 };
 
 export const USERS = {
