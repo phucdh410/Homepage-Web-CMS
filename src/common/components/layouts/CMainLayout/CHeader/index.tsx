@@ -43,7 +43,13 @@ export const CHeader = ({ toggleSidebar }: ICHeaderProps) => {
           <Menu />
         </IconButton>
 
-        <Box sx={{ cursor: 'pointer' }} onClick={onReturnHome}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          sx={{ cursor: 'pointer' }}
+          onClick={onReturnHome}
+        >
           <img src={logo} alt="" />
         </Box>
 
