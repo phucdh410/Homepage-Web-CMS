@@ -5,6 +5,7 @@ import { AddCircleOutline } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
+import { getAllPages } from '@/apis/pages.api';
 import { deleteBlog, getPosts } from '@/apis/posts.api';
 import { confirm } from '@/confirm/';
 import {
@@ -15,6 +16,7 @@ import {
 } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
+import { IOption } from '@/types/options';
 import { IGetPostsResponse } from '@/types/posts';
 
 import { MPostsTable } from '../../components';
@@ -40,6 +42,18 @@ const ListPostsPage = () => {
   );
 
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
+
+  const { data: pageResponse } = useQuery(['pages'], () => getAllPages());
+
+  const pages = useMemo<IOption[]>(
+    () =>
+      pageResponse?.data?.data?.map((e) => ({
+        id: e.id,
+        value: e.id,
+        label: e.title,
+      })) || [],
+    [pageResponse],
+  );
 
   const { data, refetch } = useQuery({
     queryKey: ['posts', filter],
@@ -138,10 +152,11 @@ const ListPostsPage = () => {
         <Stack direction="column" spacing={1} flex={1}>
           <CFormLabel label="Trang" />
           <CAutocomplete
+            disableClearable={false}
             value={filter.input?.page_id}
             onChange={onFilterPage}
             placeholder="Tất cả"
-            options={[]}
+            options={pages}
             renderOption={(props, option) => (
               <div key={option.id} {...props}>
                 {option.label}

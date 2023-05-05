@@ -19,6 +19,12 @@ export interface IGetPagesResponse {
   active: boolean;
 }
 
+export interface IGetAllPagesResponse {
+  id: string;
+  title: string;
+  children: boolean;
+}
+
 export interface IGetPagesParams extends IBasePaginateParams {}
 
 export interface IGetDetailPageResponse {

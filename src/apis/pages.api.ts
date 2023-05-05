@@ -1,6 +1,7 @@
 import { get, post, put, remove } from '@/axios/request';
 import {
   ICreatePageParams,
+  IGetAllPagesResponse,
   IGetDetailPageResponse,
   IGetPagesParams,
   IGetPagesResponse,
@@ -35,7 +36,7 @@ export const deletePage = async (id: string) => {
 };
 
 export const getAllPages = (): Promise<
-  IApiResponse<IGetPagesResponse[], any>
+  IApiResponse<IGetAllPagesResponse[], any>
 > => {
   return get(PAGES.GET_ALL);
 };
