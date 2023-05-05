@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Menu } from '@mui/icons-material';
 import {
   Box,
@@ -16,9 +17,13 @@ import { ICHeaderProps } from './types';
 const HEADER_HEIGHT = 56;
 
 export const CHeader = ({ toggleSidebar }: ICHeaderProps) => {
+  const navigate = useNavigate();
+
   const isBelowLg = useMediaQuery(
     (theme: ThemeOptions) => theme.breakpoints?.down?.('lg') ?? '',
   );
+
+  const onReturnHome = () => navigate('/');
 
   return (
     <Box
@@ -38,13 +43,19 @@ export const CHeader = ({ toggleSidebar }: ICHeaderProps) => {
           <Menu />
         </IconButton>
 
-        <Box>
+        <Box sx={{ cursor: 'pointer' }} onClick={onReturnHome}>
           <img src={logo} alt="" />
         </Box>
 
         <Box flex={1}>
           {!isBelowLg && (
-            <Typography fontSize="16px" fontWeight={700}>
+            <Typography
+              display="inline-block"
+              fontSize="16px"
+              fontWeight={700}
+              sx={{ cursor: 'pointer' }}
+              onClick={onReturnHome}
+            >
               TRƯỜNG ĐẠI HỌC SƯ PHẠM THÀNH PHỐ HỒ CHÍ MINH
             </Typography>
           )}
