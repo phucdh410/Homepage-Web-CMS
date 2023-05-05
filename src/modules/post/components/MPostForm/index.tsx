@@ -1,7 +1,11 @@
+import { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 
+import { getAllPages } from '@/apis/pages.api';
 import { CAutocomplete, CCollapseSelect, CFormLabel } from '@/controls/';
+import { IOption } from '@/types/options';
 
 import { MSwitch } from './MSwitch';
 import { MTypes } from './MTypes';
@@ -13,6 +17,17 @@ export const MPostForm: React.FC<IMPostFormProps> = ({ control }) => {
   //#endregion
 
   //#region Data
+  const { data: pageResponse } = useQuery(['pages'], () => getAllPages());
+
+  const pages = useMemo<IOption[]>(
+    () =>
+      pageResponse?.data?.data?.map((e) => ({
+        id: e.id,
+        value: e.id,
+        label: e.title,
+      })) || [],
+    [pageResponse],
+  );
   //#endregion
 
   //#region Event
@@ -34,7 +49,7 @@ export const MPostForm: React.FC<IMPostFormProps> = ({ control }) => {
               <CAutocomplete
                 {...field}
                 placeholder="Chọn trang"
-                options={[]}
+                options={pages}
                 renderOption={(props, option) => (
                   <div key={option.id} {...props}>
                     {option.label}
