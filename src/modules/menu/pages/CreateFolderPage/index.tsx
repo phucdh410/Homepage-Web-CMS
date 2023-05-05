@@ -18,7 +18,7 @@ const CreateFolderPage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreateFolderParams>({
     mode: 'all',
     resolver: folderResolver,
@@ -64,6 +64,7 @@ const CreateFolderPage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

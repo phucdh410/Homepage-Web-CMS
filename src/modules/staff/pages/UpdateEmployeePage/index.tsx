@@ -32,7 +32,7 @@ const UpdateEmployeePage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUpdateEmployeeParams>({
     mode: 'all',
     resolver: employeeResolver,
@@ -82,6 +82,7 @@ const UpdateEmployeePage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

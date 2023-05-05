@@ -24,7 +24,7 @@ export const MUpdateSectionGroupModal = forwardRef<
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUpdateSectionGroupParams>({
     mode: 'all',
     resolver: sectionGroupResolver,
@@ -81,6 +81,7 @@ export const MUpdateSectionGroupModal = forwardRef<
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Box>

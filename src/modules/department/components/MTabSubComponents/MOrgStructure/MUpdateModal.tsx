@@ -30,7 +30,7 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
       control,
       handleSubmit,
       reset,
-      formState: { isSubmitting },
+      formState: { isSubmitting, isDirty },
     } = useForm({
       mode: 'all',
       resolver: orgStructureResolver,
@@ -88,6 +88,7 @@ export const MUpdateModal = forwardRef<IMUpdateModalRef, any>(
               onCancel={onCancel}
               onSubmit={onSubmit}
               isSubmitting={isSubmitting}
+              isDirty={isDirty}
             />
           </form>
         </Box>

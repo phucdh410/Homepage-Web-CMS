@@ -23,7 +23,7 @@ export const MCreatePositionModal = forwardRef<
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreatePositionParams>({
     resolver: positionResolver,
     defaultValues: defaultValuesPosition,
@@ -71,6 +71,7 @@ export const MCreatePositionModal = forwardRef<
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Box>

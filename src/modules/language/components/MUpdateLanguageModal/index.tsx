@@ -27,7 +27,7 @@ export const MUpdateLanguageModal = forwardRef<
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUpdateLanguageParams>({
     resolver: languageResolver,
     defaultValues: defaultValuesLanguage,
@@ -82,6 +82,7 @@ export const MUpdateLanguageModal = forwardRef<
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Box>

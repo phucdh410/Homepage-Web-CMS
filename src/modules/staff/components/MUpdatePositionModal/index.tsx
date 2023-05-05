@@ -27,7 +27,7 @@ export const MUpdatePositionModal = forwardRef<
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUpdatePositionParams>({
     resolver: positionResolver,
     defaultValues: defaultValuesPosition,
@@ -83,6 +83,7 @@ export const MUpdatePositionModal = forwardRef<
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Box>

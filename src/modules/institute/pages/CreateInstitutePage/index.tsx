@@ -17,7 +17,7 @@ const CreateInstitutePage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm({
     mode: 'all',
     resolver: instituteResolver,
@@ -63,6 +63,7 @@ const CreateInstitutePage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

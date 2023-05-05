@@ -35,7 +35,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
     handleSubmit,
     reset,
     trigger,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IBannerForm>({
     mode: 'all',
     resolver: bannerResolver,
@@ -49,7 +49,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
   //#endregion
 
   //#region Event
-  const onBack = () => {
+  const onCancel = () => {
     reset(defaultValuesBanner);
     navigate(-1);
   };
@@ -66,7 +66,7 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
           ? await updateBanner(data?.id, payload)
           : await createBanner(payload);
         toast.success('Cập nhật banner thành công!');
-        onBack();
+        onCancel();
       } catch (error: any) {
         toast.error(
           error?.response?.data?.message || 'Cập nhật banner không thành công!',
@@ -172,9 +172,10 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
           </Stack>
 
           <CActionsForm
-            onCancel={onBack}
+            onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

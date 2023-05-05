@@ -20,7 +20,7 @@ const CreatePostPage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreateBlogParams | ICreateOrgParams | ICreateRefParams>({
     mode: 'all',
     resolver: postResolver,
@@ -72,6 +72,7 @@ const CreatePostPage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

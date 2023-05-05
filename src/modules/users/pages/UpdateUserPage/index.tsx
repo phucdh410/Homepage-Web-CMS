@@ -40,7 +40,7 @@ const UpdateUserPage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUserFormParams>({
     mode: 'all',
     resolver: userResolver,
@@ -53,7 +53,7 @@ const UpdateUserPage = () => {
   //#endregion
 
   //#region Event
-  const onBack = () => {
+  const onCancel = () => {
     reset(defaultValues);
 
     navigate(-1);
@@ -71,7 +71,7 @@ const UpdateUserPage = () => {
         };
         await updateUser(id as string, payload);
         toast.success('Cập nhật người dùng thành công!');
-        onBack();
+        onCancel();
       } catch (error: any) {
         toast.error(
           error?.response?.data?.message ||
@@ -109,9 +109,10 @@ const UpdateUserPage = () => {
           <MForm control={control} isEdit />
 
           <CActionsForm
-            onCancel={onBack}
+            onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

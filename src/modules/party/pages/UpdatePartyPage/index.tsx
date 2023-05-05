@@ -31,7 +31,7 @@ const UpdatePartyPage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUpdatePartyParams>({
     mode: 'all',
     resolver: partyResolver,
@@ -77,6 +77,7 @@ const UpdatePartyPage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

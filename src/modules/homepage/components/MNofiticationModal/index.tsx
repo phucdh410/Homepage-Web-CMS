@@ -31,7 +31,7 @@ export const MNotificationModal = forwardRef<
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreateNotificationParams>({
     resolver: notificationResolver,
     defaultValues: defaultValuesNotification,

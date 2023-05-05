@@ -25,7 +25,7 @@ const DetailUserPage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUserFormParams>({
     mode: 'all',
 
@@ -38,7 +38,7 @@ const DetailUserPage = () => {
   //#endregion
 
   //#region Event
-  const onBack = () => {
+  const onCancel = () => {
     reset(defaultValues);
 
     navigate(-1);
@@ -56,7 +56,7 @@ const DetailUserPage = () => {
         };
         await createUser(payload);
         toast.success('Thêm mới người dùng thành công!');
-        onBack();
+        onCancel();
       } catch (error: any) {
         toast.error(
           error?.response?.data?.message ||
@@ -79,9 +79,10 @@ const DetailUserPage = () => {
           <MForm control={control} />
 
           <CActionsForm
-            onCancel={onBack}
+            onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

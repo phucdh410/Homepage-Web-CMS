@@ -10,7 +10,7 @@ export const MFooterForm = () => {
     control,
     reset,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm({
     mode: 'all',
   });
@@ -54,6 +54,7 @@ export const MFooterForm = () => {
           onCancel={onCancel}
           onSubmit={onSubmit}
           isSubmitting={isSubmitting}
+          isDirty={isDirty}
         />
       </form>
     </div>

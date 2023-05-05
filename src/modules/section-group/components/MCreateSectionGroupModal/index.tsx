@@ -23,7 +23,7 @@ export const MCreateSectionGroupModal = forwardRef<
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreateSectionGroupParams>({
     mode: 'all',
     resolver: sectionGroupResolver,
@@ -73,6 +73,7 @@ export const MCreateSectionGroupModal = forwardRef<
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Box>

@@ -33,7 +33,7 @@ const UpdateSchedulePage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUpdateScheduleParams>({
     mode: 'all',
     resolver: scheduleResolver,
@@ -88,6 +88,7 @@ const UpdateSchedulePage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

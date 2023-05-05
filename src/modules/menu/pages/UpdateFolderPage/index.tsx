@@ -29,7 +29,7 @@ const UpdateFolderPage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IUpdateFolderParams>({
     mode: 'all',
     resolver: folderResolver,
@@ -75,6 +75,7 @@ const UpdateFolderPage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

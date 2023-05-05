@@ -19,7 +19,7 @@ const CreateSchedulePage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreateScheduleParams>({
     mode: 'all',
     resolver: scheduleResolver,
@@ -70,6 +70,7 @@ const CreateSchedulePage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

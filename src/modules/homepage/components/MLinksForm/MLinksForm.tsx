@@ -17,7 +17,7 @@ export const MLinksForm: React.FC<IMLinksFormProps> = ({ data }) => {
     control,
     reset,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ILinks>({
     defaultValues: data ? data : defaultValuesLink,
     mode: 'all',
@@ -150,6 +150,7 @@ export const MLinksForm: React.FC<IMLinksFormProps> = ({ data }) => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </Box>
       </form>

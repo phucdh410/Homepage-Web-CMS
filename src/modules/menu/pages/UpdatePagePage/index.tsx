@@ -31,7 +31,7 @@ const UpdatePagePage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<ICreatePageParams>({
     mode: 'all',
     resolver: pageResolver,
@@ -80,6 +80,7 @@ const UpdatePagePage = () => {
             onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

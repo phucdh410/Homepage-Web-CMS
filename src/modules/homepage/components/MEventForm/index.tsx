@@ -35,7 +35,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
     handleSubmit,
     reset,
     trigger,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm<IEventForm>({
     mode: 'all',
     resolver: eventResolver,
@@ -49,7 +49,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
   //#endregion
 
   //#region Event
-  const onBack = () => {
+  const onCancel = () => {
     reset(defaultValuesEvent);
     navigate(-1);
   };
@@ -68,7 +68,7 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
 
         toast.success('Cập nhật event thành công!');
 
-        onBack();
+        onCancel();
       } catch (error: any) {
         toast.error(
           error?.response?.data?.message || 'Cập nhật event không thành công!',
@@ -174,9 +174,10 @@ export const MEventForm: React.FC<IMEventFormProps> = ({ data }) => {
           </Stack>
 
           <CActionsForm
-            onCancel={onBack}
+            onCancel={onCancel}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Paper>

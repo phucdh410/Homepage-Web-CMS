@@ -17,7 +17,7 @@ const CreateMenuPage = () => {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = useForm({
     mode: 'all',
     resolver: menuResolver,
@@ -61,6 +61,7 @@ const CreateMenuPage = () => {
           onCancel={onCancel}
           onSubmit={onSubmit}
           isSubmitting={isSubmitting}
+          isDirty={isDirty}
         />
       </form>
     </>

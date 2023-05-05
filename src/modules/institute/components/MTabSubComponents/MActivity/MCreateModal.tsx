@@ -28,7 +28,7 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
       control,
       handleSubmit,
       reset,
-      formState: { isSubmitting },
+      formState: { isSubmitting, isDirty },
     } = useForm({
       mode: 'all',
       resolver: activityResolver,
@@ -79,6 +79,7 @@ export const MCreateModal = forwardRef<IMCreateModalRef, any>(
               onCancel={onCancel}
               onSubmit={onSubmit}
               isSubmitting={isSubmitting}
+              isDirty={isDirty}
             />
           </form>
         </Box>
