@@ -51,7 +51,7 @@ const ListPagesPage = () => {
 
   //#region Event
   const onPageChange = (event: any, newPage: number) =>
-    setFilter((prev) => ({ ...prev, page: newPage }));
+    setFilter((prev) => ({ ...prev, pages: paginate.pages, page: newPage }));
 
   const onEdit = (id: string) => navigate(`detail/${id}`);
 
