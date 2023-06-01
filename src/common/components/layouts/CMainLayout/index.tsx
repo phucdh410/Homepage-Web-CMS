@@ -60,7 +60,7 @@ const CMainLayout = () => {
   }, []);
 
   //#region Render
-  return (
+  return isLogined ? (
     <Box display="flex" flexDirection="column" height="100vh">
       <CHeader toggleSidebar={toggleSidebar} />
 
@@ -80,6 +80,8 @@ const CMainLayout = () => {
         </Box>
       </Stack>
     </Box>
+  ) : (
+    <Navigate to={ROUTES.LOGIN} replace={true} />
   );
 
   //#endregion
