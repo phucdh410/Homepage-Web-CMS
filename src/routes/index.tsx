@@ -3,6 +3,7 @@ import { Outlet, RouteObject } from 'react-router-dom';
 import { CExceptionError, CNotFoundError } from '@/errors/';
 import { asyncLayout } from '@/funcs/';
 import { CLoginLayout } from '@/layouts/CLoginLayout';
+import { DashboardPage } from '@/modules/dashboard/pages';
 
 import { ApproveRoutes } from './approve.routes';
 import { FooterRoutes } from './footer.routes';
@@ -26,8 +27,8 @@ const routes: RouteObject[] = [
         element: asyncLayout(() => import('@/layouts/CMainLayout')),
         children: [
           {
-            path: '/dashboard',
-            element: <div>Dashboaard</div>,
+            path: '/',
+            element: <DashboardPage />,
           },
 
           ...UsersRoutes,
