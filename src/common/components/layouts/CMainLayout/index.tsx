@@ -1,7 +1,8 @@
 import { Suspense, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { Box, Stack } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { getAllLanguages } from '@/apis/languages.api';
 import { getPermissions } from '@/apis/permissions';
@@ -13,10 +14,13 @@ import { setPermissions } from '@/slices/permission/permission.slice';
 import { CPageLoader } from '../../others/CPageLoader';
 
 import { CHeader } from './CHeader';
+import { COutlet } from './COutlet';
 import { CSidebar } from './CSidebar';
 
 const CMainLayout = () => {
   //#region Data
+  const location = useLocation();
+
   const isLogined = useSelector<RootState>(
     (state) => state.auth.isLogined,
     shallowEqual,
@@ -60,7 +64,7 @@ const CMainLayout = () => {
   }, []);
 
   //#region Render
-  return isLogined ? (
+  return true ? (
     <Box display="flex" flexDirection="column" height="100vh">
       <CHeader toggleSidebar={toggleSidebar} />
 
@@ -75,7 +79,17 @@ const CMainLayout = () => {
           overflow="hidden"
         >
           <Suspense fallback={<CPageLoader />}>
-            <Outlet />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: -200 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 200 }}
+                transition={{ duration: 0.3 }}
+              >
+                <COutlet />
+              </motion.div>
+            </AnimatePresence>
           </Suspense>
         </Box>
       </Stack>

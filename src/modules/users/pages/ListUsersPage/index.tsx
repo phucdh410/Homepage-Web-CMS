@@ -1,16 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AddCircleOutline } from '@mui/icons-material';
-import { Box, Button, Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
 import { deleteUser, getUsers } from '@/apis/users.api';
 import { confirm } from '@/confirm/';
-import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { MUsersTable } from '@/modules/users/components';
-import { CPagination } from '@/others/';
+import { CPageHeader, CPagination } from '@/others/';
 import { IUsersDataTable } from '@/types/user';
 
 const ListUsersPage = () => {
@@ -89,28 +87,11 @@ const ListUsersPage = () => {
   //#region Render
   return (
     <Box>
-      <Stack
-        direction={{ xs: 'column', md: 'row' }}
-        spacing={2}
-        alignItems={{ xs: 'start', md: 'center' }}
-        justifyContent="space-between"
-        flex={1}
-        mb={3}
-      >
-        <Typography variant="page-title">Quản lý người dùng</Typography>
-
-        <Stack direction="row" spacing={1} alignItems="center">
-          <CSearchInput onChange={onSearch} />
-          <Button
-            variant="contained"
-            className="add-button"
-            startIcon={<AddCircleOutline />}
-            onClick={() => navigate('detail')}
-          >
-            Thêm mới
-          </Button>
-        </Stack>
-      </Stack>
+      <CPageHeader
+        title="Quản lý người dùng"
+        onSearch={onSearch}
+        onAdd={() => navigate('/detail')}
+      />
 
       <Paper variant="wrapper">
         <MUsersTable
