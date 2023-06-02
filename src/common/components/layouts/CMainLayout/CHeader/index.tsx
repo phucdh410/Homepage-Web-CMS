@@ -1,15 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { Menu } from '@mui/icons-material';
-import {
-  Box,
-  IconButton,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Box, IconButton, Stack, useMediaQuery } from '@mui/material';
 import { ThemeOptions } from '@mui/material';
 
 import logo from '@/assets/images/logo.png';
+import { CAnimatedTypography } from '@/others/';
 
 import { CProfile } from './CProfile';
 import { ICHeaderProps } from './types';
@@ -55,15 +50,14 @@ export const CHeader = ({ toggleSidebar }: ICHeaderProps) => {
 
         <Box flex={1}>
           {!isBelowLg && (
-            <Typography
+            <CAnimatedTypography
               display="inline-block"
               fontSize="16px"
               fontWeight={700}
               sx={{ cursor: 'pointer' }}
               onClick={onReturnHome}
-            >
-              TRƯỜNG ĐẠI HỌC SƯ PHẠM THÀNH PHỐ HỒ CHÍ MINH
-            </Typography>
+              content="TRƯỜNG ĐẠI HỌC SƯ PHẠM THÀNH PHỐ HỒ CHÍ MINH"
+            />
           )}
         </Box>
         <CProfile />

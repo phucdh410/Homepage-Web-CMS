@@ -1,5 +1,6 @@
 export * from './CActionsTable';
 export * from './CActiveTag';
+export * from './CAnimatedTypography';
 export * from './CConfirm';
 export * from './CDataGrid';
 export * from './CDevelopment';
