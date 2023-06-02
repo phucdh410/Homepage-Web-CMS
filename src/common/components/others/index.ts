@@ -4,6 +4,7 @@ export * from './CAnimatedTypography';
 export * from './CConfirm';
 export * from './CDataGrid';
 export * from './CDevelopment';
+export * from './CImage';
 export * from './CPageHeader';
 export * from './CPageLoader';
 export * from './CPagination';
