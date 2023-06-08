@@ -90,7 +90,7 @@ const ListUsersPage = () => {
       <CPageHeader
         title="Quản lý người dùng"
         onSearch={onSearch}
-        onAdd={() => navigate('/detail')}
+        onAdd={() => navigate('detail')}
       />
 
       <Paper variant="wrapper">

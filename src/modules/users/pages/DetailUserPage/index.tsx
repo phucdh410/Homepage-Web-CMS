@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 
 import { createUser } from '@/apis/users.api';
-import { CActionsForm } from '@/controls/';
+import { CActionsForm, CUpload } from '@/controls/';
 import { MForm } from '@/modules/users/components';
 import { RootState } from '@/redux/';
 import { IPermissionState } from '@/slices/permission';
@@ -75,6 +75,8 @@ const DetailUserPage = () => {
       </Box>
 
       <Paper variant="wrapper">
+        <CUpload />
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <MForm control={control} />
 
