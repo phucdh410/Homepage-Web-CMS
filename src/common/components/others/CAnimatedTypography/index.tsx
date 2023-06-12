@@ -29,7 +29,7 @@ export const CAnimatedTypography: React.FC<ICAnimatedTypographyProps> = ({
 }) => {
   return (
     <Typography {...props}>
-      <motion.div
+      <motion.span
         style={{ display: 'flex', overflow: 'hidden' }}
         initial="initial"
         animate="animate"
@@ -40,7 +40,7 @@ export const CAnimatedTypography: React.FC<ICAnimatedTypographyProps> = ({
             {e === ' ' ? '\u00A0' : e}
           </motion.span>
         ))}
-      </motion.div>
+      </motion.span>
     </Typography>
   );
 };
