@@ -2,7 +2,13 @@ import { Controller, useController } from 'react-hook-form';
 import { Box, FormControlLabel, Radio, RadioGroup, Stack } from '@mui/material';
 
 import { DISPLAY_OPTIONS } from '@/constants/enums';
-import { CAutocomplete, CFormLabel, CInput, CSwitch } from '@/controls/';
+import {
+  CAutocomplete,
+  CFormLabel,
+  CInput,
+  CPageSelect,
+  CSwitch,
+} from '@/controls/';
 
 import { MShowHomepageInput } from './MShowHomepageInput';
 import { IMFolderFormProps } from './types';
@@ -45,24 +51,7 @@ export const MFolderForm: React.FC<IMFolderFormProps> = ({ control }) => {
       >
         <Stack direction="column" spacing={1} flex={1}>
           <CFormLabel label="Trang" required />
-          <Controller
-            control={control}
-            name="page_id"
-            render={({ field, fieldState: { error } }) => (
-              <CAutocomplete
-                {...field}
-                options={[]}
-                renderOption={(props, option) => (
-                  <Box key={option.id} {...props}>
-                    {option.label}
-                  </Box>
-                )}
-                placeholder="Chọn trang..."
-                error={!!error}
-                helperText={error?.message}
-              />
-            )}
-          />
+          <CPageSelect control={control} />
         </Stack>
         <Stack direction="column" spacing={1} flex={1}>
           <CFormLabel label="Danh mục cha" />

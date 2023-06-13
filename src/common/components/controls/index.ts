@@ -8,6 +8,7 @@ export * from './CFormLabel';
 export * from './CImageUpload';
 export * from './CInput';
 export * from './CInputPassword';
+export * from './CPageSelect';
 export * from './CRangePicker';
 export * from './CSearchInput';
 export * from './CSwitch';
