@@ -1,16 +1,23 @@
 import { Typography } from '@mui/material';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 import { ICAnimatedTypographyProps } from './types';
 
-const textContainer = {
+const textContainer: Variants = {
+  initial: {
+    textShadow: 'none',
+  },
   animate: {
     transition: {
       staggerChildren: 0.025,
     },
   },
+  hover: {
+    textShadow: '0px 0px 3px rgb(209 198 253)',
+    scale: 1.005,
+  },
 };
-const text = {
+const text: Variants = {
   initial: {
     y: '-200%',
     color: '#FF0088',
@@ -30,9 +37,10 @@ export const CAnimatedTypography: React.FC<ICAnimatedTypographyProps> = ({
   return (
     <Typography {...props}>
       <motion.span
-        style={{ display: 'flex', overflow: 'hidden' }}
+        style={{ display: 'flex', overflow: 'hidden', userSelect: 'none' }}
         initial="initial"
         animate="animate"
+        whileHover="hover"
         variants={textContainer}
       >
         {content?.split('').map((e, i) => (

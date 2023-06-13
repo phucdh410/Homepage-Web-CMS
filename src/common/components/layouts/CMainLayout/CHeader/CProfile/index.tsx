@@ -37,7 +37,15 @@ export const CProfile = () => {
   //#region Render
   return (
     <>
-      <ButtonBase onClick={toggle}>
+      <ButtonBase
+        onClick={toggle}
+        sx={{
+          '&:hover': {
+            borderRadius: '10px',
+            backgroundColor: 'rgba(0 0 0 / 4%)',
+          },
+        }}
+      >
         <Stack direction="row" spacing={1} alignItems="center">
           <AccountCircle sx={{ height: '1.5em', width: '1.5em' }} />
           <Box>
