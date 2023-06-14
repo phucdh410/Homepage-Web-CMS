@@ -158,16 +158,14 @@ export const MBannerForm: React.FC<IMBannerFormProps> = ({ data }) => {
 
             <Stack direction="column" spacing={1} flex={1}>
               <CFormLabel label="Ngày hiển thị" required />
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <CRangePicker
-                  control={control}
-                  startName="start_date"
-                  endName="end_date"
-                  trigger={trigger}
-                  disablePast
-                  noEnd={endValue}
-                />
-              </Stack>
+              <CRangePicker
+                control={control}
+                startName="start_date"
+                endName="end_date"
+                trigger={trigger}
+                disablePast
+                noEnd={endValue}
+              />
             </Stack>
           </Stack>
 

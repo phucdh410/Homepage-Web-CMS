@@ -42,7 +42,7 @@ export const CRangePicker: React.FC<ICRangePickerProps> = ({
   return (
     <Stack
       direction="row"
-      alignItems="center"
+      alignItems="baseline"
       spacing={1}
       className="c-range-picker"
     >

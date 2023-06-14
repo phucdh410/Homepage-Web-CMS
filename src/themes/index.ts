@@ -196,6 +196,19 @@ theme = createTheme(theme, {
             '& .MuiOutlinedInput-notchedOutline': {
               border: '1px solid #d32f2f!important',
             },
+            '& .MuiSvgIcon-root': {
+              color: '#d32f2f!important',
+            },
+          },
+          '&:hover': {
+            '& .MuiOutlinedInput-notchedOutline': {
+              border: '1px solid #12487445!important',
+            },
+          },
+          '&.Mui-disabled': {
+            '& .MuiOutlinedInput-notchedOutline': {
+              border: 'none!important',
+            },
           },
         },
         input: {

@@ -19,7 +19,7 @@ export const MPostForm: React.FC<IMPostFormProps> = ({ control }) => {
   //#region Render
   return (
     <>
-      <Stack direction="row" alignItems="center" gap={4} mb={3}>
+      <Stack direction="row" alignItems="baseline" gap={4} mb={3}>
         <Stack direction="column" spacing={1} flex={1}>
           <CFormLabel label="Trang" required />
           <CPageSelect control={control} />
