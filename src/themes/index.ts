@@ -1,15 +1,20 @@
-import {
-  BreakpointsOptions,
-  Components,
-  createTheme,
-  Theme,
-  Zoom,
-} from '@mui/material';
+import { Components, createTheme, Theme, Zoom } from '@mui/material';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 
-//#region Palatte & Typography
+//#region Breakpoints & Palette & Typography
 let theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      xxl: 1680,
+      xxxl: 1920,
+    },
+  },
   palette: {
     primary: {
       main: '#124874',
@@ -51,19 +56,8 @@ let theme = createTheme({
 });
 //#endregion
 
-//#region Components & Breakpoints
+//#region Components
 theme = createTheme(theme, {
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-      xxl: 1680,
-      xxxl: 1920,
-    },
-  } as BreakpointsOptions,
   components: {
     MuiFormLabel: {
       styleOverrides: {
