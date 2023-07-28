@@ -10,6 +10,7 @@ let theme = createTheme({
       sm: 600,
       md: 900,
       lg: 1200,
+      baseContainer: 1306,
       xl: 1536,
       xxl: 1680,
       xxxl: 1920,
@@ -421,6 +422,7 @@ declare module '@mui/material/styles' {
     md: true;
     lg: true;
     xl: true;
+    baseContainer: true;
     xxl: true;
     xxxl: true;
   }
