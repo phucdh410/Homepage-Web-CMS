@@ -126,6 +126,7 @@ export const MNotificationModal = forwardRef<
             onCancel={close}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            isDirty={isDirty}
           />
         </form>
       </Box>

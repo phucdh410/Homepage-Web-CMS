@@ -1,4 +1,11 @@
-import { Components, createTheme, Theme, Zoom } from '@mui/material';
+import {
+  Backdrop,
+  BackdropProps,
+  Components,
+  createTheme,
+  Theme,
+  Zoom,
+} from '@mui/material';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 
@@ -372,6 +379,17 @@ theme = createTheme(theme, {
       defaultProps: {
         transitionDuration: 400,
         TransitionComponent: Zoom,
+        slots: {
+          backdrop: (props: BackdropProps) => (
+            <Backdrop
+              sx={{
+                backdropFilter: 'blur(2px)',
+                backgroundColor: 'transparent',
+              }}
+              {...props}
+            />
+          ),
+        },
       },
       styleOverrides: {
         paper: {
