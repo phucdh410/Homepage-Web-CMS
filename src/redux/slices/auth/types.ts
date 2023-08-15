@@ -1,4 +1,8 @@
-interface IProfile {}
+import { IPermissionsPayload } from '@/types/permissions';
+
+interface IProfile {
+  permissions: IPermissionsPayload[];
+}
 
 export interface IAuthState {
   isLogined: boolean;

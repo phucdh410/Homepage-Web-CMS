@@ -30,7 +30,6 @@ const routes: RouteObject[] = [
             path: '/',
             element: <DashboardPage />,
           },
-
           ...UsersRoutes,
           ...HomepageRoutes,
           ...InformationRoutes,

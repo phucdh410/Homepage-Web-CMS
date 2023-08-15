@@ -1,6 +1,9 @@
 import { lazy } from 'react';
 import { RouteObject } from 'react-router-dom';
 
+import { PERMISSIONS_ENUM } from '@/constants/enums';
+
+import { loader } from './redirect';
 import { ROUTES } from './routes';
 
 const ListSectionGroupsPage = lazy(
@@ -83,4 +86,7 @@ export const InformationRoutes: RouteObject[] = [
   { path: ROUTES.INFORMATION.PARTIES.LIST, element: <ListPartiesPage /> },
   { path: ROUTES.INFORMATION.PARTIES.CREATE, element: <CreatePartyPage /> },
   { path: ROUTES.INFORMATION.PARTIES.UPDATE, element: <UpdatePartyPage /> },
-];
+].map((route) => ({
+  ...route,
+  loader: () => loader(PERMISSIONS_ENUM.INFORMATION),
+}));

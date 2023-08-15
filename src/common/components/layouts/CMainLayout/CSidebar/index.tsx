@@ -8,7 +8,6 @@ const SIDEBAR_WIDTH = 300;
 
 export const CSidebar: React.FC<ICSidebarProps> = ({ open, toggleSidebar }) => {
   //#region Data
-
   const container =
     window !== undefined ? () => window.document.body : undefined;
   //#endregion

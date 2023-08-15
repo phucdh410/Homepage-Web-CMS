@@ -1,3 +1,5 @@
+import { PERMISSIONS_ENUM } from '@/constants/enums';
+
 export interface IPermissionsPayload {
   id?: string;
   code?: string;
@@ -6,7 +8,7 @@ export interface IPermissionsPayload {
 }
 
 export interface IUserPermissionsResponse {
-  permission_code: string;
+  permission_code: PERMISSIONS_ENUM;
   permission_name: string;
   allowed: boolean;
 }

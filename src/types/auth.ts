@@ -1,4 +1,4 @@
-import { IPermissionsPayload } from './permissions';
+import { IUserPermissionsResponse } from './permissions';
 
 export interface ILoginParams {
   username: string;
@@ -13,5 +13,5 @@ export interface ILoginResponse {
 
 export interface IProfileResponse {
   username: string;
-  permissions: IPermissionsPayload[];
+  permissions: IUserPermissionsResponse[];
 }

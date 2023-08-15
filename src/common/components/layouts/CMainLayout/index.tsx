@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { Box, Stack } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -8,6 +8,7 @@ import { getAllLanguages } from '@/apis/languages.api';
 import { getPermissions } from '@/apis/permissions';
 import { RootState } from '@/redux/';
 import { ROUTES } from '@/routes/routes';
+import { IAuthState } from '@/slices/auth';
 import { setLanguages } from '@/slices/language';
 import { setPermissions } from '@/slices/permission/permission.slice';
 
@@ -21,7 +22,8 @@ const CMainLayout = () => {
   //#region Data
   const location = useLocation();
 
-  const isLogined = useSelector<RootState>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const isLogined = useSelector<RootState, IAuthState['isLogined']>(
     (state) => state.auth.isLogined,
     shallowEqual,
   );

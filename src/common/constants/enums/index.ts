@@ -69,3 +69,71 @@ export enum MENU_TYPES {
   FOLDER,
 }
 //#endregion
+
+//#region Permissions
+export enum PERMISSIONS_ENUM {
+  USERS = '1',
+  HOMEPAGE = '2',
+  INFORMATION = '3',
+  MENU = '4',
+  POSTS = '5',
+  SCHEDULES = '6',
+  APPROVE = '7',
+  STAFF = '8',
+  FOOTER = '9',
+  LANGUAGE = '10',
+}
+
+export const PERMISSIONS_CODES = [
+  {
+    id: PERMISSIONS_ENUM.USERS,
+    value: PERMISSIONS_ENUM.USERS,
+    name: 'Quản lí người dùng',
+  },
+  {
+    id: PERMISSIONS_ENUM.HOMEPAGE,
+    value: PERMISSIONS_ENUM.HOMEPAGE,
+    name: 'Quản lí trang chủ',
+  },
+  {
+    id: PERMISSIONS_ENUM.INFORMATION,
+    value: PERMISSIONS_ENUM.INFORMATION,
+    name: 'Quản lí thông tin',
+  },
+  {
+    id: PERMISSIONS_ENUM.MENU,
+    value: PERMISSIONS_ENUM.MENU,
+    name: 'Quản lí Menu',
+  },
+  {
+    id: PERMISSIONS_ENUM.POSTS,
+    value: PERMISSIONS_ENUM.POSTS,
+    name: 'Quản lí nội dung',
+  },
+  {
+    id: PERMISSIONS_ENUM.SCHEDULES,
+    value: PERMISSIONS_ENUM.SCHEDULES,
+    name: 'Lịch công tác',
+  },
+  {
+    id: PERMISSIONS_ENUM.APPROVE,
+    value: PERMISSIONS_ENUM.APPROVE,
+    name: 'Duyệt tin',
+  },
+  {
+    id: PERMISSIONS_ENUM.STAFF,
+    value: PERMISSIONS_ENUM.STAFF,
+    name: 'Quản lí nhân sự',
+  },
+  {
+    id: PERMISSIONS_ENUM.FOOTER,
+    value: PERMISSIONS_ENUM.FOOTER,
+    name: 'Footer',
+  },
+  {
+    id: PERMISSIONS_ENUM.LANGUAGE,
+    value: PERMISSIONS_ENUM.LANGUAGE,
+    name: 'Ngôn ngữ',
+  },
+];
+//#endregion

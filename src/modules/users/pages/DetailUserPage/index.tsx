@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Box, Paper, Typography } from '@mui/material';
 
 import { createUser } from '@/apis/users.api';
-import { CActionsForm, CUpload } from '@/controls/';
+import { CActionsForm } from '@/controls/';
 import { MForm } from '@/modules/users/components';
 import { RootState } from '@/redux/';
 import { IPermissionState } from '@/slices/permission';
@@ -14,8 +14,8 @@ import { IUserFormParams } from '@/types/user';
 import { defaultValues, userResolver } from '../../form';
 const DetailUserPage = () => {
   //#region Data
-  const { permissions } = useSelector<RootState, IPermissionState>(
-    (state) => state.permission,
+  const permissions = useSelector<RootState, IPermissionState['permissions']>(
+    (state) => state.permission.permissions,
     shallowEqual,
   );
 
@@ -75,8 +75,6 @@ const DetailUserPage = () => {
       </Box>
 
       <Paper variant="wrapper">
-        <CUpload />
-
         <form onSubmit={handleSubmit(onSubmit)}>
           <MForm control={control} />
 

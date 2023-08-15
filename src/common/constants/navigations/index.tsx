@@ -13,6 +13,8 @@ import {
 
 import { INavigationItem } from '@/types/navigations';
 
+import { PERMISSIONS_ENUM } from '../enums';
+
 export const NAVIGATIONS: INavigationItem[] = [
   // {
   //   title: 'Dashboard',
@@ -25,12 +27,14 @@ export const NAVIGATIONS: INavigationItem[] = [
     icon: <AccountCircle />,
     isChildren: false,
     path: '/users',
+    code: PERMISSIONS_ENUM.USERS,
   },
   {
     title: 'Quản lý trang chủ',
     icon: <Home />,
     isChildren: true,
     path: '/homepage',
+    code: PERMISSIONS_ENUM.HOMEPAGE,
     children: [
       {
         title: 'Banner',
@@ -67,6 +71,7 @@ export const NAVIGATIONS: INavigationItem[] = [
     icon: <Feed />,
     isChildren: true,
     path: '/information',
+    code: PERMISSIONS_ENUM.INFORMATION,
     children: [
       {
         title: 'Khoa và bộ môn',
@@ -119,6 +124,7 @@ export const NAVIGATIONS: INavigationItem[] = [
     icon: <Menu />,
     isChildren: true,
     path: '/menu',
+    code: PERMISSIONS_ENUM.MENU,
     children: [
       {
         title: 'Trang',
@@ -148,24 +154,28 @@ export const NAVIGATIONS: INavigationItem[] = [
     icon: <ContentPaste />,
     isChildren: false,
     path: '/posts',
+    code: PERMISSIONS_ENUM.POSTS,
   },
   {
     title: 'Lịch công tác',
     icon: <DateRange />,
     isChildren: false,
     path: '/schedules',
+    code: PERMISSIONS_ENUM.SCHEDULES,
   },
   {
     title: 'Duyệt tin',
     icon: <Newspaper />,
     isChildren: false,
     path: '/approve',
+    code: PERMISSIONS_ENUM.APPROVE,
   },
   {
     title: 'Quản lý nhân sự',
     icon: <Portrait />,
     isChildren: true,
     path: '/staff',
+    code: PERMISSIONS_ENUM.STAFF,
     children: [
       {
         title: 'Nhân sự',
@@ -188,11 +198,13 @@ export const NAVIGATIONS: INavigationItem[] = [
     icon: <Crop75 />,
     isChildren: false,
     path: '/footer',
+    code: PERMISSIONS_ENUM.FOOTER,
   },
   {
     title: 'Ngôn ngữ',
     icon: <Language />,
     isChildren: false,
     path: '/languages',
+    code: PERMISSIONS_ENUM.LANGUAGE,
   },
 ];

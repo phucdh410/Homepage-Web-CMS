@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import { IPermissionState } from './types';
 
 const initialState: IPermissionState = {
-  permissions: [],
+  permissions: null,
 };
 
 export const permissionSlice = createSlice({
@@ -15,10 +15,13 @@ export const permissionSlice = createSlice({
     setPermissions: (state, action) => {
       state.permissions = action.payload;
     },
+    clearPermissions: (state, action) => {
+      state.permissions = null;
+    },
   },
 });
 
-export const { setPermissions } = permissionSlice.actions;
+export const { setPermissions, clearPermissions } = permissionSlice.actions;
 
 const persistConfig = {
   key: 'permission',

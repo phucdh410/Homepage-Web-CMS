@@ -1,6 +1,9 @@
 import { lazy } from 'react';
 import { RouteObject } from 'react-router-dom';
 
+import { PERMISSIONS_ENUM } from '@/constants/enums';
+
+import { loader } from './redirect';
 import { ROUTES } from './routes';
 
 const ListPostsPage = lazy(() => import('@/modules/post/pages/ListPostsPage'));
@@ -24,4 +27,7 @@ export const PostRoutes: RouteObject[] = [
   //   path: ROUTES.SCHEDULES.UPDATE,
   //   element: <UpdatePostPage />,
   // },
-];
+].map((route) => ({
+  ...route,
+  loader: () => loader(PERMISSIONS_ENUM.POSTS),
+}));

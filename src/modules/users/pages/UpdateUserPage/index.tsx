@@ -31,8 +31,8 @@ const UpdateUserPage = () => {
     toast.error((error as any)?.repsonse?.data?.message || 'Có lỗi xảy ra!');
   }
 
-  const { permissions } = useSelector<RootState, IPermissionState>(
-    (state) => state.permission,
+  const permissions = useSelector<RootState, IPermissionState['permissions']>(
+    (state) => state.permission.permissions,
     shallowEqual,
   );
 

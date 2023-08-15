@@ -1,12 +1,13 @@
 import { Navigate } from 'react-router-dom';
-// import { updateAbility } from '_func/permissions';
 import axios from 'axios';
 
 import { logout, profile } from '@/apis/auth.api';
 import { AUTH } from '@/apis/url';
 import { store } from '@/redux/';
 import { setProfile, setToken } from '@/slices/auth/auth.slice';
+import { setPermissions } from '@/slices/permission';
 
+import { PERMISSIONS_MOCK } from '../../PERMISSIONS_MOCK';
 import { objectToQueryString } from '../funcs';
 
 import { post } from './request';
@@ -99,9 +100,28 @@ export const getProfile = async (token: string) => {
 
     const res = await profile();
 
-    // updateAbility(role_id);
-
     store.dispatch(setProfile({ ...res.data }));
+
+    const { permissions } = res.data.data;
+
+    const _permissions = {
+      '1': false,
+      '2': false,
+      '3': false,
+      '4': false,
+      '5': false,
+      '6': false,
+      '7': false,
+      '8': false,
+      '9': false,
+      '10': false,
+    };
+
+    permissions.forEach((e) => {
+      _permissions[e.permission_code] = e.allowed;
+    });
+
+    store.dispatch(setPermissions(_permissions));
 
     return res;
   } catch (error: any) {
@@ -117,6 +137,27 @@ const refresh = () => {
 
 export const tryLogout = async () => {
   try {
+    //#region Xóa cái này khi ráp Api real
+    const _permissions = {
+      '1': false,
+      '2': false,
+      '3': false,
+      '4': false,
+      '5': false,
+      '6': false,
+      '7': false,
+      '8': false,
+      '9': false,
+      '10': false,
+    };
+
+    PERMISSIONS_MOCK.forEach((e) => {
+      _permissions[e.permission_code] = e.allowed;
+    });
+
+    store.dispatch(setPermissions(_permissions));
+    //#endregion
+
     await logout();
   } catch (error: any) {
     throw error;
