@@ -353,6 +353,7 @@ theme = createTheme(theme, {
         columnHeader: {
           paddingLeft: '10px!important',
           paddingRight: '10px!important',
+          cursor: 'default',
         },
       },
     },

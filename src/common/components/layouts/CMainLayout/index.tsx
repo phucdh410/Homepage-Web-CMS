@@ -47,6 +47,7 @@ const CMainLayout = () => {
         throw error;
       }
     };
+
     const handleGetAllLanguages = async () => {
       try {
         const res = await getAllLanguages();
