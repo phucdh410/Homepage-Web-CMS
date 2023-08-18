@@ -96,14 +96,6 @@ export const setAuthToken = (token: string) => {
 
 export const getProfile = async (token: string) => {
   try {
-    setAuthToken(token);
-
-    const res = await profile();
-
-    store.dispatch(setProfile({ ...res.data }));
-
-    const { permissions } = res.data.data;
-
     const _permissions = {
       '1': false,
       '2': false,
@@ -117,9 +109,37 @@ export const getProfile = async (token: string) => {
       '10': false,
     };
 
-    permissions.forEach((e) => {
+    PERMISSIONS_MOCK.forEach((e) => {
       _permissions[e.permission_code] = e.allowed;
     });
+
+    store.dispatch(setPermissions(_permissions));
+
+    setAuthToken(token);
+
+    const res = await profile();
+
+    store.dispatch(setProfile({ ...res.data }));
+
+    //Open below code for assign permissions
+    // const { permissions } = res.data.data;
+
+    // const _permissions = {
+    //   '1': false,
+    //   '2': false,
+    //   '3': false,
+    //   '4': false,
+    //   '5': false,
+    //   '6': false,
+    //   '7': false,
+    //   '8': false,
+    //   '9': false,
+    //   '10': false,
+    // };
+
+    // permissions.forEach((e) => {
+    //   _permissions[e.permission_code] = e.allowed;
+    // });
 
     store.dispatch(setPermissions(_permissions));
 
@@ -164,6 +184,8 @@ export const tryLogout = async () => {
   } finally {
     store.dispatch(setProfile(null));
     store.dispatch(setToken(null));
+    // Open below code for clear permissions after logout
+    // store.dispatch(setPermissions(null));
 
     window.localStorage.removeItem('access_token');
     window.localStorage.removeItem('refresh_token');

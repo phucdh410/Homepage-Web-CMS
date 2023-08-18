@@ -24,7 +24,7 @@ export const PERMISSIONS_MOCK: IUserPermissionsResponse[] = [
     permission_name: 'Quản lý Menu',
   },
   {
-    allowed: false,
+    allowed: true,
     permission_code: PERMISSIONS_ENUM.POSTS,
     permission_name: 'Quản lý nội dung',
   },
