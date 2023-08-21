@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import {
   Collapse,
-  FormControlLabel,
   IconButton,
   List,
-  ListItemButton,
   ListItemText,
-  Radio,
+  MenuItem,
 } from '@mui/material';
 
 import { ICSelectModalProps, IOption } from './types';
@@ -29,6 +27,17 @@ export const CSelectItem: React.FC<ICSelectItemProps> = ({
   //#endregion
 
   //#region Event
+  const onOpen = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setShow(true);
+  };
+
+  const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setShow(false);
+  };
   //#endregion
 
   //#region Cycle
@@ -37,35 +46,43 @@ export const CSelectItem: React.FC<ICSelectItemProps> = ({
   //#region Render
   return (
     <>
-      <ListItemButton
+      <MenuItem
         key={data.id}
+        value={data.id}
+        selected={data.id === value}
+        disableRipple
+        disableTouchRipple
+        onClick={() => onChange?.(data.id)}
         sx={{
+          minHeight: '40px!important',
           borderRadius: '15px',
           py: 0,
           '&.Mui-selected': { backgroundColor: '#DAEAF8' },
         }}
-        selected={data.id === value}
-        disableRipple
-        disableTouchRipple
       >
-        <FormControlLabel
-          value={data.id}
-          control={<Radio />}
-          label=""
-          sx={{ mr: 0 }}
+        <ListItemText
+          primary={data.name}
+          sx={{
+            '.MuiTypography-root': {
+              fontWeight: 600,
+              fontFamily: 'Raleway',
+              lineHeight: '21px',
+              letterSpacing: '0.48px',
+              color: (theme) => theme.palette.textTable.main,
+            },
+          }}
         />
-        <ListItemText primary={data.name} />
         {data?.children &&
           (show ? (
-            <IconButton onClick={() => setShow(false)}>
+            <IconButton onClick={onClose}>
               <KeyboardArrowUp />
             </IconButton>
           ) : (
-            <IconButton onClick={() => setShow(true)}>
+            <IconButton onClick={onOpen}>
               <KeyboardArrowDown />
             </IconButton>
           ))}
-      </ListItemButton>
+      </MenuItem>
       {data?.children && (
         <Collapse in={show} timeout="auto">
           <List sx={{ ml: 3 }}>

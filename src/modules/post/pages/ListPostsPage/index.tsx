@@ -137,7 +137,7 @@ const ListPostsPage = () => {
 
         <Stack direction="row" spacing={1} alignItems="center">
           <CSearchInput
-            defaultValue={filter.input.search || ''}
+            defaultValue={filter?.input?.search || ''}
             onChange={onSearch}
           />
           <Button

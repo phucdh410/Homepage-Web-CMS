@@ -54,7 +54,7 @@ let theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Montserrat', sans-serif",
+    fontFamily: "'Montserrat', sans-serif, 'Raleway'",
     htmlFontSize: 14,
     fontWeightRegular: 400,
     allVariants: {
