@@ -64,6 +64,8 @@ export const CSelectItem: React.FC<ICSelectItemProps> = ({
           '&.Mui-selected': { backgroundColor: '#DAEAF8' },
         }}
         selected={data.label === value}
+        disableRipple
+        disableTouchRipple
       >
         <FormControlLabel
           value={data.label}

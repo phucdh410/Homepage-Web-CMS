@@ -10,9 +10,9 @@ import { deleteBlog, getPosts } from '@/apis/posts.api';
 import { confirm } from '@/confirm/';
 import {
   CAutocomplete,
-  CCollapseSelect,
   CFormLabel,
   CSearchInput,
+  CTreeSelect,
 } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
 import { CPagination } from '@/others/';
@@ -136,7 +136,10 @@ const ListPostsPage = () => {
         <Typography variant="page-title">Quản lý nội dung</Typography>
 
         <Stack direction="row" spacing={1} alignItems="center">
-          <CSearchInput defaultValue={filter.input} onChange={onSearch} />
+          <CSearchInput
+            defaultValue={filter.input.search || ''}
+            onChange={onSearch}
+          />
           <Button
             variant="contained"
             className="add-button"
@@ -166,7 +169,7 @@ const ListPostsPage = () => {
         </Stack>
         <Stack direction="column" spacing={1} flex={1}>
           <CFormLabel label="Danh mục" />
-          <CCollapseSelect
+          <CTreeSelect
             value={filter.input?.folder_id}
             onChange={onFilterFolder}
             placeholder="Tất cả"
