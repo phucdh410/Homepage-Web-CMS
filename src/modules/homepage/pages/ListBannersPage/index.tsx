@@ -14,19 +14,6 @@ import { IGetBannersResponse } from '@/types/banners';
 
 import { MBannersTable } from '../../components';
 
-const MOCK_DATA = [
-  {
-    id: '1',
-    title: 'Đây là banner số 1',
-    created_date: '2023-09-01',
-    updated_date: '2023-09-02',
-    active: true,
-    start_date: '2023-09-01',
-    end_date: '2023-12-01',
-    file_id: '123',
-  },
-];
-
 const ListBannersPage = () => {
   //#region Data
   const location = useLocation();
@@ -126,7 +113,7 @@ const ListBannersPage = () => {
 
       <Paper variant="wrapper">
         <MBannersTable
-          data={MOCK_DATA || []}
+          data={listData || []}
           onEdit={onEdit}
           onDelete={onDelete}
           page={paginate.page}
