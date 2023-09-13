@@ -70,7 +70,8 @@ export const CActionsTable: React.FC<ICActionsTableProps> = ({
         <Tooltip title="Xóa">
           <IconButton
             color="secondary"
-            onClick={(e) => onClick(e, 'delete')}
+            // onClick={(e) => onClick(e, 'delete')}
+            onClick={onDelete}
             sx={{ '&:hover': { backgroundColor: 'rgb(207 55 61 / 12%)' } }}
           >
             <DeleteForever />

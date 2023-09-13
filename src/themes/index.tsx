@@ -166,6 +166,11 @@ theme = createTheme(theme, {
               '& .MuiInputAdornment-root .MuiSvgIcon-root': {
                 color: theme.palette.subBlue.main,
               },
+              '&.Mui-disabled': {
+                '& .MuiInputAdornment-root .MuiSvgIcon-root': {
+                  color: 'inherit',
+                },
+              },
             },
           },
           '&.c-timepicker': {

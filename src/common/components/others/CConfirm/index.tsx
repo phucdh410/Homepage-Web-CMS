@@ -5,6 +5,8 @@ import warningIcon from '@/assets/images/warning.png';
 
 import { ICConfirmProps } from './types';
 
+import './styles.scss';
+
 export const CConfirm = confirmable<ICConfirmProps>(
   ({
     show,
@@ -27,7 +29,7 @@ export const CConfirm = confirmable<ICConfirmProps>(
       >
         <Box p={3}>
           <Typography textAlign="center" mb={2}>
-            <img src={warningIcon} alt="" />
+            <img src={warningIcon} alt="" className="warning-icon" />
           </Typography>
 
           <Typography

@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 
 import { ICDatePickerProps } from './types';
 
-// Lưu ý: Bỏ slotProps ra khỏi text field
+// Lưu ý: Bỏ slotProps ra khỏi text field, line 40 (không sử dụng)
 export const CDatePicker = forwardRef<HTMLInputElement, ICDatePickerProps>(
   (
     {
