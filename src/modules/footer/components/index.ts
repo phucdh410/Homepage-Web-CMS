@@ -1,1 +1,2 @@
-export * from './MFooterForm';
+export * from './MAddressForm';
+export * from './MSocialLinksForm';

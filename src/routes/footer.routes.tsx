@@ -6,12 +6,20 @@ import { PERMISSIONS_ENUM } from '@/constants/enums';
 import { loader } from './redirect';
 import { ROUTES } from './routes';
 
-const FooterPage = lazy(() => import('@/modules/footer/pages/FooterPage'));
+const SocialLinksPage = lazy(
+  () => import('@/modules/footer/pages/SocialLinksPage'),
+);
+
+const AddressPage = lazy(() => import('@/modules/footer/pages/AddressPage'));
 
 export const FooterRoutes: RouteObject[] = [
   {
-    path: ROUTES.FOOTER.ROOT,
-    element: <FooterPage />,
+    path: ROUTES.FOOTER.SOCIAL,
+    element: <SocialLinksPage />,
+  },
+  {
+    path: ROUTES.FOOTER.ADDRESS,
+    element: <AddressPage />,
   },
 ].map((route) => ({
   ...route,

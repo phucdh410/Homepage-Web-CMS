@@ -196,9 +196,32 @@ export const NAVIGATIONS: INavigationItem[] = [
   {
     title: 'Footer',
     icon: <Crop75 />,
-    isChildren: false,
+    isChildren: true,
     path: '/footer',
     code: PERMISSIONS_ENUM.FOOTER,
+    children: [
+      {
+        title: 'Địa chỉ',
+        icon: '',
+        isChildren: false,
+        path: '/footer/address',
+        level: 1,
+      },
+      {
+        title: 'Social',
+        icon: '',
+        isChildren: false,
+        path: '/footer/socials',
+        level: 1,
+      },
+      {
+        title: 'Category',
+        icon: '',
+        isChildren: false,
+        path: '/footer/categories',
+        level: 1,
+      },
+    ],
   },
   {
     title: 'Ngôn ngữ',

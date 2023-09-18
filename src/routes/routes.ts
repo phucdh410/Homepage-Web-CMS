@@ -102,6 +102,9 @@ export const ROUTES = {
 
   FOOTER: {
     ROOT: '/footer',
+    ADDRESS: '/footer/address',
+    CATEGORY: '/footer/categories',
+    SOCIAL: '/footer/socials',
   },
   LANGUAGES: {
     LIST: '/languages',
