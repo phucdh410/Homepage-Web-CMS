@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 import { get, post, put } from '@/axios/request';
 import {
   ICreateFooterParams,
