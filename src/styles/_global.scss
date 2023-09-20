@@ -1,0 +1,35 @@
+*:not(.html-parse-content *) {
+  // Add ":not(.html-parse-content *)" for avoiding reset CSS in HTML parser
+  // HTML parser must contain class name "html-parse-content"
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 87.5%;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  color: #124874;
+}
