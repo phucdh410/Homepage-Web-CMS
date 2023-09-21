@@ -47,7 +47,7 @@ export const CActionsTable: React.FC<ICActionsTableProps> = ({
 
   const onLanguageSelect = (value: string) => {
     setHeaderLanguage(value);
-    selection === 'edit' ? onEdit() : onDelete();
+    selection === 'edit' ? onEdit() : onDelete?.();
     setSelection('');
     onClose();
   };

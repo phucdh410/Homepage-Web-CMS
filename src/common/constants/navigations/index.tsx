@@ -147,6 +147,13 @@ export const NAVIGATIONS: INavigationItem[] = [
         path: '/menu/menus',
         level: 1,
       },
+      {
+        title: 'Blog',
+        icon: '',
+        isChildren: false,
+        path: '/menu/blogs',
+        level: 1,
+      },
     ],
   },
   {

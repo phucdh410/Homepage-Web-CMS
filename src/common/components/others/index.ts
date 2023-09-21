@@ -3,6 +3,7 @@ export * from './CActiveTag';
 export * from './CAnimatedTypography';
 export * from './CConfirm';
 export * from './CDataGrid';
+export * from './CDetailPageWrapper';
 export * from './CDevelopment';
 export * from './CImage';
 export * from './CPageHeader';

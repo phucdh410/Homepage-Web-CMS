@@ -32,6 +32,10 @@ const UpdateMenuPage = lazy(
   () => import('@/modules/menu/pages/UpdateMenuPage'),
 );
 
+const BlogsPage = lazy(() => import('@/modules/blog/pages/BlogsPage'));
+const CreateBlogPage = lazy(
+  () => import('@/modules/blog/pages/CreateBlogPage'),
+);
 export const MenuRoutes: RouteObject[] = [
   {
     path: ROUTES.MENUS.PAGES.LIST,
@@ -70,6 +74,15 @@ export const MenuRoutes: RouteObject[] = [
   {
     path: ROUTES.MENUS.MENUS.UPDATE,
     element: <UpdateMenuPage />,
+  },
+
+  {
+    path: ROUTES.MENUS.BLOGS.LIST,
+    element: <BlogsPage />,
+  },
+  {
+    path: ROUTES.MENUS.BLOGS.CREATE,
+    element: <CreateBlogPage />,
   },
 ].map((route) => ({
   ...route,

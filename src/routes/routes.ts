@@ -70,6 +70,11 @@ export const ROUTES = {
       CREATE: '/menu/menus/detail',
       UPDATE: '/menu/menus/detail/:id', // ?language_id=
     },
+    BLOGS: {
+      LIST: '/menu/blogs',
+      CREATE: '/menu/blogs/detail',
+      UPDATE: '/menu/blogs/detail/:id', // ?language_id=
+    },
   },
 
   POSTS: {

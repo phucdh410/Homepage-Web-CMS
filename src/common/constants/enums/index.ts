@@ -101,6 +101,33 @@ export const MENU_TYPE_OPTIONS: IOption[] = [
 ];
 //#endregion
 
+//#region Blog Types (Dạng bài viết)
+export enum BLOG_TYPE_ENUMS {
+  TEXT = 0,
+  VIDEO,
+}
+
+export type BLOG_TYPES = 0 | 1;
+
+export const BLOG_TYPE_LABELS = {
+  [BLOG_TYPE_ENUMS.TEXT]: 'Văn bản',
+  [BLOG_TYPE_ENUMS.VIDEO]: 'Video',
+};
+
+export const BLOG_TYPE_OPTIONS: IOption[] = [
+  {
+    id: 0,
+    label: BLOG_TYPE_LABELS[0],
+    value: BLOG_TYPE_ENUMS.TEXT,
+  },
+  {
+    id: 2,
+    label: BLOG_TYPE_LABELS[1],
+    value: BLOG_TYPE_ENUMS.VIDEO,
+  },
+];
+//#endregion
+
 //#region Permissions
 export enum PERMISSIONS_ENUM {
   USERS = '1',

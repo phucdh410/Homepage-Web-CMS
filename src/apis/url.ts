@@ -223,3 +223,10 @@ export const LANGUAGES = {
   DELETE: '/languages', // :id
   GET_ALL: '/languages',
 };
+
+export const BLOGS = {
+  CREATE: '/blogs',
+  GET_LIST: '/blogs/getAll',
+  UPDATE: '/blogs',
+  DELETE: '/blogs',
+};
