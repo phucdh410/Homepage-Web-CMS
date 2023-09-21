@@ -1,6 +1,5 @@
 import { get, post, put, remove } from '@/axios/request';
 import {
-  ICreateMenuParams,
   IGetDetailMenuResponse,
   IGetMenusParams,
   IGetMenusResponse,
