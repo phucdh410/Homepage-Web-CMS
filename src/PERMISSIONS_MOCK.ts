@@ -4,7 +4,7 @@ import { IUserPermissionsResponse } from './types/permissions';
 
 export const PERMISSIONS_MOCK: IUserPermissionsResponse[] = [
   {
-    allowed: false,
+    allowed: true,
     permission_code: PERMISSIONS_ENUM.USERS,
     permission_name: 'Quản lý người dùng',
   },
@@ -14,12 +14,12 @@ export const PERMISSIONS_MOCK: IUserPermissionsResponse[] = [
     permission_name: 'Quản lý trang chủ',
   },
   {
-    allowed: false,
+    allowed: true,
     permission_code: PERMISSIONS_ENUM.INFORMATION,
     permission_name: 'Quản lý thông tin',
   },
   {
-    allowed: false,
+    allowed: true,
     permission_code: PERMISSIONS_ENUM.MENU,
     permission_name: 'Quản lý Menu',
   },
@@ -39,7 +39,7 @@ export const PERMISSIONS_MOCK: IUserPermissionsResponse[] = [
     permission_name: 'Duyệt tin',
   },
   {
-    allowed: false,
+    allowed: true,
     permission_code: PERMISSIONS_ENUM.STAFF,
     permission_name: 'Quản lý nhân sự',
   },
@@ -49,7 +49,7 @@ export const PERMISSIONS_MOCK: IUserPermissionsResponse[] = [
     permission_name: 'Footer',
   },
   {
-    allowed: false,
+    allowed: true,
     permission_code: PERMISSIONS_ENUM.LANGUAGE,
     permission_name: 'Ngôn ngữ',
   },

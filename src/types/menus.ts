@@ -12,14 +12,25 @@ export interface IMenu {
 }
 
 export interface ICreateMenuParams {
-  title: string;
-  active: boolean;
-  display: number;
-  menus: IMenu[];
+  title: {
+    vi: string;
+    en: string;
+  };
+  // active: boolean;
+  type: number;
+  description: {
+    vi: string;
+    en: string;
+  };
+  slug: string;
+  link: string;
+  is_menu: boolean;
+  is_pin: boolean;
+  // menus: IMenu[];
 }
 
 export interface IGetMenusResponse {
-  id: string;
+  _id: string;
   title: string;
   display: POSITION_DISPLAY_ENUMS;
   updated_date: Date | Dayjs | string | null;

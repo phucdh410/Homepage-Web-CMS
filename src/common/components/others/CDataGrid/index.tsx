@@ -31,6 +31,7 @@ export const CDataGrid = ({
   //#region Render
   return (
     <DataGrid
+      getRowId={(row) => row._id}
       loading={loading}
       autoHeight
       disableColumnMenu

@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from 'react';
+import { forwardRef, useMemo, useRef } from 'react';
 import { HighlightOff } from '@mui/icons-material';
 import { TextField } from '@mui/material';
 import { InputAdornment } from '@mui/material';
@@ -11,12 +11,16 @@ import { ICCollapseSelectProps, ICCollapseSelectRef } from './types';
 export const CCollapseSelect = forwardRef<
   ICCollapseSelectRef,
   ICCollapseSelectProps
->(({ value, onChange, placeholder, sx, ...props }, ref) => {
+>(({ value, onChange, data, placeholder, sx, ...props }, ref) => {
   //#region Ref
   const modalRef = useRef<ICSelectModalRef | null>(null);
   //#endregion
 
   //#region Data
+  const selectedItem = useMemo(
+    () => data.find((e: any) => e.id === value),
+    [data, value],
+  );
   //#endregion
 
   //#region Event
@@ -40,11 +44,11 @@ export const CCollapseSelect = forwardRef<
     <>
       <TextField
         placeholder={placeholder}
-        value={value}
+        value={selectedItem?.label ?? ''}
         onClick={onClick}
         InputProps={{
           readOnly: true,
-          endAdornment: (
+          endAdornment: value && (
             <InputAdornment position="end">
               <IconButton onClick={onClear}>
                 <HighlightOff />
@@ -58,7 +62,12 @@ export const CCollapseSelect = forwardRef<
         }}
       />
 
-      <CSelectModal value={value} onChange={onChange} ref={modalRef} />
+      <CSelectModal
+        data={data}
+        value={value}
+        onChange={onChange}
+        ref={modalRef}
+      />
     </>
   );
   //#endregion

@@ -6,5 +6,6 @@ export interface ICCollapseSelectRef extends IFormInputComponentRef {}
 
 export interface ICCollapseSelectProps extends IFormInputComponentProps {
   sx?: SxProps<Theme>;
+  data?: any;
   placeholder?: string;
 }

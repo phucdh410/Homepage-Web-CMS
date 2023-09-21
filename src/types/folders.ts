@@ -1,16 +1,25 @@
 import { Dayjs } from 'dayjs';
 
-import { DISPLAY_ENUMS } from '@/constants/enums';
+import { DISPLAY_ENUMS, MENU_TYPE_ENUMS } from '@/constants/enums';
 
 import { IBasePaginateParams } from './params';
 
 export interface ICreateFolderParams {
-  title: string;
-  page_id: string;
+  title: {
+    vi: string;
+    en: string;
+  };
+  description: {
+    vi: string;
+    en: string;
+  };
+  // page_id: string;
   parent_id: string;
-  display: DISPLAY_ENUMS;
-  show_homepage: boolean;
-  active: boolean;
+  type: MENU_TYPE_ENUMS;
+  is_pin: boolean;
+  // active: boolean;
+  link: string;
+  slug: string;
 }
 
 export interface IGetFoldersResponse {

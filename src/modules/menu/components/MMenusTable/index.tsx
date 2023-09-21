@@ -5,12 +5,7 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import {
-  POSITION_DISPLAY_LABELS,
-  POSITION_DISPLAY_TYPES,
-} from '@/constants/enums';
 import { CActionsTable, CDataGrid } from '@/others/';
-import { CActiveTag } from '@/others/';
 import { IGetMenusResponse } from '@/types/menus';
 
 import { IMMenusTableProps } from './types';
@@ -38,20 +33,20 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       align: 'left',
       flex: 1,
     },
+    // {
+    //   field: 'display',
+    //   headerName: 'VỊ TRÍ HIỂN THỊ',
+    //   minWidth: 300,
+    //   headerAlign: 'left',
+    //   align: 'left',
+    //   valueFormatter: (
+    //     params: GridValueFormatterParams<POSITION_DISPLAY_TYPES>,
+    //   ) => {
+    //     return POSITION_DISPLAY_LABELS[params.value];
+    //   },
+    // },
     {
-      field: 'display',
-      headerName: 'VỊ TRÍ HIỂN THỊ',
-      minWidth: 300,
-      headerAlign: 'left',
-      align: 'left',
-      valueFormatter: (
-        params: GridValueFormatterParams<POSITION_DISPLAY_TYPES>,
-      ) => {
-        return POSITION_DISPLAY_LABELS[params.value];
-      },
-    },
-    {
-      field: 'updated_date',
+      field: 'updated_at',
       headerName: 'NGÀY CẬP NHẬT',
       minWidth: 200,
       headerAlign: 'center',
@@ -60,16 +55,16 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
         return dayjs(params.value).format('DD/MM/YYYY');
       },
     },
-    {
-      field: 'active',
-      headerName: 'TRẠNG THÁI',
-      minWidth: 150,
-      headerAlign: 'center',
-      align: 'center',
-      renderCell: (params: GridRenderCellParams<Boolean>) => (
-        <CActiveTag value={params.value} />
-      ),
-    },
+    // {
+    //   field: 'active',
+    //   headerName: 'TRẠNG THÁI',
+    //   minWidth: 150,
+    //   headerAlign: 'center',
+    //   align: 'center',
+    //   renderCell: (params: GridRenderCellParams<Boolean>) => (
+    //     <CActiveTag value={params.value} />
+    //   ),
+    // },
     {
       field: 'action',
       headerName: 'THAO TÁC',
@@ -78,8 +73,8 @@ export const MMenusTable: React.FC<IMMenusTableProps> = ({
       align: 'center',
       renderCell: (params: GridRenderCellParams<IGetMenusResponse>) => (
         <CActionsTable
-          onEdit={() => onEdit(params.row.id)}
-          onDelete={() => onDelete(params.row.id)}
+          onEdit={() => onEdit(params.row._id)}
+          onDelete={() => onDelete(params.row._id)}
         />
       ),
     },

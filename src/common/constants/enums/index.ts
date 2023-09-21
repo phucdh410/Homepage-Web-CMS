@@ -64,10 +64,41 @@ export const POSITION_DISPLAY_OPTIONS: IOption[] = [
 //#endregion
 
 //#region Menu Types (Dạng menu)
-export enum MENU_TYPES {
-  PAGE = 1,
-  FOLDER,
+// export enum MENU_TYPES {
+//   PAGE = 1,
+//   FOLDER,
+// }
+export enum MENU_TYPE_ENUMS {
+  CATEGORY = 0,
+  BLOG = 1,
+  URL = 2,
 }
+
+export type MENU_TYPES = 0 | 1 | 2;
+
+export const MENU_TYPE_LABELS = {
+  [MENU_TYPE_ENUMS.CATEGORY]: 'Category',
+  [MENU_TYPE_ENUMS.BLOG]: 'Blog',
+  [MENU_TYPE_ENUMS.URL]: 'Url',
+};
+
+export const MENU_TYPE_OPTIONS: IOption[] = [
+  {
+    id: 0,
+    label: MENU_TYPE_LABELS[0],
+    value: MENU_TYPE_ENUMS.CATEGORY,
+  },
+  {
+    id: 2,
+    label: MENU_TYPE_LABELS[1],
+    value: MENU_TYPE_ENUMS.BLOG,
+  },
+  {
+    id: 3,
+    label: MENU_TYPE_LABELS[2],
+    value: MENU_TYPE_ENUMS.URL,
+  },
+];
 //#endregion
 
 //#region Permissions

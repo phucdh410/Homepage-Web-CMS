@@ -41,6 +41,7 @@
     "@mui/material": "^5.11.15",
     "@mui/x-data-grid": "^6.0.4",
     "@mui/x-date-pickers": "^6.0.4",
+    "@mui/x-tree-view": "^6.0.0-alpha.3",
     "@reduxjs/toolkit": "^1.9.3",
     "@tanstack/react-query": "^4.22.3",
     "@tanstack/react-query-devtools": "^4.22.3",

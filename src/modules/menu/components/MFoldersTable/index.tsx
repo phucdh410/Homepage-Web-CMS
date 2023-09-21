@@ -5,9 +5,8 @@ import {
 } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 
-import { DISPLAY_LABELS, DISPLAY_TYPES } from '@/constants/enums';
-import { CActionsTable, CDataGrid } from '@/others/';
-import { CActiveTag } from '@/others/';
+import { DISPLAY_TYPES, MENU_TYPE_ENUMS } from '@/constants/enums';
+import { CActionsTable, CActiveTag, CDataGrid } from '@/others/';
 import { IGetFoldersResponse } from '@/types/folders';
 
 import { IMFoldersTableProps } from './types';
@@ -36,13 +35,13 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
       flex: 1,
     },
     {
-      field: 'display',
+      field: 'type',
       headerName: 'DẠNG HIỂN THỊ',
       minWidth: 300,
       headerAlign: 'left',
       align: 'left',
       valueFormatter: (params: GridValueFormatterParams<DISPLAY_TYPES>) => {
-        return DISPLAY_LABELS[params.value];
+        return MENU_TYPE_ENUMS[params.value];
       },
     },
     {
@@ -56,7 +55,7 @@ export const MFoldersTable: React.FC<IMFoldersTableProps> = ({
       },
     },
     {
-      field: 'active',
+      field: 'is_pin',
       headerName: 'TRẠNG THÁI',
       minWidth: 150,
       headerAlign: 'center',

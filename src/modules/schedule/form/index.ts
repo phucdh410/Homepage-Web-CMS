@@ -9,12 +9,13 @@ import {
 } from '@/types/schedules';
 
 export const defaultValuesSchedule: ICreateScheduleParams = {
-  title: '',
-  content: '',
+  title: { vi: '', en: '' },
+  content: { vi: '', en: '' },
   date: dayjs(),
-  location: '',
-  attendee: '',
-  active: true,
+  time: dayjs(),
+  // location: '',
+  // attendee: '',
+  // active: true,
 };
 
 export const scheduleResolver: Resolver<

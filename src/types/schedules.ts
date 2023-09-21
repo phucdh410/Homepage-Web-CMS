@@ -3,7 +3,7 @@ import { Dayjs } from 'dayjs';
 import { IBasePaginateParams } from './params';
 
 export interface ICreateScheduleParams {
-  title: string;
+  title: { vi: string; en: string };
   content: string;
   date: Date | Dayjs | string | null;
   location: string;

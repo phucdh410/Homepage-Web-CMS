@@ -4,15 +4,15 @@ import { Box, Dialog, List, RadioGroup } from '@mui/material';
 import { CSelectItem } from './CSelectItem';
 import { ICSelectModalProps, ICSelectModalRef } from './types';
 
-const MOCK_ROOT_OPTIONS = [
-  { id: '1', label: 'Đại học' },
-  { id: '2', label: 'Sau đại học', isChildren: true },
-  { id: '3', label: 'Chương trình bổ sung' },
-  { id: '4', label: 'Kế hoạch tuyển sinh' },
-];
+// const MOCK_ROOT_OPTIONS = [
+//   { id: '1', label: 'Đại học' },
+//   { id: '2', label: 'Sau đại học', isChildren: true },
+//   { id: '3', label: 'Chương trình bổ sung' },
+//   { id: '4', label: 'Kế hoạch tuyển sinh', isChildren: true },
+// ];
 
 export const CSelectModal = forwardRef<ICSelectModalRef, ICSelectModalProps>(
-  ({ value, onChange, ...props }, ref) => {
+  ({ value, onChange, data, ...props }, ref) => {
     //#region Ref
     //#endregion
 
@@ -48,10 +48,10 @@ export const CSelectModal = forwardRef<ICSelectModalRef, ICSelectModalProps>(
         <Box p={3}>
           <RadioGroup value={value} onChange={onValueChange}>
             <List>
-              {MOCK_ROOT_OPTIONS.map((e) => (
+              {data?.map((e) => (
                 <CSelectItem
                   key={e.id}
-                  data={e}
+                  item={e}
                   value={value}
                   onChange={onChange}
                 />

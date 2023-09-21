@@ -10,7 +10,7 @@ import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { MENUS } from './url';
 
-export const createMenu = async (body: ICreateMenuParams) => {
+export const createMenu = async (body: FormData) => {
   return await post(MENUS.CREATE, body);
 };
 
@@ -18,6 +18,12 @@ export const getMenus = async (
   body: IGetMenusParams,
 ): Promise<IApiResponse<IPaginateData<IGetMenusResponse[]>, any>> => {
   return await post(MENUS.GET_LIST, body);
+};
+
+export const getAllMenus = async (
+  locale: string,
+): Promise<IApiResponse<IPaginateData<IGetMenusResponse[]>, any>> => {
+  return await get(MENUS.GET_LIST, { params: { locale } });
 };
 
 export const getDetailMenu = async (

@@ -152,16 +152,16 @@ export const PAGES = {
 };
 
 export const FOLDERS = {
-  CREATE: '/folders',
-  GET_LIST: '/folders/all',
+  CREATE: '/categorys/createCategory',
+  GET_LIST: '/categorys/getAllCategory',
   GET_DETAIL: '/folders', // :id
   UPDATE: '/folders', // :id
   DELETE: '/folders', // :id
 };
 
 export const MENUS = {
-  CREATE: '/menus',
-  GET_LIST: '/menus/all',
+  CREATE: '/categorys/createMenu',
+  GET_LIST: '/categorys/getAllMenu',
   GET_DETAIL: '/menus', // :id
   UPDATE: '/menus', // :id
   DELETE: '/menus', // :id

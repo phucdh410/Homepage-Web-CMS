@@ -2,14 +2,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AddCircleOutline } from '@mui/icons-material';
-import { Box } from '@mui/material';
-import { Stack } from '@mui/material';
-import { Typography } from '@mui/material';
-import { Button } from '@mui/material';
-import { Paper } from '@mui/material';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
-import { deleteMenu, getMenus } from '@/apis/menus.api';
+import { deleteMenu, getAllMenus } from '@/apis/menus.api';
 import { confirm } from '@/confirm/';
 import { CSearchInput } from '@/controls/';
 import { useNavigateQuery, useRevertQuery } from '@/hooks/';
@@ -39,12 +35,13 @@ const ListMenusPage = () => {
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
   const { data, refetch } = useQuery({
-    queryKey: ['menus', filter],
-    queryFn: () => getMenus(filter),
+    queryKey: ['menus'],
+    queryFn: () => getAllMenus('vi'),
   });
 
   const listData = useMemo<IGetMenusResponse[]>(
-    () => data?.data?.data?.data || [],
+    // @ts-ignore
+    () => data?.data?.data || [],
     [data],
   );
   //#endregion

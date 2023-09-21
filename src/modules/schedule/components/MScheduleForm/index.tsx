@@ -1,13 +1,7 @@
 import { Controller } from 'react-hook-form';
 import { Stack } from '@mui/material';
 
-import {
-  CDatePicker,
-  CFormLabel,
-  CInput,
-  CSwitch,
-  CTimePicker,
-} from '@/controls/';
+import { CDatePicker, CFormLabel, CInput, CTimePicker } from '@/controls/';
 
 import { IMScheduleFormProps } from './types';
 
@@ -22,14 +16,48 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
   return (
     <>
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-        <CFormLabel label="Tiêu đề" required />
+        <CFormLabel label="Tiêu đề Tiềng Việt" required />
         <Controller
           control={control}
-          name="title"
+          name="title.vi"
           render={({ field, fieldState: { error } }) => (
             <CInput
               {...field}
-              id="title"
+              id="title.vi"
+              placeholder="Nhập tiêu đề..."
+              error={!!error}
+              helperText={error?.message}
+            />
+          )}
+        />
+      </Stack>
+      <Stack direction="column" spacing={1} flex={1} mb={2.5}>
+        <CFormLabel label="Nội dung Tiếng Việt" />
+        <Controller
+          control={control}
+          name="content.vi"
+          render={({ field, fieldState: { error } }) => (
+            <CInput
+              {...field}
+              id="content.vi"
+              multiline
+              rows={4}
+              placeholder="Nhập nội dung..."
+              error={!!error}
+              helperText={error?.message}
+            />
+          )}
+        />
+      </Stack>
+      <Stack direction="column" spacing={1} flex={1} mb={2.5}>
+        <CFormLabel label="Tiêu đề Tiềng Anh" required />
+        <Controller
+          control={control}
+          name="title.en"
+          render={({ field, fieldState: { error } }) => (
+            <CInput
+              {...field}
+              id="title.en"
               placeholder="Nhập tiêu đề..."
               error={!!error}
               helperText={error?.message}
@@ -38,24 +66,24 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
         />
       </Stack>
 
-      <Stack direction="row" spacing={3} minWidth={200} mb={2.5}>
+      {/* <Stack direction="row" spacing={3} minWidth={200} mb={2.5}>
         <CFormLabel label="Trạng thái" />
         <Controller
           control={control}
           name="active"
           render={({ field }) => <CSwitch {...field} />}
         />
-      </Stack>
+      </Stack> */}
 
       <Stack direction="column" spacing={1} flex={1} mb={2.5}>
-        <CFormLabel label="Nội dung" />
+        <CFormLabel label="Nội dung Tiếng Anh" />
         <Controller
           control={control}
-          name="content"
+          name="content.en"
           render={({ field, fieldState: { error } }) => (
             <CInput
               {...field}
-              id="content"
+              id="content.en"
               multiline
               rows={4}
               placeholder="Nhập nội dung..."
@@ -85,12 +113,12 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
           />
           <Controller
             control={control}
-            name="date"
+            name="time"
             render={({ field, fieldState: { error } }) => (
               <CTimePicker
                 {...field}
                 fullWidth
-                id="date"
+                id="time"
                 error={!!error}
                 helperText={error?.message}
               />
@@ -99,7 +127,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
         </Stack>
       </Stack>
 
-      <Stack direction="column" spacing={1} flex={1} mb={2.5}>
+      {/* <Stack direction="column" spacing={1} flex={1} mb={2.5}>
         <CFormLabel label="Địa điểm" />
         <Controller
           control={control}
@@ -135,7 +163,7 @@ export const MScheduleForm: React.FC<IMScheduleFormProps> = ({ control }) => {
             />
           )}
         />
-      </Stack>
+      </Stack> */}
     </>
   );
   //#endregion

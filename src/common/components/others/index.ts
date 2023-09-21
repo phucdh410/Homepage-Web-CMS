@@ -10,3 +10,4 @@ export * from './CPageLoader';
 export * from './CPagination';
 export * from './CParseHTML';
 export * from './CTable';
+export * from './CTreeView';

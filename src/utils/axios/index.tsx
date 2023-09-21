@@ -13,7 +13,7 @@ import { objectToQueryString } from '../funcs';
 import { post } from './request';
 
 const apiInstance = axios.create({
-  baseURL: '/api/',
+  baseURL: '/v1',
   timeout: import.meta.env.VITE_API_TIMEOUT,
   paramsSerializer: {
     serialize: (params) => objectToQueryString(params),
@@ -63,7 +63,11 @@ const handleRefetch = async (response: any) => {
 };
 
 apiInstance.interceptors.request.use(
-  (config) => config,
+  (config) => {
+    config.headers['x-access-token'] =
+      '673nXrBKp2cPE4OGBFM_iLCBggCgfDJg_OqginnBF1U.Qf4ITM1AjN3kjNxojIwhXZiwCOyEzMxATN5YTM6ICdhlmIsIibqOcaWBCaul2UiojIl1WYOBXdvJ3ZiwSO5kjOigXYNxWZ2VGbiwiImZjNkJmM0MzMhljZwADZyITMzQmY0MWNiojIklkcvpWYtJCLiIDN2YTY2ATYwQDM1EGNwEGMmZjZ3QzY1IiOiQWS05WZtRnchBXZkJCLiUWOzUGMhhTY5kTNzQzY0gTOkNGN4QzY1IiOiQWSzNXYsNmIsICaulWTggmbhhGVg0moDzkI6ISZtFmbsxWdmJCLigGdshmbp1mI6ISZtFmbyV2c1JCLiMWM2YTY2ATYwQDM1EGNwEGZzQWZ3QzY1IiOiQWafJye.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
+    return config;
+  },
   (error) => Promise.reject(error),
 );
 

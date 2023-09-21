@@ -14,7 +14,7 @@ import {
 import { ICSelectModalProps } from './types';
 
 interface ICSelectItemProps extends ICSelectModalProps {
-  data: { id: string; label: string; isChildren?: boolean };
+  item: { id: string; label: string; isChildren?: boolean };
 }
 
 const SUB1 = [
@@ -26,7 +26,7 @@ const SUB1 = [
 export const CSelectItem: React.FC<ICSelectItemProps> = ({
   value,
   onChange,
-  data,
+  item,
 }) => {
   //#region Ref
   //#endregion
@@ -46,7 +46,7 @@ export const CSelectItem: React.FC<ICSelectItemProps> = ({
       setSubData(SUB1);
       setShow(true);
       setLoading(false);
-    }, 1000);
+    }, 50);
   };
   //#endregion
 
@@ -57,24 +57,24 @@ export const CSelectItem: React.FC<ICSelectItemProps> = ({
   return (
     <>
       <ListItemButton
-        key={data.id}
+        key={item.id}
         sx={{
           borderRadius: '15px',
           py: 0,
           '&.Mui-selected': { backgroundColor: '#DAEAF8' },
         }}
-        selected={data.label === value}
+        selected={item.id === value}
         disableRipple
         disableTouchRipple
       >
         <FormControlLabel
-          value={data.label}
+          value={item.id}
           control={<Radio />}
-          label=""
+          label={''}
           sx={{ mr: 0 }}
         />
-        <ListItemText primary={data.label} />
-        {data?.isChildren &&
+        <ListItemText primary={item.label} />
+        {item?.isChildren &&
           (loading ? (
             <CircularProgress
               sx={{ height: '20px!important', width: '20px!important' }}
@@ -96,7 +96,7 @@ export const CSelectItem: React.FC<ICSelectItemProps> = ({
               key={e.id}
               value={value}
               onChange={onChange}
-              data={e}
+              item={e}
             />
           ))}
         </List>

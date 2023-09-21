@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { Box, Typography } from '@mui/material';
 
 import { createMenu } from '@/apis/menus.api';
+import { MENU_TYPE_ENUMS } from '@/constants/enums';
 import { CActionsForm } from '@/controls/';
 
 import { MMenuForm } from '../../components';
@@ -35,7 +36,16 @@ const CreateMenuPage = () => {
     handleSubmit(async (values) => {
       try {
         console.log(values);
-        await createMenu(values);
+        const formData = new FormData();
+        formData.set('title', JSON.stringify(values.title));
+        formData.set('description', JSON.stringify(values.description));
+        formData.set('is_menu', 'true');
+        formData.set('is_pin', values.is_pin ? 'true' : 'false');
+        formData.set('slug', values.slug);
+        if (values.type === MENU_TYPE_ENUMS.URL)
+          formData.set('link', values.link);
+        formData.set('type', values.type.toString());
+        await createMenu(formData);
         toast.success('Thêm mới menu thành công!');
         onCancel();
       } catch (error: any) {

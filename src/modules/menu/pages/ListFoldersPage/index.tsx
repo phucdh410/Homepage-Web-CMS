@@ -39,12 +39,13 @@ const ListFoldersPage = () => {
   const [paginate, setPaginate] = useState({ page: 1, pages: 0 });
 
   const { data, refetch } = useQuery({
-    queryKey: ['folders', filter],
-    queryFn: () => getFolders(filter),
+    queryKey: ['folders', 'vi'],
+    queryFn: ({ queryKey: [, locale] }) => getFolders(locale),
   });
 
   const listData = useMemo<IGetFoldersResponse[]>(
-    () => data?.data?.data?.data || [],
+    // @ts-ignore
+    () => data?.data?.data || [],
     [data],
   );
   //#endregion

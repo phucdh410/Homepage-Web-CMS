@@ -1,8 +1,6 @@
 import { get, post, put, remove } from '@/axios/request';
 import {
-  ICreateFolderParams,
   IGetDetailFolderResponse,
-  IGetFoldersParams,
   IGetFoldersResponse,
   IUpdateFolderParams,
 } from '@/types/folders';
@@ -10,14 +8,14 @@ import { IApiResponse, IPaginateData } from '@/types/response';
 
 import { FOLDERS } from './url';
 
-export const createFolder = async (body: ICreateFolderParams) => {
+export const createFolder = async (body: FormData) => {
   return await post(FOLDERS.CREATE, body);
 };
 
 export const getFolders = async (
-  body: IGetFoldersParams,
+  locale: string,
 ): Promise<IApiResponse<IPaginateData<IGetFoldersResponse[]>, any>> => {
-  return await post(FOLDERS.GET_LIST, body);
+  return await get(FOLDERS.GET_LIST, { params: { locale } });
 };
 
 export const getDetailFolder = async (
